@@ -1,0 +1,174 @@
+git add .
+
+git commit -m "Kloak and Daggurrs GitHub V4"
+
+git push origin main
+
+
+
+The included workflow is configured to deploy Pages automatically from pushes to main, which is the workflow GitHub officially supports for automatic Pages deployments.
+
+ONE GitHub setting
+
+In the repository go to:
+
+Settings → Pages → Build and deployment → Source
+
+Select:
+
+GitHub Actions
+
+That's it for the deployment setup.
+
+After the Action finishes, the target is:
+
+https://mjolnariclan-png.github.io/kloakndaggurrs/
+
+Updating K&D afterward is much easier
+
+Most of the game's content now lives here:
+
+assets/data/site-data.json
+
+That file controls:
+
+Homepage
+Factions
+Cards
+Reveal dates
+Vault files
+Vault codes
+Whispers
+Gallery
+
+I also built a hidden editing utility into the website:
+
+https://mjolnariclan-png.github.io/kloakndaggurrs/#/studio
+
+There you can edit the entire content JSON and download a new:
+
+site-data.json
+
+Replace:
+
+assets/data/site-data.json
+
+and then:
+
+git add .
+git commit -m "Update K&D content"
+git push origin main
+
+Boom.
+
+New version deployed.
+
+Scheduled reveals still work
+
+For example:
+
+{
+  "name": "CLASSIFIED",
+  "revealed": false,
+  "reveal_at": "2026-09-18T20:00:00-05:00"
+}
+
+Before September 18:
+
+CLASSIFIED
+
+22D 02H 17M 49S
+
+After the date:
+
+THE VEIL LIFTS.
+
+No Python process is needed.
+
+My Archive still works
+
+Players can mark:
+
+Blood Price ×1
+Empty Throne ×2
+Loose Thread ×1
+
+and the website remembers their collection using their browser storage.
+
+So even on completely static GitHub Pages:
+
+My Archive works.
+
+The limitation is that it stays on that particular device/browser rather than syncing through a cloud account.
+
+Forge is handled differently now
+
+Because GitHub Pages cannot securely store customer orders itself, I did not fake an order database.
+
+Instead the Forge builds a complete request:
+
+KLOAK & DAGGURRS — FORGE REQUEST
+
+Name:
+Email:
+Phone:
+Print Type:
+Quantity:
+Deadline:
+Model:
+Colors:
+
+Build Brief:
+
+Then the customer can copy it or open an email addressed to you.
+
+You just need to edit:
+
+assets/js/config.js
+
+and put your emails here:
+
+window.KD_CONFIG = {
+  repository: "mjolnariclan-png/kloakndaggurrs",
+  projectPath: "/kloakndaggurrs/",
+  contactEmail: "YOUR-EMAIL-HERE",
+  forgeEmail: "YOUR-EMAIL-HERE"
+};
+
+Then those buttons work immediately.
+
+And later, kloakndaggurrs.com can point right at this
+
+We can keep testing on:
+
+mjolnariclan-png.github.io/kloakndaggurrs/
+
+until we're completely satisfied.
+
+Then GitHub Pages supports assigning your custom domain in repository Settings → Pages, after which the DNS gets pointed appropriately.
+
+So eventually:
+
+www.kloakndaggurrs.com
+          ↓
+      GitHub Pages
+          ↓
+      THIS V4 SITE
+
+And every future:
+
+git push
+
+updates the real website.
+
+One important distinction
+
+The public K&D experience is now GitHub-ready and launchable immediately.
+
+The only V3 features that cannot be made genuinely secure with GitHub Pages alone are cloud player accounts, synchronized collections, a secure web-based Owner Command Center, stored customer orders, real online order tracking, stored form submissions, browser image uploads, and genuinely private Vault-code validation. GitHub Pages is static hosting, so those require an external backend if we want them later.
+
+I deliberately didn't make fake security and pretend static JavaScript could safely handle that stuff.
+
+But this version gets us exactly where you asked:
+
+UPLOAD → COMMIT → PUSH → LIVE.
