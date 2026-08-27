@@ -120,7 +120,7 @@
       "ability": "Trade certainty for leverage. The table sees the cost; only you know whether it was worth paying.",
       "lore": "Coins remember every hand that held them.",
       "image": "assets/img/card-back.svg",
-      "revealed": false,
+      "revealed": true,
       "reveal_at": null
     },
     {
