@@ -1,0 +1,35 @@
+KLOAK & DAGGURRS V5 — QUICK INSTALL
+
+1. Supabase -> SQL Editor
+   Run: supabase/01_schema_and_seed.sql
+
+2. Supabase -> Authentication -> URL Configuration
+   Site URL:
+   https://www.kloakndaggurrs.com
+
+   Redirect URLs:
+   https://www.kloakndaggurrs.com/**
+   https://mjolnariclan-png.github.io/KloaknDaggurrsWeb/**
+
+3. Extract this ZIP over:
+   C:\Users\caspe\GitHub\KloaknDaggurrsWeb
+
+4. Command Prompt:
+   cd C:\Users\caspe\GitHub\KloaknDaggurrsWeb
+   git add -A
+   git status
+   git commit -m "K&D Supabase V5 database integration"
+   git push origin main
+
+5. Visit:
+   https://www.kloakndaggurrs.com/#/signup
+
+6. Create owner account.
+
+7. Supabase SQL Editor:
+   Edit and run supabase/02_make_me_owner.sql
+
+8. Sign out/in.
+
+9. Owner Command Center:
+   https://www.kloakndaggurrs.com/#/admin

@@ -1,172 +1,214 @@
-# Kloak & Daggurrs — GitHub Pages V4
+# Kloak & Daggurrs V5 — GitHub + Supabase
 
-Target URL:
+Frontend:
+`https://www.kloakndaggurrs.com`
 
-`https://mjolnariclan-png.github.io/kloakndaggurrs/`
+GitHub repository:
+`mjolnariclan-png/KloaknDaggurrsWeb`
 
-This conversion is designed to be uploaded directly to the **kloakndaggurrs**
-repository and published by GitHub Pages.
+Supabase project:
+`https://egpujmjpmeuhiostfrnu.supabase.co`
 
-## What changed from PythonAnywhere V3
+## Architecture
 
-There is no Flask, Python, WSGI, virtualenv, SQLite, or server routing in this
-edition. The site is a static HTML/CSS/JavaScript application.
+GitHub Pages still hosts the website. Supabase now provides the real backend:
 
-GitHub Pages hosts:
+- PostgreSQL database
+- player authentication
+- cloud collections
+- Forge orders
+- order status
+- reviews and approval
+- contact inbox
+- factions/cards/Whispers
+- secure Vault-code validation
+- owner/admin roles
+- media storage foundation
 
-- cinematic Klandestine homepage
-- thirteen-faction archive
-- classified/revealed factions
-- scheduled faction reveals
-- The Hoard card archive
-- card rarity/foil/tilt effects
-- scheduled card reveals
-- individual faction and card dossiers
-- Vault terminal and game/easter-egg codes
-- Whispers timeline
-- Learn Klandestine
-- The Forge
-- Forge request builder
-- gallery
-- contact request builder
-- browser-local player collection tracker
-- Content Studio
-- automatic GitHub Actions deployment
+The browser uses only the Supabase **publishable** key. Owner permissions are
+enforced by PostgreSQL Row Level Security (RLS).
 
-## First deployment
+## STEP 1 — Install the database
 
-Place **everything in this ZIP at the root of the `kloakndaggurrs` repository**.
+In Supabase:
 
-The repository should look like:
+**SQL Editor → New query**
 
-```text
-kloakndaggurrs/
-├── index.html
-├── 404.html
-├── .nojekyll
-├── README.md
-├── deploy.sh
-├── assets/
-│   ├── css/
-│   ├── js/
-│   ├── data/
-│   └── img/
-└── .github/
-    └── workflows/
-        └── pages.yml
-```
+Open:
 
-Then on GitHub:
+`supabase/01_schema_and_seed.sql`
 
-1. Open the `kloakndaggurrs` repository.
-2. Open **Settings → Pages**.
-3. Under **Build and deployment → Source**, choose **GitHub Actions**.
-4. Push to `main`.
+Copy the entire file into the SQL Editor and click **Run**.
 
-Every push to `main` will run the included Pages deployment workflow.
+It creates and secures the database and seeds the current K&D content.
 
-## Bash deployment
+Then optionally run:
 
-From a local clone:
+`supabase/03_verify_install.sql`
 
-```bash
-chmod +x deploy.sh
-./deploy.sh "K&D GitHub V4"
+You should see approximately:
+
+- 13 factions
+- 24 cards
+- 2 Whispers
+- 3 Vault entries
+
+## STEP 2 — Configure Supabase Auth URLs
+
+In Supabase open the Authentication URL configuration.
+
+Set the Site URL to:
+
+`https://www.kloakndaggurrs.com`
+
+Add redirect URLs for:
+
+`https://www.kloakndaggurrs.com/**`
+
+For testing through the raw GitHub Pages address, also add:
+
+`https://mjolnariclan-png.github.io/KloaknDaggurrsWeb/**`
+
+## STEP 3 — Put V5 into the GitHub repository
+
+Extract this package over:
+
+`C:\Users\caspe\GitHub\KloaknDaggurrsWeb`
+
+The important files that change are:
+
+- `index.html`
+- `assets/js/config.js`
+- `assets/js/app.js`
+- `assets/css/style.css`
+- `assets/data/site-data.json`
+- `supabase/*.sql`
+- `deploy.cmd`
+
+The repository is designed to keep using GitHub Pages:
+
+**Deploy from a branch → main → /(root)**
+
+No Python, Flask, WSGI, or virtualenv is required.
+
+## STEP 4 — Commit and push
+
+From Command Prompt:
+
+```cmd
+cd C:\Users\caspe\GitHub\KloaknDaggurrsWeb
+
+git add -A
+git status
+git commit -m "K&D Supabase V5 database integration"
+git push origin main
 ```
 
 Or:
 
-```bash
-git add .
-git commit -m "K&D GitHub V4"
-git push origin main
+```cmd
+deploy.cmd "K&D Supabase V5 database integration"
 ```
 
-## Content editing
+## STEP 5 — Create the owner account
 
-The site content is in:
+After the site deploys, open:
 
-`assets/data/site-data.json`
+`https://www.kloakndaggurrs.com/#/signup`
 
-This controls the hero, factions, cards, Vault files, Whispers, and Gallery.
+Create the account you want to use as the owner.
 
-You can also open:
+If email confirmation is enabled, confirm the email.
 
-`#/studio`
+Then open:
 
-Example:
+`supabase/02_make_me_owner.sql`
 
-`https://mjolnariclan-png.github.io/kloakndaggurrs/#/studio`
+Replace:
 
-The Content Studio loads the current JSON. Make your changes, click **Download
-JSON**, replace `assets/data/site-data.json`, then commit and push.
+`YOUR_EMAIL_HERE`
 
-## Scheduled reveals
+with that owner's email and run it in Supabase SQL Editor.
 
-Use an ISO timestamp:
+After that, sign out and sign back in.
 
-```json
-{
-  "revealed": false,
-  "reveal_at": "2026-09-18T20:00:00-05:00"
-}
-```
+The navigation will change from **My Archive** to **Command**, and this route
+will become available:
 
-The site automatically displays a countdown and considers the record revealed
-after that time.
+`https://www.kloakndaggurrs.com/#/admin`
 
-## Real artwork
+## What is live after setup
 
-Replace the included generated placeholders with your real K&D assets.
+### Players
 
-For card art, place an image in `assets/img/` and change:
+- create account
+- sign in
+- keep a cloud card collection
+- collection syncs across browsers/devices after login
+- submit Forge orders
+- view their own Forge orders/status
+- submit reviews
+- submit contact messages
+- unlock secret Vault files with codes
 
-```json
-"image": "assets/img/my-real-card.webp"
-```
+### Owner/Admin
 
-## My Archive
+The Command Center can currently:
 
-The GitHub-only edition stores a player's collection in browser `localStorage`.
-It works immediately without a server, but the collection belongs to that
-browser/device and is not a cloud account.
+- see all Forge orders
+- update Forge status
+- write a customer-visible status message
+- edit card name, rarity, type, ability and lore
+- reveal cards immediately or on a schedule
+- edit faction name/tagline/lore/doctrine
+- reveal factions immediately or on a schedule
+- approve customer reviews
+- read contact messages
+- mark contact messages read
+- view users
+- promote/demote users between player/admin/owner
+- disable/reactivate accounts
 
-## Vault security
+### Security
 
-Vault codes in a completely static site are suitable for game unlocks and
-easter eggs, but **not true confidential data**. A determined visitor can inspect
-public site files. Real private validation requires a backend.
+The public website does **not** receive the secret/service-role key.
 
-## Contact and Forge email
+Hidden Vault access codes are no longer present in
+`assets/data/site-data.json`. They are checked by a database function.
 
-Edit:
+Unrevealed card/faction lore is sanitized by database views before it reaches a
+visitor.
 
-`assets/js/config.js`
+RLS limits player records to the signed-in user and reserves owner operations
+for `owner` / `admin` profiles.
 
-and set:
+## Fallback mode
 
-```js
-contactEmail: "YOUR_EMAIL",
-forgeEmail: "YOUR_EMAIL"
-```
+`assets/data/site-data.json` remains in the repository as an emergency public
+fallback. If Supabase is temporarily unavailable, public K&D content can still
+render.
 
-The site then creates a complete `mailto:` message for the visitor.
+The homepage shows:
 
-## Features that require a real external backend
+- `● LIVE DATABASE` when Supabase is connected
+- `● STATIC FALLBACK` when the database could not be reached
 
-GitHub Pages cannot securely provide a shared database by itself. These features
-would require a service such as Supabase/Firebase/Cloudflare while keeping this
-GitHub Pages frontend:
+Accounts/orders obviously require the live database.
 
-- true cloud player accounts
-- synced collections across devices
-- secure owner authentication
-- database-backed Owner Command Center
-- stored Forge orders
-- online order tracking
-- stored contact messages
-- public review submission/approval
-- private Vault code validation
-- browser media uploads
+## Database files
 
-The public K&D site does **not** need any of that to deploy and run now.
+`supabase/01_schema_and_seed.sql`
+Creates the full database, RLS policies, safe public views, Vault functions,
+Storage bucket and initial content.
+
+`supabase/02_make_me_owner.sql`
+Promotes your first signed-up account to owner.
+
+`supabase/03_verify_install.sql`
+Quick database verification queries.
+
+## Important
+
+Never commit a Supabase `sb_secret_...` key or `service_role` key to GitHub.
+
+Only the browser-safe publishable key belongs in `assets/js/config.js`.
