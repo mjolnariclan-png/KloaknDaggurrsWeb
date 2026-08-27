@@ -158,28 +158,8 @@ const KD = (() => {
     return `<section class="card-dossier"><div><div class="game-card giant rarity-${esc((c.rarity||"Common").toLowerCase())} ${open?"":"classified-card"}"><div class="foil"></div><div class="card-top"><span>#${String(c.card_number??c.number??0).padStart(3,"0")}</span><span>${esc(c.rarity)}</span></div><div class="card-art"><img src="${esc(c.image_url||c.image||"assets/img/card-back.svg")}" alt=""></div><div class="card-copy"><span>${esc(c.faction_name||f?.name||"UNKNOWN")}</span><h2>${esc(open?c.name:"CLASSIFIED")}</h2><small>${esc(c.card_type||c.type)}</small></div></div></div><div class="card-record"><p class="eyebrow">CARD DOSSIER</p><h1>${esc(open?c.name:"██████████")}</h1>${open?`<div class="record-grid"><span>Faction</span><b>${esc(c.faction_name||f?.name||"Unknown")}</b><span>Rarity</span><b>${esc(c.rarity)}</b><span>Type</span><b>${esc(c.card_type||c.type)}</b></div><h3>ABILITY</h3><p>${esc(c.ability||"")}</p><h3>LORE</h3><p>${esc(c.lore||"")}</p>${session?.user&&c.id?`<form id="collection-form" data-card-id="${c.id}" class="collection-form"><label>Copies in My Archive <input id="collection-qty" type="number" min="0" max="99" value="${qty}"></label><button class="btn primary">Update Collection</button></form>`:`<a class="btn ghost" href="#/login">Sign in to track this card</a>`}`:countdown(c)}</div></section>`;
   }
 
-  async function vaultPage(){
+  function vaultPage(){
     const files=data.vault.map(v=>{const open=v.unlocked||live(v);return `<article class="vault-file ${open?"":"locked"}"><div class="file-top"><span>${esc(v.code)}</span><b>${open?"ACCESS GRANTED":"🔒 CLASSIFIED"}</b></div><h2>${esc(open?v.title:"████████████")}</h2><p>${esc(v.teaser)}</p>${open?`<div class="file-body">${esc(v.body||"")}</div>`:`<div class="redactions"><i></i><i></i><i></i></div>${countdown(v)}`}</article>`}).join("");
-    
-    // Load user's redeemed decks
-    let userDecksHtml = '';
-    if(session?.user){
-      const {data:decks,error}=await sb.rpc("get_user_decks");
-      if(!error && decks){
-        userDecksHtml = decks.length ? decks.map(d=>`
-          <article class="vault-file">
-            <div class="file-top"><span>DECK</span><b>OWNED</b></div>
-            <h2>${esc(d.deck_name)}</h2>
-            <p>${esc(d.deck_slug)}</p>
-            <div class="file-body">
-              <p><strong>${d.total_cards}</strong> cards in deck</p>
-              <p>Redeemed: ${fmtDate(d.redeemed_at)}</p>
-              <p>Code: ${esc(d.redemption_code)}</p>
-            </div>
-          </article>
-        `).join('') : `<div class="empty-panel"><h2>No decks redeemed yet.</h2><p>Enter deck codes from physical products to build your online collection.</p></div>`;
-      }
-    }
     
     return `<section class="page-hero"><p class="eyebrow">AUTHORIZED EYES ONLY</p><h1>THE VAULT</h1><p>Codes are validated securely by Supabase and are no longer shipped in the public website source.</p></section><section class="section terminal-wrap"><div class="terminal"><div class="terminal-bar">K&amp;D ARCHIVE NETWORK // DATABASE NODE</div><pre>&gt; SIGNAL: ${backendOnline?"STABLE":"FALLBACK"}
 &gt; IDENTITY: ${session?.user?esc(session.user.email):"ANONYMOUS"}
@@ -198,7 +178,7 @@ const KD = (() => {
       </div>
     `:`<a class="btn primary" href="#/login">Sign In to Enter Codes</a>`}<p id="vault-message"></p></div></section>
     <section class="section"><div class="vault-grid">${files}</div></section>
-    ${session?.user?`<section class="section"><div class="section-heading"><p class="eyebrow">YOUR REDEEMED DECKS</p><h2>Collection</h2></div><div id="user-decks" class="deck-grid">${userDecksHtml}</div></section>`:""}`;
+    ${session?.user?`<section class="section"><div class="section-heading"><p class="eyebrow">YOUR REDEEMED DECKS</p><h2>Collection</h2></div><div id="user-decks" class="deck-grid"><div class="loading-panel">Loading your decks…</div></div></section>`:""}`;
   }
 
   function whispersPage(){
@@ -276,6 +256,34 @@ const KD = (() => {
     return `<section class="page-hero"><p class="eyebrow">404 / ${esc(label)} LOST</p><h1>BEHIND THE VEIL.</h1><a class="btn primary" href="#/">Return Home</a></section>`;
   }
 
+  // Function to load user's redeemed decks (global scope)
+  async function loadUserDecks(){
+    if(!session?.user)return;
+    const deckGrid=$("#user-decks");
+    if(!deckGrid)return;
+    
+    deckGrid.innerHTML='<div class="loading-panel">Loading your decks…</div>';
+    
+    const {data:decks,error}=await sb.rpc("get_user_decks");
+    if(error){
+      deckGrid.innerHTML=`<div class="empty-panel"><h2>Error loading decks</h2><p>${esc(error.message)}</p></div>`;
+      return;
+    }
+    
+    deckGrid.innerHTML=decks.length?decks.map(d=>`
+      <article class="vault-file">
+        <div class="file-top"><span>DECK</span><b>OWNED</b></div>
+        <h2>${esc(d.deck_name)}</h2>
+        <p>${esc(d.deck_slug)}</p>
+        <div class="file-body">
+          <p><strong>${d.total_cards}</strong> cards in deck</p>
+          <p>Redeemed: ${fmtDate(d.redeemed_at)}</p>
+          <p>Code: ${esc(d.redemption_code)}</p>
+        </div>
+      </article>
+    `).join(''):`<div class="empty-panel"><h2>No decks redeemed yet.</h2><p>Enter deck codes from physical products to build your online collection.</p></div>`;
+  }
+
   async function render(){
     await loadContent();
     const [p,arg]=route();
@@ -284,7 +292,7 @@ const KD = (() => {
     else if(p==="faction")app.innerHTML=factionPage(arg);
     else if(p==="cards")app.innerHTML=cardsPage();
     else if(p==="card")app.innerHTML=await cardPage(arg);
-    else if(p==="vault")app.innerHTML=vaultPage();
+    else if(p==="vault"){app.innerHTML=vaultPage();if(session?.user)loadUserDecks();}
     else if(p==="whispers")app.innerHTML=whispersPage();
     else if(p==="learn")app.innerHTML=learnPage();
     else if(p==="forge")app.innerHTML=forgePage();
@@ -370,12 +378,16 @@ const KD = (() => {
       if(result.success){
         msg.innerHTML=`<span style="color:#67e8b1">DECK REDEEMED: ${esc(result.deck_name)} · ${result.cards_added} cards added to collection</span>`;
         e.currentTarget.reset();
-        // Refresh the page to show updated collection
-        setTimeout(()=>render(),1000);
+        // Refresh the deck list
+        loadUserDecks();
       }else{
         msg.textContent=result.error;
       }
     });
+
+
+
+
 
     $("#forge-form")?.addEventListener("submit",async e=>{
       e.preventDefault();const msg=$("#forge-message");msg.textContent="TRANSMITTING…";
