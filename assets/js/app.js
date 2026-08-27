@@ -100,6 +100,8 @@ const KD = (() => {
   }
 
   function factionCard(f,i){
+    if(!f) return `<div class="faction-tile locked"><span class="tile-index">ERROR</span><div class="sigil">?</div><h3>UNKNOWN</h3><p>Faction not found</p><span class="clearance">CLEARANCE DENIED</span></div>`;
+    
     const open=live(f);
     const runeDisplay = f.rune_image_url 
       ? `<img src="${esc(f.rune_image_url)}" alt="${esc(f.name)} rune" class="rune-image">`
@@ -151,6 +153,9 @@ const KD = (() => {
       const f1 = faction(pair.f1);
       const f2 = faction(pair.f2);
       const w = pair.war;
+      
+      if(!f1 || !f2) return ''; // Skip if factions don't exist
+      
       const bothRevealed = live(f1) && live(f2);
       
       let warContent;
@@ -184,6 +189,9 @@ const KD = (() => {
       const f1 = faction(pair.f1);
       const f2 = faction(pair.f2);
       const w = pair.war;
+      
+      if(!f1 || !f2) return ''; // Skip if factions don't exist
+      
       const bothRevealed = live(f1) && live(f2);
       
       return `<article class="war-card">
@@ -373,7 +381,7 @@ const KD = (() => {
     else if(p==="vault"){app.innerHTML=vaultPage();if(session?.user)loadUserDecks();}
     else if(p==="wars")app.innerHTML=warsPage();
     else if(p==="whispers")app.innerHTML=whispersPage();
-    else if(p==="decipher")app.innerHTML=learnPage();
+    else if(p==="learn"||p==="decipher")app.innerHTML=learnPage();
     else if(p==="forge")app.innerHTML=forgePage();
     else if(p==="forge-order")app.innerHTML=forgeOrderPage();
     else if(p==="account")app.innerHTML=await accountPage();
