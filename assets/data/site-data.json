@@ -8,28 +8,7 @@
     "intro": true
   },
   "factions": [
-    {
-      "slug": "golden-flow",
-      "name": "Golden Flow",
-      "rune": "ᚠ",
-      "tagline": "Wealth has a blood price.",
-      "lore": "Golden Flow is the faction of wealth, possession, hunger, and the dangerous belief that everything has a price.",
-      "doctrine": "Acquire. Protect. Spend only when the blood price is worth paying.",
-      "accent": "#b58a42",
-      "revealed": false,
-      "reveal_at": null
-    },
-    {
-      "slug": "crimson-oath",
-      "name": "Crimson Oath",
-      "rune": "♛",
-      "tagline": "The Empty Throne remembers.",
-      "lore": "Crimson Oath endures beneath the shadow of the Empty Throne. Broken crowns and whispered oaths make power feel like a debt.",
-      "doctrine": "Authority is strongest when nobody agrees who truly holds it.",
-      "accent": "#7794bf",
-      "revealed": false,
-      "reveal_at": null
-    },
+
     {
       "slug": "ash-cycle",
       "name": "Ash Cycle",
@@ -50,6 +29,28 @@
       "doctrine": "Illuminate. Expose. Guide others toward the revelation they fear but need.",
       "accent": "#ffd700",
       "revealed": true,
+      "reveal_at": null
+    },    
+    {
+      "slug": "golden-flow",
+      "name": "Golden Flow",
+      "rune": "ᚠ",
+      "tagline": "Wealth has a blood price.",
+      "lore": "Golden Flow is the faction of wealth, possession, hunger, and the dangerous belief that everything has a price.",
+      "doctrine": "Acquire. Protect. Spend only when the blood price is worth paying.",
+      "accent": "#b58a42",
+      "revealed": false,
+      "reveal_at": null
+    },
+    {
+      "slug": "crimson-oath",
+      "name": "Crimson Oath",
+      "rune": "♛",
+      "tagline": "The Empty Throne remembers.",
+      "lore": "Crimson Oath endures beneath the shadow of the Empty Throne. Broken crowns and whispered oaths make power feel like a debt.",
+      "doctrine": "Authority is strongest when nobody agrees who truly holds it.",
+      "accent": "#7794bf",
+      "revealed": false,
       "reveal_at": null
     },
     {
