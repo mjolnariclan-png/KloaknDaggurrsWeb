@@ -1,0 +1,39 @@
+<svg width="400" height="440" viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg">
+<title>First Light faction badge</title>
+<defs>
+<linearGradient id="first-light-panel" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#1A1A22"/>
+<stop offset="100%" stop-color="#0B0B10"/>
+</linearGradient>
+<radialGradient id="first-light-glow" cx="50%" cy="44%" r="55%">
+<stop offset="0%" stop-color="#E8A93D" stop-opacity="0.55"/>
+<stop offset="55%" stop-color="#E8A93D" stop-opacity="0.16"/>
+<stop offset="100%" stop-color="#E8A93D" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<rect x="0" y="0" width="400" height="440" rx="28" fill="url(#first-light-panel)"/>
+<rect x="0" y="0" width="400" height="440" rx="28" fill="url(#first-light-glow)"/>
+<rect x="3" y="3" width="394" height="434" rx="25" fill="none" stroke="#E8A93D" stroke-width="1.5" stroke-opacity="0.35"/>
+<circle cx="200" cy="200" r="150" fill="#E8A93D"/>
+<circle cx="200" cy="200" r="150" fill="none" stroke="#7A4E0F" stroke-width="4"/>
+<circle cx="200" cy="200" r="130" fill="none" stroke="#3D2400" stroke-width="1" stroke-dasharray="2 6" opacity="0.5"/>
+<line x1="200" y1="50" x2="200" y2="40" stroke="#3D2400" stroke-width="2"/>
+<line x1="306" y1="94" x2="313" y2="87" stroke="#3D2400" stroke-width="2"/>
+<line x1="350" y1="200" x2="360" y2="200" stroke="#3D2400" stroke-width="2"/>
+<line x1="306" y1="306" x2="313" y2="313" stroke="#3D2400" stroke-width="2"/>
+<line x1="200" y1="350" x2="200" y2="360" stroke="#3D2400" stroke-width="2"/>
+<line x1="94" y1="306" x2="87" y2="313" stroke="#3D2400" stroke-width="2"/>
+<line x1="50" y1="200" x2="40" y2="200" stroke="#3D2400" stroke-width="2"/>
+<line x1="94" y1="94" x2="87" y2="87" stroke="#3D2400" stroke-width="2"/>
+<path d="M120,240 A100,100 0 0,0 280,240 A130,130 0 0,1 120,240 Z" fill="#3D2400" opacity="0.22"/>
+<circle cx="200" cy="200" r="30" fill="#FFF6E4" stroke="#3D2400" stroke-width="3"/>
+<line x1="200" y1="150" x2="200" y2="122" stroke="#3D2400" stroke-width="3"/>
+<line x1="200" y1="250" x2="200" y2="278" stroke="#3D2400" stroke-width="3"/>
+<line x1="150" y1="200" x2="122" y2="200" stroke="#3D2400" stroke-width="3"/>
+<line x1="250" y1="200" x2="278" y2="200" stroke="#3D2400" stroke-width="3"/>
+<line x1="164" y1="164" x2="143" y2="143" stroke="#3D2400" stroke-width="2.5"/>
+<line x1="236" y1="236" x2="257" y2="257" stroke="#3D2400" stroke-width="2.5"/>
+<line x1="236" y1="164" x2="257" y2="143" stroke="#3D2400" stroke-width="2.5"/>
+<line x1="164" y1="236" x2="143" y2="257" stroke="#3D2400" stroke-width="2.5"/>
+<text x="200" y="415" text-anchor="middle" font-family="Georgia, serif" font-size="24" font-weight="600" fill="#3D2400">First Light</text>
+</svg>

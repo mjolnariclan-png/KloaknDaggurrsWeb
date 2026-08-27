@@ -1,0 +1,35 @@
+<svg width="400" height="440" viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg">
+<title>Golden Flow faction badge</title>
+<defs>
+<linearGradient id="golden-flow-panel" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#1A1A22"/>
+<stop offset="100%" stop-color="#0B0B10"/>
+</linearGradient>
+<radialGradient id="golden-flow-glow" cx="50%" cy="44%" r="55%">
+<stop offset="0%" stop-color="#D97A4D" stop-opacity="0.55"/>
+<stop offset="55%" stop-color="#D97A4D" stop-opacity="0.16"/>
+<stop offset="100%" stop-color="#D97A4D" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<rect x="0" y="0" width="400" height="440" rx="28" fill="url(#golden-flow-panel)"/>
+<rect x="0" y="0" width="400" height="440" rx="28" fill="url(#golden-flow-glow)"/>
+<rect x="3" y="3" width="394" height="434" rx="25" fill="none" stroke="#D97A4D" stroke-width="1.5" stroke-opacity="0.35"/>
+<circle cx="200" cy="200" r="150" fill="#D97A4D"/>
+<circle cx="200" cy="200" r="150" fill="none" stroke="#6E2C0C" stroke-width="4"/>
+<circle cx="200" cy="200" r="130" fill="none" stroke="#FFF1E8" stroke-width="1" stroke-dasharray="2 6" opacity="0.7"/>
+<line x1="200" y1="50" x2="200" y2="40" stroke="#FFF1E8" stroke-width="2"/>
+<line x1="306" y1="94" x2="313" y2="87" stroke="#FFF1E8" stroke-width="2"/>
+<line x1="350" y1="200" x2="360" y2="200" stroke="#FFF1E8" stroke-width="2"/>
+<line x1="306" y1="306" x2="313" y2="313" stroke="#FFF1E8" stroke-width="2"/>
+<line x1="200" y1="350" x2="200" y2="360" stroke="#FFF1E8" stroke-width="2"/>
+<line x1="94" y1="306" x2="87" y2="313" stroke="#FFF1E8" stroke-width="2"/>
+<line x1="50" y1="200" x2="40" y2="200" stroke="#FFF1E8" stroke-width="2"/>
+<line x1="94" y1="94" x2="87" y2="87" stroke="#FFF1E8" stroke-width="2"/>
+<circle cx="200" cy="175" r="38" fill="#F6C453" stroke="#6E2C0C" stroke-width="3"/>
+<circle cx="200" cy="175" r="26" fill="none" stroke="#6E2C0C" stroke-width="1.5" opacity="0.7"/>
+<path d="M200,213 Q188,242 200,258 Q212,242 200,213 Z" fill="#6E2C0C" stroke="#FFF1E8" stroke-width="1.5"/>
+<path d="M175,260 Q169,276 175,285 Q181,276 175,260 Z" fill="#6E2C0C" opacity="0.8"/>
+<path d="M225,260 Q219,276 225,285 Q231,276 225,260 Z" fill="#6E2C0C" opacity="0.8"/>
+<path d="M140,300 Q170,290 200,300 Q230,290 260,300" fill="none" stroke="#FFF1E8" stroke-width="2" opacity="0.6"/>
+<text x="200" y="415" text-anchor="middle" font-family="Georgia, serif" font-size="24" font-weight="600" fill="#6E2C0C">Golden Flow</text>
+</svg>

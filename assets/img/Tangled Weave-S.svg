@@ -1,0 +1,38 @@
+<svg width="400" height="440" viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg">
+<title>Tangled Weave faction badge</title>
+<defs>
+<linearGradient id="tangled-weave-panel" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#1A1A22"/>
+<stop offset="100%" stop-color="#0B0B10"/>
+</linearGradient>
+<radialGradient id="tangled-weave-glow" cx="50%" cy="44%" r="55%">
+<stop offset="0%" stop-color="#5C8A3A" stop-opacity="0.55"/>
+<stop offset="55%" stop-color="#5C8A3A" stop-opacity="0.16"/>
+<stop offset="100%" stop-color="#5C8A3A" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<rect x="0" y="0" width="400" height="440" rx="28" fill="url(#tangled-weave-panel)"/>
+<rect x="0" y="0" width="400" height="440" rx="28" fill="url(#tangled-weave-glow)"/>
+<rect x="3" y="3" width="394" height="434" rx="25" fill="none" stroke="#5C8A3A" stroke-width="1.5" stroke-opacity="0.35"/>
+<circle cx="200" cy="200" r="150" fill="#5C8A3A"/>
+<circle cx="200" cy="200" r="150" fill="none" stroke="#233F0C" stroke-width="4"/>
+<circle cx="200" cy="200" r="130" fill="none" stroke="#EAF3DE" stroke-width="1" stroke-dasharray="2 6" opacity="0.7"/>
+<line x1="200" y1="50" x2="200" y2="40" stroke="#EAF3DE" stroke-width="2"/>
+<line x1="306" y1="94" x2="313" y2="87" stroke="#EAF3DE" stroke-width="2"/>
+<line x1="350" y1="200" x2="360" y2="200" stroke="#EAF3DE" stroke-width="2"/>
+<line x1="306" y1="306" x2="313" y2="313" stroke="#EAF3DE" stroke-width="2"/>
+<line x1="200" y1="350" x2="200" y2="360" stroke="#EAF3DE" stroke-width="2"/>
+<line x1="94" y1="306" x2="87" y2="313" stroke="#EAF3DE" stroke-width="2"/>
+<line x1="50" y1="200" x2="40" y2="200" stroke="#EAF3DE" stroke-width="2"/>
+<line x1="94" y1="94" x2="87" y2="87" stroke="#EAF3DE" stroke-width="2"/>
+<path d="M140,160 Q200,200 140,240" fill="none" stroke="#EAF3DE" stroke-width="3"/>
+<path d="M260,160 Q200,200 260,240" fill="none" stroke="#EAF3DE" stroke-width="3"/>
+<path d="M170,150 Q200,200 170,250" fill="none" stroke="#EAF3DE" stroke-width="2" opacity="0.65"/>
+<path d="M230,150 Q200,200 230,250" fill="none" stroke="#EAF3DE" stroke-width="2" opacity="0.65"/>
+<circle cx="200" cy="200" r="5" fill="#EAF3DE"/>
+<line x1="140" y1="160" x2="118" y2="143" stroke="#EAF3DE" stroke-width="2" opacity="0.6"/>
+<line x1="260" y1="160" x2="282" y2="143" stroke="#EAF3DE" stroke-width="2" opacity="0.6"/>
+<line x1="140" y1="240" x2="118" y2="257" stroke="#EAF3DE" stroke-width="2" opacity="0.6"/>
+<line x1="260" y1="240" x2="282" y2="257" stroke="#EAF3DE" stroke-width="2" opacity="0.6"/>
+<text x="200" y="415" text-anchor="middle" font-family="Georgia, serif" font-size="24" font-weight="600" fill="#233F0C">Tangled Weave</text>
+</svg>

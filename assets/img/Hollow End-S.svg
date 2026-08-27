@@ -1,0 +1,44 @@
+<svg width="400" height="440" viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg">
+<title>Hollow End faction badge</title>
+<defs>
+<linearGradient id="hollow-end-panel" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#1A1A22"/>
+<stop offset="100%" stop-color="#0B0B10"/>
+</linearGradient>
+<radialGradient id="hollow-end-glow" cx="50%" cy="44%" r="55%">
+<stop offset="0%" stop-color="#8A9490" stop-opacity="0.55"/>
+<stop offset="55%" stop-color="#8A9490" stop-opacity="0.16"/>
+<stop offset="100%" stop-color="#8A9490" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<rect x="0" y="0" width="400" height="440" rx="28" fill="url(#hollow-end-panel)"/>
+<rect x="0" y="0" width="400" height="440" rx="28" fill="url(#hollow-end-glow)"/>
+<rect x="3" y="3" width="394" height="434" rx="25" fill="none" stroke="#8A9490" stroke-width="1.5" stroke-opacity="0.35"/>
+<circle cx="200" cy="200" r="150" fill="#D3D1C7"/>
+<circle cx="200" cy="200" r="150" fill="none" stroke="#2C2C2A" stroke-width="2.5"/>
+<circle cx="200" cy="200" r="130" fill="none" stroke="#2C2C2A" stroke-width="0.5" stroke-dasharray="2 7"/>
+<line x1="200" y1="50" x2="200" y2="40" stroke="#2C2C2A" stroke-width="1.5"/>
+<line x1="306" y1="94" x2="313" y2="87" stroke="#2C2C2A" stroke-width="1.5"/>
+<line x1="350" y1="200" x2="360" y2="200" stroke="#2C2C2A" stroke-width="1.5"/>
+<line x1="306" y1="306" x2="313" y2="313" stroke="#2C2C2A" stroke-width="1.5"/>
+<line x1="200" y1="350" x2="200" y2="360" stroke="#2C2C2A" stroke-width="1.5"/>
+<line x1="94" y1="306" x2="87" y2="313" stroke="#2C2C2A" stroke-width="1.5"/>
+<line x1="50" y1="200" x2="40" y2="200" stroke="#2C2C2A" stroke-width="1.5"/>
+<line x1="94" y1="94" x2="87" y2="87" stroke="#2C2C2A" stroke-width="1.5"/>
+<line x1="200" y1="110" x2="200" y2="90" stroke="#2C2C2A" stroke-width="1" opacity="0.3"/>
+<line x1="270" y1="130" x2="282" y2="115" stroke="#2C2C2A" stroke-width="1" opacity="0.3"/>
+<line x1="300" y1="200" x2="320" y2="200" stroke="#2C2C2A" stroke-width="1" opacity="0.3"/>
+<line x1="270" y1="270" x2="282" y2="285" stroke="#2C2C2A" stroke-width="1" opacity="0.3"/>
+<line x1="130" y1="270" x2="118" y2="285" stroke="#2C2C2A" stroke-width="1" opacity="0.3"/>
+<line x1="100" y1="200" x2="80" y2="200" stroke="#2C2C2A" stroke-width="1" opacity="0.3"/>
+<line x1="130" y1="130" x2="118" y2="115" stroke="#2C2C2A" stroke-width="1" opacity="0.3"/>
+<circle cx="200" cy="200" r="46" fill="#F1EFE8" stroke="#2C2C2A" stroke-width="2.5"/>
+<circle cx="218" cy="188" r="46" fill="#5F5E5A" stroke="#2C2C2A" stroke-width="1" opacity="0.9"/>
+<circle cx="150" cy="280" r="2.5" fill="#2C2C2A" opacity="0.5"/>
+<circle cx="170" cy="310" r="2" fill="#2C2C2A" opacity="0.4"/>
+<circle cx="190" cy="290" r="1.5" fill="#2C2C2A" opacity="0.6"/>
+<circle cx="220" cy="315" r="2" fill="#2C2C2A" opacity="0.4"/>
+<circle cx="245" cy="285" r="2.5" fill="#2C2C2A" opacity="0.5"/>
+<circle cx="265" cy="305" r="1.5" fill="#2C2C2A" opacity="0.5"/>
+<text x="200" y="415" text-anchor="middle" font-family="Georgia, serif" font-size="24" font-weight="500" fill="#2C2C2A">Hollow End</text>
+</svg>
