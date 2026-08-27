@@ -373,7 +373,7 @@ const KD = (() => {
     else if(p==="vault"){app.innerHTML=vaultPage();if(session?.user)loadUserDecks();}
     else if(p==="wars")app.innerHTML=warsPage();
     else if(p==="whispers")app.innerHTML=whispersPage();
-    else if(p==="learn")app.innerHTML=learnPage();
+    else if(p==="decipher")app.innerHTML=learnPage();
     else if(p==="forge")app.innerHTML=forgePage();
     else if(p==="forge-order")app.innerHTML=forgeOrderPage();
     else if(p==="account")app.innerHTML=await accountPage();
