@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+
+{% block title %}Willows Melting Pot | Shop Local Favorites{% endblock %}
+
+{% block description %}
+Shop gifts, crystals, jewelry, tea, and unique finds from Willows Melting Pot.
+{% endblock %}
+
+{% block body_class %}home-page{% endblock %}
+
+{% block content %}
+
+<section class="hero home-hero">
+  <div class="hero-logo-wrap">
+    <img
+      class="hero-logo"
+      src="{{ url_for('static', filename='img/willows-logo-web.png') }}"
+      alt="Willows Melting Pot logo"
+
+    >
+  </div>
+
+
+
+  <h1 align="center">Unique finds, thoughtful gifts, and everyday treasures.</h1>
+
+  <p class="hero-welcome">
+    Welcome to Willow's Melting Pot — where every path is welcome, every soul is valued,
+    and a little magic can always be found.
+  </p>
+
+  <div class="hero-actions">
+    <a class="btn" href="/shop">Shop All Products</a>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <div>
+      <p class="eyebrow">Shop by category</p>
+      <h2>Popular Categories</h2>
+    </div>
+    <a href="/shop">View all</a>
+  </div>
+
+  {% if categories %}
+    <div class="category-grid">
+      {% for category in categories %}
+        <a class="category-tile" href="/shop?category={{ category.slug }}">
+          <span>{{ category.name }}</span>
+          <small>{{ category.count }} items</small>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="category-grid">
+      <a class="category-tile" href="/shop"><span>Crystals</span></a>
+      <a class="category-tile" href="/shop"><span>Jewelry</span></a>
+      <a class="category-tile" href="/shop"><span>Tea</span></a>
+      <a class="category-tile" href="/shop"><span>Gifts</span></a>
+    </div>
+  {% endif %}
+</section>
+
+<section id="featured-products">
+  <div class="section-title">
+    <div>
+      <p class="eyebrow">Fresh from the shop</p>
+      <h2>Featured Products</h2>
+    </div>
+    <a href="/shop">Shop all</a>
+  </div>
+
+  {% if products %}
+    <div class="grid">
+      {% for product in products %}
+        <article class="product-card">
+
+          <a class="product-image-link" href="/product/{{ product.id }}">
+            {% if product.image_url %}
+              <img src="{{ product.image_url }}" alt="{{ product.name }}">
+            {% else %}
+              <div class="product-image-placeholder">
+                <span>✦</span>
+              </div>
+            {% endif %}
+          </a>
+
+          <div class="product-body">
+
+
+            <h3 class="product-title">
+              <a href="/product/{{ product.id }}">{{ product.name }}</a>
+            </h3>
+
+
+
+            <div class="price">{{ product.price_display }}</div>
+
+            {% if product.stock_count is not none %}
+              {% if product.stock_count > 5 %}
+                <div class="stock">In stock</div>
+              {% elif product.stock_count > 0 %}
+                <div class="stock low">Only {{ product.stock_count }} left</div>
+              {% else %}
+                <div class="stock out">Out of stock</div>
+              {% endif %}
+            {% endif %}
+
+            <div class="product-actions">
+              {% if product.variation_count > 1 %}
+                <a class="btn" href="/product/{{ product.id }}">
+                  Choose Options
+                </a>
+              {% elif product.stock_count is none or product.stock_count > 0 %}
+                <button
+                  type="button"
+                  class="add-to-cart"
+                  data-add-to-cart
+                  data-product-id="{{ product.id }}"
+                  data-variation-id="{{ product.variation_id }}"
+                  data-name="{{ product.name }}"
+                  data-price="{{ product.price_money }}"
+                  data-image-url="{{ product.image_url }}"
+                  data-stock-count="{{ product.stock_count if product.stock_count is not none else '' }}"
+                >
+                  Add to Cart
+                </button>
+              {% else %}
+                <button type="button" disabled>Sold Out</button>
+              {% endif %}
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+
+    <div class="center-actions">
+      <a class="btn" href="/shop">View Full Shop</a>
+    </div>
+  {% else %}
+    <div class="empty-state panel">
+      <a class="btn" href="/shop">Go to Shop</a>
+    </div>
+  {% endif %}
+</section>
+
+<section class="info-band">
+  <div>
+    <h2>Pickup, gifts, and local favorites.</h2>
+  </div>
+  <a class="btn" href="/shop">Start Shopping</a>
+</section>
+
+{% endblock %}
