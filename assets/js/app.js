@@ -58,16 +58,18 @@ const KD = (() => {
     if(!sb) return data;
 
     try{
-      const [fr,cr,wr,vr]=await Promise.all([
+      const [fr,cr,wr,vr,ws]=await Promise.all([
         sb.from("public_factions").select("*").order("sort_order"),
         sb.from("public_cards").select("*").order("sort_order"),
         sb.from("public_whispers").select("*").order("published_at",{ascending:false}),
-        sb.rpc("get_vault_entries")
+        sb.rpc("get_vault_entries"),
+        sb.from("wars").select("*").order("id")
       ]);
       if(fr.error) throw fr.error;
       if(cr.error) throw cr.error;
       if(wr.error) throw wr.error;
       if(vr.error) throw vr.error;
+      if(ws.error) throw ws.error;
 
       data.factions=(fr.data||[]).map(x=>({...x,revealed:x.is_live}));
       data.cards=(cr.data||[]).map(x=>({
@@ -76,6 +78,7 @@ const KD = (() => {
       }));
       data.whispers=(wr.data||[]).map(x=>({...x,date:x.published_at,image:x.image_url}));
       data.vault=(vr.data||[]).map(x=>({...x,is_live:x.unlocked}));
+      data.wars=(ws.data||[]);
       backendOnline=true;
     }catch(e){
       console.warn("Supabase content unavailable; using GitHub fallback JSON.",e);
@@ -136,6 +139,7 @@ const KD = (() => {
   }
 
   function factionsPage(){
+    const hollowEnd = data.factions.find(f => f.slug === 'hollows-end');
     const warPairs = [
       {f1: 'ash-cycle', f2: 'first-light', war: data.wars?.find(w => w.slug === 'ash-vs-first')},
       {f1: 'crimson-oath', f2: 'golden-flow', war: data.wars?.find(w => w.slug === 'crimson-vs-golden')},
@@ -163,10 +167,44 @@ const KD = (() => {
       </div>`;
     };
     
+    return `<section class="page-hero"><p class="eyebrow">THE EIGHT</p><h1>FACTIONS</h1><p>Allegiances are chosen. Motives are hidden.</p></section>
+    ${hollowEnd ? `<section class="section hollow-end-section"><div class="hollow-end-hero"><div class="hollow-end-emblem">${hollowEnd.rune_image_url ? `<img src="${esc(hollowEnd.rune_image_url)}" alt="Hollow End" class="hollow-end-image">` : `<div class="sigil">${esc(hollowEnd.rune)}</div>`}</div><div><p class="eyebrow">THE TERMINUS</p><h1>${esc(hollowEnd.name)}</h1><p>${esc(hollowEnd.tagline)}</p></div></div><div class="hollow-end-lore"><p>${esc(hollowEnd.lore)}</p><blockquote>${esc(hollowEnd.doctrine)}</blockquote></div></section>` : ""}
+    <section class="section"><div class="wars-container">${warPairs.map(warRow).join('')}</div></section>`;
+  }
+
+  function warsPage(){
+    const warPairs = [
+      {f1: 'ash-cycle', f2: 'first-light', war: data.wars?.find(w => w.slug === 'ash-vs-first')},
+      {f1: 'crimson-oath', f2: 'golden-flow', war: data.wars?.find(w => w.slug === 'crimson-vs-golden')},
+      {f1: 'etched-power', f2: 'tangled-weave', war: data.wars?.find(w => w.slug === 'etched-vs-tangled')},
+      {f1: 'eternal-reach', f2: 'hidden-truth', war: data.wars?.find(w => w.slug === 'eternal-vs-hidden')}
+    ];
+    
+    const warCard = (pair) => {
+      const f1 = faction(pair.f1);
+      const f2 = faction(pair.f2);
+      const w = pair.war;
+      const bothRevealed = live(f1) && live(f2);
+      
+      return `<article class="war-card">
+        <div class="war-header">
+          <div class="war-faction-name">${esc(f1.name)}</div>
+          <div class="war-vs">VS</div>
+          <div class="war-faction-name">${esc(f2.name)}</div>
+        </div>
+        ${bothRevealed && w ? `
+          <div class="war-content">
+            <h3>${esc(w.title)}</h3>
+            <p>${esc(w.description)}</p>
+          </div>
+        ` : `<div class="war-content"><p class="classified-war">CONFLICT CLASSIFIED</p></div>`}
+      </article>`;
+    };
+    
     const hollowEnd = data.factions.find(f => f.slug === 'hollows-end');
     
-    return `<section class="page-hero"><p class="eyebrow">THE EIGHT</p><h1>FACTIONS</h1><p>Allegiances are chosen. Motives are hidden.</p></section>
-    <section class="section"><div class="wars-container">${warPairs.map(warRow).join('')}</div></section>
+    return `<section class="page-hero"><p class="eyebrow">THE FOUR WARS</p><h1>CONFLICTS</h1><p>Eight factions. Four wars. One inevitable end.</p></section>
+    <section class="section"><div class="wars-full-grid">${warPairs.map(warCard).join('')}</div></section>
     ${hollowEnd ? `<section class="section hollow-end-section"><div class="hollow-end-hero"><div class="hollow-end-emblem">${hollowEnd.rune_image_url ? `<img src="${esc(hollowEnd.rune_image_url)}" alt="Hollow End" class="hollow-end-image">` : `<div class="sigil">${esc(hollowEnd.rune)}</div>`}</div><div><p class="eyebrow">THE TERMINUS</p><h1>${esc(hollowEnd.name)}</h1><p>${esc(hollowEnd.tagline)}</p></div></div><div class="hollow-end-lore"><p>${esc(hollowEnd.lore)}</p><blockquote>${esc(hollowEnd.doctrine)}</blockquote></div></section>` : ""}`;
   }
 
@@ -333,6 +371,7 @@ const KD = (() => {
     else if(p==="cards")app.innerHTML=cardsPage();
     else if(p==="card")app.innerHTML=await cardPage(arg);
     else if(p==="vault"){app.innerHTML=vaultPage();if(session?.user)loadUserDecks();}
+    else if(p==="wars")app.innerHTML=warsPage();
     else if(p==="whispers")app.innerHTML=whispersPage();
     else if(p==="learn")app.innerHTML=learnPage();
     else if(p==="forge")app.innerHTML=forgePage();
