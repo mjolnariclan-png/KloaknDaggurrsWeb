@@ -755,7 +755,7 @@ end $$;
 
 insert into public.whispers(published_at,title,body,classified)
 values
-('2026-08-26','THE VEIL LIFTS','A signal has been received. Nine factions are moving, but only a few have chosen to reveal themselves.',false),
+('2026-08-26','THE VEIL LIFTS','A signal has been received. Eight factions are moving, but only a few have chosen to reveal themselves.',false),
 ('2026-08-29','ARCHIVE FRAGMENT 001','Two sigils have surfaced. The rest remain sealed. Do not mistake silence for absence.',true)
 on conflict(title,published_at) do nothing;
 

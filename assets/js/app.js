@@ -43,10 +43,11 @@ const KD = (() => {
   function normalizeFallback(f){
     return {
       site:f.site,
-      factions:f.factions.map((x,i)=>({...x,id:null,sort_order:(i+1)*10,is_live:!!x.revealed})),
+      factions:f.factions.map((x,i)=>({...x,id:null,sort_order:(i+1)*10,is_live:!!x.revealed,rune_image_url:x.rune_image_url||null})),
       cards:f.cards.map((x,i)=>({...x,id:null,card_number:x.number,card_type:x.type,faction_slug:x.faction,image_url:x.image,sort_order:(i+1)*10,is_live:!!x.revealed})),
       whispers:f.whispers.map((x,i)=>({...x,id:null,published_at:x.date,image_url:x.image||null})),
-      vault:f.vault.map((x,i)=>({...x,id:null,unlocked:x.status==="open"}))
+      vault:f.vault.map((x,i)=>({...x,id:null,unlocked:x.status==="open"})),
+      wars:f.wars?.map((x,i)=>({...x,id:null,sort_order:(i+1)*10}))||[]
     };
   }
 
@@ -97,8 +98,12 @@ const KD = (() => {
 
   function factionCard(f,i){
     const open=live(f);
+    const runeDisplay = f.rune_image_url 
+      ? `<img src="${esc(f.rune_image_url)}" alt="${esc(f.name)} rune" class="rune-image">`
+      : `<div class="sigil">${esc(f.rune)}</div>`;
+    
     return `<a class="faction-tile reveal ${open?"":"locked"}" style="--accent:${esc(f.accent||"#7d43ff")}" href="#/faction/${encodeURIComponent(f.slug)}">
-      <span class="tile-index">FACTION ${String(i+1).padStart(2,"0")}</span><div class="sigil">${esc(f.rune)}</div>
+      <span class="tile-index">FACTION ${String(i+1).padStart(2,"0")}</span>${runeDisplay}
       <h3>${esc(open?f.name:"CLASSIFIED")}</h3><p>${esc(f.tagline)}</p>${countdown(f)}
       <span class="clearance">${open?"ARCHIVE OPEN":"CLEARANCE DENIED"}</span></a>`;
   }
@@ -123,22 +128,51 @@ const KD = (() => {
     return `
     ${data.site.intro&&!localStorage.getItem("kd-intro-v4")?`<div id="intro" class="intro-sequence"><img src="assets/img/brand-mark.svg" alt=""><p>SIGNAL ACQUIRED</p><h2>KLOAK &amp; DAGGURRS</h2><span>CLICK / TAP TO ENTER</span></div>`:""}
     <section class="hero"><div class="hero-grid"></div><div class="hero-sigil"><img src="assets/img/brand-mark.svg" alt=""></div><div class="hero-copy reveal"><p class="eyebrow">${esc(data.site.eyebrow)}</p><h1>${esc(data.site.title)}</h1><p class="hero-line">${esc(data.site.line1)}<br><strong>${esc(data.site.line2)}</strong></p><div class="hero-actions"><a class="btn primary" href="#world">Enter the Shadows</a><a class="btn ghost" href="#/learn">Learn Klandestine</a></div></div><div class="scroll-cue">DESCEND ↓</div></section>
-    <section class="section" id="world"><div class="section-heading"><p class="eyebrow">THE GAME BENEATH THE GAME</p><h2>Trust is a weapon.</h2><p>Klandestine is a social strategy card game of hidden allegiance, calculated deception, and nine factions fighting beneath the Veil.</p></div><div class="stat-grid"><article class="stat-card"><b>3–6</b><span>Players</span></article><article class="stat-card"><b>9</b><span>Factions</span></article><article class="stat-card"><b>∞</b><span>Lies Available</span></article><article class="stat-card"><b>1</b><span>Winning Allegiance</span></article></div></section>
-    <section class="section"><div class="section-heading split-heading"><div><p class="eyebrow">CHOOSE YOUR ALLEGIANCE</p><h2>Nine factions.<br>Very few truths.</h2></div><a class="text-link" href="#/factions">Open faction archive →</a></div><div class="faction-grid">${data.factions.slice(0,8).map(factionCard).join("")}</div></section>
+    <section class="section" id="world"><div class="section-heading"><p class="eyebrow">THE GAME BENEATH THE GAME</p><h2>Trust is a weapon.</h2><p>Klandestine is a social strategy card game of hidden allegiance, calculated deception, and eight factions fighting beneath the Veil.</p></div><div class="stat-grid"><article class="stat-card"><b>3–6</b><span>Players</span></article><article class="stat-card"><b>8</b><span>Factions</span></article><article class="stat-card"><b>∞</b><span>Lies Available</span></article><article class="stat-card"><b>1</b><span>Winning Allegiance</span></article></div></section>
+    <section class="section"><div class="section-heading split-heading"><div><p class="eyebrow">CHOOSE YOUR ALLEGIANCE</p><h2>Eight factions.<br>Four wars.</h2></div><a class="text-link" href="#/factions">Open faction archive →</a></div><div class="home-factions">${data.factions.slice(0,8).map(factionCard).join("")}</div></section>
     <section class="section"><div class="section-heading split-heading"><div><p class="eyebrow">THE HOARD</p><h2>Every card leaves evidence.</h2></div><a class="text-link" href="#/cards">Enter Card Archive →</a></div><div class="card-grid">${data.cards.slice(0,6).map(gameCard).join("")}</div></section>
     <section class="section vault-tease"><div class="vault-door"><div class="vault-core"><span>K&amp;D ARCHIVE</span><strong>THE VAULT</strong><small>ACCESS VARIES</small></div></div><div class="vault-copy"><p class="eyebrow">FORBIDDEN KNOWLEDGE</p><h2>Some files should stay closed.</h2><p>Vault codes are now checked by the database instead of being exposed in site-data.json.</p><a class="btn primary" href="#/vault">Request Vault Access</a></div></section>
     <section class="section"><div class="section-heading"><p class="eyebrow">INTERCEPTED TRANSMISSIONS</p><h2>Whispers beyond the Veil.</h2></div><div class="timeline">${data.whispers.slice(0,3).map(whisper).join("")}</div></section>`;
   }
 
   function factionsPage(){
-    return `<section class="page-hero"><p class="eyebrow">THE NINE</p><h1>FACTIONS</h1><p>Allegiances are chosen. Motives are hidden.</p></section><section class="section"><div class="faction-grid">${data.factions.map(factionCard).join("")}</div></section>`;
+    const warPairs = [
+      {f1: 'ash-cycle', f2: 'first-light', war: data.wars?.find(w => w.slug === 'ash-vs-first')},
+      {f1: 'crimson-oath', f2: 'golden-flow', war: data.wars?.find(w => w.slug === 'crimson-vs-golden')},
+      {f1: 'etched-power', f2: 'tangled-weave', war: data.wars?.find(w => w.slug === 'etched-vs-tangled')},
+      {f1: 'eternal-reach', f2: 'hidden-truth', war: data.wars?.find(w => w.slug === 'eternal-vs-hidden')}
+    ];
+    
+    const warRow = (pair) => {
+      const f1 = faction(pair.f1);
+      const f2 = faction(pair.f2);
+      const w = pair.war;
+      return `<div class="war-row">
+        <div class="war-faction">${factionCard(f1, data.factions.findIndex(f=>f.slug===pair.f1))}</div>
+        <div class="war-info">
+          <h3>${esc(w?.title||"CONFLICT")}</h3>
+          <p>${esc(w?.description||"")}</p>
+        </div>
+        <div class="war-faction">${factionCard(f2, data.factions.findIndex(f=>f.slug===pair.f2))}</div>
+      </div>`;
+    };
+    
+    const hollowEnd = data.factions.find(f => f.slug === 'hollows-end');
+    
+    return `<section class="page-hero"><p class="eyebrow">THE EIGHT</p><h1>FACTIONS</h1><p>Allegiances are chosen. Motives are hidden.</p></section>
+    <section class="section"><div class="wars-container">${warPairs.map(warRow).join('')}</div></section>
+    ${hollowEnd ? `<section class="section hollow-end-section"><div class="hollow-end-hero"><div class="hollow-end-emblem">${hollowEnd.rune_image_url ? `<img src="${esc(hollowEnd.rune_image_url)}" alt="Hollow End" class="hollow-end-image">` : `<div class="sigil">${esc(hollowEnd.rune)}</div>`}</div><div><p class="eyebrow">THE TERMINUS</p><h1>${esc(hollowEnd.name)}</h1><p>${esc(hollowEnd.tagline)}</p></div></div><div class="hollow-end-lore"><p>${esc(hollowEnd.lore)}</p><blockquote>${esc(hollowEnd.doctrine)}</blockquote></div></section>` : ""}`;
   }
 
   function factionPage(slug){
     const f=faction(slug); if(!f)return notFound("FACTION RECORD");
     const open=live(f),cards=data.cards.filter(c=>(c.faction_slug||c.faction)===slug);
-    return `<section class="faction-hero" style="--accent:${esc(f.accent)}"><div class="faction-emblem">${esc(f.rune)}</div><div><p class="eyebrow">${open?"FACTION ARCHIVE":"CLEARANCE DENIED"}</p><h1>${esc(open?f.name:"CLASSIFIED")}</h1><p>${esc(f.tagline)}</p>${countdown(f)}</div></section>
-    <section class="section faction-lore">${open?`<div class="lore-copy"><p class="eyebrow">ARCHIVE ENTRY</p><h2>The doctrine</h2><p>${esc(f.lore||"")}</p><blockquote>${esc(f.doctrine||"")}</blockquote></div><div class="dossier"><span>STATUS</span><strong>REVEALED</strong><span>RECORD</span><strong>${esc(f.slug.toUpperCase())}</strong></div>`:`<div class="classified-block"><h2>FILE SEALED</h2><p>The archive has detected this faction, but public clearance has not yet been granted.</p></div>`}</section>
+    const emblemDisplay = f.rune_image_url 
+      ? `<img src="${esc(f.rune_image_url)}" alt="${esc(f.name)} emblem" class="faction-emblem-image">`
+      : `<div class="faction-emblem">${esc(f.rune)}</div>`;
+    
+    return `<section class="faction-hero" style="--accent:${esc(f.accent)}">${emblemDisplay}<div><p class="eyebrow">${open?"FACTION ARCHIVE":"CLEARANCE DENIED"}</p><h1>${esc(open?f.name:"CLASSIFIED")}</h1><p>${esc(f.tagline)}</p>${countdown(f)}</div></section>
+    <section class="section faction-lore">${open?`<div class="lore-copy"><p class="eyebrow">THE TAPESTRY</p><h2>${esc(f.name)}</h2><p>${esc(f.lore||"")}</p></div><div class="doctrine-copy"><p class="eyebrow">THE CODEX</p><h2>The Doctrine</h2><blockquote>${esc(f.doctrine||"")}</blockquote></div><div class="dossier"><span>STATUS</span><strong>REVEALED</strong><span>RECORD</span><strong>${esc(f.slug.toUpperCase())}</strong></div>`:`<div class="classified-block"><h2>FILE SEALED</h2><p>The archive has detected this faction, but public clearance has not yet been granted.</p></div>`}</section>
     ${open&&cards.length?`<section class="section"><div class="section-heading"><p class="eyebrow">KNOWN ASSETS</p><h2>${esc(f.name)} cards.</h2></div><div class="card-grid">${cards.map(gameCard).join("")}</div></section>`:""}`;
   }
 
