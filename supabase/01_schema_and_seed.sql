@@ -698,52 +698,48 @@ using (bucket_id='kd-media' and public.is_admin());
 -- ============================================================
 insert into public.factions(slug,name,rune,tagline,lore,doctrine,accent,revealed,sort_order)
 values
-('fehu','Fehu','ᚠ','Wealth has a blood price.','Fehu is the faction of wealth, possession, hunger, and the dangerous belief that everything has a price.','Acquire. Protect. Spend only when the blood price is worth paying.','#b58a42',true,10),
-('godrin','Godrin','♛','The Empty Throne remembers.','Godrin endures beneath the shadow of the Empty Throne. Broken crowns and whispered oaths make power feel like a debt.','Authority is strongest when nobody agrees who truly holds it.','#7794bf',true,20),
-('braided','Braided','∞','Fate is never a single thread.','Braided follows the Loom of Fate: crossing loyalties, hidden outcomes, and choices that tighten around everyone at the table.','Every action pulls another thread. Watch what moves when you pull.','#9b57cb',true,30)
+('golden-flow','Golden Flow','ᚠ','Wealth has a blood price.','Golden Flow is the faction of wealth, possession, hunger, and the dangerous belief that everything has a price.','Acquire. Protect. Spend only when the blood price is worth paying.','#b58a42',false,10),
+('crimson-oath','Crimson Oath','♛','The Empty Throne remembers.','Crimson Oath endures beneath the shadow of the Empty Throne. Broken crowns and whispered oaths make power feel like a debt.','Authority is strongest when nobody agrees who truly holds it.','#7794bf',false,20),
+('ash-cycle','Ash Cycle','∞','Fate is never a single thread.','Ash Cycle follows the Loom of Fate: crossing loyalties, hidden outcomes, and choices that tighten around everyone at the table.','Every action pulls another thread. Watch what moves when you pull.','#9b57cb',true,30),
+('first-light','First Light','☀','Dawn reveals what darkness hid.','First Light emerges when the shadows retreat. Truth becomes visible, but not everyone is ready to see it.','Illuminate. Expose. Guide others toward the revelation they fear but need.','#ffd700',true,40)
 on conflict(slug) do nothing;
 
-do $$
-declare i int;
-begin
-  for i in 4..13 loop
-    insert into public.factions(slug,name,rune,tagline,lore,doctrine,accent,revealed,sort_order)
-    values (
-      format('classified-%s',lpad(i::text,2,'0')),
-      format('CLASSIFIED %s',lpad(i::text,2,'0')),
-      '◇','The Veil has not lifted.','This faction remains sealed behind the Veil.',
-      'Doctrine unavailable.','#635a70',false,i*10
-    )
-    on conflict(slug) do nothing;
-  end loop;
-end $$;
+-- Additional factions
+insert into public.factions(slug,name,rune,tagline,lore,doctrine,accent,revealed,sort_order)
+values 
+  ('etched-power','Etched Power','⚡','Strength carved in stone.','Etched Power believes that true strength is permanent, written into the fabric of reality itself.','Endure. Carve your will into existence. Let nothing erase what you have built.','#8b4513',false,50),
+  ('tangled-weave','Tangled Weave','🕸','Every thread connects.','Tangled Weave sees the connections between all things. Nothing is isolated; everything influences everything else.','Connect. Entangle. Use the web to control what cannot be seen directly.','#4a90e2',false,60),
+  ('eternal-reach','Eternal Reach','🌌','Beyond the horizon lies more.','Eternal Reach seeks what lies beyond the known. The horizon is not a limit, but an invitation.','Expand. Explore. The boundary exists only to be crossed.','#9370db',false,70),
+  ('hidden-truth','Hidden Truth','👁','What is seen is not what is.','Hidden Truth knows that perception is deception. The real truth lies beneath the surface, waiting to be uncovered.','Observe. Analyze. Never accept the surface as the whole story.','#2f4f4f',false,80),
+  ('hollows-end','Hollows End','🌀','All things must conclude.','Hollows End represents the finality of all things. Every story has an ending, and every ending creates space for new beginnings.','Accept. Conclude. Let the end be as meaningful as the beginning.','#800080',false,90)
+on conflict(slug) do nothing;
 
 insert into public.cards(slug,card_number,name,faction_id,rarity,card_type,ability,lore,image_url,revealed,sort_order)
-select 'fehu-blood-price',1,'Blood Price',f.id,'Rare','Action',
+select 'golden-flow-blood-price',1,'Blood Price',f.id,'Karls','Runes',
 'Trade certainty for leverage. The table sees the cost; only you know whether it was worth paying.',
-'Coins remember every hand that held them.','assets/img/card-back.svg',true,10
-from public.factions f where f.slug='fehu'
+'Coins remember every hand that held them.','assets/img/card-back.svg',false,10
+from public.factions f where f.slug='golden-flow'
 on conflict(slug) do nothing;
 
 insert into public.cards(slug,card_number,name,faction_id,rarity,card_type,ability,lore,image_url,revealed,sort_order)
-select 'godrin-empty-throne',2,'Empty Throne',f.id,'Mythic','Relic',
+select 'crimson-oath-empty-throne',2,'Empty Throne',f.id,'Jarls','Primordials',
 'Authority changes the room even when nobody sits the throne.',
-'A vacant seat can rule more effectively than a king.','assets/img/card-back.svg',true,20
-from public.factions f where f.slug='godrin'
+'A vacant seat can rule more effectively than a king.','assets/img/card-back.svg',false,20
+from public.factions f where f.slug='crimson-oath'
 on conflict(slug) do nothing;
 
 insert into public.cards(slug,card_number,name,faction_id,rarity,card_type,ability,lore,image_url,revealed,sort_order)
-select 'braided-loose-thread',3,'Loose Thread',f.id,'Uncommon','Kloak',
+select 'ash-cycle-loose-thread',3,'Loose Thread',f.id,'Skilled','Runes',
 'Leave one truth visible so the lie beside it becomes believable.',
 'Pull gently. Some knots tighten when challenged.','assets/img/card-back.svg',true,30
-from public.factions f where f.slug='braided'
+from public.factions f where f.slug='ash-cycle'
 on conflict(slug) do nothing;
 
 do $$
 declare
   i int;
-  rarities text[] := array['Common','Uncommon','Rare','Mythic','Gold'];
-  ctypes text[] := array['Action','Kloak','Faction','Reaction','Relic'];
+  rarities text[] := array['Thrall','Skilled','Karls','Jarls','Konugr'];
+  ctypes text[] := array['Primordials','Vigor','Accoutrements','Runes','Creatures'];
 begin
   for i in 4..24 loop
     insert into public.cards(slug,card_number,name,rarity,card_type,ability,lore,image_url,revealed,sort_order)
@@ -759,14 +755,14 @@ end $$;
 
 insert into public.whispers(published_at,title,body,classified)
 values
-('2026-08-26','THE VEIL LIFTS','A signal has been received. Thirteen factions are moving, but only a few have chosen to reveal themselves.',false),
-('2026-08-29','ARCHIVE FRAGMENT 001','Three sigils have surfaced. The rest remain sealed. Do not mistake silence for absence.',true)
+('2026-08-26','THE VEIL LIFTS','A signal has been received. Nine factions are moving, but only a few have chosen to reveal themselves.',false),
+('2026-08-29','ARCHIVE FRAGMENT 001','Two sigils have surfaced. The rest remain sealed. Do not mistake silence for absence.',true)
 on conflict(title,published_at) do nothing;
 
 insert into public.vault_entries(code,title,teaser,body,status,access_code)
 values
 ('KD-001','THE FIRST SIGNAL','A transmission recovered from beyond the Veil.','The first archive is open. Every faction leaves a trace. Very few leave it willingly.','open',null),
-('KD-013','THE THIRTEENTH NAME','Identity redacted by order of the Archive.','You were not supposed to find this file.','locked','THIRTEEN'),
+('KD-009','THE NINTH NAME','Identity redacted by order of the Archive.','You were not supposed to find this file.','locked','NINTH'),
 ('KD-404','BLACK FILE','Clearance insufficient.','The Archive remembers failed attempts.','locked',null)
 on conflict(code) do nothing;
 

@@ -48,7 +48,7 @@ Then optionally run:
 
 You should see approximately:
 
-- 13 factions
+- 9 factions
 - 24 cards
 - 2 Whispers
 - 3 Vault entries
