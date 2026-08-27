@@ -119,7 +119,7 @@
       "type": "Runes",
       "ability": "Trade certainty for leverage. The table sees the cost; only you know whether it was worth paying.",
       "lore": "Coins remember every hand that held them.",
-      "image": "assets/img/card-back.svg",
+      "image": "assets/img/card-back.png",
       "revealed": true,
       "reveal_at": null
     },
@@ -132,7 +132,7 @@
       "type": "Primordials",
       "ability": "Authority changes the room even when nobody sits the throne.",
       "lore": "A vacant seat can rule more effectively than a king.",
-      "image": "assets/img/card-back.svg",
+      "image": "assets/img/card-back.png",
       "revealed": false,
       "reveal_at": null
     },

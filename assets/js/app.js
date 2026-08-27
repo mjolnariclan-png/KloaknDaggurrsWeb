@@ -158,11 +158,47 @@ const KD = (() => {
     return `<section class="card-dossier"><div><div class="game-card giant rarity-${esc((c.rarity||"Common").toLowerCase())} ${open?"":"classified-card"}"><div class="foil"></div><div class="card-top"><span>#${String(c.card_number??c.number??0).padStart(3,"0")}</span><span>${esc(c.rarity)}</span></div><div class="card-art"><img src="${esc(c.image_url||c.image||"assets/img/card-back.svg")}" alt=""></div><div class="card-copy"><span>${esc(c.faction_name||f?.name||"UNKNOWN")}</span><h2>${esc(open?c.name:"CLASSIFIED")}</h2><small>${esc(c.card_type||c.type)}</small></div></div></div><div class="card-record"><p class="eyebrow">CARD DOSSIER</p><h1>${esc(open?c.name:"██████████")}</h1>${open?`<div class="record-grid"><span>Faction</span><b>${esc(c.faction_name||f?.name||"Unknown")}</b><span>Rarity</span><b>${esc(c.rarity)}</b><span>Type</span><b>${esc(c.card_type||c.type)}</b></div><h3>ABILITY</h3><p>${esc(c.ability||"")}</p><h3>LORE</h3><p>${esc(c.lore||"")}</p>${session?.user&&c.id?`<form id="collection-form" data-card-id="${c.id}" class="collection-form"><label>Copies in My Archive <input id="collection-qty" type="number" min="0" max="99" value="${qty}"></label><button class="btn primary">Update Collection</button></form>`:`<a class="btn ghost" href="#/login">Sign in to track this card</a>`}`:countdown(c)}</div></section>`;
   }
 
-  function vaultPage(){
+  async function vaultPage(){
     const files=data.vault.map(v=>{const open=v.unlocked||live(v);return `<article class="vault-file ${open?"":"locked"}"><div class="file-top"><span>${esc(v.code)}</span><b>${open?"ACCESS GRANTED":"🔒 CLASSIFIED"}</b></div><h2>${esc(open?v.title:"████████████")}</h2><p>${esc(v.teaser)}</p>${open?`<div class="file-body">${esc(v.body||"")}</div>`:`<div class="redactions"><i></i><i></i><i></i></div>${countdown(v)}`}</article>`}).join("");
+    
+    // Load user's redeemed decks
+    let userDecksHtml = '';
+    if(session?.user){
+      const {data:decks,error}=await sb.rpc("get_user_decks");
+      if(!error && decks){
+        userDecksHtml = decks.length ? decks.map(d=>`
+          <article class="vault-file">
+            <div class="file-top"><span>DECK</span><b>OWNED</b></div>
+            <h2>${esc(d.deck_name)}</h2>
+            <p>${esc(d.deck_slug)}</p>
+            <div class="file-body">
+              <p><strong>${d.total_cards}</strong> cards in deck</p>
+              <p>Redeemed: ${fmtDate(d.redeemed_at)}</p>
+              <p>Code: ${esc(d.redemption_code)}</p>
+            </div>
+          </article>
+        `).join('') : `<div class="empty-panel"><h2>No decks redeemed yet.</h2><p>Enter deck codes from physical products to build your online collection.</p></div>`;
+      }
+    }
+    
     return `<section class="page-hero"><p class="eyebrow">AUTHORIZED EYES ONLY</p><h1>THE VAULT</h1><p>Codes are validated securely by Supabase and are no longer shipped in the public website source.</p></section><section class="section terminal-wrap"><div class="terminal"><div class="terminal-bar">K&amp;D ARCHIVE NETWORK // DATABASE NODE</div><pre>&gt; SIGNAL: ${backendOnline?"STABLE":"FALLBACK"}
 &gt; IDENTITY: ${session?.user?esc(session.user.email):"ANONYMOUS"}
-&gt; CODE INPUT: READY_</pre>${session?.user?`<form id="vault-code-form"><input id="vault-code" autocomplete="off" placeholder="ENTER VAULT CODE"><button class="btn primary">UNLOCK</button></form>`:`<a class="btn primary" href="#/login">Sign In to Enter Codes</a>`}<p id="vault-message"></p></div></section><section class="section"><div class="vault-grid">${files}</div></section>`;
+&gt; CODE INPUT: READY_</pre>
+    <div class="code-input-tabs">
+      <button class="tab-btn active" data-tab="vault">Vault Codes</button>
+      <button class="tab-btn" data-tab="deck">Deck Redemption</button>
+    </div>
+    ${session?.user?`
+      <div id="vault-code-panel" class="code-panel">
+        <form id="vault-code-form"><input id="vault-code" autocomplete="off" placeholder="ENTER VAULT CODE"><button class="btn primary">UNLOCK</button></form>
+      </div>
+      <div id="deck-code-panel" class="code-panel" style="display:none">
+        <form id="deck-code-form"><input id="deck-code" autocomplete="off" placeholder="ENTER DECK CODE"><button class="btn primary">REDEEM DECK</button></form>
+        <p class="deck-info">Redeem codes from physical decks to add them to your online collection.</p>
+      </div>
+    `:`<a class="btn primary" href="#/login">Sign In to Enter Codes</a>`}<p id="vault-message"></p></div></section>
+    <section class="section"><div class="vault-grid">${files}</div></section>
+    ${session?.user?`<section class="section"><div class="section-heading"><p class="eyebrow">YOUR REDEEMED DECKS</p><h2>Collection</h2></div><div id="user-decks" class="deck-grid">${userDecksHtml}</div></section>`:""}`;
   }
 
   function whispersPage(){
@@ -312,6 +348,33 @@ const KD = (() => {
       const {error}=await sb.rpc("unlock_vault_code",{input_code:$("#vault-code").value.trim()});
       if(error){msg.textContent=error.message;return}
       msg.textContent="ACCESS GRANTED";data=null;await loadContent(true);render();
+    });
+
+    // Tab switching for vault/deck codes
+    $$(".tab-btn").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        $$(".tab-btn").forEach(b=>b.classList.remove("active"));
+        btn.classList.add("active");
+        const tab=btn.dataset.tab;
+        $$(".code-panel").forEach(p=>p.style.display="none");
+        $(`#${tab}-code-panel`).style.display="block";
+      });
+    });
+
+    // Deck code redemption
+    $("#deck-code-form")?.addEventListener("submit",async e=>{
+      e.preventDefault();const msg=$("#vault-message");msg.textContent="REDEEMING…";
+      const code=$("#deck-code").value.trim();
+      const {data:result,error}=await sb.rpc("redeem_deck_code",{p_code:code});
+      if(error){msg.textContent=error.message;return}
+      if(result.success){
+        msg.innerHTML=`<span style="color:#67e8b1">DECK REDEEMED: ${esc(result.deck_name)} · ${result.cards_added} cards added to collection</span>`;
+        e.currentTarget.reset();
+        // Refresh the page to show updated collection
+        setTimeout(()=>render(),1000);
+      }else{
+        msg.textContent=result.error;
+      }
     });
 
     $("#forge-form")?.addEventListener("submit",async e=>{
