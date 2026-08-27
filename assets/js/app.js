@@ -43,7 +43,7 @@ const KD = (() => {
   function normalizeFallback(f){
     return {
       site:f.site,
-      factions:f.factions.map((x,i)=>({...x,id:null,sort_order:(i+1)*10,is_live:!!x.revealed,rune_image_url:x.rune_image_url||null})),
+      factions:f.factions.map((x,i)=>({...x,id:null,sort_order:(i+1)*10,is_live:!!x.revealed,rune_image_url:x.rune_image_url||null,number:x.number||`Book ${i+1}`})),
       cards:f.cards.map((x,i)=>({...x,id:null,card_number:x.number,card_type:x.type,faction_slug:x.faction,image_url:x.image,sort_order:(i+1)*10,is_live:!!x.revealed})),
       whispers:f.whispers.map((x,i)=>({...x,id:null,published_at:x.date,image_url:x.image||null})),
       vault:f.vault.map((x,i)=>({...x,id:null,unlocked:x.status==="open"})),
@@ -71,7 +71,7 @@ const KD = (() => {
       if(vr.error) throw vr.error;
       if(ws.error) throw ws.error;
 
-      data.factions=(fr.data||[]).map(x=>({...x,revealed:x.is_live}));
+      data.factions=(fr.data||[]).map((x,i)=>({...x,revealed:x.is_live,number:x.number||`Book ${i+1}`}));
       data.cards=(cr.data||[]).map(x=>({
         ...x,number:x.card_number,type:x.card_type,faction:x.faction_slug,
         image:x.image_url||"assets/img/card-back.svg",revealed:x.is_live
@@ -105,10 +105,10 @@ const KD = (() => {
     const open=live(f);
     const runeDisplay = f.rune_image_url 
       ? `<img src="${esc(f.rune_image_url)}" alt="${esc(f.name)} rune" class="rune-image">`
-      : `<div class="sigil">${esc(f.rune)}</div>`;
+      : '';
     
     return `<a class="faction-tile reveal ${open?"":"locked"}" style="--accent:${esc(f.accent||"#7d43ff")}" href="#/faction/${encodeURIComponent(f.slug)}">
-      <span class="tile-index">FACTION ${String(i+1).padStart(2,"0")}</span>${runeDisplay}
+      <span class="tile-index">${esc(f.number||`Book ${i+1}`)}</span>${runeDisplay}
       <h3>${esc(open?f.name:"CLASSIFIED")}</h3><p>${esc(f.tagline)}</p>${countdown(f)}
       <span class="clearance">${open?"ARCHIVE OPEN":"CLEARANCE DENIED"}</span></a>`;
   }
@@ -173,7 +173,7 @@ const KD = (() => {
     };
     
     return `<section class="page-hero"><p class="eyebrow">THE EIGHT</p><h1>FACTIONS</h1><p>Allegiances are chosen. Motives are hidden.</p></section>
-    ${hollowEnd ? `<section class="section hollow-end-section"><div class="hollow-end-hero"><div class="hollow-end-emblem">${hollowEnd.rune_image_url ? `<img src="${esc(hollowEnd.rune_image_url)}" alt="Hollow End" class="hollow-end-image">` : `<div class="sigil">${esc(hollowEnd.rune)}</div>`}</div><div><p class="eyebrow">THE TERMINUS</p><h1>${esc(hollowEnd.name)}</h1><p>${esc(hollowEnd.tagline)}</p></div></div><div class="hollow-end-lore"><p>${esc(hollowEnd.lore)}</p><blockquote>${esc(hollowEnd.doctrine)}</blockquote></div></section>` : ""}
+    ${hollowEnd ? `<section class="section hollow-end-section"><div class="hollow-end-hero"><div class="hollow-end-emblem">${hollowEnd.rune_image_url ? `<img src="${esc(hollowEnd.rune_image_url)}" alt="Hollow End" class="hollow-end-image">` : ''}</div><div><p class="eyebrow">THE TERMINUS</p><h1>${esc(hollowEnd.name)}</h1><p>${esc(hollowEnd.tagline)}</p></div></div><div class="hollow-end-lore"><p>${esc(hollowEnd.lore)}</p><blockquote>${esc(hollowEnd.doctrine)}</blockquote></div></section>` : ""}
     <section class="section"><div class="wars-container">${warPairs.map(warRow).join('')}</div></section>`;
   }
 
@@ -213,7 +213,7 @@ const KD = (() => {
     
     return `<section class="page-hero"><p class="eyebrow">THE FOUR WARS</p><h1>CONFLICTS</h1><p>Eight factions. Four wars. One inevitable end.</p></section>
     <section class="section"><div class="wars-full-grid">${warPairs.map(warCard).join('')}</div></section>
-    ${hollowEnd ? `<section class="section hollow-end-section"><div class="hollow-end-hero"><div class="hollow-end-emblem">${hollowEnd.rune_image_url ? `<img src="${esc(hollowEnd.rune_image_url)}" alt="Hollow End" class="hollow-end-image">` : `<div class="sigil">${esc(hollowEnd.rune)}</div>`}</div><div><p class="eyebrow">THE TERMINUS</p><h1>${esc(hollowEnd.name)}</h1><p>${esc(hollowEnd.tagline)}</p></div></div><div class="hollow-end-lore"><p>${esc(hollowEnd.lore)}</p><blockquote>${esc(hollowEnd.doctrine)}</blockquote></div></section>` : ""}`;
+    ${hollowEnd ? `<section class="section hollow-end-section"><div class="hollow-end-hero"><div class="hollow-end-emblem">${hollowEnd.rune_image_url ? `<img src="${esc(hollowEnd.rune_image_url)}" alt="Hollow End" class="hollow-end-image">` : ''}</div><div><p class="eyebrow">THE TERMINUS</p><h1>${esc(hollowEnd.name)}</h1><p>${esc(hollowEnd.tagline)}</p></div></div><div class="hollow-end-lore"><p>${esc(hollowEnd.lore)}</p><blockquote>${esc(hollowEnd.doctrine)}</blockquote></div></section>` : ""}`;
   }
 
   function factionPage(slug){
@@ -221,7 +221,7 @@ const KD = (() => {
     const open=live(f),cards=data.cards.filter(c=>(c.faction_slug||c.faction)===slug);
     const emblemDisplay = f.rune_image_url 
       ? `<img src="${esc(f.rune_image_url)}" alt="${esc(f.name)} emblem" class="faction-emblem-image">`
-      : `<div class="faction-emblem">${esc(f.rune)}</div>`;
+      : '';
     
     return `<section class="faction-hero" style="--accent:${esc(f.accent)}">${emblemDisplay}<div><p class="eyebrow">${open?"FACTION ARCHIVE":"CLEARANCE DENIED"}</p><h1>${esc(open?f.name:"CLASSIFIED")}</h1><p>${esc(f.tagline)}</p>${countdown(f)}</div></section>
     <section class="section faction-lore">${open?`<div class="lore-copy"><p class="eyebrow">THE TAPESTRY</p><h2>${esc(f.name)}</h2><p>${esc(f.lore||"")}</p></div><div class="doctrine-copy"><p class="eyebrow">THE CODEX</p><h2>The Doctrine</h2><blockquote>${esc(f.doctrine||"")}</blockquote></div><div class="dossier"><span>STATUS</span><strong>REVEALED</strong><span>RECORD</span><strong>${esc(f.slug.toUpperCase())}</strong></div>`:`<div class="classified-block"><h2>FILE SEALED</h2><p>The archive has detected this faction, but public clearance has not yet been granted.</p></div>`}</section>
