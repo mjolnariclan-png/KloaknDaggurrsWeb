@@ -147,12 +147,18 @@ const KD = (() => {
       const f1 = faction(pair.f1);
       const f2 = faction(pair.f2);
       const w = pair.war;
+      const bothRevealed = live(f1) && live(f2);
+      
+      let warContent;
+      if (bothRevealed && w) {
+        warContent = `<h3>${esc(f1.name)} vs. ${esc(f2.name)} — ${esc(w.title)}</h3><p>${esc(w.description)}</p>`;
+      } else {
+        warContent = `<h3>CONFLICT</h3>`;
+      }
+      
       return `<div class="war-row">
         <div class="war-faction">${factionCard(f1, data.factions.findIndex(f=>f.slug===pair.f1))}</div>
-        <div class="war-info">
-          <h3>${esc(w?.title||"CONFLICT")}</h3>
-          <p>${esc(w?.description||"")}</p>
-        </div>
+        <div class="war-info">${warContent}</div>
         <div class="war-faction">${factionCard(f2, data.factions.findIndex(f=>f.slug===pair.f2))}</div>
       </div>`;
     };
