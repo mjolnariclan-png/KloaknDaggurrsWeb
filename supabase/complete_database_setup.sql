@@ -86,10 +86,23 @@ end $$;
 -- Insert wars with custom names
 insert into public.wars(slug, faction1_slug, faction2_slug, title, short_name, description)
 values
-('ash-vs-first', 'ash-cycle', 'first-light', 'Control vs. Exposure', 'The Illumination', 'Ash Cycle believes truth must be released carefully or it burns the world; First Light believes withholding truth is the burn. Every First Light victory risks unraveling a fate Ash Cycle spent generations weaving; every Ash Cycle victory risks letting a lie live one day too long.'),
-('crimson-vs-golden', 'crimson-oath', 'golden-flow', 'Legacy vs. Profit', 'The Desecration', 'Crimson Oath fights to resurrect what Golden Flow has turned into a marketplace. Golden Flow doesn''t hate Crimson Oath — they just see grief as a resource nobody''s collecting yet.'),
-('etched-vs-tangled', 'etched-power', 'tangled-weave', 'Permanence vs. Connection', 'The Unraveling', 'Etched Power builds to last forever alone; Tangled Weave insists nothing survives alone. Their war is fought in the gap between a monument and the vine that eventually grows through it.'),
-('eternal-vs-hidden', 'eternal-reach', 'hidden-truth', 'Expansion vs. Depth', 'The Infiltration', 'One always looks outward, one always looks under. Eternal Reach''s empire keeps growing faster than it can be defended from within — which is exactly the opening Hidden Truth needs.');
+('ash-vs-first', 'ash-cycle', 'first-light', 'Control vs. Exposure', 'The Illumination', 'Ash Cycle believes truth must be released carefully or it burns the world; First Light believes withholding truth is the burn. Every First Light victory risks unraveling a fate Ash Cycle spent generations weaving; every Ash Cycle victory risks letting a lie live one day too long.')
+on conflict(slug) do update set short_name = 'The Illumination';
+
+insert into public.wars(slug, faction1_slug, faction2_slug, title, short_name, description)
+values
+('crimson-vs-golden', 'crimson-oath', 'golden-flow', 'Legacy vs. Profit', 'The Desecration', 'Crimson Oath fights to resurrect what Golden Flow has turned into a marketplace. Golden Flow doesn''t hate Crimson Oath — they just see grief as a resource nobody''s collecting yet.')
+on conflict(slug) do update set short_name = 'The Desecration';
+
+insert into public.wars(slug, faction1_slug, faction2_slug, title, short_name, description)
+values
+('etched-vs-tangled', 'etched-power', 'tangled-weave', 'Permanence vs. Connection', 'The Unraveling', 'Etched Power builds to last forever alone; Tangled Weave insists nothing survives alone. Their war is fought in the gap between a monument and the vine that eventually grows through it.')
+on conflict(slug) do update set short_name = 'The Unraveling';
+
+insert into public.wars(slug, faction1_slug, faction2_slug, title, short_name, description)
+values
+('eternal-vs-hidden', 'eternal-reach', 'hidden-truth', 'Expansion vs. Depth', 'The Infiltration', 'One always looks outward, one always looks under. Eternal Reach''s empire keeps growing faster than it can be defended from within — which is exactly the opening Hidden Truth needs.')
+on conflict(slug) do update set short_name = 'The Infiltration';
 
 -- ============================================================
 -- VAULT ENTRIES SETUP

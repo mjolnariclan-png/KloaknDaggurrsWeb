@@ -78,7 +78,7 @@ const KD = (() => {
       }));
       data.whispers=(wr.data||[]).map(x=>({...x,date:x.published_at,image:x.image_url}));
       data.vault=(vr.data||[]).map(x=>({...x,is_live:x.unlocked}));
-      data.wars=(ws.data||[]).map(x=>({...x,short_name:x.short_name||x.title||'Unknown Conflict'}));
+      data.wars=(ws.data||[]).map(x=>({...x,short_name:x.short_name||x.title,title:x.title}));
       backendOnline=true;
     }catch(e){
       console.warn("Supabase content unavailable; using GitHub fallback JSON.",e);
@@ -165,8 +165,6 @@ const KD = (() => {
         } else {
           warContent = `<h3>${esc(w.short_name||w.title)}</h3>`;
         }
-      } else {
-        warContent = '';
       }
       
       return `<div class="war-row">
@@ -213,13 +211,13 @@ const KD = (() => {
               <h3>${esc(w.short_name||w.title)}</h3>
             `}
           </div>
-        ` : `<div class="war-content"><p class="classified-war">Unknown</p></div>`}
+        ` : ''}
       </article>`;
     };
     
     const hollowEnd = data.factions.find(f => f.slug === 'hollows-end');
     
-    return `<section class="page-hero"><p class="eyebrow">THE FOUR WARS</p><h1>CONFLICTS</h1><p>Eight factions. Four wars. One inevitable end.</p></section>
+    return `<section class="page-hero"><p class="eyebrow">THE FOUR WARS</p><h1>Wars Amoung The Mighty!</h1><p>Eight factions. Four wars. One inevitable end.</p></section>
     <section class="section"><div class="wars-full-grid">${warPairs.map(warCard).join('')}</div></section>
     ${hollowEnd ? `<section class="section hollow-end-section"><div class="hollow-end-hero"><div class="hollow-end-emblem">${hollowEnd.rune_image_url ? `<img src="${esc(hollowEnd.rune_image_url)}" alt="Hollow End" class="hollow-end-image">` : ''}</div><div><p class="eyebrow">THE TERMINUS</p><h1>${esc(hollowEnd.name)}</h1><p>${esc(hollowEnd.tagline)}</p></div></div><div class="hollow-end-lore"><p>${esc(hollowEnd.lore)}</p><blockquote>${esc(hollowEnd.doctrine)}</blockquote></div></section>` : ""}`;
   }
