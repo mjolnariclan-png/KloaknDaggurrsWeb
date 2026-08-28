@@ -78,7 +78,7 @@ const KD = (() => {
       }));
       data.whispers=(wr.data||[]).map(x=>({...x,date:x.published_at,image:x.image_url}));
       data.vault=(vr.data||[]).map(x=>({...x,is_live:x.unlocked}));
-      data.wars=(ws.data||[]).map(x=>({...x,short_name:x.short_name||x.title}));
+      data.wars=(ws.data||[]).map(x=>({...x,short_name:x.short_name||x.title||'Unknown Conflict'}));
       backendOnline=true;
     }catch(e){
       console.warn("Supabase content unavailable; using GitHub fallback JSON.",e);
@@ -107,7 +107,7 @@ const KD = (() => {
       ? `<img src="${esc(f.rune_image_url)}" alt="${esc(f.name)} rune" class="rune-image">`
       : '';
     
-    return `<a class="faction-tile reveal ${open?"":"locked"}" style="--accent:${esc(f.accent||"#7d43ff")}" href="#/faction/${encodeURIComponent(f.slug)}">
+    return `<a class="faction-tile reveal ${open?"":"locked"}" style="--accent:${esc(f.accent||"#7d43ff")}" data-slug="${esc(f.slug)}" href="#/faction/${encodeURIComponent(f.slug)}">
       <span class="tile-index">${esc(f.number||`Book ${i+1}`)}</span>${runeDisplay}
       <h3>${esc(open?f.name:"CLASSIFIED")}</h3><p>${esc(f.tagline)}</p>${countdown(f)}
       <span class="clearance">${open?"ARCHIVE OPEN":"CLEARANCE DENIED"}</span></a>`;
@@ -166,7 +166,7 @@ const KD = (() => {
           warContent = `<h3>${esc(w.short_name||w.title)}</h3>`;
         }
       } else {
-        warContent = `<h3>CONFLICT</h3>`;
+        warContent = '';
       }
       
       return `<div class="war-row">
@@ -213,7 +213,7 @@ const KD = (() => {
               <h3>${esc(w.short_name||w.title)}</h3>
             `}
           </div>
-        ` : `<div class="war-content"><p class="classified-war">CONFLICT</p></div>`}
+        ` : `<div class="war-content"><p class="classified-war">Unknown</p></div>`}
       </article>`;
     };
     
