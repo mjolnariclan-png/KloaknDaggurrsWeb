@@ -47,7 +47,7 @@ const KD = (() => {
       cards:f.cards.map((x,i)=>({...x,id:null,card_number:x.number,card_type:x.type,faction_slug:x.faction,image_url:x.image,sort_order:(i+1)*10,is_live:!!x.revealed})),
       whispers:f.whispers.map((x,i)=>({...x,id:null,published_at:x.date,image_url:x.image||null})),
       vault:f.vault.map((x,i)=>({...x,id:null,unlocked:x.status==="open"})),
-      wars:f.wars?.map((x,i)=>({...x,id:null,sort_order:(i+1)*10}))||[]
+      wars:f.wars?.map((x,i)=>({...x,id:null,sort_order:(i+1)*10,short_name:x.short_name||x.title}))||[]
     };
   }
 
@@ -162,7 +162,7 @@ const KD = (() => {
       if (bothRevealed && w) {
         warContent = `<h3>${esc(f1.name)} vs. ${esc(f2.name)} — ${esc(w.title)}</h3><p>${esc(w.description)}</p>`;
       } else {
-        warContent = `<h3>CONFLICT</h3>`;
+        warContent = `<h3>${esc(w?.short_name||w?.title||"CONFLICT")}</h3>`;
       }
       
       return `<div class="war-row">
@@ -205,7 +205,7 @@ const KD = (() => {
             <h3>${esc(w.title)}</h3>
             <p>${esc(w.description)}</p>
           </div>
-        ` : `<div class="war-content"><p class="classified-war">CONFLICT CLASSIFIED</p></div>`}
+        ` : `<div class="war-content"><p class="classified-war">${esc(w?.short_name||w?.title||"CONFLICT")}</p></div>`}
       </article>`;
     };
     

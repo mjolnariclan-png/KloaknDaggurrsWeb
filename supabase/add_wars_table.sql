@@ -9,6 +9,7 @@ create table if not exists public.wars (
   faction1_slug text not null references public.factions(slug) on delete cascade,
   faction2_slug text not null references public.factions(slug) on delete cascade,
   title text not null,
+  short_name text,
   description text not null default '',
   created_at timestamptz not null default now()
 );
@@ -34,12 +35,12 @@ using (public.is_admin())
 with check (public.is_admin());
 
 -- Insert the four wars
-insert into public.wars(slug, faction1_slug, faction2_slug, title, description)
+insert into public.wars(slug, faction1_slug, faction2_slug, title, short_name, description)
 values
-('ash-vs-first', 'ash-cycle', 'first-light', 'Control vs. Exposure', 'Ash Cycle believes truth must be released carefully or it burns the world; First Light believes withholding truth is the burn. Every First Light victory risks unraveling a fate Ash Cycle spent generations weaving; every Ash Cycle victory risks letting a lie live one day too long.'),
-('crimson-vs-golden', 'crimson-oath', 'golden-flow', 'Legacy vs. Profit', 'Crimson Oath fights to resurrect what Golden Flow has turned into a marketplace. Golden Flow doesn't hate Crimson Oath — they just see grief as a resource nobody's collecting yet.'),
-('etched-vs-tangled', 'etched-power', 'tangled-weave', 'Permanence vs. Connection', 'Etched Power builds to last forever alone; Tangled Weave insists nothing survives alone. Their war is fought in the gap between a monument and the vine that eventually grows through it.'),
-('eternal-vs-hidden', 'eternal-reach', 'hidden-truth', 'Expansion vs. Depth', 'One always looks outward, one always looks under. Eternal Reach's empire keeps growing faster than it can be defended from within — which is exactly the opening Hidden Truth needs.')
+('ash-vs-first', 'ash-cycle', 'first-light', 'Control vs. Exposure', 'The Illumination', 'Ash Cycle believes truth must be released carefully or it burns the world; First Light believes withholding truth is the burn. Every First Light victory risks unraveling a fate Ash Cycle spent generations weaving; every Ash Cycle victory risks letting a lie live one day too long.'),
+('crimson-vs-golden', 'crimson-oath', 'golden-flow', 'Legacy vs. Profit', 'The Desecration', 'Crimson Oath fights to resurrect what Golden Flow has turned into a marketplace. Golden Flow doesn''t hate Crimson Oath — they just see grief as a resource nobody''s collecting yet.'),
+('etched-vs-tangled', 'etched-power', 'tangled-weave', 'Permanence vs. Connection', 'The Unraveling', 'Etched Power builds to last forever alone; Tangled Weave insists nothing survives alone. Their war is fought in the gap between a monument and the vine that eventually grows through it.'),
+('eternal-vs-hidden', 'eternal-reach', 'hidden-truth', 'Expansion vs. Depth', 'The Infiltration', 'One always looks outward, one always looks under. Eternal Reach''s empire keeps growing faster than it can be defended from within — which is exactly the opening Hidden Truth needs.')
 on conflict(slug) do nothing;
 
 -- Verify

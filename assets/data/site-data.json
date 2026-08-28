@@ -480,6 +480,7 @@
       "faction1": "ash-cycle",
       "faction2": "first-light",
       "title": "Control vs. Exposure",
+      "short_name": "The Illumination",
       "description": "Ash Cycle believes truth must be released carefully or it burns the world; First Light believes withholding truth is the burn. Every First Light victory risks unraveling a fate Ash Cycle spent generations weaving; every Ash Cycle victory risks letting a lie live one day too long."
     },
     {
@@ -487,6 +488,7 @@
       "faction1": "crimson-oath",
       "faction2": "golden-flow",
       "title": "Legacy vs. Profit",
+      "short_name": "The Desecration",
       "description": "Crimson Oath fights to resurrect what Golden Flow has turned into a marketplace. Golden Flow doesn't hate Crimson Oath — they just see grief as a resource nobody's collecting yet."
     },
     {
@@ -494,6 +496,7 @@
       "faction1": "etched-power",
       "faction2": "tangled-weave",
       "title": "Permanence vs. Connection",
+      "short_name": "The Unraveling",
       "description": "Etched Power builds to last forever alone; Tangled Weave insists nothing survives alone. Their war is fought in the gap between a monument and the vine that eventually grows through it."
     },
     {
@@ -501,6 +504,7 @@
       "faction1": "eternal-reach",
       "faction2": "hidden-truth",
       "title": "Expansion vs. Depth",
+      "short_name": "The Infiltration",
       "description": "One always looks outward, one always looks under. Eternal Reach's empire keeps growing faster than it can be defended from within — which is exactly the opening Hidden Truth needs."
     }
   ],
