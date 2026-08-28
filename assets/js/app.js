@@ -47,7 +47,7 @@ const KD = (() => {
       cards:f.cards.map((x,i)=>({...x,id:null,card_number:x.number,card_type:x.type,faction_slug:x.faction,image_url:x.image,sort_order:(i+1)*10,is_live:!!x.revealed})),
       whispers:f.whispers.map((x,i)=>({...x,id:null,published_at:x.date,image_url:x.image||null})),
       vault:f.vault.map((x,i)=>({...x,id:null,unlocked:x.status==="open"})),
-      wars:f.wars?.map((x,i)=>({...x,id:null,sort_order:(i+1)*10,short_name:x.short_name||x.title}))||[]
+      wars:f.wars?.map((x,i)=>({...x,id:null,sort_order:(i+1)*10,short_name:x.short_name||x.title||x.short_name}))||[]
     };
   }
 
@@ -78,7 +78,7 @@ const KD = (() => {
       }));
       data.whispers=(wr.data||[]).map(x=>({...x,date:x.published_at,image:x.image_url}));
       data.vault=(vr.data||[]).map(x=>({...x,is_live:x.unlocked}));
-      data.wars=(ws.data||[]);
+      data.wars=(ws.data||[]).map(x=>({...x,short_name:x.short_name||x.title}));
       backendOnline=true;
     }catch(e){
       console.warn("Supabase content unavailable; using GitHub fallback JSON.",e);
