@@ -18,11 +18,22 @@ delete from public.cards;
 delete from public.whispers;
 delete from public.factions;
 
--- Reset sequences
-alter sequence public.factions_id_seq restart with 1;
-alter sequence public.cards_id_seq restart with 1;
-alter sequence public.whispers_id_seq restart with 1;
-alter sequence public.wars_id_seq restart with 1;
+-- Reset sequences (only for tables that exist)
+do $$
+begin
+  if exists (select 1 from pg_sequences where schemaname='public' and sequencename='factions_id_seq') then
+    alter sequence public.factions_id_seq restart with 1;
+  end if;
+  if exists (select 1 from pg_sequences where schemaname='public' and sequencename='cards_id_seq') then
+    alter sequence public.cards_id_seq restart with 1;
+  end if;
+  if exists (select 1 from pg_sequences where schemaname='public' and sequencename='whispers_id_seq') then
+    alter sequence public.whispers_id_seq restart with 1;
+  end if;
+  if exists (select 1 from pg_sequences where schemaname='public' and sequencename='wars_id_seq') then
+    alter sequence public.wars_id_seq restart with 1;
+  end if;
+end $$;
 
 -- Add number column if it doesn't exist
 do $$
