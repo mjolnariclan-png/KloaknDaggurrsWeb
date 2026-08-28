@@ -159,10 +159,14 @@ const KD = (() => {
       const bothRevealed = live(f1) && live(f2);
       
       let warContent;
-      if (bothRevealed && w) {
-        warContent = `<h3>${esc(f1.name)} vs. ${esc(f2.name)} — ${esc(w.title)}</h3><p>${esc(w.description)}</p>`;
+      if (w) {
+        if (bothRevealed) {
+          warContent = `<h3>${esc(f1.name)} vs. ${esc(f2.name)} — ${esc(w.title)}</h3><p>${esc(w.description)}</p>`;
+        } else {
+          warContent = `<h3>${esc(w.short_name||w.title)}</h3>`;
+        }
       } else {
-        warContent = `<h3>${esc(w?.short_name||w?.title||"CONFLICT")}</h3>`;
+        warContent = `<h3>CONFLICT</h3>`;
       }
       
       return `<div class="war-row">
@@ -200,12 +204,16 @@ const KD = (() => {
           <div class="war-vs">VS</div>
           <div class="war-faction-name">${esc(f2.name)}</div>
         </div>
-        ${bothRevealed && w ? `
+        ${w ? `
           <div class="war-content">
-            <h3>${esc(w.title)}</h3>
-            <p>${esc(w.description)}</p>
+            ${bothRevealed ? `
+              <h3>${esc(w.title)}</h3>
+              <p>${esc(w.description)}</p>
+            ` : `
+              <h3>${esc(w.short_name||w.title)}</h3>
+            `}
           </div>
-        ` : `<div class="war-content"><p class="classified-war">${esc(w?.short_name||w?.title||"CONFLICT")}</p></div>`}
+        ` : `<div class="war-content"><p class="classified-war">CONFLICT</p></div>`}
       </article>`;
     };
     
