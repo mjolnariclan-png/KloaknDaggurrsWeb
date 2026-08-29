@@ -1,0 +1,5957 @@
+{
+  "set_name": "Eternal Reach",
+  "base_total": 168,
+  "actual_total": 191,
+  "main_primordial_vigor": "Ocean",
+  "type_distribution": {
+    "Vigor": 7,
+    "Creature": 124,
+    "Accoutrements": 34,
+    "Runes": 19,
+    "Primordial": 7
+  },
+  "rarity_distribution": {
+    "Thrall": 64,
+    "Skilled": 57,
+    "Karls": 37,
+    "Jarl": 19,
+    "Konugr": 7
+  },
+  "vigor_distribution": {
+    "Earth": 29,
+    "Fairy": 28,
+    "Lightning": 31,
+    "Ocean": 28,
+    "Purity": 23,
+    "Spirit": 27,
+    "Sun": 25
+  },
+  "text_overlay": {
+    "vigor_number": {
+      "font": "F:\\zzz\\fonts\\FairyDustB.ttf",
+      "x": 35,
+      "y": 28,
+      "size": 14,
+      "color": "white"
+    },
+    "set_name": {
+      "font": "F:\\zzz\\fonts\\FairyDustB.ttf",
+      "x": 110,
+      "y": 185,
+      "size": 17,
+      "color": "white"
+    },
+    "set_number": {
+      "font": "F:\\zzz\\fonts\\FairyDustB.ttf",
+      "x": 195,
+      "y": 329,
+      "size": 17,
+      "color": "white"
+    }
+  },
+  "cards": [
+    {
+      "name": "Stonebinder",
+      "vigor_type": "Earth",
+      "Background_image": "manabg.png",
+      "type": "Vigor",
+      "image": "F:\\zzz\\Vigor\\EarthM\\Earth\\Earth2.png",
+      "file_name": "Earth_Stonebinder.png",
+      "shop_price": "21",
+      "created_at": "2026-08-29T10:06:17.491743",
+      "standard_path": "B:\\Cards\\Earth\\Vigor\\Earth_Stonebinder.png",
+      "print_path": "B:\\Cards\\Earth(Print)\\Vigor\\Earth_Stonebinder.png",
+      "card_number": "1/168",
+      "rarity": null,
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Petalspawn",
+      "vigor_type": "Fairy",
+      "Background_image": "manabg.png",
+      "type": "Vigor",
+      "image": "F:\\zzz\\Vigor\\FairyM\\Fairy\\Fairy5.png",
+      "file_name": "Fairy_Petalspawn.png",
+      "shop_price": "24",
+      "created_at": "2026-08-29T10:06:19.593446",
+      "standard_path": "B:\\Cards\\Fairy\\Vigor\\Fairy_Petalspawn.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Vigor\\Fairy_Petalspawn.png",
+      "card_number": "2/168",
+      "rarity": null,
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Shockfang",
+      "vigor_type": "Lightning",
+      "Background_image": "manabg.png",
+      "type": "Vigor",
+      "image": "F:\\zzz\\Vigor\\LightningM\\Lightning\\Lightning1.png",
+      "file_name": "Lightning_Shockfang.png",
+      "shop_price": "24",
+      "created_at": "2026-08-29T10:06:58.748166",
+      "standard_path": "B:\\Cards\\Lightning\\Vigor\\Lightning_Shockfang.png",
+      "print_path": "B:\\Cards\\Lightning(Print)\\Vigor\\Lightning_Shockfang.png",
+      "card_number": "3/168",
+      "rarity": null,
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Aquamancer",
+      "vigor_type": "Ocean",
+      "Background_image": "manabg.png",
+      "type": "Vigor",
+      "image": "F:\\zzz\\Vigor\\OceanM\\Ocean\\Ocean2.png",
+      "file_name": "Ocean_Aquamancer.png",
+      "shop_price": "21",
+      "created_at": "2026-08-29T10:07:26.177848",
+      "standard_path": "B:\\Cards\\Ocean\\Vigor\\Ocean_Aquamancer.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Vigor\\Ocean_Aquamancer.png",
+      "card_number": "4/168",
+      "rarity": null,
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Halogiant",
+      "vigor_type": "Purity",
+      "Background_image": "manabg.png",
+      "type": "Vigor",
+      "image": "F:\\zzz\\Vigor\\PurityM\\Purity\\Purity4.png",
+      "file_name": "Purity_Halogiant.png",
+      "shop_price": "12",
+      "created_at": "2026-08-29T10:07:31.700588",
+      "standard_path": "B:\\Cards\\Purity\\Vigor\\Purity_Halogiant.png",
+      "print_path": "B:\\Cards\\Purity(Print)\\Vigor\\Purity_Halogiant.png",
+      "card_number": "5/168",
+      "rarity": null,
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Wraithholder",
+      "vigor_type": "Spirit",
+      "Background_image": "manabg.png",
+      "type": "Vigor",
+      "image": "F:\\zzz\\Vigor\\SpiritM\\Spirit\\Spirit1.png",
+      "file_name": "Spirit_Wraithholder.png",
+      "shop_price": "24",
+      "created_at": "2026-08-29T10:07:52.411317",
+      "standard_path": "B:\\Cards\\Spirit\\Vigor\\Spirit_Wraithholder.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Vigor\\Spirit_Wraithholder.png",
+      "card_number": "6/168",
+      "rarity": null,
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Dayspawn",
+      "vigor_type": "Sun",
+      "Background_image": "manabg.png",
+      "type": "Vigor",
+      "image": "F:\\zzz\\Vigor\\SunM\\Sun\\Sun4.png",
+      "file_name": "Sun_Dayspawn.png",
+      "shop_price": "10",
+      "created_at": "2026-08-29T10:08:05.306298",
+      "standard_path": "B:\\Cards\\Sun\\Vigor\\Sun_Dayspawn.png",
+      "print_path": "B:\\Cards\\Sun(Print)\\Vigor\\Sun_Dayspawn.png",
+      "card_number": "7/168",
+      "rarity": null,
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Perkin",
+      "className": "Archon",
+      "classImage": "F:\\zzz\\Master Photo List\\Archon\\Archon11.png",
+      "attacks": [
+        {
+          "name": "Temporal Shift",
+          "description": "Turns opponent creatures 2 rounds",
+          "manaCost": "8"
+        },
+        {
+          "name": "Monstrous Clone",
+          "description": "Destroys target card",
+          "manaCost": "4"
+        }
+      ],
+      "Mana Card Cost": "5",
+      "ap": "AP 5",
+      "dp": "DP 5",
+      "strength": {
+        "Vigor": "Sorcery",
+        "image": "SMana/Sorcery.png"
+      },
+      "weakness": {
+        "Vigor": "Sorcery",
+        "image": "WMana/Sorcery.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Perkin.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Perkin.png",
+      "card_number": "8/168",
+      "rarity": "Thrall",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Harnar",
+      "className": "Pegasi",
+      "classImage": "F:\\zzz\\Master Photo List\\Pegasi\\Pegasi3.png",
+      "attacks": [
+        {
+          "name": "Slicing Gale",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "3"
+        },
+        {
+          "name": "Skeletal Minions",
+          "description": "Blocks flying 3 rounds",
+          "manaCost": "11"
+        }
+      ],
+      "Mana Card Cost": "1",
+      "ap": "AP 1",
+      "dp": "DP 1",
+      "strength": {
+        "Vigor": "Chaos",
+        "image": "SMana/Chaos.png"
+      },
+      "weakness": {
+        "Vigor": "Ocean",
+        "image": "WMana/Ocean.png"
+      },
+      "deckManaImage": "Mana/Sun.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Sun\\Creature\\Harnar.png",
+      "print_path": "B:\\Cards\\Sun(Print)\\Creature\\Harnar.png",
+      "card_number": "9/168",
+      "rarity": "Thrall",
+      "vigor": "Sun",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Fradel",
+      "className": "Aarakocra",
+      "classImage": "F:\\zzz\\Master Photo List\\Aarakocra\\Arakocra33.png",
+      "attacks": [
+        {
+          "name": "Acidic Deluge",
+          "description": "Unleashes acidic rain, damages all 3 rounds",
+          "manaCost": "5"
+        },
+        {
+          "name": "Fire Blitz",
+          "description": "Heals caster next damage dealt",
+          "manaCost": "6"
+        }
+      ],
+      "Mana Card Cost": "7",
+      "ap": "AP 6",
+      "dp": "DP 5",
+      "strength": {
+        "Vigor": "Greed",
+        "image": "SMana/Greed.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Fradel.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Fradel.png",
+      "card_number": "10/168",
+      "rarity": "Thrall",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Zrunk",
+      "className": "Archer",
+      "classImage": "F:\\zzz\\Master Photo List\\Archer\\Archer14.png",
+      "attacks": [
+        {
+          "name": "Haunting Tortoise",
+          "description": "Opponent -1 life",
+          "manaCost": "7"
+        },
+        {
+          "name": "Blizzard Barrage",
+          "description": "No attacks 5 turns",
+          "manaCost": "9"
+        }
+      ],
+      "Mana Card Cost": "7",
+      "ap": "AP 6",
+      "dp": "DP 8",
+      "strength": {
+        "Vigor": "Moon",
+        "image": "SMana/Moon.png"
+      },
+      "weakness": {
+        "Vigor": "Earth",
+        "image": "WMana/Earth.png"
+      },
+      "deckManaImage": "Mana/Lightning.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Lightning\\Creature\\Zrunk.png",
+      "print_path": "B:\\Cards\\Lightning(Print)\\Creature\\Zrunk.png",
+      "card_number": "11/168",
+      "rarity": "Thrall",
+      "vigor": "Lightning",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Chran",
+      "className": "Elf",
+      "classImage": "F:\\zzz\\Master Photo List\\Elf\\Elf.png",
+      "attacks": [
+        {
+          "name": "Frostbite Tempest",
+          "description": "Attacks all 6 damage",
+          "manaCost": "11"
+        },
+        {
+          "name": "Rising Tides",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "6"
+        }
+      ],
+      "Mana Card Cost": "5",
+      "ap": "AP 6",
+      "dp": "DP 1",
+      "strength": {
+        "Vigor": "Lightning",
+        "image": "SMana/Lightning.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Chran.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Chran.png",
+      "card_number": "12/168",
+      "rarity": "Thrall",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Athron",
+      "className": "Mermaid",
+      "classImage": "F:\\zzz\\Master Photo List\\Mermaid\\Mermaid1.png",
+      "attacks": [
+        {
+          "name": "Windswept Cyclone",
+          "description": "Attacks all 4 damage",
+          "manaCost": "2"
+        },
+        {
+          "name": "Temporal Shift",
+          "description": "Turns opponent creatures 2 rounds",
+          "manaCost": "8"
+        }
+      ],
+      "Mana Card Cost": "5",
+      "ap": "AP 3",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Lava",
+        "image": "WMana/Lava.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Athron.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Athron.png",
+      "card_number": "13/168",
+      "rarity": "Thrall",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Aelarion",
+      "className": "Mermaid",
+      "classImage": "F:\\zzz\\Master Photo List\\Mermaid\\Mermaid5.png",
+      "attacks": [
+        {
+          "name": "Pulsating Thunderstorm",
+          "description": "Attacks all 3 damage",
+          "manaCost": "11"
+        },
+        {
+          "name": "Prismatic Beam",
+          "description": "Reflects opponent spell",
+          "manaCost": "12"
+        }
+      ],
+      "Mana Card Cost": "4",
+      "ap": "AP 1",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Sun",
+        "image": "SMana/Sun.png"
+      },
+      "weakness": {
+        "Vigor": "Lava",
+        "image": "WMana/Lava.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Aelarion.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Aelarion.png",
+      "card_number": "14/168",
+      "rarity": "Thrall",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Atha",
+      "className": "Archer",
+      "classImage": "F:\\zzz\\Master Photo List\\Archer\\Archer13.png",
+      "attacks": [
+        {
+          "name": "Doomsday Prophecy",
+          "description": "Deals 5 damage",
+          "manaCost": "8"
+        },
+        {
+          "name": "Celestial Surge",
+          "description": "Heals caster next damage dealt",
+          "manaCost": "7"
+        }
+      ],
+      "Mana Card Cost": "9",
+      "ap": "AP 5",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Ocean",
+        "image": "SMana/Ocean.png"
+      },
+      "weakness": {
+        "Vigor": "Purity",
+        "image": "WMana/Purity.png"
+      },
+      "deckManaImage": "Mana/Lightning.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Lightning\\Creature\\Atha.png",
+      "print_path": "B:\\Cards\\Lightning(Print)\\Creature\\Atha.png",
+      "card_number": "15/168",
+      "rarity": "Thrall",
+      "vigor": "Lightning",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Lysaeris",
+      "className": "Samurai",
+      "classImage": "F:\\zzz\\Master Photo List\\Samurai\\Samurai.png",
+      "attacks": [
+        {
+          "name": "Cyclone Whirlwind",
+          "description": "Blocks flying 3 rounds",
+          "manaCost": "8"
+        },
+        {
+          "name": "Frostbite Tempest",
+          "description": "Attacks all 6 damage",
+          "manaCost": "1"
+        }
+      ],
+      "Mana Card Cost": "11",
+      "ap": "AP 7",
+      "dp": "DP 10",
+      "strength": {
+        "Vigor": "Moon",
+        "image": "SMana/Moon.png"
+      },
+      "weakness": {
+        "Vigor": "Greed",
+        "image": "WMana/Greed.png"
+      },
+      "deckManaImage": "Mana/Lightning.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Lightning\\Creature\\Lysaeris.png",
+      "print_path": "B:\\Cards\\Lightning(Print)\\Creature\\Lysaeris.png",
+      "card_number": "16/168",
+      "rarity": "Thrall",
+      "vigor": "Lightning",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Bezyl",
+      "className": "Spirit",
+      "classImage": "F:\\zzz\\Master Photo List\\Spirit\\Spirit.png",
+      "attacks": [
+        {
+          "name": "Monstrous Clone",
+          "description": "Destroys target card",
+          "manaCost": "3"
+        },
+        {
+          "name": "Eclipse of Doom",
+          "description": "No attacks 9 turns",
+          "manaCost": "1"
+        }
+      ],
+      "Mana Card Cost": "10",
+      "ap": "AP 6",
+      "dp": "DP 11",
+      "strength": {
+        "Vigor": "Fungus",
+        "image": "SMana/Fungus.png"
+      },
+      "weakness": {
+        "Vigor": "Chaos",
+        "image": "WMana/Chaos.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Bezyl.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Bezyl.png",
+      "card_number": "17/168",
+      "rarity": "Thrall",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Elysian",
+      "className": "Siren",
+      "classImage": "F:\\zzz\\Master Photo List\\Siren\\Siren1.png",
+      "attacks": [
+        {
+          "name": "Rampant Inferno",
+          "description": "Attacks opponent 4 damage",
+          "manaCost": "4"
+        },
+        {
+          "name": "Frenzied Lightning",
+          "description": "Doubles power next attack",
+          "manaCost": "5"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 8",
+      "dp": "DP 12",
+      "strength": {
+        "Vigor": "Tar",
+        "image": "SMana/Tar.png"
+      },
+      "weakness": {
+        "Vigor": "Moon",
+        "image": "WMana/Moon.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Elysian.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Elysian.png",
+      "card_number": "18/168",
+      "rarity": "Thrall",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Lysandra",
+      "className": "Pegasi",
+      "classImage": "F:\\zzz\\Master Photo List\\Pegasi\\Pegasi3.png",
+      "attacks": [
+        {
+          "name": "Eclipse Eclipse",
+          "description": "Turns opponent harmless 2 turns",
+          "manaCost": "6"
+        },
+        {
+          "name": "Celestial Judgment",
+          "description": "Forces opponent skip next turn",
+          "manaCost": "11"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 7",
+      "dp": "DP 10",
+      "strength": {
+        "Vigor": "Fungus",
+        "image": "SMana/Fungus.png"
+      },
+      "weakness": {
+        "Vigor": "Moon",
+        "image": "WMana/Moon.png"
+      },
+      "deckManaImage": "Mana/Sun.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Sun\\Creature\\Lysandra.png",
+      "print_path": "B:\\Cards\\Sun(Print)\\Creature\\Lysandra.png",
+      "card_number": "19/168",
+      "rarity": "Thrall",
+      "vigor": "Sun",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Baka",
+      "className": "Avatar",
+      "classImage": "F:\\zzz\\Master Photo List\\Avatar\\Avatar15.png",
+      "attacks": [
+        {
+          "name": "Roaring Thunder",
+          "description": "Attacks all 3 damage",
+          "manaCost": "11"
+        },
+        {
+          "name": "Darling Mandrill",
+          "description": "Blocks ground 2 rounds",
+          "manaCost": "6"
+        }
+      ],
+      "Mana Card Cost": "9",
+      "ap": "AP 7",
+      "dp": "DP 5",
+      "strength": {
+        "Vigor": "Fungus",
+        "image": "SMana/Fungus.png"
+      },
+      "weakness": {
+        "Vigor": "Sorcery",
+        "image": "WMana/Sorcery.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Baka.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Baka.png",
+      "card_number": "20/168",
+      "rarity": "Thrall",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Brukarr",
+      "className": "Spirit",
+      "classImage": "F:\\zzz\\Master Photo List\\Spirit\\Spirit2.png",
+      "attacks": [
+        {
+          "name": "Frostbite Tempest",
+          "description": "Attacks all 6 damage",
+          "manaCost": "12"
+        },
+        {
+          "name": "Lethal Venom Strike",
+          "description": "Silences target 3 rounds",
+          "manaCost": "5"
+        }
+      ],
+      "Mana Card Cost": "6",
+      "ap": "AP 1",
+      "dp": "DP 2",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Greed",
+        "image": "WMana/Greed.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Brukarr.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Brukarr.png",
+      "card_number": "21/168",
+      "rarity": "Thrall",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Jerax",
+      "className": "Samurai",
+      "classImage": "F:\\zzz\\Master Photo List\\Samurai\\Samurai5.png",
+      "attacks": [
+        {
+          "name": "Lethal Venom Strike",
+          "description": "Silences target 3 rounds",
+          "manaCost": "5"
+        },
+        {
+          "name": "Molten Lava Burst",
+          "description": "Attacks all 3 damage",
+          "manaCost": "3"
+        }
+      ],
+      "Mana Card Cost": "6",
+      "ap": "AP 5",
+      "dp": "DP 2",
+      "strength": {
+        "Vigor": "Moon",
+        "image": "SMana/Moon.png"
+      },
+      "weakness": {
+        "Vigor": "Earth",
+        "image": "WMana/Earth.png"
+      },
+      "deckManaImage": "Mana/Lightning.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Lightning\\Creature\\Jerax.png",
+      "print_path": "B:\\Cards\\Lightning(Print)\\Creature\\Jerax.png",
+      "card_number": "22/168",
+      "rarity": "Thrall",
+      "vigor": "Lightning",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Herin",
+      "className": "Archon",
+      "classImage": "F:\\zzz\\Master Photo List\\Archon\\Archon19.png",
+      "attacks": [
+        {
+          "name": "Celestial Surge",
+          "description": "Heals caster next damage dealt",
+          "manaCost": "10"
+        },
+        {
+          "name": "Galactic Impact",
+          "description": "Reflects opponent spell x3 damage",
+          "manaCost": "9"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 8",
+      "dp": "DP 9",
+      "strength": {
+        "Vigor": "Greed",
+        "image": "SMana/Greed.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Herin.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Herin.png",
+      "card_number": "23/168",
+      "rarity": "Thrall",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Isolindrella",
+      "className": "Bard",
+      "classImage": "F:\\zzz\\Master Photo List\\Bard\\Bard.png",
+      "attacks": [
+        {
+          "name": "Firing Beaver",
+          "description": "Blocks ground 3 rounds",
+          "manaCost": "6"
+        },
+        {
+          "name": "Roaring Windstorm",
+          "description": "Blocks flying 4 rounds",
+          "manaCost": "5"
+        }
+      ],
+      "Mana Card Cost": "1",
+      "ap": "AP 3",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Sorcery",
+        "image": "SMana/Sorcery.png"
+      },
+      "weakness": {
+        "Vigor": "Greed",
+        "image": "WMana/Greed.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Isolindrella.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Isolindrella.png",
+      "card_number": "24/168",
+      "rarity": "Thrall",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Lorelindra",
+      "className": "Nightwalker",
+      "classImage": "F:\\zzz\\Master Photo List\\Nightwalker\\Nightwalker8.png",
+      "attacks": [
+        {
+          "name": "Rampant Inferno",
+          "description": "Attacks opponent 4 damage",
+          "manaCost": "4"
+        },
+        {
+          "name": "Drowning Chameleon",
+          "description": "Exiles target card",
+          "manaCost": "1"
+        }
+      ],
+      "Mana Card Cost": "10",
+      "ap": "AP 6",
+      "dp": "DP 11",
+      "strength": {
+        "Vigor": "Earth",
+        "image": "SMana/Earth.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Lorelindra.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Lorelindra.png",
+      "card_number": "25/168",
+      "rarity": "Thrall",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Nigrock",
+      "className": "Mermaid",
+      "classImage": "F:\\zzz\\Master Photo List\\Mermaid\\Mermaid1.png",
+      "attacks": [
+        {
+          "name": "Drowning Chameleon",
+          "description": "Exiles target card",
+          "manaCost": "1"
+        },
+        {
+          "name": "Pyroclasmic Eruption",
+          "description": "Attacks all 4 damage",
+          "manaCost": "9"
+        }
+      ],
+      "Mana Card Cost": "3",
+      "ap": "AP 3",
+      "dp": "DP 2",
+      "strength": {
+        "Vigor": "Earth",
+        "image": "SMana/Earth.png"
+      },
+      "weakness": {
+        "Vigor": "Lava",
+        "image": "WMana/Lava.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Nigrock.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Nigrock.png",
+      "card_number": "26/168",
+      "rarity": "Thrall",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Kodin",
+      "className": "Aasimar",
+      "classImage": "F:\\zzz\\Master Photo List\\Aasimar\\Aasimar21.png",
+      "attacks": [
+        {
+          "name": "Eclipse of Doom",
+          "description": "No attacks 9 turns",
+          "manaCost": "4"
+        },
+        {
+          "name": "Ruby Flare",
+          "description": "Opponent -5 life",
+          "manaCost": "2"
+        }
+      ],
+      "Mana Card Cost": "6",
+      "ap": "AP 3",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Chaos",
+        "image": "SMana/Chaos.png"
+      },
+      "weakness": {
+        "Vigor": "Chaos",
+        "image": "WMana/Chaos.png"
+      },
+      "deckManaImage": "Mana/Purity.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Purity\\Creature\\Kodin.png",
+      "print_path": "B:\\Cards\\Purity(Print)\\Creature\\Kodin.png",
+      "card_number": "27/168",
+      "rarity": "Thrall",
+      "vigor": "Purity",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Aldric",
+      "className": "Medic",
+      "classImage": "F:\\zzz\\Master Photo List\\Medic\\Medic2.png",
+      "attacks": [
+        {
+          "name": "Silver Frost",
+          "description": "Opponent -3 life",
+          "manaCost": "1"
+        },
+        {
+          "name": "Phantom Mirage",
+          "description": "Opponent -7 life",
+          "manaCost": "2"
+        }
+      ],
+      "Mana Card Cost": "8",
+      "ap": "AP 4",
+      "dp": "DP 7",
+      "strength": {
+        "Vigor": "Lightning",
+        "image": "SMana/Lightning.png"
+      },
+      "weakness": {
+        "Vigor": "Chaos",
+        "image": "WMana/Chaos.png"
+      },
+      "deckManaImage": "Mana/Purity.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Purity\\Creature\\Aldric.png",
+      "print_path": "B:\\Cards\\Purity(Print)\\Creature\\Aldric.png",
+      "card_number": "28/168",
+      "rarity": "Thrall",
+      "vigor": "Purity",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Ragnar",
+      "className": "Gargoyle",
+      "classImage": "F:\\zzz\\Master Photo List\\Gargoyle\\Gargoyle5.png",
+      "attacks": [
+        {
+          "name": "Glacial Avalanche",
+          "description": "Attacks all 4 damage",
+          "manaCost": "11"
+        },
+        {
+          "name": "Shifting Sands",
+          "description": "Blocks ground 2 rounds",
+          "manaCost": "5"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 7",
+      "dp": "DP 11",
+      "strength": {
+        "Vigor": "Lightning",
+        "image": "SMana/Lightning.png"
+      },
+      "weakness": {
+        "Vigor": "Ocean",
+        "image": "WMana/Ocean.png"
+      },
+      "deckManaImage": "Mana/Earth.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Earth\\Creature\\Ragnar.png",
+      "print_path": "B:\\Cards\\Earth(Print)\\Creature\\Ragnar.png",
+      "card_number": "29/168",
+      "rarity": "Thrall",
+      "vigor": "Earth",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Orassa",
+      "className": "Ogre",
+      "classImage": "F:\\zzz\\Master Photo List\\Ogre\\Ogre7.png",
+      "attacks": [
+        {
+          "name": "Eclipse Eclipse",
+          "description": "Turns opponent harmless 2 turns",
+          "manaCost": "1"
+        },
+        {
+          "name": "Angelic Petal Cut",
+          "description": "Graceful attack, -3 life",
+          "manaCost": "3"
+        }
+      ],
+      "Mana Card Cost": "11",
+      "ap": "AP 10",
+      "dp": "DP 9",
+      "strength": {
+        "Vigor": "Moon",
+        "image": "SMana/Moon.png"
+      },
+      "weakness": {
+        "Vigor": "Chaos",
+        "image": "WMana/Chaos.png"
+      },
+      "deckManaImage": "Mana/Earth.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Earth\\Creature\\Orassa.png",
+      "print_path": "B:\\Cards\\Earth(Print)\\Creature\\Orassa.png",
+      "card_number": "30/168",
+      "rarity": "Thrall",
+      "vigor": "Earth",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Khuth",
+      "className": "Kitsune",
+      "classImage": "F:\\zzz\\Master Photo List\\Kitsune\\Kitsune7.png",
+      "attacks": [
+        {
+          "name": "Temporal Shift",
+          "description": "Turns opponent creatures 2 rounds",
+          "manaCost": "1"
+        },
+        {
+          "name": "Raining Fireballs",
+          "description": "Attacks all 5 damage",
+          "manaCost": "4"
+        }
+      ],
+      "Mana Card Cost": "9",
+      "ap": "AP 8",
+      "dp": "DP 9",
+      "strength": {
+        "Vigor": "Lightning",
+        "image": "SMana/Lightning.png"
+      },
+      "weakness": {
+        "Vigor": "Sorcery",
+        "image": "WMana/Sorcery.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Khuth.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Khuth.png",
+      "card_number": "31/168",
+      "rarity": "Thrall",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Aelarionnara",
+      "className": "Unicorn",
+      "classImage": "F:\\zzz\\Master Photo List\\Unicorn\\Unicorn3.png",
+      "attacks": [
+        {
+          "name": "Swift Windstorm",
+          "description": "Blocks flying 3 rounds",
+          "manaCost": "9"
+        },
+        {
+          "name": "Skeletal Minions",
+          "description": "Blocks flying 3 rounds",
+          "manaCost": "8"
+        }
+      ],
+      "Mana Card Cost": "3",
+      "ap": "AP 4",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Chaos",
+        "image": "SMana/Chaos.png"
+      },
+      "weakness": {
+        "Vigor": "Chaos",
+        "image": "WMana/Chaos.png"
+      },
+      "deckManaImage": "Mana/Purity.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Purity\\Creature\\Aelarionnara.png",
+      "print_path": "B:\\Cards\\Purity(Print)\\Creature\\Aelarionnara.png",
+      "card_number": "32/168",
+      "rarity": "Thrall",
+      "vigor": "Purity",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Tonn",
+      "className": "Aarakocra",
+      "classImage": "F:\\zzz\\Master Photo List\\Aarakocra\\Arakocra44.png",
+      "attacks": [
+        {
+          "name": "Illusion Alligator",
+          "description": "Sacrifices creature, attacks",
+          "manaCost": "2"
+        },
+        {
+          "name": "Monstrous Clone",
+          "description": "Destroys target card",
+          "manaCost": "9"
+        }
+      ],
+      "Mana Card Cost": "9",
+      "ap": "AP 9",
+      "dp": "DP 9",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Moon",
+        "image": "WMana/Moon.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Tonn.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Tonn.png",
+      "card_number": "33/168",
+      "rarity": "Thrall",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Kotack",
+      "className": "Nightwalker",
+      "classImage": "F:\\zzz\\Master Photo List\\Nightwalker\\Nightwalker5.png",
+      "attacks": [
+        {
+          "name": "Swift Windstorm",
+          "description": "Blocks flying 3 rounds",
+          "manaCost": "3"
+        },
+        {
+          "name": "Life Strike",
+          "description": "Attacks opponent 1 damage",
+          "manaCost": "6"
+        }
+      ],
+      "Mana Card Cost": "8",
+      "ap": "AP 4",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Earth",
+        "image": "SMana/Earth.png"
+      },
+      "weakness": {
+        "Vigor": "Lightning",
+        "image": "WMana/Lightning.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Kotack.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Kotack.png",
+      "card_number": "34/168",
+      "rarity": "Thrall",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Eldarian",
+      "className": "Elf",
+      "classImage": "F:\\zzz\\Master Photo List\\Elf\\Elf4.png",
+      "attacks": [
+        {
+          "name": "Monstrous Clone",
+          "description": "Destroys target card",
+          "manaCost": "8"
+        },
+        {
+          "name": "Eliminating Crocodile",
+          "description": "Protects against attacks",
+          "manaCost": "3"
+        }
+      ],
+      "Mana Card Cost": "7",
+      "ap": "AP 9",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Earth",
+        "image": "SMana/Earth.png"
+      },
+      "weakness": {
+        "Vigor": "Moon",
+        "image": "WMana/Moon.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Eldarian.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Eldarian.png",
+      "card_number": "35/168",
+      "rarity": "Thrall",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Isabaelle",
+      "className": "Cleric",
+      "classImage": "F:\\zzz\\Master Photo List\\Cleric\\Cleric8.png",
+      "attacks": [
+        {
+          "name": "Demonic Doom",
+          "description": "Opponent -4 life",
+          "manaCost": "2"
+        },
+        {
+          "name": "Blazing Inferno",
+          "description": "Ignites inferno, -3 damage",
+          "manaCost": "12"
+        }
+      ],
+      "Mana Card Cost": "10",
+      "ap": "AP 8",
+      "dp": "DP 9",
+      "strength": {
+        "Vigor": "Fungus",
+        "image": "SMana/Fungus.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Purity.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Purity\\Creature\\Isabaelle.png",
+      "print_path": "B:\\Cards\\Purity(Print)\\Creature\\Isabaelle.png",
+      "card_number": "36/168",
+      "rarity": "Thrall",
+      "vigor": "Purity",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Elysandra",
+      "className": "Nightwalker",
+      "classImage": "F:\\zzz\\Master Photo List\\Nightwalker\\Nightwalker1.png",
+      "attacks": [
+        {
+          "name": "Crimson Surge",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "10"
+        },
+        {
+          "name": "Wrath of Nature",
+          "description": "Attacks all 4 damage",
+          "manaCost": "2"
+        }
+      ],
+      "Mana Card Cost": "6",
+      "ap": "AP 1",
+      "dp": "DP 5",
+      "strength": {
+        "Vigor": "Sun",
+        "image": "SMana/Sun.png"
+      },
+      "weakness": {
+        "Vigor": "Lava",
+        "image": "WMana/Lava.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Elysandra.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Elysandra.png",
+      "card_number": "37/168",
+      "rarity": "Thrall",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Malachai",
+      "className": "Shade",
+      "classImage": "F:\\zzz\\Master Photo List\\Shade\\Shade9.png",
+      "attacks": [
+        {
+          "name": "Twilight",
+          "description": "Turns opponent harmless 2 turns",
+          "manaCost": "12"
+        },
+        {
+          "name": "Lethal Venom Strike",
+          "description": "Silences target 3 rounds",
+          "manaCost": "4"
+        }
+      ],
+      "Mana Card Cost": "3",
+      "ap": "AP 3",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Sorcery",
+        "image": "SMana/Sorcery.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Malachai.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Malachai.png",
+      "card_number": "38/168",
+      "rarity": "Thrall",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Carirol",
+      "className": "Ogre",
+      "classImage": "F:\\zzz\\Master Photo List\\Ogre\\Ogre6.png",
+      "attacks": [
+        {
+          "name": "Polar Frost",
+          "description": "Opponent -3 life",
+          "manaCost": "3"
+        },
+        {
+          "name": "Authentic Beaver",
+          "description": "Conjures authentic beaver, removes extras",
+          "manaCost": "12"
+        }
+      ],
+      "Mana Card Cost": "8",
+      "ap": "AP 7",
+      "dp": "DP 9",
+      "strength": {
+        "Vigor": "Fairy",
+        "image": "SMana/Fairy.png"
+      },
+      "weakness": {
+        "Vigor": "Fairy",
+        "image": "WMana/Fairy.png"
+      },
+      "deckManaImage": "Mana/Earth.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Earth\\Creature\\Carirol.png",
+      "print_path": "B:\\Cards\\Earth(Print)\\Creature\\Carirol.png",
+      "card_number": "39/168",
+      "rarity": "Thrall",
+      "vigor": "Earth",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Nalsi",
+      "className": "Angel",
+      "classImage": "F:\\zzz\\Master Photo List\\Angel\\Angel4.png",
+      "attacks": [
+        {
+          "name": "Whirlwind",
+          "description": "Blocks flying 3 rounds",
+          "manaCost": "9"
+        },
+        {
+          "name": "Lethal Venom Barrage",
+          "description": "Silences target 4 rounds",
+          "manaCost": "8"
+        }
+      ],
+      "Mana Card Cost": "4",
+      "ap": "AP 2",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Lightning",
+        "image": "SMana/Lightning.png"
+      },
+      "weakness": {
+        "Vigor": "Tar",
+        "image": "WMana/Tar.png"
+      },
+      "deckManaImage": "Mana/Purity.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Purity\\Creature\\Nalsi.png",
+      "print_path": "B:\\Cards\\Purity(Print)\\Creature\\Nalsi.png",
+      "card_number": "40/168",
+      "rarity": "Thrall",
+      "vigor": "Purity",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Jarion",
+      "className": "Valkerie",
+      "classImage": "F:\\zzz\\Master Photo List\\Valkerie\\Valkerie2.png",
+      "attacks": [
+        {
+          "name": "Reaper Doom",
+          "description": "Opponent -7 life",
+          "manaCost": "5"
+        },
+        {
+          "name": "Arcane Apocalypse",
+          "description": "No spellcasting 10 rounds",
+          "manaCost": "11"
+        }
+      ],
+      "Mana Card Cost": "7",
+      "ap": "AP 7",
+      "dp": "DP 7",
+      "strength": {
+        "Vigor": "Tar",
+        "image": "SMana/Tar.png"
+      },
+      "weakness": {
+        "Vigor": "Earth",
+        "image": "WMana/Earth.png"
+      },
+      "deckManaImage": "Mana/Lightning.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Lightning\\Creature\\Jarion.png",
+      "print_path": "B:\\Cards\\Lightning(Print)\\Creature\\Jarion.png",
+      "card_number": "41/168",
+      "rarity": "Thrall",
+      "vigor": "Lightning",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Thomi",
+      "className": "Nightwalker",
+      "classImage": "F:\\zzz\\Master Photo List\\Nightwalker\\Nightwalker6.png",
+      "attacks": [
+        {
+          "name": "Crimson Surge",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "11"
+        },
+        {
+          "name": "Thunderclap",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "6"
+        }
+      ],
+      "Mana Card Cost": "6",
+      "ap": "AP 4",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Tar",
+        "image": "SMana/Tar.png"
+      },
+      "weakness": {
+        "Vigor": "Lightning",
+        "image": "WMana/Lightning.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Thomi.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Thomi.png",
+      "card_number": "42/168",
+      "rarity": "Thrall",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Malachon",
+      "className": "Valkerie",
+      "classImage": "F:\\zzz\\Master Photo List\\Valkerie\\Valkerie2.png",
+      "attacks": [
+        {
+          "name": "Firestorm Eruption",
+          "description": "Attacks all 4 damage",
+          "manaCost": "4"
+        },
+        {
+          "name": "Restoration Wave",
+          "description": "Heals caster double successful attack",
+          "manaCost": "11"
+        }
+      ],
+      "Mana Card Cost": "1",
+      "ap": "AP 1",
+      "dp": "DP 1",
+      "strength": {
+        "Vigor": "Ocean",
+        "image": "SMana/Ocean.png"
+      },
+      "weakness": {
+        "Vigor": "Earth",
+        "image": "WMana/Earth.png"
+      },
+      "deckManaImage": "Mana/Lightning.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Lightning\\Creature\\Malachon.png",
+      "print_path": "B:\\Cards\\Lightning(Print)\\Creature\\Malachon.png",
+      "card_number": "43/168",
+      "rarity": "Thrall",
+      "vigor": "Lightning",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Ardis",
+      "className": "BugBear",
+      "classImage": "F:\\zzz\\Master Photo List\\BugBear\\Bugbear1.png",
+      "attacks": [
+        {
+          "name": "Swift Windstorm",
+          "description": "Blocks flying 3 rounds",
+          "manaCost": "12"
+        },
+        {
+          "name": "Lethal Venom Barrage",
+          "description": "Silences target 4 rounds",
+          "manaCost": "10"
+        }
+      ],
+      "Mana Card Cost": "10",
+      "ap": "AP 12",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Moon",
+        "image": "SMana/Moon.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Earth.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Earth\\Creature\\Ardis.png",
+      "print_path": "B:\\Cards\\Earth(Print)\\Creature\\Ardis.png",
+      "card_number": "44/168",
+      "rarity": "Thrall",
+      "vigor": "Earth",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Elysiria",
+      "className": "Aarakocra",
+      "classImage": "F:\\zzz\\Master Photo List\\Aarakocra\\Arakocra30.png",
+      "attacks": [
+        {
+          "name": "Winter Blast",
+          "description": "Opponent -4 life",
+          "manaCost": "12"
+        },
+        {
+          "name": "Dark Nova",
+          "description": "Opponent -5 life",
+          "manaCost": "8"
+        }
+      ],
+      "Mana Card Cost": "4",
+      "ap": "AP 6",
+      "dp": "DP 1",
+      "strength": {
+        "Vigor": "Greed",
+        "image": "SMana/Greed.png"
+      },
+      "weakness": {
+        "Vigor": "Sorcery",
+        "image": "WMana/Sorcery.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Elysiria.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Elysiria.png",
+      "card_number": "45/168",
+      "rarity": "Thrall",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Thomi",
+      "className": "BugBear",
+      "classImage": "F:\\zzz\\Master Photo List\\BugBear\\Bugbear5.png",
+      "attacks": [
+        {
+          "name": "Cosmic Crush",
+          "description": "Attacks opponent 4 damage",
+          "manaCost": "12"
+        },
+        {
+          "name": "Soul Harvest",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "1"
+        }
+      ],
+      "Mana Card Cost": "1",
+      "ap": "AP 3",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Fairy",
+        "image": "SMana/Fairy.png"
+      },
+      "weakness": {
+        "Vigor": "Fairy",
+        "image": "WMana/Fairy.png"
+      },
+      "deckManaImage": "Mana/Earth.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Earth\\Creature\\Thomi.png",
+      "print_path": "B:\\Cards\\Earth(Print)\\Creature\\Thomi.png",
+      "card_number": "46/168",
+      "rarity": "Thrall",
+      "vigor": "Earth",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Brathon",
+      "className": "Kitsune",
+      "classImage": "F:\\zzz\\Master Photo List\\Kitsune\\Kitsune3.png",
+      "attacks": [
+        {
+          "name": "Angelic Petal Cut",
+          "description": "Graceful attack, -3 life",
+          "manaCost": "8"
+        },
+        {
+          "name": "Glacial Shard Strike",
+          "description": "No life gain opponent 3 turns",
+          "manaCost": "3"
+        }
+      ],
+      "Mana Card Cost": "10",
+      "ap": "AP 7",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Lightning",
+        "image": "SMana/Lightning.png"
+      },
+      "weakness": {
+        "Vigor": "Moon",
+        "image": "WMana/Moon.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Brathon.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Brathon.png",
+      "card_number": "47/168",
+      "rarity": "Thrall",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Dasrin",
+      "className": "Archer",
+      "classImage": "F:\\zzz\\Master Photo List\\Archer\\Archer9.png",
+      "attacks": [
+        {
+          "name": "Clone Bullet",
+          "description": "Puts target to sleep 2 rounds",
+          "manaCost": "1"
+        },
+        {
+          "name": "Doomsday Shockwave",
+          "description": "Destroys target card",
+          "manaCost": "12"
+        }
+      ],
+      "Mana Card Cost": "10",
+      "ap": "AP 10",
+      "dp": "DP 7",
+      "strength": {
+        "Vigor": "Moon",
+        "image": "SMana/Moon.png"
+      },
+      "weakness": {
+        "Vigor": "Purity",
+        "image": "WMana/Purity.png"
+      },
+      "deckManaImage": "Mana/Lightning.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Lightning\\Creature\\Dasrin.png",
+      "print_path": "B:\\Cards\\Lightning(Print)\\Creature\\Dasrin.png",
+      "card_number": "48/168",
+      "rarity": "Thrall",
+      "vigor": "Lightning",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Atha",
+      "className": "Siren",
+      "classImage": "F:\\zzz\\Master Photo List\\Siren\\Siren3.png",
+      "attacks": [
+        {
+          "name": "Abyssal Void",
+          "description": "Opens rift, meditative state 3 turns",
+          "manaCost": "8"
+        },
+        {
+          "name": "Eliminating Crocodile",
+          "description": "Protects against attacks",
+          "manaCost": "3"
+        }
+      ],
+      "Mana Card Cost": "4",
+      "ap": "AP 6",
+      "dp": "DP 2",
+      "strength": {
+        "Vigor": "Tar",
+        "image": "SMana/Tar.png"
+      },
+      "weakness": {
+        "Vigor": "Moon",
+        "image": "WMana/Moon.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Atha.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Atha.png",
+      "card_number": "49/168",
+      "rarity": "Thrall",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Faelor",
+      "className": "Demi-God",
+      "classImage": "F:\\zzz\\Master Photo List\\Demi-God\\Demi-god6.png",
+      "attacks": [
+        {
+          "name": "Hallowed Armadillo",
+          "description": "Uses opponent items 2 turns",
+          "manaCost": "7"
+        },
+        {
+          "name": "Jagged Earthquake",
+          "description": "Turns opponent creatures 2 rounds",
+          "manaCost": "2"
+        }
+      ],
+      "Mana Card Cost": "1",
+      "ap": "AP 2",
+      "dp": "DP 2",
+      "strength": {
+        "Vigor": "Chaos",
+        "image": "SMana/Chaos.png"
+      },
+      "weakness": {
+        "Vigor": "Ocean",
+        "image": "WMana/Ocean.png"
+      },
+      "deckManaImage": "Mana/Sun.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Sun\\Creature\\Faelor.png",
+      "print_path": "B:\\Cards\\Sun(Print)\\Creature\\Faelor.png",
+      "card_number": "50/168",
+      "rarity": "Thrall",
+      "vigor": "Sun",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Hirsca",
+      "className": "Aasimar",
+      "classImage": "F:\\zzz\\Master Photo List\\Aasimar\\Aasimar38.png",
+      "attacks": [
+        {
+          "name": "Twilight",
+          "description": "Turns opponent harmless 2 turns",
+          "manaCost": "11"
+        },
+        {
+          "name": "Mystic Mirage",
+          "description": "Opponent -7 life",
+          "manaCost": "5"
+        }
+      ],
+      "Mana Card Cost": "1",
+      "ap": "AP 1",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Fungus",
+        "image": "SMana/Fungus.png"
+      },
+      "weakness": {
+        "Vigor": "Chaos",
+        "image": "WMana/Chaos.png"
+      },
+      "deckManaImage": "Mana/Purity.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Purity\\Creature\\Hirsca.png",
+      "print_path": "B:\\Cards\\Purity(Print)\\Creature\\Hirsca.png",
+      "card_number": "51/168",
+      "rarity": "Thrall",
+      "vigor": "Purity",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Nodrimkk",
+      "className": "Dryad",
+      "classImage": "F:\\zzz\\Master Photo List\\Dryad\\Dryad6.png",
+      "attacks": [
+        {
+          "name": "Toxic Venom",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "1"
+        },
+        {
+          "name": "Lunar Eclipse",
+          "description": "Turns opponent harmless 2 turns",
+          "manaCost": "2"
+        }
+      ],
+      "Mana Card Cost": "1",
+      "ap": "AP 4",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Earth",
+        "image": "SMana/Earth.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Nodrimkk.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Nodrimkk.png",
+      "card_number": "52/168",
+      "rarity": "Skilled",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Ilren",
+      "className": "Lion",
+      "classImage": "F:\\zzz\\Master Photo List\\Lion\\Lion7.png",
+      "attacks": [
+        {
+          "name": "Paralyzing Venom",
+          "description": "Silences target 3 rounds",
+          "manaCost": "1"
+        },
+        {
+          "name": "Piercing Ice Blast",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "10"
+        }
+      ],
+      "Mana Card Cost": "6",
+      "ap": "AP 4",
+      "dp": "DP 5",
+      "strength": {
+        "Vigor": "Moon",
+        "image": "SMana/Moon.png"
+      },
+      "weakness": {
+        "Vigor": "Ocean",
+        "image": "WMana/Ocean.png"
+      },
+      "deckManaImage": "Mana/Sun.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Sun\\Creature\\Ilren.png",
+      "print_path": "B:\\Cards\\Sun(Print)\\Creature\\Ilren.png",
+      "card_number": "53/168",
+      "rarity": "Skilled",
+      "vigor": "Sun",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Deveris",
+      "className": "Gargoyle",
+      "classImage": "F:\\zzz\\Master Photo List\\Gargoyle\\Gargoyle.png",
+      "attacks": [
+        {
+          "name": "Swift Windstorm",
+          "description": "Blocks flying 3 rounds",
+          "manaCost": "3"
+        },
+        {
+          "name": "Apocalyptic Apocalypse",
+          "description": "Triggers chaos, no attacks 4 turns",
+          "manaCost": "2"
+        }
+      ],
+      "Mana Card Cost": "2",
+      "ap": "AP 1",
+      "dp": "DP 1",
+      "strength": {
+        "Vigor": "Moon",
+        "image": "SMana/Moon.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Earth.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Earth\\Creature\\Deveris.png",
+      "print_path": "B:\\Cards\\Earth(Print)\\Creature\\Deveris.png",
+      "card_number": "54/168",
+      "rarity": "Skilled",
+      "vigor": "Earth",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Isolde",
+      "className": "Archer",
+      "classImage": "F:\\zzz\\Master Photo List\\Archer\\Archer4.png",
+      "attacks": [
+        {
+          "name": "Hellfire Inferno",
+          "description": "Attacks opponent 4 damage",
+          "manaCost": "7"
+        },
+        {
+          "name": "Poison Ivy Trap",
+          "description": "Exiles target card",
+          "manaCost": "10"
+        }
+      ],
+      "Mana Card Cost": "2",
+      "ap": "AP 4",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Ocean",
+        "image": "SMana/Ocean.png"
+      },
+      "weakness": {
+        "Vigor": "Greed",
+        "image": "WMana/Greed.png"
+      },
+      "deckManaImage": "Mana/Lightning.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Lightning\\Creature\\Isolde.png",
+      "print_path": "B:\\Cards\\Lightning(Print)\\Creature\\Isolde.png",
+      "card_number": "55/168",
+      "rarity": "Skilled",
+      "vigor": "Lightning",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Faelan",
+      "className": "Knight",
+      "classImage": "F:\\zzz\\Master Photo List\\Knight\\Knight2.png",
+      "attacks": [
+        {
+          "name": "Reaper Doom",
+          "description": "Opponent -7 life",
+          "manaCost": "4"
+        },
+        {
+          "name": "Temporal Shift",
+          "description": "Turns opponent creatures 2 rounds",
+          "manaCost": "9"
+        }
+      ],
+      "Mana Card Cost": "3",
+      "ap": "AP 4",
+      "dp": "DP 1",
+      "strength": {
+        "Vigor": "Moon",
+        "image": "SMana/Moon.png"
+      },
+      "weakness": {
+        "Vigor": "Greed",
+        "image": "WMana/Greed.png"
+      },
+      "deckManaImage": "Mana/Lightning.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Lightning\\Creature\\Faelan.png",
+      "print_path": "B:\\Cards\\Lightning(Print)\\Creature\\Faelan.png",
+      "card_number": "56/168",
+      "rarity": "Skilled",
+      "vigor": "Lightning",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Evandorius",
+      "className": "Archer",
+      "classImage": "F:\\zzz\\Master Photo List\\Archer\\Archer10.png",
+      "attacks": [
+        {
+          "name": "Lethal Venom Strike",
+          "description": "Silences target 3 rounds",
+          "manaCost": "4"
+        },
+        {
+          "name": "Raging Inferno",
+          "description": "Attacks opponent 4 damage",
+          "manaCost": "2"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 12",
+      "dp": "DP 10",
+      "strength": {
+        "Vigor": "Ocean",
+        "image": "SMana/Ocean.png"
+      },
+      "weakness": {
+        "Vigor": "Purity",
+        "image": "WMana/Purity.png"
+      },
+      "deckManaImage": "Mana/Lightning.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Lightning\\Creature\\Evandorius.png",
+      "print_path": "B:\\Cards\\Lightning(Print)\\Creature\\Evandorius.png",
+      "card_number": "57/168",
+      "rarity": "Skilled",
+      "vigor": "Lightning",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Meirow",
+      "className": "Valkerie",
+      "classImage": "F:\\zzz\\Master Photo List\\Valkerie\\Valkerie8.png",
+      "attacks": [
+        {
+          "name": "Razor Wind",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "10"
+        },
+        {
+          "name": "Infernal Inferno",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "8"
+        }
+      ],
+      "Mana Card Cost": "10",
+      "ap": "AP 9",
+      "dp": "DP 11",
+      "strength": {
+        "Vigor": "Moon",
+        "image": "SMana/Moon.png"
+      },
+      "weakness": {
+        "Vigor": "Earth",
+        "image": "WMana/Earth.png"
+      },
+      "deckManaImage": "Mana/Lightning.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Lightning\\Creature\\Meirow.png",
+      "print_path": "B:\\Cards\\Lightning(Print)\\Creature\\Meirow.png",
+      "card_number": "58/168",
+      "rarity": "Skilled",
+      "vigor": "Lightning",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Darian",
+      "className": "Griffin",
+      "classImage": "F:\\zzz\\Master Photo List\\Griffin\\Griffin1.png",
+      "attacks": [
+        {
+          "name": "Galactic Impact",
+          "description": "Reflects opponent spell x3 damage",
+          "manaCost": "5"
+        },
+        {
+          "name": "Mild Rose",
+          "description": "Opponent -6 life",
+          "manaCost": "6"
+        }
+      ],
+      "Mana Card Cost": "9",
+      "ap": "AP 5",
+      "dp": "DP 8",
+      "strength": {
+        "Vigor": "Moon",
+        "image": "SMana/Moon.png"
+      },
+      "weakness": {
+        "Vigor": "Ocean",
+        "image": "WMana/Ocean.png"
+      },
+      "deckManaImage": "Mana/Earth.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Earth\\Creature\\Darian.png",
+      "print_path": "B:\\Cards\\Earth(Print)\\Creature\\Darian.png",
+      "card_number": "59/168",
+      "rarity": "Skilled",
+      "vigor": "Earth",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Elyssiana",
+      "className": "Gargoyle",
+      "classImage": "F:\\zzz\\Master Photo List\\Gargoyle\\Gargoyle9.png",
+      "attacks": [
+        {
+          "name": "Radiant Cascade",
+          "description": "Heals caster double successful attack",
+          "manaCost": "9"
+        },
+        {
+          "name": "Spectral Gaze",
+          "description": "Opponent -2 life",
+          "manaCost": "1"
+        }
+      ],
+      "Mana Card Cost": "11",
+      "ap": "AP 10",
+      "dp": "DP 9",
+      "strength": {
+        "Vigor": "Lightning",
+        "image": "SMana/Lightning.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Earth.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Earth\\Creature\\Elyssiana.png",
+      "print_path": "B:\\Cards\\Earth(Print)\\Creature\\Elyssiana.png",
+      "card_number": "60/168",
+      "rarity": "Skilled",
+      "vigor": "Earth",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Medic",
+      "className": "Samurai",
+      "classImage": "F:\\zzz\\Master Photo List\\Samurai\\Samurai7.png",
+      "attacks": [
+        {
+          "name": "Glacial Avalanche",
+          "description": "Attacks all 4 damage",
+          "manaCost": "5"
+        },
+        {
+          "name": "Netherworld Oblivion",
+          "description": "No spellcasting 5 rounds",
+          "manaCost": "5"
+        }
+      ],
+      "Mana Card Cost": "7",
+      "ap": "AP 4",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Sorcery",
+        "image": "SMana/Sorcery.png"
+      },
+      "weakness": {
+        "Vigor": "Greed",
+        "image": "WMana/Greed.png"
+      },
+      "deckManaImage": "Mana/Lightning.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Lightning\\Creature\\Medic.png",
+      "print_path": "B:\\Cards\\Lightning(Print)\\Creature\\Medic.png",
+      "card_number": "61/168",
+      "rarity": "Skilled",
+      "vigor": "Lightning",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Brigrik",
+      "className": "Unicorn",
+      "classImage": "F:\\zzz\\Master Photo List\\Unicorn\\Unicorn2.png",
+      "attacks": [
+        {
+          "name": "Frostbite Tempest",
+          "description": "Attacks all 6 damage",
+          "manaCost": "3"
+        },
+        {
+          "name": "Rift of Despair",
+          "description": "Opponent -5 life",
+          "manaCost": "5"
+        }
+      ],
+      "Mana Card Cost": "2",
+      "ap": "AP 3",
+      "dp": "DP 2",
+      "strength": {
+        "Vigor": "Fungus",
+        "image": "SMana/Fungus.png"
+      },
+      "weakness": {
+        "Vigor": "Chaos",
+        "image": "WMana/Chaos.png"
+      },
+      "deckManaImage": "Mana/Purity.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Purity\\Creature\\Brigrik.png",
+      "print_path": "B:\\Cards\\Purity(Print)\\Creature\\Brigrik.png",
+      "card_number": "62/168",
+      "rarity": "Skilled",
+      "vigor": "Purity",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Lysaeris",
+      "className": "Archon",
+      "classImage": "F:\\zzz\\Master Photo List\\Archon\\Archon2.png",
+      "attacks": [
+        {
+          "name": "Frostbite Slash",
+          "description": "Blocks flying 1 round",
+          "manaCost": "5"
+        },
+        {
+          "name": "Cyclone Whirlwind",
+          "description": "Blocks flying 3 rounds",
+          "manaCost": "7"
+        }
+      ],
+      "Mana Card Cost": "2",
+      "ap": "AP 3",
+      "dp": "DP 2",
+      "strength": {
+        "Vigor": "Sorcery",
+        "image": "SMana/Sorcery.png"
+      },
+      "weakness": {
+        "Vigor": "Sorcery",
+        "image": "WMana/Sorcery.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Lysaeris.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Lysaeris.png",
+      "card_number": "63/168",
+      "rarity": "Skilled",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Medic",
+      "className": "Elf",
+      "classImage": "F:\\zzz\\Master Photo List\\Elf\\Elf1.png",
+      "attacks": [
+        {
+          "name": "Prismatic Prism",
+          "description": "Heals caster next damage dealt",
+          "manaCost": "5"
+        },
+        {
+          "name": "Silver Frost",
+          "description": "Opponent -3 life",
+          "manaCost": "6"
+        }
+      ],
+      "Mana Card Cost": "7",
+      "ap": "AP 7",
+      "dp": "DP 9",
+      "strength": {
+        "Vigor": "Lightning",
+        "image": "SMana/Lightning.png"
+      },
+      "weakness": {
+        "Vigor": "Lava",
+        "image": "WMana/Lava.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Medic.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Medic.png",
+      "card_number": "64/168",
+      "rarity": "Skilled",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Galadrielor",
+      "className": "Necromancer",
+      "classImage": "F:\\zzz\\Master Photo List\\Necromancer\\Necromancer2.png",
+      "attacks": [
+        {
+          "name": "Nebula Nova",
+          "description": "Heals caster next damage dealt",
+          "manaCost": "3"
+        },
+        {
+          "name": "Lethal Venom Barrage",
+          "description": "Silences target 4 rounds",
+          "manaCost": "9"
+        }
+      ],
+      "Mana Card Cost": "4",
+      "ap": "AP 4",
+      "dp": "DP 5",
+      "strength": {
+        "Vigor": "Sun",
+        "image": "SMana/Sun.png"
+      },
+      "weakness": {
+        "Vigor": "Lava",
+        "image": "WMana/Lava.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Galadrielor.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Galadrielor.png",
+      "card_number": "65/168",
+      "rarity": "Skilled",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Elysia",
+      "className": "Lion",
+      "classImage": "F:\\zzz\\Master Photo List\\Lion\\Lion7.png",
+      "attacks": [
+        {
+          "name": "Soul Harvest",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "7"
+        },
+        {
+          "name": "Teleport",
+          "description": "Teleports caster random location",
+          "manaCost": "5"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 6",
+      "dp": "DP 10",
+      "strength": {
+        "Vigor": "Moon",
+        "image": "SMana/Moon.png"
+      },
+      "weakness": {
+        "Vigor": "Ocean",
+        "image": "WMana/Ocean.png"
+      },
+      "deckManaImage": "Mana/Sun.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Sun\\Creature\\Elysia.png",
+      "print_path": "B:\\Cards\\Sun(Print)\\Creature\\Elysia.png",
+      "card_number": "66/168",
+      "rarity": "Skilled",
+      "vigor": "Sun",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Elysia",
+      "className": "Knight",
+      "classImage": "F:\\zzz\\Master Photo List\\Knight\\Knight4.png",
+      "attacks": [
+        {
+          "name": "Reaper Doom",
+          "description": "Opponent -7 life",
+          "manaCost": "2"
+        },
+        {
+          "name": "Thunderstrike",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "11"
+        }
+      ],
+      "Mana Card Cost": "8",
+      "ap": "AP 9",
+      "dp": "DP 7",
+      "strength": {
+        "Vigor": "Sorcery",
+        "image": "SMana/Sorcery.png"
+      },
+      "weakness": {
+        "Vigor": "Earth",
+        "image": "WMana/Earth.png"
+      },
+      "deckManaImage": "Mana/Lightning.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Lightning\\Creature\\Elysia.png",
+      "print_path": "B:\\Cards\\Lightning(Print)\\Creature\\Elysia.png",
+      "card_number": "67/168",
+      "rarity": "Skilled",
+      "vigor": "Lightning",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Seraphionel",
+      "className": "Valkerie",
+      "classImage": "F:\\zzz\\Master Photo List\\Valkerie\\Valkerie1.png",
+      "attacks": [
+        {
+          "name": "Soul Harvest",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "12"
+        },
+        {
+          "name": "Temporal Shift",
+          "description": "Turns opponent creatures 2 rounds",
+          "manaCost": "3"
+        }
+      ],
+      "Mana Card Cost": "6",
+      "ap": "AP 4",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Tar",
+        "image": "SMana/Tar.png"
+      },
+      "weakness": {
+        "Vigor": "Greed",
+        "image": "WMana/Greed.png"
+      },
+      "deckManaImage": "Mana/Lightning.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Lightning\\Creature\\Seraphionel.png",
+      "print_path": "B:\\Cards\\Lightning(Print)\\Creature\\Seraphionel.png",
+      "card_number": "68/168",
+      "rarity": "Skilled",
+      "vigor": "Lightning",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Kotack",
+      "className": "Ogre",
+      "classImage": "F:\\zzz\\Master Photo List\\Ogre\\Ogre.png",
+      "attacks": [
+        {
+          "name": "Flameburst",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "11"
+        },
+        {
+          "name": "Spiritual Renewal",
+          "description": "Heals caster next damage dealt",
+          "manaCost": "1"
+        }
+      ],
+      "Mana Card Cost": "9",
+      "ap": "AP 4",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Fairy",
+        "image": "SMana/Fairy.png"
+      },
+      "weakness": {
+        "Vigor": "Chaos",
+        "image": "WMana/Chaos.png"
+      },
+      "deckManaImage": "Mana/Earth.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Earth\\Creature\\Kotack.png",
+      "print_path": "B:\\Cards\\Earth(Print)\\Creature\\Kotack.png",
+      "card_number": "69/168",
+      "rarity": "Skilled",
+      "vigor": "Earth",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Isolde",
+      "className": "Gargoyle",
+      "classImage": "F:\\zzz\\Master Photo List\\Gargoyle\\Gargoyle2.png",
+      "attacks": [
+        {
+          "name": "Kaleidoscope Mirage",
+          "description": "No attacks 3 turns",
+          "manaCost": "4"
+        },
+        {
+          "name": "Blazing Inferno",
+          "description": "Ignites inferno, -3 damage",
+          "manaCost": "6"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 12",
+      "dp": "DP 7",
+      "strength": {
+        "Vigor": "Fairy",
+        "image": "SMana/Fairy.png"
+      },
+      "weakness": {
+        "Vigor": "Ocean",
+        "image": "WMana/Ocean.png"
+      },
+      "deckManaImage": "Mana/Earth.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Earth\\Creature\\Isolde.png",
+      "print_path": "B:\\Cards\\Earth(Print)\\Creature\\Isolde.png",
+      "card_number": "70/168",
+      "rarity": "Skilled",
+      "vigor": "Earth",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Medic",
+      "className": "Mermaid",
+      "classImage": "F:\\zzz\\Master Photo List\\Mermaid\\Mermaid1.png",
+      "attacks": [
+        {
+          "name": "Prismatic Beam",
+          "description": "Reflects opponent spell",
+          "manaCost": "1"
+        },
+        {
+          "name": "Life Strike",
+          "description": "Attacks opponent 1 damage",
+          "manaCost": "8"
+        }
+      ],
+      "Mana Card Cost": "3",
+      "ap": "AP 1",
+      "dp": "DP 1",
+      "strength": {
+        "Vigor": "Earth",
+        "image": "SMana/Earth.png"
+      },
+      "weakness": {
+        "Vigor": "Moon",
+        "image": "WMana/Moon.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Medic.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Medic.png",
+      "card_number": "71/168",
+      "rarity": "Skilled",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Chrevarr",
+      "className": "Kitsune",
+      "classImage": "F:\\zzz\\Master Photo List\\Kitsune\\Kitsune6.png",
+      "attacks": [
+        {
+          "name": "Inferno Fury",
+          "description": "Attacks opponent 4 damage",
+          "manaCost": "3"
+        },
+        {
+          "name": "Pulsating Thunderstorm",
+          "description": "Attacks all 3 damage",
+          "manaCost": "5"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 11",
+      "dp": "DP 12",
+      "strength": {
+        "Vigor": "Greed",
+        "image": "SMana/Greed.png"
+      },
+      "weakness": {
+        "Vigor": "Earth",
+        "image": "WMana/Earth.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Chrevarr.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Chrevarr.png",
+      "card_number": "72/168",
+      "rarity": "Skilled",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Fradel",
+      "className": "Giant",
+      "classImage": "F:\\zzz\\Master Photo List\\Giant\\Giant6.png",
+      "attacks": [
+        {
+          "name": "Rainstorm Flood",
+          "description": "Blocks ground 3 rounds",
+          "manaCost": "2"
+        },
+        {
+          "name": "Summoning Summoning",
+          "description": "No summoning 8 rounds",
+          "manaCost": "7"
+        }
+      ],
+      "Mana Card Cost": "1",
+      "ap": "AP 1",
+      "dp": "DP 1",
+      "strength": {
+        "Vigor": "Fairy",
+        "image": "SMana/Fairy.png"
+      },
+      "weakness": {
+        "Vigor": "Chaos",
+        "image": "WMana/Chaos.png"
+      },
+      "deckManaImage": "Mana/Earth.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Earth\\Creature\\Fradel.png",
+      "print_path": "B:\\Cards\\Earth(Print)\\Creature\\Fradel.png",
+      "card_number": "73/168",
+      "rarity": "Skilled",
+      "vigor": "Earth",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Hirsca",
+      "className": "Shade",
+      "classImage": "F:\\zzz\\Master Photo List\\Shade\\Shade9.png",
+      "attacks": [
+        {
+          "name": "Raging Inferno",
+          "description": "Attacks opponent 4 damage",
+          "manaCost": "7"
+        },
+        {
+          "name": "Radiant Dawn",
+          "description": "Heals caster double successful attack",
+          "manaCost": "1"
+        }
+      ],
+      "Mana Card Cost": "9",
+      "ap": "AP 7",
+      "dp": "DP 5",
+      "strength": {
+        "Vigor": "Fungus",
+        "image": "SMana/Fungus.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Hirsca.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Hirsca.png",
+      "card_number": "74/168",
+      "rarity": "Skilled",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Zinn",
+      "className": "Griffin",
+      "classImage": "F:\\zzz\\Master Photo List\\Griffin\\Griffin3.png",
+      "attacks": [
+        {
+          "name": "Summoning Ritual",
+          "description": "Draws 3 cards",
+          "manaCost": "10"
+        },
+        {
+          "name": "Teleport",
+          "description": "Teleports caster random location",
+          "manaCost": "2"
+        }
+      ],
+      "Mana Card Cost": "10",
+      "ap": "AP 11",
+      "dp": "DP 7",
+      "strength": {
+        "Vigor": "Fairy",
+        "image": "SMana/Fairy.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Earth.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Earth\\Creature\\Zinn.png",
+      "print_path": "B:\\Cards\\Earth(Print)\\Creature\\Zinn.png",
+      "card_number": "75/168",
+      "rarity": "Skilled",
+      "vigor": "Earth",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Elowenndor",
+      "className": "Medic",
+      "classImage": "F:\\zzz\\Master Photo List\\Medic\\Medic4.png",
+      "attacks": [
+        {
+          "name": "Spectral Specter",
+          "description": "Turns opponent creatures 3 rounds",
+          "manaCost": "11"
+        },
+        {
+          "name": "Pyroclasmic Eruption",
+          "description": "Attacks all 4 damage",
+          "manaCost": "1"
+        }
+      ],
+      "Mana Card Cost": "9",
+      "ap": "AP 7",
+      "dp": "DP 5",
+      "strength": {
+        "Vigor": "Lightning",
+        "image": "SMana/Lightning.png"
+      },
+      "weakness": {
+        "Vigor": "Chaos",
+        "image": "WMana/Chaos.png"
+      },
+      "deckManaImage": "Mana/Purity.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Purity\\Creature\\Elowenndor.png",
+      "print_path": "B:\\Cards\\Purity(Print)\\Creature\\Elowenndor.png",
+      "card_number": "76/168",
+      "rarity": "Skilled",
+      "vigor": "Purity",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Garret",
+      "className": "Elf",
+      "classImage": "F:\\zzz\\Master Photo List\\Elf\\Elf1.png",
+      "attacks": [
+        {
+          "name": "Cyclone Fury",
+          "description": "Attacks all 3 damage",
+          "manaCost": "10"
+        },
+        {
+          "name": "Reflective Shield",
+          "description": "Reflects opponent spell",
+          "manaCost": "3"
+        }
+      ],
+      "Mana Card Cost": "11",
+      "ap": "AP 11",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Lightning",
+        "image": "SMana/Lightning.png"
+      },
+      "weakness": {
+        "Vigor": "Earth",
+        "image": "WMana/Earth.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Garret.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Garret.png",
+      "card_number": "77/168",
+      "rarity": "Skilled",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Galadriel",
+      "className": "Fairy",
+      "classImage": "F:\\zzz\\Master Photo List\\Fairy\\Fairy15.png",
+      "attacks": [
+        {
+          "name": "Soul Drain",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "6"
+        },
+        {
+          "name": "Acid Rainfall",
+          "description": "Corrosive rain, damages all 2 rounds",
+          "manaCost": "8"
+        }
+      ],
+      "Mana Card Cost": "8",
+      "ap": "AP 7",
+      "dp": "DP 5",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Moon",
+        "image": "WMana/Moon.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Galadriel.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Galadriel.png",
+      "card_number": "78/168",
+      "rarity": "Skilled",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Yevrith",
+      "className": "Archon",
+      "classImage": "F:\\zzz\\Master Photo List\\Archon\\Archon5.png",
+      "attacks": [
+        {
+          "name": "Void Void",
+          "description": "No attacks 5 turns",
+          "manaCost": "4"
+        },
+        {
+          "name": "Piercing Ice Blast",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "3"
+        }
+      ],
+      "Mana Card Cost": "4",
+      "ap": "AP 6",
+      "dp": "DP 1",
+      "strength": {
+        "Vigor": "Fungus",
+        "image": "SMana/Fungus.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Yevrith.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Yevrith.png",
+      "card_number": "79/168",
+      "rarity": "Skilled",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Seraphion",
+      "className": "Siren",
+      "classImage": "F:\\zzz\\Master Photo List\\Siren\\Siren2.png",
+      "attacks": [
+        {
+          "name": "Wrath of Nature",
+          "description": "Attacks all 4 damage",
+          "manaCost": "7"
+        },
+        {
+          "name": "Chaos Eruption",
+          "description": "Causes chaos, no attacks 6 turns",
+          "manaCost": "4"
+        }
+      ],
+      "Mana Card Cost": "10",
+      "ap": "AP 10",
+      "dp": "DP 8",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Seraphion.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Seraphion.png",
+      "card_number": "80/168",
+      "rarity": "Skilled",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Codza",
+      "className": "Avatar",
+      "classImage": "F:\\zzz\\Master Photo List\\Avatar\\Avatar10.png",
+      "attacks": [
+        {
+          "name": "Galactic Impact",
+          "description": "Reflects opponent spell x3 damage",
+          "manaCost": "2"
+        },
+        {
+          "name": "Unholy Blast",
+          "description": "Attacks opponent 4 damage",
+          "manaCost": "6"
+        }
+      ],
+      "Mana Card Cost": "9",
+      "ap": "AP 9",
+      "dp": "DP 8",
+      "strength": {
+        "Vigor": "Fungus",
+        "image": "SMana/Fungus.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Codza.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Codza.png",
+      "card_number": "81/168",
+      "rarity": "Skilled",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Lysandor",
+      "className": "Elf",
+      "classImage": "F:\\zzz\\Master Photo List\\Elf\\Elf3.png",
+      "attacks": [
+        {
+          "name": "Shifting Shadows",
+          "description": "No attacks 3 turns",
+          "manaCost": "12"
+        },
+        {
+          "name": "Eclipse of Doom",
+          "description": "No attacks 9 turns",
+          "manaCost": "11"
+        }
+      ],
+      "Mana Card Cost": "11",
+      "ap": "AP 12",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Lightning",
+        "image": "SMana/Lightning.png"
+      },
+      "weakness": {
+        "Vigor": "Earth",
+        "image": "WMana/Earth.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Lysandor.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Lysandor.png",
+      "card_number": "82/168",
+      "rarity": "Skilled",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Eldritch",
+      "className": "BugBear",
+      "classImage": "F:\\zzz\\Master Photo List\\BugBear\\Bugbear2.png",
+      "attacks": [
+        {
+          "name": "Teleport",
+          "description": "Teleports caster random location",
+          "manaCost": "12"
+        },
+        {
+          "name": "Radiant Dawn",
+          "description": "Heals caster double successful attack",
+          "manaCost": "7"
+        }
+      ],
+      "Mana Card Cost": "10",
+      "ap": "AP 12",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Lightning",
+        "image": "SMana/Lightning.png"
+      },
+      "weakness": {
+        "Vigor": "Fairy",
+        "image": "WMana/Fairy.png"
+      },
+      "deckManaImage": "Mana/Earth.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Earth\\Creature\\Eldritch.png",
+      "print_path": "B:\\Cards\\Earth(Print)\\Creature\\Eldritch.png",
+      "card_number": "83/168",
+      "rarity": "Skilled",
+      "vigor": "Earth",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Zorrin",
+      "className": "Demi-God",
+      "classImage": "F:\\zzz\\Master Photo List\\Demi-God\\Demi-god5.png",
+      "attacks": [
+        {
+          "name": "Regenerating Aura",
+          "description": "Heals caster next damage dealt",
+          "manaCost": "11"
+        },
+        {
+          "name": "Thunderstrike",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "4"
+        }
+      ],
+      "Mana Card Cost": "3",
+      "ap": "AP 3",
+      "dp": "DP 1",
+      "strength": {
+        "Vigor": "Spirit",
+        "image": "SMana/Spirit.png"
+      },
+      "weakness": {
+        "Vigor": "Moon",
+        "image": "WMana/Moon.png"
+      },
+      "deckManaImage": "Mana/Sun.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Sun\\Creature\\Zorrin.png",
+      "print_path": "B:\\Cards\\Sun(Print)\\Creature\\Zorrin.png",
+      "card_number": "84/168",
+      "rarity": "Skilled",
+      "vigor": "Sun",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Stirralk",
+      "className": "BugBear",
+      "classImage": "F:\\zzz\\Master Photo List\\BugBear\\Bugbear.png",
+      "attacks": [
+        {
+          "name": "Thunderstrike",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "4"
+        },
+        {
+          "name": "Temporal Warp",
+          "description": "Turns opponent creatures 4 rounds",
+          "manaCost": "10"
+        }
+      ],
+      "Mana Card Cost": "9",
+      "ap": "AP 7",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Fairy",
+        "image": "SMana/Fairy.png"
+      },
+      "weakness": {
+        "Vigor": "Chaos",
+        "image": "WMana/Chaos.png"
+      },
+      "deckManaImage": "Mana/Earth.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Earth\\Creature\\Stirralk.png",
+      "print_path": "B:\\Cards\\Earth(Print)\\Creature\\Stirralk.png",
+      "card_number": "85/168",
+      "rarity": "Skilled",
+      "vigor": "Earth",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Evanthia",
+      "className": "Mermaid",
+      "classImage": "F:\\zzz\\Master Photo List\\Mermaid\\Mermaid8.png",
+      "attacks": [
+        {
+          "name": "Galactic Graviton",
+          "description": "Reflects opponent spell",
+          "manaCost": "7"
+        },
+        {
+          "name": "Whirlwind",
+          "description": "Blocks flying 3 rounds",
+          "manaCost": "11"
+        }
+      ],
+      "Mana Card Cost": "7",
+      "ap": "AP 7",
+      "dp": "DP 9",
+      "strength": {
+        "Vigor": "Sun",
+        "image": "SMana/Sun.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Evanthia.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Evanthia.png",
+      "card_number": "86/168",
+      "rarity": "Skilled",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Hrolgar",
+      "className": "Knight",
+      "classImage": "F:\\zzz\\Master Photo List\\Knight\\Knight8.png",
+      "attacks": [
+        {
+          "name": "Radiant Radiance",
+          "description": "Heals caster next damage dealt",
+          "manaCost": "5"
+        },
+        {
+          "name": "Soul Drain",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "4"
+        }
+      ],
+      "Mana Card Cost": "2",
+      "ap": "AP 2",
+      "dp": "DP 1",
+      "strength": {
+        "Vigor": "Ocean",
+        "image": "SMana/Ocean.png"
+      },
+      "weakness": {
+        "Vigor": "Purity",
+        "image": "WMana/Purity.png"
+      },
+      "deckManaImage": "Mana/Lightning.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Lightning\\Creature\\Hrolgar.png",
+      "print_path": "B:\\Cards\\Lightning(Print)\\Creature\\Hrolgar.png",
+      "card_number": "87/168",
+      "rarity": "Skilled",
+      "vigor": "Lightning",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Zhork",
+      "className": "Lion",
+      "classImage": "F:\\zzz\\Master Photo List\\Lion\\Lion3.png",
+      "attacks": [
+        {
+          "name": "Spiritual Shield",
+          "description": "Reflects opponent spell",
+          "manaCost": "1"
+        },
+        {
+          "name": "Spectral Specter",
+          "description": "Turns opponent creatures 3 rounds",
+          "manaCost": "7"
+        }
+      ],
+      "Mana Card Cost": "7",
+      "ap": "AP 5",
+      "dp": "DP 9",
+      "strength": {
+        "Vigor": "Chaos",
+        "image": "SMana/Chaos.png"
+      },
+      "weakness": {
+        "Vigor": "Moon",
+        "image": "WMana/Moon.png"
+      },
+      "deckManaImage": "Mana/Sun.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Sun\\Creature\\Zhork.png",
+      "print_path": "B:\\Cards\\Sun(Print)\\Creature\\Zhork.png",
+      "card_number": "88/168",
+      "rarity": "Skilled",
+      "vigor": "Sun",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Alaric",
+      "className": "Elf",
+      "classImage": "F:\\zzz\\Master Photo List\\Elf\\Elf1.png",
+      "attacks": [
+        {
+          "name": "Reflective Shield",
+          "description": "Reflects opponent spell",
+          "manaCost": "11"
+        },
+        {
+          "name": "Blazing Phoenix",
+          "description": "Summons phoenix, -6 damage",
+          "manaCost": "1"
+        }
+      ],
+      "Mana Card Cost": "10",
+      "ap": "AP 6",
+      "dp": "DP 12",
+      "strength": {
+        "Vigor": "Lightning",
+        "image": "SMana/Lightning.png"
+      },
+      "weakness": {
+        "Vigor": "Lava",
+        "image": "WMana/Lava.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Alaric.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Alaric.png",
+      "card_number": "89/168",
+      "rarity": "Skilled",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Galadriel",
+      "className": "BugBear",
+      "classImage": "F:\\zzz\\Master Photo List\\BugBear\\Bugbear1.png",
+      "attacks": [
+        {
+          "name": "Shadow Strike",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "3"
+        },
+        {
+          "name": "Pulsating Thunderstorm",
+          "description": "Attacks all 3 damage",
+          "manaCost": "5"
+        }
+      ],
+      "Mana Card Cost": "2",
+      "ap": "AP 3",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Moon",
+        "image": "SMana/Moon.png"
+      },
+      "weakness": {
+        "Vigor": "Fairy",
+        "image": "WMana/Fairy.png"
+      },
+      "deckManaImage": "Mana/Earth.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Earth\\Creature\\Galadriel.png",
+      "print_path": "B:\\Cards\\Earth(Print)\\Creature\\Galadriel.png",
+      "card_number": "90/168",
+      "rarity": "Karls",
+      "vigor": "Earth",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Zorrin",
+      "className": "Avatar",
+      "classImage": "F:\\zzz\\Master Photo List\\Avatar\\Avatar8.png",
+      "attacks": [
+        {
+          "name": "Solar Flare",
+          "description": "Opponent -4 life",
+          "manaCost": "12"
+        },
+        {
+          "name": "Wrath of Nature",
+          "description": "Attacks all 4 damage",
+          "manaCost": "10"
+        }
+      ],
+      "Mana Card Cost": "6",
+      "ap": "AP 4",
+      "dp": "DP 5",
+      "strength": {
+        "Vigor": "Sorcery",
+        "image": "SMana/Sorcery.png"
+      },
+      "weakness": {
+        "Vigor": "Tar",
+        "image": "WMana/Tar.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Zorrin.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Zorrin.png",
+      "card_number": "91/168",
+      "rarity": "Karls",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Stotrirk",
+      "className": "Lion",
+      "classImage": "F:\\zzz\\Master Photo List\\Lion\\Lion1.png",
+      "attacks": [
+        {
+          "name": "Spiritual Shield",
+          "description": "Reflects opponent spell",
+          "manaCost": "10"
+        },
+        {
+          "name": "Haunting Tortoise",
+          "description": "Opponent -1 life",
+          "manaCost": "5"
+        }
+      ],
+      "Mana Card Cost": "2",
+      "ap": "AP 4",
+      "dp": "DP 2",
+      "strength": {
+        "Vigor": "Chaos",
+        "image": "SMana/Chaos.png"
+      },
+      "weakness": {
+        "Vigor": "Ocean",
+        "image": "WMana/Ocean.png"
+      },
+      "deckManaImage": "Mana/Sun.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Sun\\Creature\\Stotrirk.png",
+      "print_path": "B:\\Cards\\Sun(Print)\\Creature\\Stotrirk.png",
+      "card_number": "92/168",
+      "rarity": "Karls",
+      "vigor": "Sun",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Elyssia",
+      "className": "Samurai",
+      "classImage": "F:\\zzz\\Master Photo List\\Samurai\\Samurai4.png",
+      "attacks": [
+        {
+          "name": "Celestial Catastrophe",
+          "description": "Heals caster double successful attack",
+          "manaCost": "10"
+        },
+        {
+          "name": "Netherworld Oblivion",
+          "description": "No spellcasting 5 rounds",
+          "manaCost": "1"
+        }
+      ],
+      "Mana Card Cost": "9",
+      "ap": "AP 4",
+      "dp": "DP 8",
+      "strength": {
+        "Vigor": "Ocean",
+        "image": "SMana/Ocean.png"
+      },
+      "weakness": {
+        "Vigor": "Earth",
+        "image": "WMana/Earth.png"
+      },
+      "deckManaImage": "Mana/Lightning.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Lightning\\Creature\\Elyssia.png",
+      "print_path": "B:\\Cards\\Lightning(Print)\\Creature\\Elyssia.png",
+      "card_number": "93/168",
+      "rarity": "Karls",
+      "vigor": "Lightning",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Isolindor",
+      "className": "Archon",
+      "classImage": "F:\\zzz\\Master Photo List\\Archon\\Archon12.png",
+      "attacks": [
+        {
+          "name": "Chaos Chaos",
+          "description": "No life gain opponent 2 turns",
+          "manaCost": "6"
+        },
+        {
+          "name": "Zephyr Gale",
+          "description": "Blocks flying 4 rounds",
+          "manaCost": "3"
+        }
+      ],
+      "Mana Card Cost": "6",
+      "ap": "AP 4",
+      "dp": "DP 5",
+      "strength": {
+        "Vigor": "Sorcery",
+        "image": "SMana/Sorcery.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Isolindor.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Isolindor.png",
+      "card_number": "94/168",
+      "rarity": "Karls",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Baka",
+      "className": "Archer",
+      "classImage": "F:\\zzz\\Master Photo List\\Archer\\Archer7.png",
+      "attacks": [
+        {
+          "name": "Demonic Doom",
+          "description": "Opponent -4 life",
+          "manaCost": "3"
+        },
+        {
+          "name": "Stellar Surge",
+          "description": "Heals caster next damage dealt",
+          "manaCost": "9"
+        }
+      ],
+      "Mana Card Cost": "5",
+      "ap": "AP 5",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Sorcery",
+        "image": "SMana/Sorcery.png"
+      },
+      "weakness": {
+        "Vigor": "Purity",
+        "image": "WMana/Purity.png"
+      },
+      "deckManaImage": "Mana/Lightning.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Lightning\\Creature\\Baka.png",
+      "print_path": "B:\\Cards\\Lightning(Print)\\Creature\\Baka.png",
+      "card_number": "95/168",
+      "rarity": "Karls",
+      "vigor": "Lightning",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Lenden",
+      "className": "Giant",
+      "classImage": "F:\\zzz\\Master Photo List\\Giant\\Giant2.png",
+      "attacks": [
+        {
+          "name": "Thunderstrike",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "9"
+        },
+        {
+          "name": "Lightning Bolt",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "10"
+        }
+      ],
+      "Mana Card Cost": "11",
+      "ap": "AP 6",
+      "dp": "DP 7",
+      "strength": {
+        "Vigor": "Lightning",
+        "image": "SMana/Lightning.png"
+      },
+      "weakness": {
+        "Vigor": "Fairy",
+        "image": "WMana/Fairy.png"
+      },
+      "deckManaImage": "Mana/Earth.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Earth\\Creature\\Lenden.png",
+      "print_path": "B:\\Cards\\Earth(Print)\\Creature\\Lenden.png",
+      "card_number": "96/168",
+      "rarity": "Karls",
+      "vigor": "Earth",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Elowethian",
+      "className": "Medic",
+      "classImage": "F:\\zzz\\Master Photo List\\Medic\\Medic3.png",
+      "attacks": [
+        {
+          "name": "Hallowed Armadillo",
+          "description": "Uses opponent items 2 turns",
+          "manaCost": "10"
+        },
+        {
+          "name": "Ancestors Bomb",
+          "description": "Unleashes ancient bomb, -3 damage",
+          "manaCost": "11"
+        }
+      ],
+      "Mana Card Cost": "7",
+      "ap": "AP 9",
+      "dp": "DP 5",
+      "strength": {
+        "Vigor": "Greed",
+        "image": "SMana/Greed.png"
+      },
+      "weakness": {
+        "Vigor": "Tar",
+        "image": "WMana/Tar.png"
+      },
+      "deckManaImage": "Mana/Purity.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Purity\\Creature\\Elowethian.png",
+      "print_path": "B:\\Cards\\Purity(Print)\\Creature\\Elowethian.png",
+      "card_number": "97/168",
+      "rarity": "Karls",
+      "vigor": "Purity",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Tador",
+      "className": "Knight",
+      "classImage": "F:\\zzz\\Master Photo List\\Knight\\Knight2.png",
+      "attacks": [
+        {
+          "name": "Rapid Venom",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "8"
+        },
+        {
+          "name": "Glacial Shard Strike",
+          "description": "No life gain opponent 3 turns",
+          "manaCost": "1"
+        }
+      ],
+      "Mana Card Cost": "9",
+      "ap": "AP 5",
+      "dp": "DP 7",
+      "strength": {
+        "Vigor": "Ocean",
+        "image": "SMana/Ocean.png"
+      },
+      "weakness": {
+        "Vigor": "Fairy",
+        "image": "WMana/Fairy.png"
+      },
+      "deckManaImage": "Mana/Lightning.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Lightning\\Creature\\Tador.png",
+      "print_path": "B:\\Cards\\Lightning(Print)\\Creature\\Tador.png",
+      "card_number": "98/168",
+      "rarity": "Karls",
+      "vigor": "Lightning",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Seraphina",
+      "className": "Medic",
+      "classImage": "F:\\zzz\\Master Photo List\\Medic\\Medic2.png",
+      "attacks": [
+        {
+          "name": "Nebula Nova",
+          "description": "Heals caster next damage dealt",
+          "manaCost": "2"
+        },
+        {
+          "name": "Acidic Deluge",
+          "description": "Unleashes acidic rain, damages all 3 rounds",
+          "manaCost": "3"
+        }
+      ],
+      "Mana Card Cost": "8",
+      "ap": "AP 4",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Fungus",
+        "image": "SMana/Fungus.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Purity.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Purity\\Creature\\Seraphina.png",
+      "print_path": "B:\\Cards\\Purity(Print)\\Creature\\Seraphina.png",
+      "card_number": "99/168",
+      "rarity": "Karls",
+      "vigor": "Purity",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Evander",
+      "className": "Pegasi",
+      "classImage": "F:\\zzz\\Master Photo List\\Pegasi\\Pegasi4.png",
+      "attacks": [
+        {
+          "name": "Temporal Shift",
+          "description": "Turns opponent creatures 2 rounds",
+          "manaCost": "2"
+        },
+        {
+          "name": "Frostbite Slash",
+          "description": "Blocks flying 1 round",
+          "manaCost": "1"
+        }
+      ],
+      "Mana Card Cost": "3",
+      "ap": "AP 2",
+      "dp": "DP 1",
+      "strength": {
+        "Vigor": "Fungus",
+        "image": "SMana/Fungus.png"
+      },
+      "weakness": {
+        "Vigor": "Moon",
+        "image": "WMana/Moon.png"
+      },
+      "deckManaImage": "Mana/Sun.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Sun\\Creature\\Evander.png",
+      "print_path": "B:\\Cards\\Sun(Print)\\Creature\\Evander.png",
+      "card_number": "100/168",
+      "rarity": "Karls",
+      "vigor": "Sun",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Ravith",
+      "className": "Samurai",
+      "classImage": "F:\\zzz\\Master Photo List\\Samurai\\Samurai5.png",
+      "attacks": [
+        {
+          "name": "Twilight Strike",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "8"
+        },
+        {
+          "name": "Dark Nova",
+          "description": "Opponent -5 life",
+          "manaCost": "12"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 8",
+      "dp": "DP 7",
+      "strength": {
+        "Vigor": "Moon",
+        "image": "SMana/Moon.png"
+      },
+      "weakness": {
+        "Vigor": "Earth",
+        "image": "WMana/Earth.png"
+      },
+      "deckManaImage": "Mana/Lightning.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Lightning\\Creature\\Ravith.png",
+      "print_path": "B:\\Cards\\Lightning(Print)\\Creature\\Ravith.png",
+      "card_number": "101/168",
+      "rarity": "Karls",
+      "vigor": "Lightning",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Cyrel",
+      "className": "Fairy",
+      "classImage": "F:\\zzz\\Master Photo List\\Fairy\\Fairy.png",
+      "attacks": [
+        {
+          "name": "Winter Blast",
+          "description": "Opponent -4 life",
+          "manaCost": "9"
+        },
+        {
+          "name": "Phantom Mirage",
+          "description": "Opponent -7 life",
+          "manaCost": "4"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 10",
+      "dp": "DP 9",
+      "strength": {
+        "Vigor": "Greed",
+        "image": "SMana/Greed.png"
+      },
+      "weakness": {
+        "Vigor": "Sorcery",
+        "image": "WMana/Sorcery.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Cyrel.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Cyrel.png",
+      "card_number": "102/168",
+      "rarity": "Karls",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Zoran",
+      "className": "Demi-God",
+      "classImage": "F:\\zzz\\Master Photo List\\Demi-God\\Demi-god5.png",
+      "attacks": [
+        {
+          "name": "Angelic Magpie",
+          "description": "Summons angelic magpie, -4 life",
+          "manaCost": "8"
+        },
+        {
+          "name": "Piercing Ice Blast",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "6"
+        }
+      ],
+      "Mana Card Cost": "5",
+      "ap": "AP 4",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Moon",
+        "image": "SMana/Moon.png"
+      },
+      "weakness": {
+        "Vigor": "Greed",
+        "image": "WMana/Greed.png"
+      },
+      "deckManaImage": "Mana/Sun.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Sun\\Creature\\Zoran.png",
+      "print_path": "B:\\Cards\\Sun(Print)\\Creature\\Zoran.png",
+      "card_number": "103/168",
+      "rarity": "Karls",
+      "vigor": "Sun",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Carirol",
+      "className": "Fairy",
+      "classImage": "F:\\zzz\\Master Photo List\\Fairy\\Fairy14.png",
+      "attacks": [
+        {
+          "name": "Illusion Alligator",
+          "description": "Sacrifices creature, attacks",
+          "manaCost": "5"
+        },
+        {
+          "name": "Summoning Ritual",
+          "description": "Draws 3 cards",
+          "manaCost": "8"
+        }
+      ],
+      "Mana Card Cost": "10",
+      "ap": "AP 8",
+      "dp": "DP 7",
+      "strength": {
+        "Vigor": "Greed",
+        "image": "SMana/Greed.png"
+      },
+      "weakness": {
+        "Vigor": "Sorcery",
+        "image": "WMana/Sorcery.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Carirol.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Carirol.png",
+      "card_number": "104/168",
+      "rarity": "Karls",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Malachon",
+      "className": "Demi-God",
+      "classImage": "F:\\zzz\\Master Photo List\\Demi-God\\Demi-God12.png",
+      "attacks": [
+        {
+          "name": "Blizzard Barrage",
+          "description": "No attacks 5 turns",
+          "manaCost": "1"
+        },
+        {
+          "name": "Inferno Fury",
+          "description": "Attacks opponent 4 damage",
+          "manaCost": "8"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 9",
+      "dp": "DP 8",
+      "strength": {
+        "Vigor": "Moon",
+        "image": "SMana/Moon.png"
+      },
+      "weakness": {
+        "Vigor": "Greed",
+        "image": "WMana/Greed.png"
+      },
+      "deckManaImage": "Mana/Sun.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Sun\\Creature\\Malachon.png",
+      "print_path": "B:\\Cards\\Sun(Print)\\Creature\\Malachon.png",
+      "card_number": "105/168",
+      "rarity": "Karls",
+      "vigor": "Sun",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Isolandra",
+      "className": "Medic",
+      "classImage": "F:\\zzz\\Master Photo List\\Medic\\Medic6.png",
+      "attacks": [
+        {
+          "name": "Monstrous Clone",
+          "description": "Destroys target card",
+          "manaCost": "9"
+        },
+        {
+          "name": "Searing Inferno",
+          "description": "Attacks opponent 4 damage",
+          "manaCost": "9"
+        }
+      ],
+      "Mana Card Cost": "7",
+      "ap": "AP 6",
+      "dp": "DP 5",
+      "strength": {
+        "Vigor": "Greed",
+        "image": "SMana/Greed.png"
+      },
+      "weakness": {
+        "Vigor": "Tar",
+        "image": "WMana/Tar.png"
+      },
+      "deckManaImage": "Mana/Purity.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Purity\\Creature\\Isolandra.png",
+      "print_path": "B:\\Cards\\Purity(Print)\\Creature\\Isolandra.png",
+      "card_number": "106/168",
+      "rarity": "Karls",
+      "vigor": "Purity",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Thinn",
+      "className": "Bard",
+      "classImage": "F:\\zzz\\Master Photo List\\Bard\\Bard.png",
+      "attacks": [
+        {
+          "name": "Rippling Shockwave",
+          "description": "Silences target 4 rounds",
+          "manaCost": "8"
+        },
+        {
+          "name": "Vampire Strike",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "3"
+        }
+      ],
+      "Mana Card Cost": "9",
+      "ap": "AP 7",
+      "dp": "DP 7",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Sorcery",
+        "image": "WMana/Sorcery.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Thinn.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Thinn.png",
+      "card_number": "107/168",
+      "rarity": "Karls",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Lirren",
+      "className": "Mermaid",
+      "classImage": "F:\\zzz\\Master Photo List\\Mermaid\\Mermaid8.png",
+      "attacks": [
+        {
+          "name": "Void Void",
+          "description": "No attacks 5 turns",
+          "manaCost": "9"
+        },
+        {
+          "name": "Dark Matter Surge",
+          "description": "No spellcasting 6 rounds",
+          "manaCost": "7"
+        }
+      ],
+      "Mana Card Cost": "6",
+      "ap": "AP 6",
+      "dp": "DP 2",
+      "strength": {
+        "Vigor": "Tar",
+        "image": "SMana/Tar.png"
+      },
+      "weakness": {
+        "Vigor": "Moon",
+        "image": "WMana/Moon.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Lirren.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Lirren.png",
+      "card_number": "108/168",
+      "rarity": "Karls",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Eldritch",
+      "className": "Demi-God",
+      "classImage": "F:\\zzz\\Master Photo List\\Demi-God\\Demi-god7.png",
+      "attacks": [
+        {
+          "name": "Darling Mandrill",
+          "description": "Blocks ground 2 rounds",
+          "manaCost": "11"
+        },
+        {
+          "name": "Netherworld Oblivion",
+          "description": "No spellcasting 5 rounds",
+          "manaCost": "7"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 11",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Moon",
+        "image": "SMana/Moon.png"
+      },
+      "weakness": {
+        "Vigor": "Moon",
+        "image": "WMana/Moon.png"
+      },
+      "deckManaImage": "Mana/Sun.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Sun\\Creature\\Eldritch.png",
+      "print_path": "B:\\Cards\\Sun(Print)\\Creature\\Eldritch.png",
+      "card_number": "109/168",
+      "rarity": "Karls",
+      "vigor": "Sun",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Dasrin",
+      "className": "Medic",
+      "classImage": "F:\\zzz\\Master Photo List\\Medic\\Medic2.png",
+      "attacks": [
+        {
+          "name": "Reflective Shield",
+          "description": "Reflects opponent spell",
+          "manaCost": "9"
+        },
+        {
+          "name": "Wrath of Nature",
+          "description": "Attacks all 4 damage",
+          "manaCost": "12"
+        }
+      ],
+      "Mana Card Cost": "4",
+      "ap": "AP 4",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Lightning",
+        "image": "SMana/Lightning.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Purity.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Purity\\Creature\\Dasrin.png",
+      "print_path": "B:\\Cards\\Purity(Print)\\Creature\\Dasrin.png",
+      "card_number": "110/168",
+      "rarity": "Karls",
+      "vigor": "Purity",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Deveris",
+      "className": "Unicorn",
+      "classImage": "F:\\zzz\\Master Photo List\\Unicorn\\Unicorn3.png",
+      "attacks": [
+        {
+          "name": "Frostbite Tempest",
+          "description": "Attacks all 6 damage",
+          "manaCost": "8"
+        },
+        {
+          "name": "Eclipse of Doom",
+          "description": "No attacks 9 turns",
+          "manaCost": "10"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 7",
+      "dp": "DP 8",
+      "strength": {
+        "Vigor": "Fungus",
+        "image": "SMana/Fungus.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Purity.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Purity\\Creature\\Deveris.png",
+      "print_path": "B:\\Cards\\Purity(Print)\\Creature\\Deveris.png",
+      "card_number": "111/168",
+      "rarity": "Karls",
+      "vigor": "Purity",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Zorgalk",
+      "className": "Shade",
+      "classImage": "F:\\zzz\\Master Photo List\\Shade\\Shade9.png",
+      "attacks": [
+        {
+          "name": "Scorching Blaze",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "11"
+        },
+        {
+          "name": "Molten Lava Burst",
+          "description": "Attacks all 3 damage",
+          "manaCost": "9"
+        }
+      ],
+      "Mana Card Cost": "2",
+      "ap": "AP 1",
+      "dp": "DP 1",
+      "strength": {
+        "Vigor": "Greed",
+        "image": "SMana/Greed.png"
+      },
+      "weakness": {
+        "Vigor": "Tar",
+        "image": "WMana/Tar.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Zorgalk.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Zorgalk.png",
+      "card_number": "112/168",
+      "rarity": "Karls",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Lorelei",
+      "className": "Valkerie",
+      "classImage": "F:\\zzz\\Master Photo List\\Valkerie\\Valkerie5.png",
+      "attacks": [
+        {
+          "name": "Toxic Torrent",
+          "description": "Attacks all 4 damage",
+          "manaCost": "4"
+        },
+        {
+          "name": "Arcane Apocalypse",
+          "description": "No spellcasting 10 rounds",
+          "manaCost": "1"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 10",
+      "dp": "DP 10",
+      "strength": {
+        "Vigor": "Moon",
+        "image": "SMana/Moon.png"
+      },
+      "weakness": {
+        "Vigor": "Fairy",
+        "image": "WMana/Fairy.png"
+      },
+      "deckManaImage": "Mana/Lightning.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Lightning\\Creature\\Lorelei.png",
+      "print_path": "B:\\Cards\\Lightning(Print)\\Creature\\Lorelei.png",
+      "card_number": "113/168",
+      "rarity": "Karls",
+      "vigor": "Lightning",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Evandorius",
+      "className": "Fairy",
+      "classImage": "F:\\zzz\\Master Photo List\\Fairy\\Fairy8.png",
+      "attacks": [
+        {
+          "name": "Chaos Eruption",
+          "description": "Causes chaos, no attacks 6 turns",
+          "manaCost": "11"
+        },
+        {
+          "name": "Oblivion Annihilation",
+          "description": "No attacks 7 turns",
+          "manaCost": "7"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 10",
+      "dp": "DP 12",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Lava",
+        "image": "WMana/Lava.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Evandorius.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Evandorius.png",
+      "card_number": "114/168",
+      "rarity": "Karls",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Alaricor",
+      "className": "Necromancer",
+      "classImage": "F:\\zzz\\Master Photo List\\Necromancer\\Necromancer8.png",
+      "attacks": [
+        {
+          "name": "Sonic Blast",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "6"
+        },
+        {
+          "name": "Eclipse Eclipse",
+          "description": "Turns opponent harmless 2 turns",
+          "manaCost": "12"
+        }
+      ],
+      "Mana Card Cost": "5",
+      "ap": "AP 4",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Tar",
+        "image": "SMana/Tar.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Alaricor.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Alaricor.png",
+      "card_number": "115/168",
+      "rarity": "Jarl",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Isabaelle",
+      "className": "Fairy",
+      "classImage": "F:\\zzz\\Master Photo List\\Fairy\\Fairy13.png",
+      "attacks": [
+        {
+          "name": "Chaos Eruption",
+          "description": "Causes chaos, no attacks 6 turns",
+          "manaCost": "1"
+        },
+        {
+          "name": "Reflective Shield",
+          "description": "Reflects opponent spell",
+          "manaCost": "3"
+        }
+      ],
+      "Mana Card Cost": "6",
+      "ap": "AP 4",
+      "dp": "DP 2",
+      "strength": {
+        "Vigor": "Greed",
+        "image": "SMana/Greed.png"
+      },
+      "weakness": {
+        "Vigor": "Lava",
+        "image": "WMana/Lava.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Isabaelle.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Isabaelle.png",
+      "card_number": "116/168",
+      "rarity": "Jarl",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Javaram",
+      "className": "Pegasi",
+      "classImage": "F:\\zzz\\Master Photo List\\Pegasi\\Pegasi8.png",
+      "attacks": [
+        {
+          "name": "Acidic Deluge",
+          "description": "Unleashes acidic rain, damages all 3 rounds",
+          "manaCost": "5"
+        },
+        {
+          "name": "Toxic Venom",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "3"
+        }
+      ],
+      "Mana Card Cost": "8",
+      "ap": "AP 6",
+      "dp": "DP 7",
+      "strength": {
+        "Vigor": "Moon",
+        "image": "SMana/Moon.png"
+      },
+      "weakness": {
+        "Vigor": "Ocean",
+        "image": "WMana/Ocean.png"
+      },
+      "deckManaImage": "Mana/Sun.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Sun\\Creature\\Javaram.png",
+      "print_path": "B:\\Cards\\Sun(Print)\\Creature\\Javaram.png",
+      "card_number": "117/168",
+      "rarity": "Jarl",
+      "vigor": "Sun",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Evandorius",
+      "className": "Necromancer",
+      "classImage": "F:\\zzz\\Master Photo List\\Necromancer\\Necromancer7.png",
+      "attacks": [
+        {
+          "name": "Soul Drain",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "7"
+        },
+        {
+          "name": "Piercing Ice Blast",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "10"
+        }
+      ],
+      "Mana Card Cost": "10",
+      "ap": "AP 10",
+      "dp": "DP 8",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Lightning",
+        "image": "WMana/Lightning.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Evandorius.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Evandorius.png",
+      "card_number": "118/168",
+      "rarity": "Jarl",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Seraphionel",
+      "className": "Elf",
+      "classImage": "F:\\zzz\\Master Photo List\\Elf\\Elf3.png",
+      "attacks": [
+        {
+          "name": "Temporal Rift",
+          "description": "No spellcasting 3 rounds",
+          "manaCost": "4"
+        },
+        {
+          "name": "Raining Fireballs",
+          "description": "Attacks all 5 damage",
+          "manaCost": "2"
+        }
+      ],
+      "Mana Card Cost": "3",
+      "ap": "AP 2",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Lightning",
+        "image": "SMana/Lightning.png"
+      },
+      "weakness": {
+        "Vigor": "Earth",
+        "image": "WMana/Earth.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Seraphionel.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Seraphionel.png",
+      "card_number": "119/168",
+      "rarity": "Jarl",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Thetorr",
+      "className": "Archon",
+      "classImage": "F:\\zzz\\Master Photo List\\Archon\\Archon13.png",
+      "attacks": [
+        {
+          "name": "Oblivion Eruption",
+          "description": "No attacks 10 turns",
+          "manaCost": "10"
+        },
+        {
+          "name": "Sonic Blast",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "3"
+        }
+      ],
+      "Mana Card Cost": "4",
+      "ap": "AP 2",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Sorcery",
+        "image": "WMana/Sorcery.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Thetorr.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Thetorr.png",
+      "card_number": "120/168",
+      "rarity": "Jarl",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Fellhen",
+      "className": "Mermaid",
+      "classImage": "F:\\zzz\\Master Photo List\\Mermaid\\Mermaid4.png",
+      "attacks": [
+        {
+          "name": "Authentic Beaver",
+          "description": "Conjures authentic beaver, removes extras",
+          "manaCost": "9"
+        },
+        {
+          "name": "Doomsday Shockwave",
+          "description": "Destroys target card",
+          "manaCost": "9"
+        }
+      ],
+      "Mana Card Cost": "6",
+      "ap": "AP 3",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Moon",
+        "image": "WMana/Moon.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Fellhen.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Fellhen.png",
+      "card_number": "121/168",
+      "rarity": "Jarl",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Galadrielleth",
+      "className": "Medic",
+      "classImage": "F:\\zzz\\Master Photo List\\Medic\\Medic6.png",
+      "attacks": [
+        {
+          "name": "Lightning Surge",
+          "description": "Reflects opponent spell x2 damage",
+          "manaCost": "5"
+        },
+        {
+          "name": "Eager Rain",
+          "description": "Prevents target attack this round",
+          "manaCost": "8"
+        }
+      ],
+      "Mana Card Cost": "7",
+      "ap": "AP 4",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Greed",
+        "image": "SMana/Greed.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Purity.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Purity\\Creature\\Galadrielleth.png",
+      "print_path": "B:\\Cards\\Purity(Print)\\Creature\\Galadrielleth.png",
+      "card_number": "122/168",
+      "rarity": "Jarl",
+      "vigor": "Purity",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Elysianthia",
+      "className": "Gargoyle",
+      "classImage": "F:\\zzz\\Master Photo List\\Gargoyle\\Gargoyle9.png",
+      "attacks": [
+        {
+          "name": "Frostbite Tempest",
+          "description": "Attacks all 6 damage",
+          "manaCost": "7"
+        },
+        {
+          "name": "Reaper Doom",
+          "description": "Opponent -7 life",
+          "manaCost": "6"
+        }
+      ],
+      "Mana Card Cost": "2",
+      "ap": "AP 2",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Fairy",
+        "image": "WMana/Fairy.png"
+      },
+      "deckManaImage": "Mana/Earth.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Earth\\Creature\\Elysianthia.png",
+      "print_path": "B:\\Cards\\Earth(Print)\\Creature\\Elysianthia.png",
+      "card_number": "123/168",
+      "rarity": "Jarl",
+      "vigor": "Earth",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Hrithius",
+      "className": "Fairy",
+      "classImage": "F:\\zzz\\Master Photo List\\Fairy\\Fairy12.png",
+      "attacks": [
+        {
+          "name": "Soul Harvest",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "1"
+        },
+        {
+          "name": "Lightning Bolt",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "8"
+        }
+      ],
+      "Mana Card Cost": "6",
+      "ap": "AP 3",
+      "dp": "DP 5",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Hrithius.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Hrithius.png",
+      "card_number": "124/168",
+      "rarity": "Jarl",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Norrin",
+      "className": "Cleric",
+      "classImage": "F:\\zzz\\Master Photo List\\Cleric\\Cleric4.png",
+      "attacks": [
+        {
+          "name": "Omega Thunderstorm",
+          "description": "Attacks all 4 damage",
+          "manaCost": "3"
+        },
+        {
+          "name": "Zephyr Gale",
+          "description": "Blocks flying 4 rounds",
+          "manaCost": "6"
+        }
+      ],
+      "Mana Card Cost": "4",
+      "ap": "AP 6",
+      "dp": "DP 1",
+      "strength": {
+        "Vigor": "Chaos",
+        "image": "SMana/Chaos.png"
+      },
+      "weakness": {
+        "Vigor": "Chaos",
+        "image": "WMana/Chaos.png"
+      },
+      "deckManaImage": "Mana/Purity.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Purity\\Creature\\Norrin.png",
+      "print_path": "B:\\Cards\\Purity(Print)\\Creature\\Norrin.png",
+      "card_number": "125/168",
+      "rarity": "Jarl",
+      "vigor": "Purity",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Superior Healing Potion",
+      "vigor_cost": "10",
+      "vigor_type": "Sun",
+      "vigor_type_image": "Mana/Sun.png",
+      "image": "F:\\zzz\\Weapons\\Health-Potions\\img-uX2CKZaWUUc7cALA8kGpm.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Sun.png",
+      "attack_description": "Restore 50 hit points of health.",
+      "equipment_type": "Health-Potions",
+      "shop_price": "678",
+      "file_name": "Superior Healing Potion.png",
+      "print_file_path": "B:\\Cards\\Sun(Print)\\Equipment\\Superior Healing Potion.png",
+      "card_number": "126/168",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Savage Rampage",
+      "vigor_cost": "3",
+      "vigor_type": "Earth",
+      "vigor_type_image": "Mana/Earth.png",
+      "image": "F:\\zzz\\Weapons\\Axes\\img-Roz0pFy8bsD60mAcR7oTP.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Earth.png",
+      "attack_description": "Go on a relentless rampage, hacking through enemies with savage ferocity, dealing 25 hit points of damage.",
+      "equipment_type": "Axes",
+      "shop_price": "487",
+      "file_name": "Savage Rampage.png",
+      "print_file_path": "B:\\Cards\\Earth(Print)\\Equipment\\Savage Rampage.png",
+      "card_number": "127/168",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Healing Potion",
+      "vigor_cost": "1",
+      "vigor_type": "Fairy",
+      "vigor_type_image": "Mana/Fairy.png",
+      "image": "F:\\zzz\\Weapons\\Health-Potions\\img-xEw0C8ST9Yq2NZ5TKcFWJ.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Fairy.png",
+      "attack_description": "Restore 20 hit points of health.",
+      "equipment_type": "Health-Potions",
+      "shop_price": "101",
+      "file_name": "Healing Potion.png",
+      "print_file_path": "B:\\Cards\\Fairy(Print)\\Equipment\\Healing Potion.png",
+      "card_number": "128/168",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Rejuvenating Tonic",
+      "vigor_cost": "10",
+      "vigor_type": "Spirit",
+      "vigor_type_image": "Mana/Spirit.png",
+      "image": "F:\\zzz\\Weapons\\Health-Potions\\img-uX2CKZaWUUc7cALA8kGpm.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Spirit.png",
+      "attack_description": "Restore 25 hit points of health and remove one minor ailment.",
+      "equipment_type": "Health-Potions",
+      "shop_price": "279",
+      "file_name": "Rejuvenating Tonic.png",
+      "print_file_path": "B:\\Cards\\Spirit(Print)\\Equipment\\Rejuvenating Tonic.png",
+      "card_number": "129/168",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Brutal Chop",
+      "vigor_cost": "5",
+      "vigor_type": "Sun",
+      "vigor_type_image": "Mana/Sun.png",
+      "image": "F:\\zzz\\Weapons\\Axes\\weapon4.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Sun.png",
+      "attack_description": "Brutally chop down with the axe, dealing 5 hit points of damage.",
+      "equipment_type": "Axes",
+      "shop_price": "729",
+      "file_name": "Brutal Chop.png",
+      "print_file_path": "B:\\Cards\\Sun(Print)\\Equipment\\Brutal Chop.png",
+      "card_number": "130/168",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Draught of Destruction",
+      "vigor_cost": "5",
+      "vigor_type": "Ocean",
+      "vigor_type_image": "Mana/Ocean.png",
+      "image": "F:\\zzz\\Weapons\\Attack-Potions\\img-u7qJ6TSPc9DMwwW7UQBMd.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Ocean.png",
+      "attack_description": "Increase attack damage by 25% for 5 rounds and gain advantage on attack rolls.",
+      "equipment_type": "Attack-Potions",
+      "shop_price": "127",
+      "file_name": "Draught of Destruction.png",
+      "print_file_path": "B:\\Cards\\Ocean(Print)\\Equipment\\Draught of Destruction.png",
+      "card_number": "131/168",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Powerful Swing",
+      "vigor_cost": "11",
+      "vigor_type": "Ocean",
+      "vigor_type_image": "Mana/Ocean.png",
+      "image": "F:\\zzz\\Weapons\\Swords\\img-FAC4NS1CykJn2vdCE89Ul.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Ocean.png",
+      "attack_description": "Swing the sword with force, dealing 10 hit points of damage.",
+      "equipment_type": "Swords",
+      "shop_price": "612",
+      "file_name": "Powerful Swing.png",
+      "print_file_path": "B:\\Cards\\Ocean(Print)\\Equipment\\Powerful Swing.png",
+      "card_number": "132/168",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Last Stand",
+      "vigor_cost": "11",
+      "vigor_type": "Earth",
+      "vigor_type_image": "Mana/Earth.png",
+      "image": "F:\\zzz\\Weapons\\Shields\\img-E67GSjBxbx5EEaFXujwdR.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Earth.png",
+      "attack_description": "Stand defiant against overwhelming odds, using the shield to withstand a deadly blow and retaining 1 hit point.",
+      "equipment_type": "Shields",
+      "shop_price": "418",
+      "file_name": "Last Stand.png",
+      "print_file_path": "B:\\Cards\\Earth(Print)\\Equipment\\Last Stand.png",
+      "card_number": "133/168",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Adrenaline Shot",
+      "vigor_cost": "9",
+      "vigor_type": "Spirit",
+      "vigor_type_image": "Mana/Spirit.png",
+      "image": "F:\\zzz\\Weapons\\Attack-Potions\\img-oNneXfnHhIkALVHKd6PSc.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Spirit.png",
+      "attack_description": "Instantly perform an additional attack with +5 bonus damage.",
+      "equipment_type": "Attack-Potions",
+      "shop_price": "504",
+      "file_name": "Adrenaline Shot.png",
+      "print_file_path": "B:\\Cards\\Spirit(Print)\\Equipment\\Adrenaline Shot.png",
+      "card_number": "134/168",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Divine Justice",
+      "vigor_cost": "8",
+      "vigor_type": "Fairy",
+      "vigor_type_image": "Mana/Fairy.png",
+      "image": "F:\\zzz\\Weapons\\Swords\\Designer (7).png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Fairy.png",
+      "attack_description": "Call upon divine energy to empower the sword, smiting evil with righteous fury, dealing 35 hit points of damage.",
+      "equipment_type": "Swords",
+      "shop_price": "252",
+      "file_name": "Divine Justice.png",
+      "print_file_path": "B:\\Cards\\Fairy(Print)\\Equipment\\Divine Justice.png",
+      "card_number": "135/168",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Vanguard Stance",
+      "vigor_cost": "6",
+      "vigor_type": "Ocean",
+      "vigor_type_image": "Mana/Ocean.png",
+      "image": "F:\\zzz\\Weapons\\Shields\\img-uevH81iHrSIf7cvVg2lE6.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Ocean.png",
+      "attack_description": "Take a defensive stance with the shield, granting advantage on Dexterity saving throws for 1 round.",
+      "equipment_type": "Shields",
+      "shop_price": "441",
+      "file_name": "Vanguard Stance.png",
+      "print_file_path": "B:\\Cards\\Ocean(Print)\\Equipment\\Vanguard Stance.png",
+      "card_number": "136/168",
+      "rarity": "Skilled",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Venomous Cloud",
+      "vigor_cost": "9",
+      "vigor_type": "Lightning",
+      "vigor_type_image": "Mana/Lightning.png",
+      "image": "F:\\zzz\\Weapons\\Poison-Potions\\img-55CHmxCC8LejUlMOttjNP.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Lightning.png",
+      "attack_description": "Throw a poison potion, creating a poisonous cloud that deals 5 hit points of damage per round.",
+      "equipment_type": "Poison-Potions",
+      "shop_price": "611",
+      "file_name": "Venomous Cloud.png",
+      "print_file_path": "B:\\Cards\\Lightning(Print)\\Equipment\\Venomous Cloud.png",
+      "card_number": "137/168",
+      "rarity": "Skilled",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Assassin's Strike",
+      "vigor_cost": "4",
+      "vigor_type": "Ocean",
+      "vigor_type_image": "Mana/Ocean.png",
+      "image": "F:\\zzz\\Weapons\\Daggers\\Designer (1).png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Ocean.png",
+      "attack_description": "Execute a deadly strike with lethal precision, dealing 30 hit points of damage.",
+      "equipment_type": "Daggers",
+      "shop_price": "150",
+      "file_name": "Assassin's Strike.png",
+      "print_file_path": "B:\\Cards\\Ocean(Print)\\Equipment\\Assassin's Strike.png",
+      "card_number": "138/168",
+      "rarity": "Skilled",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Blade Storm",
+      "vigor_cost": "9",
+      "vigor_type": "Sun",
+      "vigor_type_image": "Mana/Sun.png",
+      "image": "F:\\zzz\\Weapons\\Swords\\img-z3zX7yLBpwJezYQmlbvKx.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Sun.png",
+      "attack_description": "Unleash a whirlwind of sword strikes, dealing 35 hit points of damage to all nearby enemies.",
+      "equipment_type": "Swords",
+      "shop_price": "63",
+      "file_name": "Blade Storm.png",
+      "print_file_path": "B:\\Cards\\Sun(Print)\\Equipment\\Blade Storm.png",
+      "card_number": "139/168",
+      "rarity": "Skilled",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Swift Assassination",
+      "vigor_cost": "11",
+      "vigor_type": "Ocean",
+      "vigor_type_image": "Mana/Ocean.png",
+      "image": "F:\\zzz\\Weapons\\Daggers\\Designer (2).png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Ocean.png",
+      "attack_description": "Quickly dispatch an unaware foe with a lethal dagger thrust, dealing 20 hit points of damage.",
+      "equipment_type": "Daggers",
+      "shop_price": "408",
+      "file_name": "Swift Assassination.png",
+      "print_file_path": "B:\\Cards\\Ocean(Print)\\Equipment\\Swift Assassination.png",
+      "card_number": "140/168",
+      "rarity": "Skilled",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Last Stand",
+      "vigor_cost": "9",
+      "vigor_type": "Purity",
+      "vigor_type_image": "Mana/Purity.png",
+      "image": "F:\\zzz\\Weapons\\Shields\\img-8UZ5LIZhbdeCLMN9X3vvo.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Purity.png",
+      "attack_description": "Stand defiant against overwhelming odds, using the shield to withstand a deadly blow and retaining 1 hit point.",
+      "equipment_type": "Shields",
+      "shop_price": "278",
+      "file_name": "Last Stand.png",
+      "print_file_path": "B:\\Cards\\Purity(Print)\\Equipment\\Last Stand.png",
+      "card_number": "141/168",
+      "rarity": "Skilled",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Armor Tonic",
+      "vigor_cost": "12",
+      "vigor_type": "Sun",
+      "vigor_type_image": "Mana/Sun.png",
+      "image": "F:\\zzz\\Weapons\\Defense-Potions\\img-kmPds1tGaHjYQRw0XGQ6B.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Sun.png",
+      "attack_description": "Increase armor class by 2 for 3 rounds.",
+      "equipment_type": "Defense-Potions",
+      "shop_price": "438",
+      "file_name": "Armor Tonic.png",
+      "print_file_path": "B:\\Cards\\Sun(Print)\\Equipment\\Armor Tonic.png",
+      "card_number": "142/168",
+      "rarity": "Skilled",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Elixir of Vitality",
+      "vigor_cost": "11",
+      "vigor_type": "Lightning",
+      "vigor_type_image": "Mana/Lightning.png",
+      "image": "F:\\zzz\\Weapons\\Health-Potions\\img-qgGkTdtvaLr8jPyIu5uHj.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Lightning.png",
+      "attack_description": "Restore 30 hit points of health and gain temporary hit points equal to 10.",
+      "equipment_type": "Health-Potions",
+      "shop_price": "227",
+      "file_name": "Elixir of Vitality.png",
+      "print_file_path": "B:\\Cards\\Lightning(Print)\\Equipment\\Elixir of Vitality.png",
+      "card_number": "143/168",
+      "rarity": "Skilled",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Fortitude Elixir",
+      "vigor_cost": "5",
+      "vigor_type": "Sun",
+      "vigor_type_image": "Mana/Sun.png",
+      "image": "F:\\zzz\\Weapons\\Defense-Potions\\img-9w5Oob7M8eqUHaP9rU4zG.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Sun.png",
+      "attack_description": "Grant immunity to status effects for 2 rounds.",
+      "equipment_type": "Defense-Potions",
+      "shop_price": "674",
+      "file_name": "Fortitude Elixir.png",
+      "print_file_path": "B:\\Cards\\Sun(Print)\\Equipment\\Fortitude Elixir.png",
+      "card_number": "144/168",
+      "rarity": "Skilled",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Adrenaline Shot",
+      "vigor_cost": "3",
+      "vigor_type": "Lightning",
+      "vigor_type_image": "Mana/Lightning.png",
+      "image": "F:\\zzz\\Weapons\\Attack-Potions\\img-REIZegXQ4kyHumpuwsmC9.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Lightning.png",
+      "attack_description": "Instantly perform an additional attack with +5 bonus damage.",
+      "equipment_type": "Attack-Potions",
+      "shop_price": "243",
+      "file_name": "Adrenaline Shot.png",
+      "print_file_path": "B:\\Cards\\Lightning(Print)\\Equipment\\Adrenaline Shot.png",
+      "card_number": "145/168",
+      "rarity": "Karls",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Frenzy Tonic",
+      "vigor_cost": "5",
+      "vigor_type": "Fairy",
+      "vigor_type_image": "Mana/Fairy.png",
+      "image": "F:\\zzz\\Weapons\\Attack-Potions\\img-iHzDPWhmBpDoh7kpfRYiE.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Fairy.png",
+      "attack_description": "Perform a rapid series of attacks with +2 bonus damage for each strike.",
+      "equipment_type": "Attack-Potions",
+      "shop_price": "131",
+      "file_name": "Frenzy Tonic.png",
+      "print_file_path": "B:\\Cards\\Fairy(Print)\\Equipment\\Frenzy Tonic.png",
+      "card_number": "146/168",
+      "rarity": "Karls",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Shadow Step",
+      "vigor_cost": "2",
+      "vigor_type": "Sun",
+      "vigor_type_image": "Mana/Sun.png",
+      "image": "F:\\zzz\\Weapons\\Daggers\\Dagger.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Sun.png",
+      "attack_description": "Disappear into the shadows and reappear behind the enemy, delivering a deadly backstab for 35 hit points of damage.",
+      "equipment_type": "Daggers",
+      "shop_price": "672",
+      "file_name": "Shadow Step.png",
+      "print_file_path": "B:\\Cards\\Sun(Print)\\Equipment\\Shadow Step.png",
+      "card_number": "147/168",
+      "rarity": "Karls",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Turtle Formation",
+      "vigor_cost": "6",
+      "vigor_type": "Ocean",
+      "vigor_type_image": "Mana/Ocean.png",
+      "image": "F:\\zzz\\Weapons\\Shields\\img-L5lNJCYO1DPKoWudMmGOV.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Ocean.png",
+      "attack_description": "Crouch behind the shield for full cover, negating damage from the next attack.",
+      "equipment_type": "Shields",
+      "shop_price": "400",
+      "file_name": "Turtle Formation.png",
+      "print_file_path": "B:\\Cards\\Ocean(Print)\\Equipment\\Turtle Formation.png",
+      "card_number": "148/168",
+      "rarity": "Karls",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Tonic of Ferocity",
+      "vigor_cost": "4",
+      "vigor_type": "Sun",
+      "vigor_type_image": "Mana/Sun.png",
+      "image": "F:\\zzz\\Weapons\\Attack-Potions\\img-KvAL1g9t1Qhu7air3sWZo.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Sun.png",
+      "attack_description": "Unleash a flurry of devastating attacks, dealing +10 bonus damage with each strike for 1 round.",
+      "equipment_type": "Attack-Potions",
+      "shop_price": "399",
+      "file_name": "Tonic of Ferocity.png",
+      "print_file_path": "B:\\Cards\\Sun(Print)\\Equipment\\Tonic of Ferocity.png",
+      "card_number": "149/168",
+      "rarity": "Karls",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Draught of Deflection",
+      "vigor_cost": "2",
+      "vigor_type": "Fairy",
+      "vigor_type_image": "Mana/Fairy.png",
+      "image": "F:\\zzz\\Weapons\\Defense-Potions\\img-kmPds1tGaHjYQRw0XGQ6B.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Fairy.png",
+      "attack_description": "Deflect incoming attacks, reducing damage taken by 50% for 1 round.",
+      "equipment_type": "Defense-Potions",
+      "shop_price": "427",
+      "file_name": "Draught of Deflection.png",
+      "print_file_path": "B:\\Cards\\Fairy(Print)\\Equipment\\Draught of Deflection.png",
+      "card_number": "150/168",
+      "rarity": "Karls",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Bulwark Defense",
+      "vigor_cost": "7",
+      "vigor_type": "Fairy",
+      "vigor_type_image": "Mana/Fairy.png",
+      "image": "F:\\zzz\\Weapons\\Shields\\weapon13.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Fairy.png",
+      "attack_description": "Brace with the shield, granting +2 AC for 1 round.",
+      "equipment_type": "Shields",
+      "shop_price": "265",
+      "file_name": "Bulwark Defense.png",
+      "print_file_path": "B:\\Cards\\Fairy(Print)\\Equipment\\Bulwark Defense.png",
+      "card_number": "151/168",
+      "rarity": "Jarl",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Greater Healing Potion",
+      "vigor_cost": "9",
+      "vigor_type": "Purity",
+      "vigor_type_image": "Mana/Purity.png",
+      "image": "F:\\zzz\\Weapons\\Health-Potions\\img-uJDikRRO9YGjaTAiXf9rw.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Purity.png",
+      "attack_description": "Restore 30 hit points of health.",
+      "equipment_type": "Health-Potions",
+      "shop_price": "505",
+      "file_name": "Greater Healing Potion.png",
+      "print_file_path": "B:\\Cards\\Purity(Print)\\Equipment\\Greater Healing Potion.png",
+      "card_number": "152/168",
+      "rarity": "Jarl",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Elixir of Sanctuary",
+      "vigor_cost": "11",
+      "vigor_type": "Earth",
+      "vigor_type_image": "Mana/Earth.png",
+      "image": "F:\\zzz\\Weapons\\Defense-Potions\\img-I3a0ToFKZFMK9lugDSgsc.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Earth.png",
+      "attack_description": "Create a protective barrier, granting immunity to all for 2 turns",
+      "equipment_type": "Defense-Potions",
+      "shop_price": "382",
+      "file_name": "Elixir of Sanctuary.png",
+      "print_file_path": "B:\\Cards\\Earth(Print)\\Equipment\\Elixir of Sanctuary.png",
+      "card_number": "153/168",
+      "rarity": "Jarl",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Soulfire",
+      "vigor_cost": "8",
+      "vigor_type": "Ocean",
+      "vigor_type_image": "Mana/Ocean.png",
+      "image": "F:\\zzz\\Spells(bot)\\Ocean\\d723c675-fe93-4aec-b3e0-632ee181d638.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Ocean.png",
+      "attack_name": "Soulfire",
+      "attack_description": "Ignite the enemy's soul with fire, dealing 20-25 damage.",
+      "shop_price": "664",
+      "file_name": "Soulfire.png",
+      "standard_path": "B:\\Cards\\Ocean\\Runes\\Soulfire.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Runes\\Soulfire.png",
+      "card_number": "154/168",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Spore Burst",
+      "vigor_cost": "20",
+      "vigor_type": "Lightning",
+      "vigor_type_image": "Mana/Lightning.png",
+      "image": "F:\\zzz\\Spells(bot)\\Lightning\\24.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Lightning.png",
+      "attack_name": "Spore Burst",
+      "attack_description": "Release a burst of spores, poisoning your enemies and dealing 8-12 damage over time.",
+      "shop_price": "376",
+      "file_name": "Spore Burst.png",
+      "standard_path": "B:\\Cards\\Lightning\\Runes\\Spore Burst.png",
+      "print_path": "B:\\Cards\\Lightning(Print)\\Runes\\Spore Burst.png",
+      "card_number": "155/168",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Blackout",
+      "vigor_cost": "15",
+      "vigor_type": "Spirit",
+      "vigor_type_image": "Mana/Spirit.png",
+      "image": "F:\\zzz\\Spells(bot)\\Spirit\\21cc0d43-d518-48a9-aeef-0ac1aaa8f9c3.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Spirit.png",
+      "attack_name": "Blackout",
+      "attack_description": "Cover enemies in thick tar, obscuring their vision and dealing damage, dealing 12-17 damage.",
+      "shop_price": "165",
+      "file_name": "Blackout.png",
+      "standard_path": "B:\\Cards\\Spirit\\Runes\\Blackout.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Runes\\Blackout.png",
+      "card_number": "156/168",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Regeneration",
+      "vigor_cost": "13",
+      "vigor_type": "Earth",
+      "vigor_type_image": "Mana/Earth.png",
+      "image": "F:\\zzz\\Spells(bot)\\Earth\\9f762b2e-230d-4040-a4ef-3763a77d8232.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Earth.png",
+      "attack_name": "Regeneration",
+      "attack_description": "Accelerate natural healing, restoring 5 hit points per turn for 3 turns.",
+      "shop_price": "294",
+      "file_name": "Regeneration.png",
+      "standard_path": "B:\\Cards\\Earth\\Runes\\Regeneration.png",
+      "print_path": "B:\\Cards\\Earth(Print)\\Runes\\Regeneration.png",
+      "card_number": "157/168",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Mud Shield",
+      "vigor_cost": "13",
+      "vigor_type": "Spirit",
+      "vigor_type_image": "Mana/Spirit.png",
+      "image": "F:\\zzz\\Spells(bot)\\Spirit\\57a3224d-f032-4a92-98f9-d26cfe404416.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Spirit.png",
+      "attack_name": "Mud Shield",
+      "attack_description": "Form a shield of mud to protect yourself from 9 damage.",
+      "shop_price": "56",
+      "file_name": "Mud Shield.png",
+      "standard_path": "B:\\Cards\\Spirit\\Runes\\Mud Shield.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Runes\\Mud Shield.png",
+      "card_number": "158/168",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Mind Blast",
+      "vigor_cost": "20",
+      "vigor_type": "Earth",
+      "vigor_type_image": "Mana/Earth.png",
+      "image": "F:\\zzz\\Spells(bot)\\Earth\\6f9e6947-45b4-4875-a665-d6e4c6bbcb84.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Earth.png",
+      "attack_name": "Mind Blast",
+      "attack_description": "Assault the enemy's mind with psychic energy, dealing 12-17 damage.",
+      "shop_price": "463",
+      "file_name": "Mind Blast.png",
+      "standard_path": "B:\\Cards\\Earth\\Runes\\Mind Blast.png",
+      "print_path": "B:\\Cards\\Earth(Print)\\Runes\\Mind Blast.png",
+      "card_number": "159/168",
+      "rarity": "Skilled",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Pixie Dust",
+      "vigor_cost": "16",
+      "vigor_type": "Sun",
+      "vigor_type_image": "Mana/Sun.png",
+      "image": "F:\\zzz\\Spells(bot)\\Sun\\42.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Sun.png",
+      "attack_name": "Pixie Dust",
+      "attack_description": "Sprinkle pixie dust on your allies, negating 18 damage.",
+      "shop_price": "369",
+      "file_name": "Pixie Dust.png",
+      "standard_path": "B:\\Cards\\Sun\\Runes\\Pixie Dust.png",
+      "print_path": "B:\\Cards\\Sun(Print)\\Runes\\Pixie Dust.png",
+      "card_number": "160/168",
+      "rarity": "Skilled",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Entangling Roots",
+      "vigor_cost": "8",
+      "vigor_type": "Earth",
+      "vigor_type_image": "Mana/Earth.png",
+      "image": "F:\\zzz\\Spells(bot)\\Earth\\186ef628-b479-44eb-ad2a-64fb5bfd2e9d.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Earth.png",
+      "attack_name": "Entangling Roots",
+      "attack_description": "Entangle the enemy in roots, immobilizing them for 1 turn and dealing 8-12 damage.",
+      "shop_price": "208",
+      "file_name": "Entangling Roots.png",
+      "standard_path": "B:\\Cards\\Earth\\Runes\\Entangling Roots.png",
+      "print_path": "B:\\Cards\\Earth(Print)\\Runes\\Entangling Roots.png",
+      "card_number": "161/168",
+      "rarity": "Skilled",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Mud Shield",
+      "vigor_cost": "7",
+      "vigor_type": "Lightning",
+      "vigor_type_image": "Mana/Lightning.png",
+      "image": "F:\\zzz\\Spells(bot)\\Lightning\\be917c49-ea85-4a97-a3c7-d4d0032de787.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Lightning.png",
+      "attack_name": "Mud Shield",
+      "attack_description": "Form a shield of mud to protect yourself from 9 damage.",
+      "shop_price": "602",
+      "file_name": "Mud Shield.png",
+      "standard_path": "B:\\Cards\\Lightning\\Runes\\Mud Shield.png",
+      "print_path": "B:\\Cards\\Lightning(Print)\\Runes\\Mud Shield.png",
+      "card_number": "162/168",
+      "rarity": "Skilled",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Spiritual Guidance",
+      "vigor_cost": "10",
+      "vigor_type": "Fairy",
+      "vigor_type_image": "Mana/Fairy.png",
+      "image": "F:\\zzz\\Spells(bot)\\Fairy\\7.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Fairy.png",
+      "attack_name": "Spiritual Guidance",
+      "attack_description": "Grant spiritual guidance to your allies, boosting their morale and increasing their damage, dealing 10-15 damage.",
+      "shop_price": "557",
+      "file_name": "Spiritual Guidance.png",
+      "standard_path": "B:\\Cards\\Fairy\\Runes\\Spiritual Guidance.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Runes\\Spiritual Guidance.png",
+      "card_number": "163/168",
+      "rarity": "Karls",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Shadowsong",
+      "vigor_cost": "14",
+      "vigor_type": "Sun",
+      "vigor_type_image": "Mana/Sun.png",
+      "image": "F:\\zzz\\Spells(bot)\\Sun\\44.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Sun.png",
+      "attack_name": "Shadowsong",
+      "attack_description": "Sing a haunting melody to weaken enemies, reducing their attack power by 20% for 2 turns.",
+      "shop_price": "626",
+      "file_name": "Shadowsong.png",
+      "standard_path": "B:\\Cards\\Sun\\Runes\\Shadowsong.png",
+      "print_path": "B:\\Cards\\Sun(Print)\\Runes\\Shadowsong.png",
+      "card_number": "164/168",
+      "rarity": "Karls",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Shadowmeld",
+      "vigor_cost": "9",
+      "vigor_type": "Earth",
+      "vigor_type_image": "Mana/Earth.png",
+      "image": "F:\\zzz\\Spells(bot)\\Earth\\a3fe6cf7-7090-483c-a7bc-c25c0d9bdc87.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Earth.png",
+      "attack_name": "Shadowmeld",
+      "attack_description": "Merge with the shadows, becoming invisible and dodging all attacks for 1 turn.",
+      "shop_price": "455",
+      "file_name": "Shadowmeld.png",
+      "standard_path": "B:\\Cards\\Earth\\Runes\\Shadowmeld.png",
+      "print_path": "B:\\Cards\\Earth(Print)\\Runes\\Shadowmeld.png",
+      "card_number": "165/168",
+      "rarity": "Karls",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Ice Shard",
+      "vigor_cost": "13",
+      "vigor_type": "Ocean",
+      "vigor_type_image": "Mana/Ocean.png",
+      "image": "F:\\zzz\\Spells(bot)\\Ocean\\47222ad5-5802-428e-b632-03ca82c36d6c.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Ocean.png",
+      "attack_name": "Ice Shard",
+      "attack_description": "Hurl a shard of ice at the enemy, dealing 8-12 damage and potentially freezing them.",
+      "shop_price": "452",
+      "file_name": "Ice Shard.png",
+      "standard_path": "B:\\Cards\\Ocean\\Runes\\Ice Shard.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Runes\\Ice Shard.png",
+      "card_number": "166/168",
+      "rarity": "Jarl",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Radiant Beam",
+      "vigor_cost": "2",
+      "vigor_type": "Spirit",
+      "vigor_type_image": "Mana/Spirit.png",
+      "image": "F:\\zzz\\Spells(bot)\\Spirit\\57a3224d-f032-4a92-98f9-d26cfe404416.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Spirit.png",
+      "attack_name": "Radiant Beam",
+      "attack_description": "Unleash a beam of radiant energy, dealing damage and potentially blinding enemies, dealing 12-17 damage.",
+      "shop_price": "198",
+      "file_name": "Radiant Beam.png",
+      "standard_path": "B:\\Cards\\Spirit\\Runes\\Radiant Beam.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Runes\\Radiant Beam.png",
+      "card_number": "167/168",
+      "rarity": "Jarl",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Khuth",
+      "className": "Primordial",
+      "manaColor": "Ocean",
+      "classImage": "F:\\zzz\\Primordial\\Ocean\\17.png",
+      "attacks": [
+        {
+          "name": "Dread Invocation",
+          "description": "Opponent reveals the top 3 cards of their deck. You may exile one of them.",
+          "manaCost": "18"
+        },
+        {
+          "name": "Shadow Snatch",
+          "description": "Roll a die. On a roll of 1-3, steal a card from the opponent\u2019s hand.",
+          "manaCost": "20"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 13",
+      "dp": "DP 14",
+      "strength": {
+        "Vigor": "Earth",
+        "image": "SMana/Earth.png"
+      },
+      "weakness": {
+        "Vigor": "Lightning",
+        "image": "WMana/Lightning.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Primordial\\Khuth.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Primordial\\Khuth.png",
+      "shop_price": "327",
+      "card_number": "168/168",
+      "rarity": "Konugr",
+      "vigor": "Ocean",
+      "type": "Primordial Being",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Javaram",
+      "className": "Ogre",
+      "classImage": "F:\\zzz\\Master Photo List\\Ogre\\Ogre6.png",
+      "attacks": [
+        {
+          "name": "Cyclone Whirlwind",
+          "description": "Blocks flying 3 rounds",
+          "manaCost": "1"
+        },
+        {
+          "name": "Raging Flames",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "10"
+        }
+      ],
+      "Mana Card Cost": "7",
+      "ap": "AP 5",
+      "dp": "DP 8",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Earth.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Earth\\Creature\\Javaram.png",
+      "print_path": "B:\\Cards\\Earth(Print)\\Creature\\Javaram.png",
+      "card_number": "169/168",
+      "rarity": "Thrall",
+      "vigor": "Earth",
+      "type": "Creature",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Fenris",
+      "className": "Unicorn",
+      "classImage": "F:\\zzz\\Master Photo List\\Unicorn\\Unicorn.png",
+      "attacks": [
+        {
+          "name": "Temporal Anomaly",
+          "description": "Turns opponent creatures 3 rounds",
+          "manaCost": "6"
+        },
+        {
+          "name": "Soul Drain",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "2"
+        }
+      ],
+      "Mana Card Cost": "3",
+      "ap": "AP 3",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Fungus",
+        "image": "SMana/Fungus.png"
+      },
+      "weakness": {
+        "Vigor": "Tar",
+        "image": "WMana/Tar.png"
+      },
+      "deckManaImage": "Mana/Purity.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Purity\\Creature\\Fenris.png",
+      "print_path": "B:\\Cards\\Purity(Print)\\Creature\\Fenris.png",
+      "card_number": "170/168",
+      "rarity": "Thrall",
+      "vigor": "Purity",
+      "type": "Creature",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Isolindor",
+      "className": "Gargoyle",
+      "classImage": "F:\\zzz\\Master Photo List\\Gargoyle\\Gargoyle1.png",
+      "attacks": [
+        {
+          "name": "Chaos Chaos",
+          "description": "No life gain opponent 2 turns",
+          "manaCost": "10"
+        },
+        {
+          "name": "Mystic Mirage",
+          "description": "Opponent -7 life",
+          "manaCost": "1"
+        }
+      ],
+      "Mana Card Cost": "8",
+      "ap": "AP 9",
+      "dp": "DP 5",
+      "strength": {
+        "Vigor": "Fairy",
+        "image": "SMana/Fairy.png"
+      },
+      "weakness": {
+        "Vigor": "Fairy",
+        "image": "WMana/Fairy.png"
+      },
+      "deckManaImage": "Mana/Earth.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Earth\\Creature\\Isolindor.png",
+      "print_path": "B:\\Cards\\Earth(Print)\\Creature\\Isolindor.png",
+      "card_number": "171/168",
+      "rarity": "Skilled",
+      "vigor": "Earth",
+      "type": "Creature",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Faelor",
+      "className": "Samurai",
+      "classImage": "F:\\zzz\\Master Photo List\\Samurai\\Samurai.png",
+      "attacks": [
+        {
+          "name": "Cosmic Crush",
+          "description": "Attacks opponent 4 damage",
+          "manaCost": "1"
+        },
+        {
+          "name": "Roaring Thunder",
+          "description": "Attacks all 3 damage",
+          "manaCost": "12"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 10",
+      "dp": "DP 9",
+      "strength": {
+        "Vigor": "Tar",
+        "image": "SMana/Tar.png"
+      },
+      "weakness": {
+        "Vigor": "Earth",
+        "image": "WMana/Earth.png"
+      },
+      "deckManaImage": "Mana/Lightning.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Lightning\\Creature\\Faelor.png",
+      "print_path": "B:\\Cards\\Lightning(Print)\\Creature\\Faelor.png",
+      "card_number": "172/168",
+      "rarity": "Skilled",
+      "vigor": "Lightning",
+      "type": "Creature",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Ravith",
+      "className": "Avatar",
+      "classImage": "F:\\zzz\\Master Photo List\\Avatar\\Avatar8.png",
+      "attacks": [
+        {
+          "name": "Life Strike",
+          "description": "Attacks opponent 1 damage",
+          "manaCost": "9"
+        },
+        {
+          "name": "Galactic Graviton",
+          "description": "Reflects opponent spell",
+          "manaCost": "9"
+        }
+      ],
+      "Mana Card Cost": "2",
+      "ap": "AP 3",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Greed",
+        "image": "SMana/Greed.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Ravith.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Ravith.png",
+      "card_number": "173/168",
+      "rarity": "Karls",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Chruddith",
+      "className": "Demi-God",
+      "classImage": "F:\\zzz\\Master Photo List\\Demi-God\\Demi-God13.png",
+      "attacks": [
+        {
+          "name": "Blighted Plague",
+          "description": "Inflicts plague, +2 damage/round 3 rounds",
+          "manaCost": "11"
+        },
+        {
+          "name": "Venomous Strike",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "7"
+        }
+      ],
+      "Mana Card Cost": "10",
+      "ap": "AP 10",
+      "dp": "DP 11",
+      "strength": {
+        "Vigor": "Fungus",
+        "image": "SMana/Fungus.png"
+      },
+      "weakness": {
+        "Vigor": "Ocean",
+        "image": "WMana/Ocean.png"
+      },
+      "deckManaImage": "Mana/Sun.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Sun\\Creature\\Chruddith.png",
+      "print_path": "B:\\Cards\\Sun(Print)\\Creature\\Chruddith.png",
+      "card_number": "174/168",
+      "rarity": "Jarl",
+      "vigor": "Sun",
+      "type": "Creature",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Berserker Brew",
+      "vigor_cost": "1",
+      "vigor_type": "Purity",
+      "vigor_type_image": "Mana/Purity.png",
+      "image": "F:\\zzz\\Weapons\\Attack-Potions\\img-46PaHgmCBXYyiUNUkrhmY.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Purity.png",
+      "attack_description": "Enter a berserker state, doubling attack damage for 1 round.",
+      "equipment_type": "Attack-Potions",
+      "shop_price": "498",
+      "file_name": "Berserker Brew.png",
+      "print_file_path": "B:\\Cards\\Purity(Print)\\Equipment\\Berserker Brew.png",
+      "card_number": "175/168",
+      "rarity": "Thrall",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Mighty Blow",
+      "vigor_cost": "1",
+      "vigor_type": "Lightning",
+      "vigor_type_image": "Mana/Lightning.png",
+      "image": "F:\\zzz\\Weapons\\Swords\\img-DzkedfKNpLG6bE1rbrUSn.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Lightning.png",
+      "attack_description": "Deliver a mighty blow with the sword, dealing 25 hit points of damage.",
+      "equipment_type": "Swords",
+      "shop_price": "373",
+      "file_name": "Mighty Blow.png",
+      "print_file_path": "B:\\Cards\\Lightning(Print)\\Equipment\\Mighty Blow.png",
+      "card_number": "176/168",
+      "rarity": "Thrall",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Swift Assassination",
+      "vigor_cost": "9",
+      "vigor_type": "Lightning",
+      "vigor_type_image": "Mana/Lightning.png",
+      "image": "F:\\zzz\\Weapons\\Daggers\\weapon.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Lightning.png",
+      "attack_description": "Quickly dispatch an unaware foe with a lethal dagger thrust, dealing 20 hit points of damage.",
+      "equipment_type": "Daggers",
+      "shop_price": "720",
+      "file_name": "Swift Assassination.png",
+      "print_file_path": "B:\\Cards\\Lightning(Print)\\Equipment\\Swift Assassination.png",
+      "card_number": "177/168",
+      "rarity": "Skilled",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Minor Healing Potion",
+      "vigor_cost": "5",
+      "vigor_type": "Lightning",
+      "vigor_type_image": "Mana/Lightning.png",
+      "image": "F:\\zzz\\Weapons\\Health-Potions\\img-uX2CKZaWUUc7cALA8kGpm.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Lightning.png",
+      "attack_description": "Restore 10 hit points of health.",
+      "equipment_type": "Health-Potions",
+      "shop_price": "103",
+      "file_name": "Minor Healing Potion.png",
+      "print_file_path": "B:\\Cards\\Lightning(Print)\\Equipment\\Minor Healing Potion.png",
+      "card_number": "178/168",
+      "rarity": "Skilled",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Silent Strike",
+      "vigor_cost": "5",
+      "vigor_type": "Earth",
+      "vigor_type_image": "Mana/Earth.png",
+      "image": "F:\\zzz\\Weapons\\Daggers\\weapon.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Earth.png",
+      "attack_description": "Execute a stealthy attack from the shadows, dealing 15 hit points of damage.",
+      "equipment_type": "Daggers",
+      "shop_price": "257",
+      "file_name": "Silent Strike.png",
+      "print_file_path": "B:\\Cards\\Earth(Print)\\Equipment\\Silent Strike.png",
+      "card_number": "179/168",
+      "rarity": "Karls",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Quick Strike",
+      "vigor_cost": "5",
+      "vigor_type": "Spirit",
+      "vigor_type_image": "Mana/Spirit.png",
+      "image": "F:\\zzz\\Weapons\\Daggers\\Dagger3.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Spirit.png",
+      "attack_description": "Perform a swift dagger attack dealing 5 hit points of damage.",
+      "equipment_type": "Daggers",
+      "shop_price": "504",
+      "file_name": "Quick Strike.png",
+      "print_file_path": "B:\\Cards\\Spirit(Print)\\Equipment\\Quick Strike.png",
+      "card_number": "180/168",
+      "rarity": "Jarl",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Chain Lightning (Multiple Targets)",
+      "vigor_cost": "3",
+      "vigor_type": "Spirit",
+      "vigor_type_image": "Mana/Spirit.png",
+      "image": "F:\\zzz\\Spells(bot)\\Spirit\\ab7d4a65-7742-48b4-9e1b-86594269d0e4.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Spirit.png",
+      "attack_name": "Chain Lightning (Multiple Targets)",
+      "attack_description": "Unleash a chain of lightning bolts, dealing 8-12 damage to multiple targets.",
+      "shop_price": "146",
+      "file_name": "Chain Lightning (Multiple Targets).png",
+      "standard_path": "B:\\Cards\\Spirit\\Runes\\Chain Lightning (Multiple Targets).png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Runes\\Chain Lightning (Multiple Targets).png",
+      "card_number": "181/168",
+      "rarity": "Thrall",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Spiritual Renewal",
+      "vigor_cost": "4",
+      "vigor_type": "Purity",
+      "vigor_type_image": "Mana/Purity.png",
+      "image": "F:\\zzz\\Spells(bot)\\Purity\\3.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Purity.png",
+      "attack_name": "Spiritual Renewal",
+      "attack_description": "Renew the spirits of all allies, restoring 10-15 hit points and removing all negative effects.",
+      "shop_price": "106",
+      "file_name": "Spiritual Renewal.png",
+      "standard_path": "B:\\Cards\\Purity\\Runes\\Spiritual Renewal.png",
+      "print_path": "B:\\Cards\\Purity(Print)\\Runes\\Spiritual Renewal.png",
+      "card_number": "182/168",
+      "rarity": "Skilled",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Rock Slide",
+      "vigor_cost": "8",
+      "vigor_type": "Purity",
+      "vigor_type_image": "Mana/Purity.png",
+      "image": "F:\\zzz\\Spells(bot)\\Purity\\4.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Purity.png",
+      "attack_name": "Rock Slide",
+      "attack_description": "Summon a landslide, dealing 14 earth damage.",
+      "shop_price": "508",
+      "file_name": "Rock Slide.png",
+      "standard_path": "B:\\Cards\\Purity\\Runes\\Rock Slide.png",
+      "print_path": "B:\\Cards\\Purity(Print)\\Runes\\Rock Slide.png",
+      "card_number": "183/168",
+      "rarity": "Skilled",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Fairy Swarm",
+      "vigor_cost": "17",
+      "vigor_type": "Ocean",
+      "vigor_type_image": "Mana/Ocean.png",
+      "image": "F:\\zzz\\Spells(bot)\\Ocean\\b5db22bf-e216-4fc2-8640-088d12c80348.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Ocean.png",
+      "attack_name": "Fairy Swarm",
+      "attack_description": "Summon a swarm of fairies to cause 19 attack on enemies.",
+      "shop_price": "102",
+      "file_name": "Fairy Swarm.png",
+      "standard_path": "B:\\Cards\\Ocean\\Runes\\Fairy Swarm.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Runes\\Fairy Swarm.png",
+      "card_number": "184/168",
+      "rarity": "Karls",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Regeneration",
+      "vigor_cost": "4",
+      "vigor_type": "Spirit",
+      "vigor_type_image": "Mana/Spirit.png",
+      "image": "F:\\zzz\\Spells(bot)\\Spirit\\39.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Spirit.png",
+      "attack_name": "Regeneration",
+      "attack_description": "Accelerate natural healing, restoring 5 hit points per turn for 3 turns.",
+      "shop_price": "380",
+      "file_name": "Regeneration.png",
+      "standard_path": "B:\\Cards\\Spirit\\Runes\\Regeneration.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Runes\\Regeneration.png",
+      "card_number": "185/168",
+      "rarity": "Jarl",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Galadriel",
+      "className": "Primordial",
+      "manaColor": "Earth",
+      "classImage": "F:\\zzz\\Primordial\\Earth\\28.png",
+      "attacks": [
+        {
+          "name": "Nether\u2019s Touch",
+          "description": "Return a spell from your graveyard to your hand.",
+          "manaCost": "19"
+        },
+        {
+          "name": "Lifeblood Surge",
+          "description": "Destroy an Equipment or Spell attached to any creature.",
+          "manaCost": "12"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 13",
+      "dp": "DP 14",
+      "strength": {
+        "Vigor": "Lightning",
+        "image": "SMana/Lightning.png"
+      },
+      "weakness": {
+        "Vigor": "Chaos",
+        "image": "WMana/Chaos.png"
+      },
+      "deckManaImage": "Mana/Earth.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Earth\\Primordial\\Galadriel.png",
+      "print_path": "B:\\Cards\\Earth(Print)\\Primordial\\Galadriel.png",
+      "shop_price": "145",
+      "card_number": "186/168",
+      "rarity": "Konugr",
+      "vigor": "Earth",
+      "type": "Primordial Being",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Isabeau",
+      "className": "Primordial",
+      "manaColor": "Fairy",
+      "classImage": "F:\\zzz\\Primordial\\Fairy\\28.png",
+      "attacks": [
+        {
+          "name": "Wraith\u2019s Claim",
+          "description": "Return an Equipment from your graveyard and attach it to a creature you control.",
+          "manaCost": "15"
+        },
+        {
+          "name": "Eldritch Demand",
+          "description": "Look at the top 5 cards of your deck. Choose 1 to add to your hand and shuffle the rest.",
+          "manaCost": "20"
+        }
+      ],
+      "Mana Card Cost": "20",
+      "ap": "AP 20",
+      "dp": "DP 20",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Greed",
+        "image": "WMana/Greed.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Primordial\\Isabeau.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Primordial\\Isabeau.png",
+      "shop_price": "179",
+      "card_number": "187/168",
+      "rarity": "Konugr",
+      "vigor": "Fairy",
+      "type": "Primordial Being",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Alarionna",
+      "className": "Primordial",
+      "manaColor": "Lightning",
+      "classImage": "F:\\zzz\\Primordial\\Lightning\\8.png",
+      "attacks": [
+        {
+          "name": "Essence Harvest",
+          "description": "Exile a card from your graveyard to summon a token creature with equal power.",
+          "manaCost": "11"
+        },
+        {
+          "name": "Phantom Grip",
+          "description": "Roll a die. On 1-3, steal a card from your opponent\u2019s hand.",
+          "manaCost": "20"
+        }
+      ],
+      "Mana Card Cost": "17",
+      "ap": "AP 18",
+      "dp": "DP 17",
+      "strength": {
+        "Vigor": "Sorcery",
+        "image": "SMana/Sorcery.png"
+      },
+      "weakness": {
+        "Vigor": "Fairy",
+        "image": "WMana/Fairy.png"
+      },
+      "deckManaImage": "Mana/Lightning.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Lightning\\Primordial\\Alarionna.png",
+      "print_path": "B:\\Cards\\Lightning(Print)\\Primordial\\Alarionna.png",
+      "shop_price": "635",
+      "card_number": "188/168",
+      "rarity": "Konugr",
+      "vigor": "Lightning",
+      "type": "Primordial Being",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Kodin",
+      "className": "Primordial",
+      "manaColor": "Purity",
+      "classImage": "F:\\zzz\\Primordial\\Purity\\3.png",
+      "attacks": [
+        {
+          "name": "Eternal Hunger",
+          "description": "Draw 3 cards, then lose 5 life.",
+          "manaCost": "13"
+        },
+        {
+          "name": "Tainted Covenant",
+          "description": "Target opponent mills 5 cards.",
+          "manaCost": "17"
+        }
+      ],
+      "Mana Card Cost": "16",
+      "ap": "AP 12",
+      "dp": "DP 13",
+      "strength": {
+        "Vigor": "Fungus",
+        "image": "SMana/Fungus.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Purity.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Purity\\Primordial\\Kodin.png",
+      "print_path": "B:\\Cards\\Purity(Print)\\Primordial\\Kodin.png",
+      "shop_price": "418",
+      "card_number": "189/168",
+      "rarity": "Konugr",
+      "vigor": "Purity",
+      "type": "Primordial Being",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Brigrik",
+      "className": "Primordial",
+      "manaColor": "Spirit",
+      "classImage": "F:\\zzz\\Primordial\\Spirit\\12.png",
+      "attacks": [
+        {
+          "name": "Death\u2019s Bargain",
+          "description": "Destroy 2 of your opponent\u2019s creatures with 14 health or less from their hand, deck, or field.",
+          "manaCost": "19"
+        },
+        {
+          "name": "Twilight Offering",
+          "description": "Summon a 5/5 Shadow Wraith token with Lifesteal.",
+          "manaCost": "16"
+        }
+      ],
+      "Mana Card Cost": "17",
+      "ap": "AP 19",
+      "dp": "DP 17",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Primordial\\Brigrik.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Primordial\\Brigrik.png",
+      "shop_price": "149",
+      "card_number": "190/168",
+      "rarity": "Konugr",
+      "vigor": "Spirit",
+      "type": "Primordial Being",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    },
+    {
+      "name": "Chrevarr",
+      "className": "Primordial",
+      "manaColor": "Sun",
+      "classImage": "F:\\zzz\\Primordial\\Sun\\15.png",
+      "attacks": [
+        {
+          "name": "Ghoul\u2019s Grasp",
+          "description": "Exile 3 cards from your opponent\u2019s graveyard. Gain 5 life.",
+          "manaCost": "18"
+        },
+        {
+          "name": "Fell Pact",
+          "description": "Roll a die. On 1-3, opponent sacrifices a creature. On 4-6, you draw a card.",
+          "manaCost": "11"
+        }
+      ],
+      "Mana Card Cost": "16",
+      "ap": "AP 14",
+      "dp": "DP 15",
+      "strength": {
+        "Vigor": "Moon",
+        "image": "SMana/Moon.png"
+      },
+      "weakness": {
+        "Vigor": "Moon",
+        "image": "WMana/Moon.png"
+      },
+      "deckManaImage": "Mana/Sun.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Sun\\Primordial\\Chrevarr.png",
+      "print_path": "B:\\Cards\\Sun(Print)\\Primordial\\Chrevarr.png",
+      "shop_price": "297",
+      "card_number": "191/168",
+      "rarity": "Konugr",
+      "vigor": "Sun",
+      "type": "Primordial Being",
+      "manifest_path": "B:\\Cards\\Eternal Reach\\Eternal Reach_manifest.json"
+    }
+  ]
+}

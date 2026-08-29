@@ -1,0 +1,5095 @@
+{
+  "set_name": "Tangled Weave",
+  "base_total": 143,
+  "actual_total": 163,
+  "main_primordial_vigor": "Spirit",
+  "type_distribution": {
+    "Vigor": 7,
+    "Creature": 105,
+    "Accoutrements": 28,
+    "Runes": 16,
+    "Primordial": 7
+  },
+  "rarity_distribution": {
+    "Thrall": 53,
+    "Skilled": 48,
+    "Karls": 32,
+    "Jarl": 16,
+    "Konugr": 7
+  },
+  "vigor_distribution": {
+    "Chaos": 31,
+    "Fairy": 27,
+    "Fungus": 18,
+    "Greed": 13,
+    "Moon": 26,
+    "Ocean": 19,
+    "Spirit": 29
+  },
+  "text_overlay": {
+    "vigor_number": {
+      "font": "F:\\zzz\\fonts\\FairyDustB.ttf",
+      "x": 35,
+      "y": 28,
+      "size": 14,
+      "color": "white"
+    },
+    "set_name": {
+      "font": "F:\\zzz\\fonts\\FairyDustB.ttf",
+      "x": 110,
+      "y": 185,
+      "size": 17,
+      "color": "white"
+    },
+    "set_number": {
+      "font": "F:\\zzz\\fonts\\FairyDustB.ttf",
+      "x": 195,
+      "y": 329,
+      "size": 17,
+      "color": "white"
+    }
+  },
+  "cards": [
+    {
+      "name": "Riftspirit",
+      "vigor_type": "Chaos",
+      "Background_image": "manabg.png",
+      "type": "Vigor",
+      "image": "F:\\zzz\\Vigor\\ChaosM\\Chaos\\Chaos4.png",
+      "file_name": "Chaos_Riftspirit.png",
+      "shop_price": "17",
+      "created_at": "2026-08-29T10:06:03.734539",
+      "standard_path": "B:\\Cards\\Chaos\\Vigor\\Chaos_Riftspirit.png",
+      "print_path": "B:\\Cards\\Chaos(Print)\\Vigor\\Chaos_Riftspirit.png",
+      "card_number": "1/143",
+      "rarity": null,
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Faefang",
+      "vigor_type": "Fairy",
+      "Background_image": "manabg.png",
+      "type": "Vigor",
+      "image": "F:\\zzz\\Vigor\\FairyM\\Fairy\\Fairy2.png",
+      "file_name": "Fairy_Faefang.png",
+      "shop_price": "16",
+      "created_at": "2026-08-29T10:06:22.137083",
+      "standard_path": "B:\\Cards\\Fairy\\Vigor\\Fairy_Faefang.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Vigor\\Fairy_Faefang.png",
+      "card_number": "2/143",
+      "rarity": null,
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Shroombeast",
+      "vigor_type": "Fungus",
+      "Background_image": "manabg.png",
+      "type": "Vigor",
+      "image": "F:\\zzz\\Vigor\\FungusM\\Fungus\\Fungus.png",
+      "file_name": "Fungus_Shroombeast.png",
+      "shop_price": "12",
+      "created_at": "2026-08-29T10:06:30.208879",
+      "standard_path": "B:\\Cards\\Fungus\\Vigor\\Fungus_Shroombeast.png",
+      "print_path": "B:\\Cards\\Fungus(Print)\\Vigor\\Fungus_Shroombeast.png",
+      "card_number": "3/143",
+      "rarity": null,
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Gildedmancer",
+      "vigor_type": "Greed",
+      "Background_image": "manabg.png",
+      "type": "Vigor",
+      "image": "F:\\zzz\\Vigor\\GreedM\\Greed\\Greed6.png",
+      "file_name": "Greed_Gildedmancer.png",
+      "shop_price": "24",
+      "created_at": "2026-08-29T10:06:41.269057",
+      "standard_path": "B:\\Cards\\Greed\\Vigor\\Greed_Gildedmancer.png",
+      "print_path": "B:\\Cards\\Greed(Print)\\Vigor\\Greed_Gildedmancer.png",
+      "card_number": "4/143",
+      "rarity": null,
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Nightfang",
+      "vigor_type": "Moon",
+      "Background_image": "manabg.png",
+      "type": "Vigor",
+      "image": "F:\\zzz\\Vigor\\MoonM\\Moon\\Moon.png",
+      "file_name": "Moon_Nightfang.png",
+      "shop_price": "12",
+      "created_at": "2026-08-29T10:07:10.723996",
+      "standard_path": "B:\\Cards\\Moon\\Vigor\\Moon_Nightfang.png",
+      "print_path": "B:\\Cards\\Moon(Print)\\Vigor\\Moon_Nightfang.png",
+      "card_number": "5/143",
+      "rarity": null,
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Tidegiant",
+      "vigor_type": "Ocean",
+      "Background_image": "manabg.png",
+      "type": "Vigor",
+      "image": "F:\\zzz\\Vigor\\OceanM\\Ocean\\Ocean2.png",
+      "file_name": "Ocean_Tidegiant.png",
+      "shop_price": "22",
+      "created_at": "2026-08-29T10:07:18.647408",
+      "standard_path": "B:\\Cards\\Ocean\\Vigor\\Ocean_Tidegiant.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Vigor\\Ocean_Tidegiant.png",
+      "card_number": "6/143",
+      "rarity": null,
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Hauntweaver",
+      "vigor_type": "Spirit",
+      "Background_image": "manabg.png",
+      "type": "Vigor",
+      "image": "F:\\zzz\\Vigor\\SpiritM\\Spirit\\Spirit4.png",
+      "file_name": "Spirit_Hauntweaver.png",
+      "shop_price": "15",
+      "created_at": "2026-08-29T10:07:51.739932",
+      "standard_path": "B:\\Cards\\Spirit\\Vigor\\Spirit_Hauntweaver.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Vigor\\Spirit_Hauntweaver.png",
+      "card_number": "7/143",
+      "rarity": null,
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Bezyl",
+      "className": "Insect",
+      "classImage": "F:\\zzz\\Master Photo List\\Insect\\Insect6.png",
+      "attacks": [
+        {
+          "name": "Authentic Beaver",
+          "description": "Conjures authentic beaver, removes extras",
+          "manaCost": "9"
+        },
+        {
+          "name": "Abyssal Void",
+          "description": "Opens rift, meditative state 3 turns",
+          "manaCost": "11"
+        }
+      ],
+      "Mana Card Cost": "7",
+      "ap": "AP 6",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Fairy",
+        "image": "SMana/Fairy.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Fungus.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fungus\\Creature\\Bezyl.png",
+      "print_path": "B:\\Cards\\Fungus(Print)\\Creature\\Bezyl.png",
+      "card_number": "8/143",
+      "rarity": "Thrall",
+      "vigor": "Fungus",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Seraphion",
+      "className": "Spirit",
+      "classImage": "F:\\zzz\\Master Photo List\\Spirit\\Spirit5.png",
+      "attacks": [
+        {
+          "name": "Ravenous Thunder",
+          "description": "Attacks all 3 damage",
+          "manaCost": "3"
+        },
+        {
+          "name": "Lightning Bolt",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "8"
+        }
+      ],
+      "Mana Card Cost": "4",
+      "ap": "AP 6",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Sorcery",
+        "image": "SMana/Sorcery.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Seraphion.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Seraphion.png",
+      "card_number": "9/143",
+      "rarity": "Thrall",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Aelarianth",
+      "className": "Drow",
+      "classImage": "F:\\zzz\\Master Photo List\\Drow\\Drow2.png",
+      "attacks": [
+        {
+          "name": "Demonic Doom",
+          "description": "Opponent -4 life",
+          "manaCost": "7"
+        },
+        {
+          "name": "Phantom Mirage",
+          "description": "Opponent -7 life",
+          "manaCost": "10"
+        }
+      ],
+      "Mana Card Cost": "5",
+      "ap": "AP 1",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Sun",
+        "image": "SMana/Sun.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Moon.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Moon\\Creature\\Aelarianth.png",
+      "print_path": "B:\\Cards\\Moon(Print)\\Creature\\Aelarianth.png",
+      "card_number": "10/143",
+      "rarity": "Thrall",
+      "vigor": "Moon",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Isoldeira",
+      "className": "Warrior",
+      "classImage": "F:\\zzz\\Master Photo List\\Warrior\\Warrior7.png",
+      "attacks": [
+        {
+          "name": "Darkstrike",
+          "description": "Silences target 2 rounds",
+          "manaCost": "9"
+        },
+        {
+          "name": "Netherworld Blast",
+          "description": "No life gain opponent 4 turns",
+          "manaCost": "3"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 10",
+      "dp": "DP 10",
+      "strength": {
+        "Vigor": "Sorcery",
+        "image": "SMana/Sorcery.png"
+      },
+      "weakness": {
+        "Vigor": "Purity",
+        "image": "WMana/Purity.png"
+      },
+      "deckManaImage": "Mana/Chaos.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Chaos\\Creature\\Isoldeira.png",
+      "print_path": "B:\\Cards\\Chaos(Print)\\Creature\\Isoldeira.png",
+      "card_number": "11/143",
+      "rarity": "Thrall",
+      "vigor": "Chaos",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Kotack",
+      "className": "Shade",
+      "classImage": "F:\\zzz\\Master Photo List\\Shade\\Shade5.png",
+      "attacks": [
+        {
+          "name": "Solar Flare",
+          "description": "Opponent -4 life",
+          "manaCost": "6"
+        },
+        {
+          "name": "Oblivion Eruption",
+          "description": "No attacks 10 turns",
+          "manaCost": "7"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 6",
+      "dp": "DP 12",
+      "strength": {
+        "Vigor": "Sorcery",
+        "image": "SMana/Sorcery.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Kotack.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Kotack.png",
+      "card_number": "12/143",
+      "rarity": "Thrall",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Faelorius",
+      "className": "Viking",
+      "classImage": "F:\\zzz\\Master Photo List\\Viking\\Viking13.png",
+      "attacks": [
+        {
+          "name": "Temporal Warp",
+          "description": "Turns opponent creatures 4 rounds",
+          "manaCost": "5"
+        },
+        {
+          "name": "Blessing Slam",
+          "description": "Draws 3 cards",
+          "manaCost": "2"
+        }
+      ],
+      "Mana Card Cost": "8",
+      "ap": "AP 6",
+      "dp": "DP 5",
+      "strength": {
+        "Vigor": "Spirit",
+        "image": "SMana/Spirit.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Chaos.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Chaos\\Creature\\Faelorius.png",
+      "print_path": "B:\\Cards\\Chaos(Print)\\Creature\\Faelorius.png",
+      "card_number": "13/143",
+      "rarity": "Thrall",
+      "vigor": "Chaos",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Aricelle",
+      "className": "Changling",
+      "classImage": "F:\\zzz\\Master Photo List\\Changling\\Changling8.png",
+      "attacks": [
+        {
+          "name": "Stellar Surge",
+          "description": "Heals caster next damage dealt",
+          "manaCost": "9"
+        },
+        {
+          "name": "Shockwave Tremor",
+          "description": "Silences target 3 rounds",
+          "manaCost": "2"
+        }
+      ],
+      "Mana Card Cost": "2",
+      "ap": "AP 2",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Earth",
+        "image": "SMana/Earth.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Chaos.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Chaos\\Creature\\Aricelle.png",
+      "print_path": "B:\\Cards\\Chaos(Print)\\Creature\\Aricelle.png",
+      "card_number": "14/143",
+      "rarity": "Thrall",
+      "vigor": "Chaos",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Brathon",
+      "className": "Kitsune",
+      "classImage": "F:\\zzz\\Master Photo List\\Kitsune\\Kitsune3.png",
+      "attacks": [
+        {
+          "name": "Angelic Petal Cut",
+          "description": "Graceful attack, -3 life",
+          "manaCost": "8"
+        },
+        {
+          "name": "Glacial Shard Strike",
+          "description": "No life gain opponent 3 turns",
+          "manaCost": "3"
+        }
+      ],
+      "Mana Card Cost": "10",
+      "ap": "AP 7",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Lightning",
+        "image": "SMana/Lightning.png"
+      },
+      "weakness": {
+        "Vigor": "Moon",
+        "image": "WMana/Moon.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Brathon.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Brathon.png",
+      "card_number": "15/143",
+      "rarity": "Thrall",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Zinn",
+      "className": "Siren",
+      "classImage": "F:\\zzz\\Master Photo List\\Siren\\Siren3.png",
+      "attacks": [
+        {
+          "name": "Netherworld Oblivion",
+          "description": "No spellcasting 5 rounds",
+          "manaCost": "11"
+        },
+        {
+          "name": "Hypersonic Sonic Boom",
+          "description": "Attacks flying 2 rounds",
+          "manaCost": "4"
+        }
+      ],
+      "Mana Card Cost": "6",
+      "ap": "AP 5",
+      "dp": "DP 1",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Zinn.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Zinn.png",
+      "card_number": "16/143",
+      "rarity": "Thrall",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Chruddith",
+      "className": "Warrior",
+      "classImage": "F:\\zzz\\Master Photo List\\Warrior\\nwarrior5.png",
+      "attacks": [
+        {
+          "name": "Rapid Lightning Strike",
+          "description": "Attacks flying 2 rounds",
+          "manaCost": "12"
+        },
+        {
+          "name": "Angelic Magpie",
+          "description": "Summons angelic magpie, -4 life",
+          "manaCost": "3"
+        }
+      ],
+      "Mana Card Cost": "7",
+      "ap": "AP 4",
+      "dp": "DP 8",
+      "strength": {
+        "Vigor": "Earth",
+        "image": "SMana/Earth.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Chaos.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Chaos\\Creature\\Chruddith.png",
+      "print_path": "B:\\Cards\\Chaos(Print)\\Creature\\Chruddith.png",
+      "card_number": "17/143",
+      "rarity": "Thrall",
+      "vigor": "Chaos",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Lysaeris",
+      "className": "Wolf",
+      "classImage": "F:\\zzz\\Master Photo List\\Wolf\\Wolf7.png",
+      "attacks": [
+        {
+          "name": "Volcanic Eruption",
+          "description": "Attacks all 5 damage",
+          "manaCost": "5"
+        },
+        {
+          "name": "Abyssal Void",
+          "description": "Opens rift, meditative state 3 turns",
+          "manaCost": "12"
+        }
+      ],
+      "Mana Card Cost": "4",
+      "ap": "AP 1",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Fairy",
+        "image": "SMana/Fairy.png"
+      },
+      "weakness": {
+        "Vigor": "Sorcery",
+        "image": "WMana/Sorcery.png"
+      },
+      "deckManaImage": "Mana/Moon.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Moon\\Creature\\Lysaeris.png",
+      "print_path": "B:\\Cards\\Moon(Print)\\Creature\\Lysaeris.png",
+      "card_number": "18/143",
+      "rarity": "Thrall",
+      "vigor": "Moon",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Badarr",
+      "className": "Necromancer",
+      "classImage": "F:\\zzz\\Master Photo List\\Necromancer\\Necromancer2.png",
+      "attacks": [
+        {
+          "name": "Venomous Strike",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "11"
+        },
+        {
+          "name": "Frostbite Slash",
+          "description": "Blocks flying 1 round",
+          "manaCost": "3"
+        }
+      ],
+      "Mana Card Cost": "4",
+      "ap": "AP 1",
+      "dp": "DP 5",
+      "strength": {
+        "Vigor": "Tar",
+        "image": "SMana/Tar.png"
+      },
+      "weakness": {
+        "Vigor": "Lightning",
+        "image": "WMana/Lightning.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Badarr.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Badarr.png",
+      "card_number": "19/143",
+      "rarity": "Thrall",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Isolde",
+      "className": "Mermaid",
+      "classImage": "F:\\zzz\\Master Photo List\\Mermaid\\Mermaid.png",
+      "attacks": [
+        {
+          "name": "Doomsday Shockwave",
+          "description": "Destroys target card",
+          "manaCost": "5"
+        },
+        {
+          "name": "Oblivion",
+          "description": "No attacks 4 turns",
+          "manaCost": "6"
+        }
+      ],
+      "Mana Card Cost": "3",
+      "ap": "AP 2",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Tar",
+        "image": "SMana/Tar.png"
+      },
+      "weakness": {
+        "Vigor": "Lava",
+        "image": "WMana/Lava.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Isolde.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Isolde.png",
+      "card_number": "20/143",
+      "rarity": "Thrall",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Baka",
+      "className": "Avatar",
+      "classImage": "F:\\zzz\\Master Photo List\\Avatar\\Avatar15.png",
+      "attacks": [
+        {
+          "name": "Roaring Thunder",
+          "description": "Attacks all 3 damage",
+          "manaCost": "11"
+        },
+        {
+          "name": "Darling Mandrill",
+          "description": "Blocks ground 2 rounds",
+          "manaCost": "6"
+        }
+      ],
+      "Mana Card Cost": "9",
+      "ap": "AP 7",
+      "dp": "DP 5",
+      "strength": {
+        "Vigor": "Fungus",
+        "image": "SMana/Fungus.png"
+      },
+      "weakness": {
+        "Vigor": "Sorcery",
+        "image": "WMana/Sorcery.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Baka.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Baka.png",
+      "card_number": "21/143",
+      "rarity": "Thrall",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Thadiror",
+      "className": "Shade",
+      "classImage": "F:\\zzz\\Master Photo List\\Shade\\Shade9.png",
+      "attacks": [
+        {
+          "name": "Firing Beaver",
+          "description": "Blocks ground 3 rounds",
+          "manaCost": "10"
+        },
+        {
+          "name": "Polar Frost",
+          "description": "Opponent -3 life",
+          "manaCost": "9"
+        }
+      ],
+      "Mana Card Cost": "5",
+      "ap": "AP 3",
+      "dp": "DP 5",
+      "strength": {
+        "Vigor": "Sorcery",
+        "image": "SMana/Sorcery.png"
+      },
+      "weakness": {
+        "Vigor": "Chaos",
+        "image": "WMana/Chaos.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Thadiror.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Thadiror.png",
+      "card_number": "22/143",
+      "rarity": "Thrall",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Brugoth",
+      "className": "Avatar",
+      "classImage": "F:\\zzz\\Master Photo List\\Avatar\\Avatar11.png",
+      "attacks": [
+        {
+          "name": "Summoning Ritual",
+          "description": "Draws 3 cards",
+          "manaCost": "8"
+        },
+        {
+          "name": "Savage Claws",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "7"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 9",
+      "dp": "DP 12",
+      "strength": {
+        "Vigor": "Sorcery",
+        "image": "SMana/Sorcery.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Brugoth.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Brugoth.png",
+      "card_number": "23/143",
+      "rarity": "Thrall",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Burr",
+      "className": "Necromancer",
+      "classImage": "F:\\zzz\\Master Photo List\\Necromancer\\Necromancer7.png",
+      "attacks": [
+        {
+          "name": "Inferno Fury",
+          "description": "Attacks opponent 4 damage",
+          "manaCost": "6"
+        },
+        {
+          "name": "Abyssal Nightmare",
+          "description": "Summons nightmarish abyss, -4 life",
+          "manaCost": "11"
+        }
+      ],
+      "Mana Card Cost": "8",
+      "ap": "AP 4",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Tar",
+        "image": "SMana/Tar.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Burr.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Burr.png",
+      "card_number": "24/143",
+      "rarity": "Thrall",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Nirr",
+      "className": "Archon",
+      "classImage": "F:\\zzz\\Master Photo List\\Archon\\Archon15.png",
+      "attacks": [
+        {
+          "name": "Dark Nova",
+          "description": "Opponent -5 life",
+          "manaCost": "2"
+        },
+        {
+          "name": "Psychic Wave",
+          "description": "Reflects opponent spell",
+          "manaCost": "8"
+        }
+      ],
+      "Mana Card Cost": "9",
+      "ap": "AP 4",
+      "dp": "DP 8",
+      "strength": {
+        "Vigor": "Greed",
+        "image": "SMana/Greed.png"
+      },
+      "weakness": {
+        "Vigor": "Tar",
+        "image": "WMana/Tar.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Nirr.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Nirr.png",
+      "card_number": "25/143",
+      "rarity": "Thrall",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Elowenndria",
+      "className": "Spirit",
+      "classImage": "F:\\zzz\\Master Photo List\\Spirit\\Spirit5.png",
+      "attacks": [
+        {
+          "name": "Blazing Meteor",
+          "description": "Summons meteor, -2 damage",
+          "manaCost": "1"
+        },
+        {
+          "name": "Searing Flame",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "9"
+        }
+      ],
+      "Mana Card Cost": "1",
+      "ap": "AP 2",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Sorcery",
+        "image": "SMana/Sorcery.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Elowenndria.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Elowenndria.png",
+      "card_number": "26/143",
+      "rarity": "Thrall",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Burr",
+      "className": "Barbarian",
+      "classImage": "F:\\zzz\\Master Photo List\\Barbarian\\Barbarian4.png",
+      "attacks": [
+        {
+          "name": "Doomsday Prophecy",
+          "description": "Deals 5 damage",
+          "manaCost": "5"
+        },
+        {
+          "name": "Solar Flare",
+          "description": "Opponent -4 life",
+          "manaCost": "11"
+        }
+      ],
+      "Mana Card Cost": "6",
+      "ap": "AP 5",
+      "dp": "DP 2",
+      "strength": {
+        "Vigor": "Sorcery",
+        "image": "SMana/Sorcery.png"
+      },
+      "weakness": {
+        "Vigor": "Sorcery",
+        "image": "WMana/Sorcery.png"
+      },
+      "deckManaImage": "Mana/Chaos.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Chaos\\Creature\\Burr.png",
+      "print_path": "B:\\Cards\\Chaos(Print)\\Creature\\Burr.png",
+      "card_number": "27/143",
+      "rarity": "Thrall",
+      "vigor": "Chaos",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Klanak",
+      "className": "Warrior",
+      "classImage": "F:\\zzz\\Master Photo List\\Warrior\\nwarrior2.png",
+      "attacks": [
+        {
+          "name": "Temporal Warp",
+          "description": "Turns opponent creatures 4 rounds",
+          "manaCost": "12"
+        },
+        {
+          "name": "Cyclone Whirlwind",
+          "description": "Blocks flying 3 rounds",
+          "manaCost": "11"
+        }
+      ],
+      "Mana Card Cost": "7",
+      "ap": "AP 5",
+      "dp": "DP 7",
+      "strength": {
+        "Vigor": "Sorcery",
+        "image": "SMana/Sorcery.png"
+      },
+      "weakness": {
+        "Vigor": "Purity",
+        "image": "WMana/Purity.png"
+      },
+      "deckManaImage": "Mana/Chaos.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Chaos\\Creature\\Klanak.png",
+      "print_path": "B:\\Cards\\Chaos(Print)\\Creature\\Klanak.png",
+      "card_number": "28/143",
+      "rarity": "Thrall",
+      "vigor": "Chaos",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Josris",
+      "className": "Fox",
+      "classImage": "F:\\zzz\\Master Photo List\\Fox\\Fox2.png",
+      "attacks": [
+        {
+          "name": "Drain Corpse",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "2"
+        },
+        {
+          "name": "Death Release",
+          "description": "Puts target meditative state 3 turns",
+          "manaCost": "11"
+        }
+      ],
+      "Mana Card Cost": "2",
+      "ap": "AP 4",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Sun",
+        "image": "SMana/Sun.png"
+      },
+      "weakness": {
+        "Vigor": "Lightning",
+        "image": "WMana/Lightning.png"
+      },
+      "deckManaImage": "Mana/Moon.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Moon\\Creature\\Josris.png",
+      "print_path": "B:\\Cards\\Moon(Print)\\Creature\\Josris.png",
+      "card_number": "29/143",
+      "rarity": "Thrall",
+      "vigor": "Moon",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Serahel",
+      "className": "Bard",
+      "classImage": "F:\\zzz\\Master Photo List\\Bard\\Bard4.png",
+      "attacks": [
+        {
+          "name": "Pulsating Thunderstorm",
+          "description": "Attacks all 3 damage",
+          "manaCost": "6"
+        },
+        {
+          "name": "Flameburst",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "3"
+        }
+      ],
+      "Mana Card Cost": "4",
+      "ap": "AP 5",
+      "dp": "DP 2",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Serahel.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Serahel.png",
+      "card_number": "30/143",
+      "rarity": "Thrall",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Zorrin",
+      "className": "Weapons",
+      "classImage": "F:\\zzz\\Master Photo List\\Weapons\\Weapon15.png",
+      "attacks": [
+        {
+          "name": "Soul Drain",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "12"
+        },
+        {
+          "name": "Frostbite Slash",
+          "description": "Blocks flying 1 round",
+          "manaCost": "11"
+        }
+      ],
+      "Mana Card Cost": "3",
+      "ap": "AP 1",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Fairy",
+        "image": "SMana/Fairy.png"
+      },
+      "weakness": {
+        "Vigor": "Purity",
+        "image": "WMana/Purity.png"
+      },
+      "deckManaImage": "Mana/Greed.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Greed\\Creature\\Zorrin.png",
+      "print_path": "B:\\Cards\\Greed(Print)\\Creature\\Zorrin.png",
+      "card_number": "31/143",
+      "rarity": "Thrall",
+      "vigor": "Greed",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Zhiddalk",
+      "className": "Viking",
+      "classImage": "F:\\zzz\\Master Photo List\\Viking\\Viking6.png",
+      "attacks": [
+        {
+          "name": "Doomsday Prophecy",
+          "description": "Deals 5 damage",
+          "manaCost": "1"
+        },
+        {
+          "name": "Surging Inferno",
+          "description": "Attacks opponent 4 damage",
+          "manaCost": "12"
+        }
+      ],
+      "Mana Card Cost": "3",
+      "ap": "AP 4",
+      "dp": "DP 2",
+      "strength": {
+        "Vigor": "Earth",
+        "image": "SMana/Earth.png"
+      },
+      "weakness": {
+        "Vigor": "Sorcery",
+        "image": "WMana/Sorcery.png"
+      },
+      "deckManaImage": "Mana/Chaos.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Chaos\\Creature\\Zhiddalk.png",
+      "print_path": "B:\\Cards\\Chaos(Print)\\Creature\\Zhiddalk.png",
+      "card_number": "32/143",
+      "rarity": "Thrall",
+      "vigor": "Chaos",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Khuth",
+      "className": "Assassin",
+      "classImage": "F:\\zzz\\Master Photo List\\Assassin\\Assassin4.png",
+      "attacks": [
+        {
+          "name": "Eclipse Eclipse",
+          "description": "Turns opponent harmless 2 turns",
+          "manaCost": "12"
+        },
+        {
+          "name": "Shimmering Mirage",
+          "description": "Opponent -4 life",
+          "manaCost": "4"
+        }
+      ],
+      "Mana Card Cost": "1",
+      "ap": "AP 3",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Sun",
+        "image": "SMana/Sun.png"
+      },
+      "weakness": {
+        "Vigor": "Spirit",
+        "image": "WMana/Spirit.png"
+      },
+      "deckManaImage": "Mana/Greed.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Greed\\Creature\\Khuth.png",
+      "print_path": "B:\\Cards\\Greed(Print)\\Creature\\Khuth.png",
+      "card_number": "33/143",
+      "rarity": "Thrall",
+      "vigor": "Greed",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Evandorius",
+      "className": "Bat",
+      "classImage": "F:\\zzz\\Master Photo List\\Bat\\Bat3.png",
+      "attacks": [
+        {
+          "name": "Paralyzing Venom",
+          "description": "Silences target 3 rounds",
+          "manaCost": "7"
+        },
+        {
+          "name": "Lunar Eclipse",
+          "description": "Turns opponent harmless 2 turns",
+          "manaCost": "11"
+        }
+      ],
+      "Mana Card Cost": "3",
+      "ap": "AP 3",
+      "dp": "DP 2",
+      "strength": {
+        "Vigor": "Ocean",
+        "image": "SMana/Ocean.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Moon.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Moon\\Creature\\Evandorius.png",
+      "print_path": "B:\\Cards\\Moon(Print)\\Creature\\Evandorius.png",
+      "card_number": "34/143",
+      "rarity": "Thrall",
+      "vigor": "Moon",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Isolindor",
+      "className": "Barbarian",
+      "classImage": "F:\\zzz\\Master Photo List\\Barbarian\\Barbarian4.png",
+      "attacks": [
+        {
+          "name": "Elegant Tiger",
+          "description": "Blocks flying 3 rounds",
+          "manaCost": "6"
+        },
+        {
+          "name": "Pyroclasmic Eruption",
+          "description": "Attacks all 4 damage",
+          "manaCost": "4"
+        }
+      ],
+      "Mana Card Cost": "2",
+      "ap": "AP 3",
+      "dp": "DP 2",
+      "strength": {
+        "Vigor": "Earth",
+        "image": "SMana/Earth.png"
+      },
+      "weakness": {
+        "Vigor": "Sorcery",
+        "image": "WMana/Sorcery.png"
+      },
+      "deckManaImage": "Mana/Chaos.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Chaos\\Creature\\Isolindor.png",
+      "print_path": "B:\\Cards\\Chaos(Print)\\Creature\\Isolindor.png",
+      "card_number": "35/143",
+      "rarity": "Thrall",
+      "vigor": "Chaos",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Chrevarr",
+      "className": "Witch",
+      "classImage": "F:\\zzz\\Master Photo List\\Witch\\Witch9.png",
+      "attacks": [
+        {
+          "name": "Toxic Torrent",
+          "description": "Attacks all 4 damage",
+          "manaCost": "5"
+        },
+        {
+          "name": "Angelic Magpie",
+          "description": "Summons angelic magpie, -4 life",
+          "manaCost": "3"
+        }
+      ],
+      "Mana Card Cost": "4",
+      "ap": "AP 6",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Ocean",
+        "image": "SMana/Ocean.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Fungus.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fungus\\Creature\\Chrevarr.png",
+      "print_path": "B:\\Cards\\Fungus(Print)\\Creature\\Chrevarr.png",
+      "card_number": "36/143",
+      "rarity": "Thrall",
+      "vigor": "Fungus",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Bromkk",
+      "className": "Warrior",
+      "classImage": "F:\\zzz\\Master Photo List\\Warrior\\nwarrior6.png",
+      "attacks": [
+        {
+          "name": "Demonic Doom",
+          "description": "Opponent -4 life",
+          "manaCost": "9"
+        },
+        {
+          "name": "Drowning Chameleon",
+          "description": "Exiles target card",
+          "manaCost": "7"
+        }
+      ],
+      "Mana Card Cost": "5",
+      "ap": "AP 2",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Spirit",
+        "image": "SMana/Spirit.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Chaos.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Chaos\\Creature\\Bromkk.png",
+      "print_path": "B:\\Cards\\Chaos(Print)\\Creature\\Bromkk.png",
+      "card_number": "37/143",
+      "rarity": "Thrall",
+      "vigor": "Chaos",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Evadne",
+      "className": "Viking",
+      "classImage": "F:\\zzz\\Master Photo List\\Viking\\Viking2.png",
+      "attacks": [
+        {
+          "name": "Wicked Cyclone",
+          "description": "Attacks all 4 damage",
+          "manaCost": "7"
+        },
+        {
+          "name": "Radiant Radiance",
+          "description": "Heals caster next damage dealt",
+          "manaCost": "1"
+        }
+      ],
+      "Mana Card Cost": "9",
+      "ap": "AP 9",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Sorcery",
+        "image": "SMana/Sorcery.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Chaos.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Chaos\\Creature\\Evadne.png",
+      "print_path": "B:\\Cards\\Chaos(Print)\\Creature\\Evadne.png",
+      "card_number": "38/143",
+      "rarity": "Thrall",
+      "vigor": "Chaos",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Alarionna",
+      "className": "Drow",
+      "classImage": "F:\\zzz\\Master Photo List\\Drow\\Drow3.png",
+      "attacks": [
+        {
+          "name": "Stellar Surge",
+          "description": "Heals caster next damage dealt",
+          "manaCost": "11"
+        },
+        {
+          "name": "Prismatic Prism",
+          "description": "Heals caster next damage dealt",
+          "manaCost": "8"
+        }
+      ],
+      "Mana Card Cost": "6",
+      "ap": "AP 1",
+      "dp": "DP 5",
+      "strength": {
+        "Vigor": "Sun",
+        "image": "SMana/Sun.png"
+      },
+      "weakness": {
+        "Vigor": "Lightning",
+        "image": "WMana/Lightning.png"
+      },
+      "deckManaImage": "Mana/Moon.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Moon\\Creature\\Alarionna.png",
+      "print_path": "B:\\Cards\\Moon(Print)\\Creature\\Alarionna.png",
+      "card_number": "39/143",
+      "rarity": "Thrall",
+      "vigor": "Moon",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Thinn",
+      "className": "Insect",
+      "classImage": "F:\\zzz\\Master Photo List\\Insect\\Insect7.png",
+      "attacks": [
+        {
+          "name": "Inferno Fury",
+          "description": "Attacks opponent 4 damage",
+          "manaCost": "4"
+        },
+        {
+          "name": "Prismatic Beam",
+          "description": "Reflects opponent spell",
+          "manaCost": "7"
+        }
+      ],
+      "Mana Card Cost": "4",
+      "ap": "AP 2",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Purity",
+        "image": "SMana/Purity.png"
+      },
+      "weakness": {
+        "Vigor": "Purity",
+        "image": "WMana/Purity.png"
+      },
+      "deckManaImage": "Mana/Fungus.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fungus\\Creature\\Thinn.png",
+      "print_path": "B:\\Cards\\Fungus(Print)\\Creature\\Thinn.png",
+      "card_number": "40/143",
+      "rarity": "Thrall",
+      "vigor": "Fungus",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Zrunk",
+      "className": "Archon",
+      "classImage": "F:\\zzz\\Master Photo List\\Archon\\Archon14.png",
+      "attacks": [
+        {
+          "name": "Pyroclasmic Eruption",
+          "description": "Attacks all 4 damage",
+          "manaCost": "5"
+        },
+        {
+          "name": "Raining Fireballs",
+          "description": "Attacks all 5 damage",
+          "manaCost": "7"
+        }
+      ],
+      "Mana Card Cost": "6",
+      "ap": "AP 1",
+      "dp": "DP 2",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Greed",
+        "image": "WMana/Greed.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Zrunk.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Zrunk.png",
+      "card_number": "41/143",
+      "rarity": "Thrall",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Isoldeira",
+      "className": "Mermaid",
+      "classImage": "F:\\zzz\\Master Photo List\\Mermaid\\Mermaid8.png",
+      "attacks": [
+        {
+          "name": "Oblivion Annihilation",
+          "description": "No attacks 7 turns",
+          "manaCost": "5"
+        },
+        {
+          "name": "Raging Blizzard",
+          "description": "No attacks 5 turns",
+          "manaCost": "2"
+        }
+      ],
+      "Mana Card Cost": "2",
+      "ap": "AP 1",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Lava",
+        "image": "WMana/Lava.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Isoldeira.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Isoldeira.png",
+      "card_number": "42/143",
+      "rarity": "Thrall",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Hirsca",
+      "className": "Barbarian",
+      "classImage": "F:\\zzz\\Master Photo List\\Barbarian\\Barbarian3.png",
+      "attacks": [
+        {
+          "name": "Solar Flare",
+          "description": "Opponent -4 life",
+          "manaCost": "7"
+        },
+        {
+          "name": "Oblivion Annihilation",
+          "description": "No attacks 7 turns",
+          "manaCost": "4"
+        }
+      ],
+      "Mana Card Cost": "4",
+      "ap": "AP 3",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Spirit",
+        "image": "SMana/Spirit.png"
+      },
+      "weakness": {
+        "Vigor": "Sorcery",
+        "image": "WMana/Sorcery.png"
+      },
+      "deckManaImage": "Mana/Chaos.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Chaos\\Creature\\Hirsca.png",
+      "print_path": "B:\\Cards\\Chaos(Print)\\Creature\\Hirsca.png",
+      "card_number": "43/143",
+      "rarity": "Thrall",
+      "vigor": "Chaos",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Brugoth",
+      "className": "Mermaid",
+      "classImage": "F:\\zzz\\Master Photo List\\Mermaid\\Mermaid.png",
+      "attacks": [
+        {
+          "name": "Radiant Dawn",
+          "description": "Heals caster double successful attack",
+          "manaCost": "9"
+        },
+        {
+          "name": "Firing Beaver",
+          "description": "Blocks ground 3 rounds",
+          "manaCost": "6"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 6",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Earth",
+        "image": "SMana/Earth.png"
+      },
+      "weakness": {
+        "Vigor": "Moon",
+        "image": "WMana/Moon.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Brugoth.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Brugoth.png",
+      "card_number": "44/143",
+      "rarity": "Thrall",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Hanalinda",
+      "className": "Barbarian",
+      "classImage": "F:\\zzz\\Master Photo List\\Barbarian\\Barbarian.png",
+      "attacks": [
+        {
+          "name": "Celestial Cascade",
+          "description": "Heals caster double successful attack",
+          "manaCost": "10"
+        },
+        {
+          "name": "Fire Blitz",
+          "description": "Heals caster next damage dealt",
+          "manaCost": "2"
+        }
+      ],
+      "Mana Card Cost": "5",
+      "ap": "AP 2",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Purity",
+        "image": "SMana/Purity.png"
+      },
+      "weakness": {
+        "Vigor": "Sorcery",
+        "image": "WMana/Sorcery.png"
+      },
+      "deckManaImage": "Mana/Chaos.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Chaos\\Creature\\Hanalinda.png",
+      "print_path": "B:\\Cards\\Chaos(Print)\\Creature\\Hanalinda.png",
+      "card_number": "45/143",
+      "rarity": "Skilled",
+      "vigor": "Chaos",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Miranni",
+      "className": "Fairy",
+      "classImage": "F:\\zzz\\Master Photo List\\Fairy\\Fairy10.png",
+      "attacks": [
+        {
+          "name": "Radiant Radiance",
+          "description": "Heals caster next damage dealt",
+          "manaCost": "8"
+        },
+        {
+          "name": "Rift of Despair",
+          "description": "Opponent -5 life",
+          "manaCost": "6"
+        }
+      ],
+      "Mana Card Cost": "4",
+      "ap": "AP 5",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Greed",
+        "image": "SMana/Greed.png"
+      },
+      "weakness": {
+        "Vigor": "Lava",
+        "image": "WMana/Lava.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Miranni.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Miranni.png",
+      "card_number": "46/143",
+      "rarity": "Skilled",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Adna",
+      "className": "Dryad",
+      "classImage": "F:\\zzz\\Master Photo List\\Dryad\\Dryad1.png",
+      "attacks": [
+        {
+          "name": "Thunderstrike",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "1"
+        },
+        {
+          "name": "Chaos Chaos",
+          "description": "No life gain opponent 2 turns",
+          "manaCost": "12"
+        }
+      ],
+      "Mana Card Cost": "9",
+      "ap": "AP 7",
+      "dp": "DP 8",
+      "strength": {
+        "Vigor": "Greed",
+        "image": "SMana/Greed.png"
+      },
+      "weakness": {
+        "Vigor": "Moon",
+        "image": "WMana/Moon.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Adna.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Adna.png",
+      "card_number": "47/143",
+      "rarity": "Skilled",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Galadriel",
+      "className": "Fairy",
+      "classImage": "F:\\zzz\\Master Photo List\\Fairy\\Fairy15.png",
+      "attacks": [
+        {
+          "name": "Soul Drain",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "6"
+        },
+        {
+          "name": "Acid Rainfall",
+          "description": "Corrosive rain, damages all 2 rounds",
+          "manaCost": "8"
+        }
+      ],
+      "Mana Card Cost": "8",
+      "ap": "AP 7",
+      "dp": "DP 5",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Moon",
+        "image": "WMana/Moon.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Galadriel.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Galadriel.png",
+      "card_number": "48/143",
+      "rarity": "Skilled",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Javaram",
+      "className": "Witch",
+      "classImage": "F:\\zzz\\Master Photo List\\Witch\\Witch5.png",
+      "attacks": [
+        {
+          "name": "Cyclone Fury",
+          "description": "Attacks all 3 damage",
+          "manaCost": "6"
+        },
+        {
+          "name": "Eliminating Crocodile",
+          "description": "Protects against attacks",
+          "manaCost": "8"
+        }
+      ],
+      "Mana Card Cost": "4",
+      "ap": "AP 4",
+      "dp": "DP 2",
+      "strength": {
+        "Vigor": "Fairy",
+        "image": "SMana/Fairy.png"
+      },
+      "weakness": {
+        "Vigor": "Lava",
+        "image": "WMana/Lava.png"
+      },
+      "deckManaImage": "Mana/Fungus.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fungus\\Creature\\Javaram.png",
+      "print_path": "B:\\Cards\\Fungus(Print)\\Creature\\Javaram.png",
+      "card_number": "49/143",
+      "rarity": "Skilled",
+      "vigor": "Fungus",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Elowenndor",
+      "className": "Siren",
+      "classImage": "F:\\zzz\\Master Photo List\\Siren\\Siren7.png",
+      "attacks": [
+        {
+          "name": "Cyclone Fury",
+          "description": "Attacks all 3 damage",
+          "manaCost": "11"
+        },
+        {
+          "name": "Hellfire Inferno",
+          "description": "Attacks opponent 4 damage",
+          "manaCost": "5"
+        }
+      ],
+      "Mana Card Cost": "2",
+      "ap": "AP 2",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Sun",
+        "image": "SMana/Sun.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Elowenndor.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Elowenndor.png",
+      "card_number": "50/143",
+      "rarity": "Skilled",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Javaram",
+      "className": "Elf",
+      "classImage": "F:\\zzz\\Master Photo List\\Elf\\Elf1.png",
+      "attacks": [
+        {
+          "name": "Rippling Shockwave",
+          "description": "Silences target 4 rounds",
+          "manaCost": "1"
+        },
+        {
+          "name": "Wrath of Nature",
+          "description": "Attacks all 4 damage",
+          "manaCost": "9"
+        }
+      ],
+      "Mana Card Cost": "7",
+      "ap": "AP 9",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Lightning",
+        "image": "SMana/Lightning.png"
+      },
+      "weakness": {
+        "Vigor": "Earth",
+        "image": "WMana/Earth.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Javaram.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Javaram.png",
+      "card_number": "51/143",
+      "rarity": "Skilled",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Varmot",
+      "className": "Mermaid",
+      "classImage": "F:\\zzz\\Master Photo List\\Mermaid\\Mermaid6.png",
+      "attacks": [
+        {
+          "name": "Life Strike",
+          "description": "Attacks opponent 1 damage",
+          "manaCost": "10"
+        },
+        {
+          "name": "Zephyr Gale",
+          "description": "Blocks flying 4 rounds",
+          "manaCost": "9"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 11",
+      "dp": "DP 11",
+      "strength": {
+        "Vigor": "Tar",
+        "image": "SMana/Tar.png"
+      },
+      "weakness": {
+        "Vigor": "Lava",
+        "image": "WMana/Lava.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Varmot.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Varmot.png",
+      "card_number": "52/143",
+      "rarity": "Skilled",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Bavran",
+      "className": "Elf",
+      "classImage": "F:\\zzz\\Master Photo List\\Elf\\Elf3.png",
+      "attacks": [
+        {
+          "name": "Celestial Surge",
+          "description": "Heals caster next damage dealt",
+          "manaCost": "7"
+        },
+        {
+          "name": "Crimson Surge",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "12"
+        }
+      ],
+      "Mana Card Cost": "1",
+      "ap": "AP 4",
+      "dp": "DP 1",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Greed",
+        "image": "WMana/Greed.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Bavran.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Bavran.png",
+      "card_number": "53/143",
+      "rarity": "Skilled",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Faelorius",
+      "className": "Bat",
+      "classImage": "F:\\zzz\\Master Photo List\\Bat\\Bat5.png",
+      "attacks": [
+        {
+          "name": "Scorching Blaze",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "4"
+        },
+        {
+          "name": "Shifting Shadows",
+          "description": "No attacks 3 turns",
+          "manaCost": "11"
+        }
+      ],
+      "Mana Card Cost": "7",
+      "ap": "AP 8",
+      "dp": "DP 7",
+      "strength": {
+        "Vigor": "Sun",
+        "image": "SMana/Sun.png"
+      },
+      "weakness": {
+        "Vigor": "Sorcery",
+        "image": "WMana/Sorcery.png"
+      },
+      "deckManaImage": "Mana/Moon.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Moon\\Creature\\Faelorius.png",
+      "print_path": "B:\\Cards\\Moon(Print)\\Creature\\Faelorius.png",
+      "card_number": "54/143",
+      "rarity": "Skilled",
+      "vigor": "Moon",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Atha",
+      "className": "Aarakocra",
+      "classImage": "F:\\zzz\\Master Photo List\\Aarakocra\\Aarakocra15.png",
+      "attacks": [
+        {
+          "name": "Raging Blizzard",
+          "description": "No attacks 5 turns",
+          "manaCost": "7"
+        },
+        {
+          "name": "Darling Panther",
+          "description": "Draws 2 cards",
+          "manaCost": "8"
+        }
+      ],
+      "Mana Card Cost": "9",
+      "ap": "AP 4",
+      "dp": "DP 9",
+      "strength": {
+        "Vigor": "Lightning",
+        "image": "SMana/Lightning.png"
+      },
+      "weakness": {
+        "Vigor": "Sorcery",
+        "image": "WMana/Sorcery.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Atha.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Atha.png",
+      "card_number": "55/143",
+      "rarity": "Skilled",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Zhiddalk",
+      "className": "Siren",
+      "classImage": "F:\\zzz\\Master Photo List\\Siren\\Siren3.png",
+      "attacks": [
+        {
+          "name": "Ancestors Bomb",
+          "description": "Unleashes ancient bomb, -3 damage",
+          "manaCost": "3"
+        },
+        {
+          "name": "Vampire Strike",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "8"
+        }
+      ],
+      "Mana Card Cost": "1",
+      "ap": "AP 2",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Lightning",
+        "image": "WMana/Lightning.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Zhiddalk.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Zhiddalk.png",
+      "card_number": "56/143",
+      "rarity": "Skilled",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Gorinus",
+      "className": "Bard",
+      "classImage": "F:\\zzz\\Master Photo List\\Bard\\Bard8.png",
+      "attacks": [
+        {
+          "name": "Panther Stomp",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "3"
+        },
+        {
+          "name": "Soul Drain",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "2"
+        }
+      ],
+      "Mana Card Cost": "3",
+      "ap": "AP 3",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Sorcery",
+        "image": "SMana/Sorcery.png"
+      },
+      "weakness": {
+        "Vigor": "Chaos",
+        "image": "WMana/Chaos.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Gorinus.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Gorinus.png",
+      "card_number": "57/143",
+      "rarity": "Skilled",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Lorelindra",
+      "className": "Bard",
+      "classImage": "F:\\zzz\\Master Photo List\\Bard\\Bard6.png",
+      "attacks": [
+        {
+          "name": "Frost Nova",
+          "description": "No spellcasting 3 rounds",
+          "manaCost": "8"
+        },
+        {
+          "name": "Slicing Gale",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "5"
+        }
+      ],
+      "Mana Card Cost": "8",
+      "ap": "AP 7",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Fungus",
+        "image": "SMana/Fungus.png"
+      },
+      "weakness": {
+        "Vigor": "Tar",
+        "image": "WMana/Tar.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Lorelindra.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Lorelindra.png",
+      "card_number": "58/143",
+      "rarity": "Skilled",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Elysander",
+      "className": "Vampire",
+      "classImage": "F:\\zzz\\Master Photo List\\Vampire\\Vampire7.png",
+      "attacks": [
+        {
+          "name": "Rainstorm Flood",
+          "description": "Blocks ground 3 rounds",
+          "manaCost": "4"
+        },
+        {
+          "name": "Tidal Wave",
+          "description": "Attacks all 3 damage",
+          "manaCost": "2"
+        }
+      ],
+      "Mana Card Cost": "4",
+      "ap": "AP 5",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Greed",
+        "image": "SMana/Greed.png"
+      },
+      "weakness": {
+        "Vigor": "Sorcery",
+        "image": "WMana/Sorcery.png"
+      },
+      "deckManaImage": "Mana/Moon.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Moon\\Creature\\Elysander.png",
+      "print_path": "B:\\Cards\\Moon(Print)\\Creature\\Elysander.png",
+      "card_number": "59/143",
+      "rarity": "Skilled",
+      "vigor": "Moon",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Bromunt",
+      "className": "Vampire",
+      "classImage": "F:\\zzz\\Master Photo List\\Vampire\\Vampire4.png",
+      "attacks": [
+        {
+          "name": "Rift of Despair",
+          "description": "Opponent -5 life",
+          "manaCost": "3"
+        },
+        {
+          "name": "Frostbite Slash",
+          "description": "Blocks flying 1 round",
+          "manaCost": "1"
+        }
+      ],
+      "Mana Card Cost": "8",
+      "ap": "AP 5",
+      "dp": "DP 8",
+      "strength": {
+        "Vigor": "Greed",
+        "image": "SMana/Greed.png"
+      },
+      "weakness": {
+        "Vigor": "Earth",
+        "image": "WMana/Earth.png"
+      },
+      "deckManaImage": "Mana/Moon.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Moon\\Creature\\Bromunt.png",
+      "print_path": "B:\\Cards\\Moon(Print)\\Creature\\Bromunt.png",
+      "card_number": "60/143",
+      "rarity": "Skilled",
+      "vigor": "Moon",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Felvan",
+      "className": "Dryad",
+      "classImage": "F:\\zzz\\Master Photo List\\Dryad\\Dryad6.png",
+      "attacks": [
+        {
+          "name": "Wild Whirlwind",
+          "description": "Blocks flying 2 rounds",
+          "manaCost": "12"
+        },
+        {
+          "name": "Acidic Deluge",
+          "description": "Unleashes acidic rain, damages all 3 rounds",
+          "manaCost": "1"
+        }
+      ],
+      "Mana Card Cost": "4",
+      "ap": "AP 1",
+      "dp": "DP 2",
+      "strength": {
+        "Vigor": "Greed",
+        "image": "SMana/Greed.png"
+      },
+      "weakness": {
+        "Vigor": "Lava",
+        "image": "WMana/Lava.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Felvan.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Felvan.png",
+      "card_number": "61/143",
+      "rarity": "Skilled",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Elysianthia",
+      "className": "Weapons",
+      "classImage": "F:\\zzz\\Master Photo List\\Weapons\\Weapon11.png",
+      "attacks": [
+        {
+          "name": "Galactic Impact",
+          "description": "Reflects opponent spell x3 damage",
+          "manaCost": "8"
+        },
+        {
+          "name": "Temporal Rift",
+          "description": "No spellcasting 3 rounds",
+          "manaCost": "8"
+        }
+      ],
+      "Mana Card Cost": "4",
+      "ap": "AP 3",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Lightning",
+        "image": "SMana/Lightning.png"
+      },
+      "weakness": {
+        "Vigor": "Fairy",
+        "image": "WMana/Fairy.png"
+      },
+      "deckManaImage": "Mana/Greed.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Greed\\Creature\\Elysianthia.png",
+      "print_path": "B:\\Cards\\Greed(Print)\\Creature\\Elysianthia.png",
+      "card_number": "62/143",
+      "rarity": "Skilled",
+      "vigor": "Greed",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Shava",
+      "className": "Aarakocra",
+      "classImage": "F:\\zzz\\Master Photo List\\Aarakocra\\Aarakocra20.png",
+      "attacks": [
+        {
+          "name": "Tsunami Flood",
+          "description": "Blocks ground 5 rounds",
+          "manaCost": "9"
+        },
+        {
+          "name": "Drowning Chameleon",
+          "description": "Exiles target card",
+          "manaCost": "9"
+        }
+      ],
+      "Mana Card Cost": "3",
+      "ap": "AP 3",
+      "dp": "DP 1",
+      "strength": {
+        "Vigor": "Earth",
+        "image": "SMana/Earth.png"
+      },
+      "weakness": {
+        "Vigor": "Lava",
+        "image": "WMana/Lava.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Shava.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Shava.png",
+      "card_number": "63/143",
+      "rarity": "Skilled",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Lysael",
+      "className": "Aarakocra",
+      "classImage": "F:\\zzz\\Master Photo List\\Aarakocra\\Aarakocra12.png",
+      "attacks": [
+        {
+          "name": "Teleport",
+          "description": "Teleports caster random location",
+          "manaCost": "4"
+        },
+        {
+          "name": "Chaos Chaos",
+          "description": "No life gain opponent 2 turns",
+          "manaCost": "2"
+        }
+      ],
+      "Mana Card Cost": "3",
+      "ap": "AP 3",
+      "dp": "DP 2",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Earth",
+        "image": "WMana/Earth.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Lysael.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Lysael.png",
+      "card_number": "64/143",
+      "rarity": "Skilled",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Elyssia",
+      "className": "Bard",
+      "classImage": "F:\\zzz\\Master Photo List\\Bard\\Bard.png",
+      "attacks": [
+        {
+          "name": "Scorching Blaze",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "10"
+        },
+        {
+          "name": "Shadow Strike",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "10"
+        }
+      ],
+      "Mana Card Cost": "10",
+      "ap": "AP 7",
+      "dp": "DP 7",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Chaos",
+        "image": "WMana/Chaos.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Elyssia.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Elyssia.png",
+      "card_number": "65/143",
+      "rarity": "Skilled",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Chruddith",
+      "className": "Insect",
+      "classImage": "F:\\zzz\\Master Photo List\\Insect\\Insect10.png",
+      "attacks": [
+        {
+          "name": "Clone Bullet",
+          "description": "Puts target to sleep 2 rounds",
+          "manaCost": "2"
+        },
+        {
+          "name": "Tidal Wave",
+          "description": "Attacks all 3 damage",
+          "manaCost": "12"
+        }
+      ],
+      "Mana Card Cost": "2",
+      "ap": "AP 1",
+      "dp": "DP 1",
+      "strength": {
+        "Vigor": "Earth",
+        "image": "SMana/Earth.png"
+      },
+      "weakness": {
+        "Vigor": "Spirit",
+        "image": "WMana/Spirit.png"
+      },
+      "deckManaImage": "Mana/Fungus.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fungus\\Creature\\Chruddith.png",
+      "print_path": "B:\\Cards\\Fungus(Print)\\Creature\\Chruddith.png",
+      "card_number": "66/143",
+      "rarity": "Skilled",
+      "vigor": "Fungus",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Zhiddalk",
+      "className": "Troll",
+      "classImage": "F:\\zzz\\Master Photo List\\Troll\\Troll6.png",
+      "attacks": [
+        {
+          "name": "Shifting Sands",
+          "description": "Blocks ground 2 rounds",
+          "manaCost": "1"
+        },
+        {
+          "name": "Summoning Summoning",
+          "description": "No summoning 8 rounds",
+          "manaCost": "11"
+        }
+      ],
+      "Mana Card Cost": "2",
+      "ap": "AP 2",
+      "dp": "DP 1",
+      "strength": {
+        "Vigor": "Ocean",
+        "image": "SMana/Ocean.png"
+      },
+      "weakness": {
+        "Vigor": "Spirit",
+        "image": "WMana/Spirit.png"
+      },
+      "deckManaImage": "Mana/Fungus.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fungus\\Creature\\Zhiddalk.png",
+      "print_path": "B:\\Cards\\Fungus(Print)\\Creature\\Zhiddalk.png",
+      "card_number": "67/143",
+      "rarity": "Skilled",
+      "vigor": "Fungus",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Deveris",
+      "className": "Spirit",
+      "classImage": "F:\\zzz\\Master Photo List\\Spirit\\Spirit3.png",
+      "attacks": [
+        {
+          "name": "Winter Blast",
+          "description": "Opponent -4 life",
+          "manaCost": "10"
+        },
+        {
+          "name": "Shifting Sands",
+          "description": "Blocks ground 2 rounds",
+          "manaCost": "3"
+        }
+      ],
+      "Mana Card Cost": "10",
+      "ap": "AP 12",
+      "dp": "DP 9",
+      "strength": {
+        "Vigor": "Greed",
+        "image": "SMana/Greed.png"
+      },
+      "weakness": {
+        "Vigor": "Sorcery",
+        "image": "WMana/Sorcery.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Deveris.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Deveris.png",
+      "card_number": "68/143",
+      "rarity": "Skilled",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Goikas",
+      "className": "Drow",
+      "classImage": "F:\\zzz\\Master Photo List\\Drow\\Drow2.png",
+      "attacks": [
+        {
+          "name": "Oblivion",
+          "description": "No attacks 4 turns",
+          "manaCost": "4"
+        },
+        {
+          "name": "Rampant Inferno",
+          "description": "Attacks opponent 4 damage",
+          "manaCost": "10"
+        }
+      ],
+      "Mana Card Cost": "7",
+      "ap": "AP 5",
+      "dp": "DP 9",
+      "strength": {
+        "Vigor": "Sun",
+        "image": "SMana/Sun.png"
+      },
+      "weakness": {
+        "Vigor": "Sorcery",
+        "image": "WMana/Sorcery.png"
+      },
+      "deckManaImage": "Mana/Moon.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Moon\\Creature\\Goikas.png",
+      "print_path": "B:\\Cards\\Moon(Print)\\Creature\\Goikas.png",
+      "card_number": "69/143",
+      "rarity": "Skilled",
+      "vigor": "Moon",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Eloweth",
+      "className": "Drow",
+      "classImage": "F:\\zzz\\Master Photo List\\Drow\\Drow1.png",
+      "attacks": [
+        {
+          "name": "Paralyzing Venom",
+          "description": "Silences target 3 rounds",
+          "manaCost": "5"
+        },
+        {
+          "name": "Illusion Alligator",
+          "description": "Sacrifices creature, attacks",
+          "manaCost": "11"
+        }
+      ],
+      "Mana Card Cost": "3",
+      "ap": "AP 2",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Greed",
+        "image": "SMana/Greed.png"
+      },
+      "weakness": {
+        "Vigor": "Sorcery",
+        "image": "WMana/Sorcery.png"
+      },
+      "deckManaImage": "Mana/Moon.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Moon\\Creature\\Eloweth.png",
+      "print_path": "B:\\Cards\\Moon(Print)\\Creature\\Eloweth.png",
+      "card_number": "70/143",
+      "rarity": "Skilled",
+      "vigor": "Moon",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Felvan",
+      "className": "Rogue",
+      "classImage": "F:\\zzz\\Master Photo List\\Rogue\\Rogue1.png",
+      "attacks": [
+        {
+          "name": "Galactic Stormstrike",
+          "description": "Silences target 7 rounds",
+          "manaCost": "6"
+        },
+        {
+          "name": "Raging Flames",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "1"
+        }
+      ],
+      "Mana Card Cost": "1",
+      "ap": "AP 3",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Sun",
+        "image": "SMana/Sun.png"
+      },
+      "weakness": {
+        "Vigor": "Moon",
+        "image": "WMana/Moon.png"
+      },
+      "deckManaImage": "Mana/Greed.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Greed\\Creature\\Felvan.png",
+      "print_path": "B:\\Cards\\Greed(Print)\\Creature\\Felvan.png",
+      "card_number": "71/143",
+      "rarity": "Skilled",
+      "vigor": "Greed",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Aldric",
+      "className": "Bard",
+      "classImage": "F:\\zzz\\Master Photo List\\Bard\\Bard6.png",
+      "attacks": [
+        {
+          "name": "Toxic Torrent",
+          "description": "Attacks all 4 damage",
+          "manaCost": "2"
+        },
+        {
+          "name": "Windswept Cyclone",
+          "description": "Attacks all 4 damage",
+          "manaCost": "10"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 7",
+      "dp": "DP 12",
+      "strength": {
+        "Vigor": "Fungus",
+        "image": "SMana/Fungus.png"
+      },
+      "weakness": {
+        "Vigor": "Tar",
+        "image": "WMana/Tar.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Aldric.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Aldric.png",
+      "card_number": "72/143",
+      "rarity": "Skilled",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Brukarr",
+      "className": "Nightwalker",
+      "classImage": "F:\\zzz\\Master Photo List\\Nightwalker\\Nightwalker8.png",
+      "attacks": [
+        {
+          "name": "Soul Drain",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "9"
+        },
+        {
+          "name": "Authentic Beaver",
+          "description": "Conjures authentic beaver, removes extras",
+          "manaCost": "11"
+        }
+      ],
+      "Mana Card Cost": "6",
+      "ap": "AP 6",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Earth",
+        "image": "SMana/Earth.png"
+      },
+      "weakness": {
+        "Vigor": "Lightning",
+        "image": "WMana/Lightning.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Brukarr.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Brukarr.png",
+      "card_number": "73/143",
+      "rarity": "Skilled",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Thetorr",
+      "className": "Mutant",
+      "classImage": "F:\\zzz\\Master Photo List\\Mutant\\Mutant4.png",
+      "attacks": [
+        {
+          "name": "Clone Bullet",
+          "description": "Puts target to sleep 2 rounds",
+          "manaCost": "6"
+        },
+        {
+          "name": "Blighted Plague",
+          "description": "Inflicts plague, +2 damage/round 3 rounds",
+          "manaCost": "4"
+        }
+      ],
+      "Mana Card Cost": "8",
+      "ap": "AP 8",
+      "dp": "DP 9",
+      "strength": {
+        "Vigor": "Ocean",
+        "image": "SMana/Ocean.png"
+      },
+      "weakness": {
+        "Vigor": "Lava",
+        "image": "WMana/Lava.png"
+      },
+      "deckManaImage": "Mana/Fungus.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fungus\\Creature\\Thetorr.png",
+      "print_path": "B:\\Cards\\Fungus(Print)\\Creature\\Thetorr.png",
+      "card_number": "74/143",
+      "rarity": "Skilled",
+      "vigor": "Fungus",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Hrittonk",
+      "className": "Insect",
+      "classImage": "F:\\zzz\\Master Photo List\\Insect\\Insect5.png",
+      "attacks": [
+        {
+          "name": "Inferno Fury",
+          "description": "Attacks opponent 4 damage",
+          "manaCost": "3"
+        },
+        {
+          "name": "Haunting Tortoise",
+          "description": "Opponent -1 life",
+          "manaCost": "6"
+        }
+      ],
+      "Mana Card Cost": "9",
+      "ap": "AP 7",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Ocean",
+        "image": "SMana/Ocean.png"
+      },
+      "weakness": {
+        "Vigor": "Spirit",
+        "image": "WMana/Spirit.png"
+      },
+      "deckManaImage": "Mana/Fungus.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fungus\\Creature\\Hrittonk.png",
+      "print_path": "B:\\Cards\\Fungus(Print)\\Creature\\Hrittonk.png",
+      "card_number": "75/143",
+      "rarity": "Skilled",
+      "vigor": "Fungus",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Femunt",
+      "className": "Warrior",
+      "classImage": "F:\\zzz\\Master Photo List\\Warrior\\nwarrior.png",
+      "attacks": [
+        {
+          "name": "Spiritual Rebirth",
+          "description": "Heals caster double successful attack",
+          "manaCost": "6"
+        },
+        {
+          "name": "Sonic Blast",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "12"
+        }
+      ],
+      "Mana Card Cost": "8",
+      "ap": "AP 8",
+      "dp": "DP 5",
+      "strength": {
+        "Vigor": "Earth",
+        "image": "SMana/Earth.png"
+      },
+      "weakness": {
+        "Vigor": "Purity",
+        "image": "WMana/Purity.png"
+      },
+      "deckManaImage": "Mana/Chaos.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Chaos\\Creature\\Femunt.png",
+      "print_path": "B:\\Cards\\Chaos(Print)\\Creature\\Femunt.png",
+      "card_number": "76/143",
+      "rarity": "Skilled",
+      "vigor": "Chaos",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Tonn",
+      "className": "Troll",
+      "classImage": "F:\\zzz\\Master Photo List\\Troll\\Troll11.png",
+      "attacks": [
+        {
+          "name": "Prismatic Prism",
+          "description": "Heals caster next damage dealt",
+          "manaCost": "4"
+        },
+        {
+          "name": "Soul Harvest",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "7"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 7",
+      "dp": "DP 7",
+      "strength": {
+        "Vigor": "Ocean",
+        "image": "SMana/Ocean.png"
+      },
+      "weakness": {
+        "Vigor": "Purity",
+        "image": "WMana/Purity.png"
+      },
+      "deckManaImage": "Mana/Fungus.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fungus\\Creature\\Tonn.png",
+      "print_path": "B:\\Cards\\Fungus(Print)\\Creature\\Tonn.png",
+      "card_number": "77/143",
+      "rarity": "Karls",
+      "vigor": "Fungus",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Ithellis",
+      "className": "Fox",
+      "classImage": "F:\\zzz\\Master Photo List\\Fox\\Fox5.png",
+      "attacks": [
+        {
+          "name": "Abyssal Abyss",
+          "description": "Creates abyss, disables attacks 15 turns",
+          "manaCost": "12"
+        },
+        {
+          "name": "Toxic Venom",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "5"
+        }
+      ],
+      "Mana Card Cost": "1",
+      "ap": "AP 4",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Fairy",
+        "image": "SMana/Fairy.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Moon.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Moon\\Creature\\Ithellis.png",
+      "print_path": "B:\\Cards\\Moon(Print)\\Creature\\Ithellis.png",
+      "card_number": "78/143",
+      "rarity": "Karls",
+      "vigor": "Moon",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Evandorius",
+      "className": "Barbarian",
+      "classImage": "F:\\zzz\\Master Photo List\\Barbarian\\Barbarian2.png",
+      "attacks": [
+        {
+          "name": "Reaper Doom",
+          "description": "Opponent -7 life",
+          "manaCost": "4"
+        },
+        {
+          "name": "Eclipse of Doom",
+          "description": "No attacks 9 turns",
+          "manaCost": "10"
+        }
+      ],
+      "Mana Card Cost": "8",
+      "ap": "AP 8",
+      "dp": "DP 7",
+      "strength": {
+        "Vigor": "Sorcery",
+        "image": "SMana/Sorcery.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Chaos.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Chaos\\Creature\\Evandorius.png",
+      "print_path": "B:\\Cards\\Chaos(Print)\\Creature\\Evandorius.png",
+      "card_number": "79/143",
+      "rarity": "Karls",
+      "vigor": "Chaos",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Galadrielor",
+      "className": "Warrior",
+      "classImage": "F:\\zzz\\Master Photo List\\Warrior\\nwarrior4.png",
+      "attacks": [
+        {
+          "name": "Winter Blast",
+          "description": "Opponent -4 life",
+          "manaCost": "5"
+        },
+        {
+          "name": "Searing Inferno",
+          "description": "Attacks opponent 4 damage",
+          "manaCost": "9"
+        }
+      ],
+      "Mana Card Cost": "5",
+      "ap": "AP 4",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Spirit",
+        "image": "SMana/Spirit.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Chaos.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Chaos\\Creature\\Galadrielor.png",
+      "print_path": "B:\\Cards\\Chaos(Print)\\Creature\\Galadrielor.png",
+      "card_number": "80/143",
+      "rarity": "Karls",
+      "vigor": "Chaos",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Alaric",
+      "className": "Elf",
+      "classImage": "F:\\zzz\\Master Photo List\\Elf\\Elf1.png",
+      "attacks": [
+        {
+          "name": "Reflective Shield",
+          "description": "Reflects opponent spell",
+          "manaCost": "11"
+        },
+        {
+          "name": "Blazing Phoenix",
+          "description": "Summons phoenix, -6 damage",
+          "manaCost": "1"
+        }
+      ],
+      "Mana Card Cost": "10",
+      "ap": "AP 6",
+      "dp": "DP 12",
+      "strength": {
+        "Vigor": "Lightning",
+        "image": "SMana/Lightning.png"
+      },
+      "weakness": {
+        "Vigor": "Lava",
+        "image": "WMana/Lava.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Alaric.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Alaric.png",
+      "card_number": "81/143",
+      "rarity": "Karls",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Galadrielleth",
+      "className": "Kitsune",
+      "classImage": "F:\\zzz\\Master Photo List\\Kitsune\\Kitsune6.png",
+      "attacks": [
+        {
+          "name": "Illusion Alligator",
+          "description": "Sacrifices creature, attacks",
+          "manaCost": "11"
+        },
+        {
+          "name": "Eclipse Eclipse",
+          "description": "Turns opponent harmless 2 turns",
+          "manaCost": "10"
+        }
+      ],
+      "Mana Card Cost": "5",
+      "ap": "AP 6",
+      "dp": "DP 1",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Moon",
+        "image": "WMana/Moon.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Galadrielleth.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Galadrielleth.png",
+      "card_number": "82/143",
+      "rarity": "Karls",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Klarvish",
+      "className": "Dryad",
+      "classImage": "F:\\zzz\\Master Photo List\\Dryad\\Dryad2.png",
+      "attacks": [
+        {
+          "name": "Summoning Summoning",
+          "description": "No summoning 8 rounds",
+          "manaCost": "9"
+        },
+        {
+          "name": "Nebula Nova",
+          "description": "Heals caster next damage dealt",
+          "manaCost": "9"
+        }
+      ],
+      "Mana Card Cost": "6",
+      "ap": "AP 5",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Lightning",
+        "image": "SMana/Lightning.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Klarvish.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Klarvish.png",
+      "card_number": "83/143",
+      "rarity": "Karls",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Lorelindra",
+      "className": "Troll",
+      "classImage": "F:\\zzz\\Master Photo List\\Troll\\Troll10.png",
+      "attacks": [
+        {
+          "name": "Pyroclasmic Eruption",
+          "description": "Attacks all 4 damage",
+          "manaCost": "12"
+        },
+        {
+          "name": "Celestial Judgment",
+          "description": "Forces opponent skip next turn",
+          "manaCost": "6"
+        }
+      ],
+      "Mana Card Cost": "10",
+      "ap": "AP 7",
+      "dp": "DP 11",
+      "strength": {
+        "Vigor": "Earth",
+        "image": "SMana/Earth.png"
+      },
+      "weakness": {
+        "Vigor": "Spirit",
+        "image": "WMana/Spirit.png"
+      },
+      "deckManaImage": "Mana/Fungus.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fungus\\Creature\\Lorelindra.png",
+      "print_path": "B:\\Cards\\Fungus(Print)\\Creature\\Lorelindra.png",
+      "card_number": "84/143",
+      "rarity": "Karls",
+      "vigor": "Fungus",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Hrolgar",
+      "className": "Rogue",
+      "classImage": "F:\\zzz\\Master Photo List\\Rogue\\Rogue5.png",
+      "attacks": [
+        {
+          "name": "Blizzard Barrage",
+          "description": "No attacks 5 turns",
+          "manaCost": "9"
+        },
+        {
+          "name": "Inferno Fury",
+          "description": "Attacks opponent 4 damage",
+          "manaCost": "3"
+        }
+      ],
+      "Mana Card Cost": "7",
+      "ap": "AP 9",
+      "dp": "DP 9",
+      "strength": {
+        "Vigor": "Lightning",
+        "image": "SMana/Lightning.png"
+      },
+      "weakness": {
+        "Vigor": "Moon",
+        "image": "WMana/Moon.png"
+      },
+      "deckManaImage": "Mana/Greed.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Greed\\Creature\\Hrolgar.png",
+      "print_path": "B:\\Cards\\Greed(Print)\\Creature\\Hrolgar.png",
+      "card_number": "85/143",
+      "rarity": "Karls",
+      "vigor": "Greed",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Zorgalk",
+      "className": "Shade",
+      "classImage": "F:\\zzz\\Master Photo List\\Shade\\Shade9.png",
+      "attacks": [
+        {
+          "name": "Scorching Blaze",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "11"
+        },
+        {
+          "name": "Molten Lava Burst",
+          "description": "Attacks all 3 damage",
+          "manaCost": "9"
+        }
+      ],
+      "Mana Card Cost": "2",
+      "ap": "AP 1",
+      "dp": "DP 1",
+      "strength": {
+        "Vigor": "Greed",
+        "image": "SMana/Greed.png"
+      },
+      "weakness": {
+        "Vigor": "Tar",
+        "image": "WMana/Tar.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Zorgalk.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Zorgalk.png",
+      "card_number": "86/143",
+      "rarity": "Karls",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Deris",
+      "className": "Dryad",
+      "classImage": "F:\\zzz\\Master Photo List\\Dryad\\Dryad1.png",
+      "attacks": [
+        {
+          "name": "Frostbite",
+          "description": "Opponent -2 life",
+          "manaCost": "6"
+        },
+        {
+          "name": "Zephyr Gale",
+          "description": "Blocks flying 4 rounds",
+          "manaCost": "2"
+        }
+      ],
+      "Mana Card Cost": "3",
+      "ap": "AP 3",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Moon",
+        "image": "WMana/Moon.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Deris.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Deris.png",
+      "card_number": "87/143",
+      "rarity": "Karls",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Lysandor",
+      "className": "Elf",
+      "classImage": "F:\\zzz\\Master Photo List\\Elf\\Elf3.png",
+      "attacks": [
+        {
+          "name": "Shifting Shadows",
+          "description": "No attacks 3 turns",
+          "manaCost": "12"
+        },
+        {
+          "name": "Eclipse of Doom",
+          "description": "No attacks 9 turns",
+          "manaCost": "11"
+        }
+      ],
+      "Mana Card Cost": "11",
+      "ap": "AP 12",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Lightning",
+        "image": "SMana/Lightning.png"
+      },
+      "weakness": {
+        "Vigor": "Earth",
+        "image": "WMana/Earth.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Lysandor.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Lysandor.png",
+      "card_number": "88/143",
+      "rarity": "Karls",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Deris",
+      "className": "Siren",
+      "classImage": "F:\\zzz\\Master Photo List\\Siren\\Siren4.png",
+      "attacks": [
+        {
+          "name": "Celestial Catastrophe",
+          "description": "Heals caster double successful attack",
+          "manaCost": "9"
+        },
+        {
+          "name": "Abyssal Nightmare",
+          "description": "Summons nightmarish abyss, -4 life",
+          "manaCost": "5"
+        }
+      ],
+      "Mana Card Cost": "5",
+      "ap": "AP 1",
+      "dp": "DP 2",
+      "strength": {
+        "Vigor": "Tar",
+        "image": "SMana/Tar.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Deris.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Deris.png",
+      "card_number": "89/143",
+      "rarity": "Karls",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Elyssia",
+      "className": "Drow",
+      "classImage": "F:\\zzz\\Master Photo List\\Drow\\Drow2.png",
+      "attacks": [
+        {
+          "name": "Firestorm Eruption",
+          "description": "Attacks all 4 damage",
+          "manaCost": "1"
+        },
+        {
+          "name": "Firing Beaver",
+          "description": "Blocks ground 3 rounds",
+          "manaCost": "9"
+        }
+      ],
+      "Mana Card Cost": "4",
+      "ap": "AP 3",
+      "dp": "DP 1",
+      "strength": {
+        "Vigor": "Sun",
+        "image": "SMana/Sun.png"
+      },
+      "weakness": {
+        "Vigor": "Lightning",
+        "image": "WMana/Lightning.png"
+      },
+      "deckManaImage": "Mana/Moon.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Moon\\Creature\\Elyssia.png",
+      "print_path": "B:\\Cards\\Moon(Print)\\Creature\\Elyssia.png",
+      "card_number": "90/143",
+      "rarity": "Karls",
+      "vigor": "Moon",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Gatek",
+      "className": "Fairy",
+      "classImage": "F:\\zzz\\Master Photo List\\Fairy\\Fairy15.png",
+      "attacks": [
+        {
+          "name": "Wrath of Nature",
+          "description": "Attacks all 4 damage",
+          "manaCost": "3"
+        },
+        {
+          "name": "Unleashed Fury",
+          "description": "Draws 2 cards",
+          "manaCost": "1"
+        }
+      ],
+      "Mana Card Cost": "2",
+      "ap": "AP 1",
+      "dp": "DP 2",
+      "strength": {
+        "Vigor": "Earth",
+        "image": "SMana/Earth.png"
+      },
+      "weakness": {
+        "Vigor": "Moon",
+        "image": "WMana/Moon.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Gatek.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Gatek.png",
+      "card_number": "91/143",
+      "rarity": "Karls",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Alarionna",
+      "className": "Necromancer",
+      "classImage": "F:\\zzz\\Master Photo List\\Necromancer\\Necromancer5.png",
+      "attacks": [
+        {
+          "name": "Rippling Shockwave",
+          "description": "Silences target 4 rounds",
+          "manaCost": "7"
+        },
+        {
+          "name": "Tsunami Flood",
+          "description": "Blocks ground 5 rounds",
+          "manaCost": "7"
+        }
+      ],
+      "Mana Card Cost": "6",
+      "ap": "AP 1",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Earth",
+        "image": "SMana/Earth.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Alarionna.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Alarionna.png",
+      "card_number": "92/143",
+      "rarity": "Karls",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Evadne",
+      "className": "Siren",
+      "classImage": "F:\\zzz\\Master Photo List\\Siren\\Siren7.png",
+      "attacks": [
+        {
+          "name": "Paradox Paradox",
+          "description": "Randomly casts 2 spells opponent",
+          "manaCost": "7"
+        },
+        {
+          "name": "Summoning Summoning",
+          "description": "No summoning 8 rounds",
+          "manaCost": "10"
+        }
+      ],
+      "Mana Card Cost": "6",
+      "ap": "AP 4",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Evadne.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Evadne.png",
+      "card_number": "93/143",
+      "rarity": "Karls",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Thinn",
+      "className": "Changling",
+      "classImage": "F:\\zzz\\Master Photo List\\Changling\\Changling2.png",
+      "attacks": [
+        {
+          "name": "Thunderclap",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "2"
+        },
+        {
+          "name": "Celestial Surge",
+          "description": "Heals caster next damage dealt",
+          "manaCost": "1"
+        }
+      ],
+      "Mana Card Cost": "1",
+      "ap": "AP 2",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Earth",
+        "image": "SMana/Earth.png"
+      },
+      "weakness": {
+        "Vigor": "Purity",
+        "image": "WMana/Purity.png"
+      },
+      "deckManaImage": "Mana/Chaos.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Chaos\\Creature\\Thinn.png",
+      "print_path": "B:\\Cards\\Chaos(Print)\\Creature\\Thinn.png",
+      "card_number": "94/143",
+      "rarity": "Karls",
+      "vigor": "Chaos",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Elyssiana",
+      "className": "Necromancer",
+      "classImage": "F:\\zzz\\Master Photo List\\Necromancer\\Necromancer8.png",
+      "attacks": [
+        {
+          "name": "Teleport",
+          "description": "Teleports caster random location",
+          "manaCost": "10"
+        },
+        {
+          "name": "Toxic Venom",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "10"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 7",
+      "dp": "DP 12",
+      "strength": {
+        "Vigor": "Sun",
+        "image": "SMana/Sun.png"
+      },
+      "weakness": {
+        "Vigor": "Lava",
+        "image": "WMana/Lava.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Elyssiana.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Elyssiana.png",
+      "card_number": "95/143",
+      "rarity": "Karls",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Fenris",
+      "className": "Elf",
+      "classImage": "F:\\zzz\\Master Photo List\\Elf\\Elf1.png",
+      "attacks": [
+        {
+          "name": "Rising Tides",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "6"
+        },
+        {
+          "name": "Winter Blast",
+          "description": "Opponent -4 life",
+          "manaCost": "11"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 10",
+      "dp": "DP 8",
+      "strength": {
+        "Vigor": "Greed",
+        "image": "SMana/Greed.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Fenris.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Fenris.png",
+      "card_number": "96/143",
+      "rarity": "Karls",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Perkin",
+      "className": "Dryad",
+      "classImage": "F:\\zzz\\Master Photo List\\Dryad\\Dryad.png",
+      "attacks": [
+        {
+          "name": "Piercing Frostbite",
+          "description": "Opponent -3 life",
+          "manaCost": "12"
+        },
+        {
+          "name": "Frostbite Slash",
+          "description": "Blocks flying 1 round",
+          "manaCost": "5"
+        }
+      ],
+      "Mana Card Cost": "6",
+      "ap": "AP 5",
+      "dp": "DP 2",
+      "strength": {
+        "Vigor": "Greed",
+        "image": "SMana/Greed.png"
+      },
+      "weakness": {
+        "Vigor": "Lava",
+        "image": "WMana/Lava.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Perkin.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Perkin.png",
+      "card_number": "97/143",
+      "rarity": "Karls",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Garret",
+      "className": "Archon",
+      "classImage": "F:\\zzz\\Master Photo List\\Archon\\Archon12.png",
+      "attacks": [
+        {
+          "name": "Doomsday Prophecy",
+          "description": "Deals 5 damage",
+          "manaCost": "3"
+        },
+        {
+          "name": "Resurrection",
+          "description": "Heals caster next damage dealt",
+          "manaCost": "7"
+        }
+      ],
+      "Mana Card Cost": "10",
+      "ap": "AP 6",
+      "dp": "DP 8",
+      "strength": {
+        "Vigor": "Fungus",
+        "image": "SMana/Fungus.png"
+      },
+      "weakness": {
+        "Vigor": "Sorcery",
+        "image": "WMana/Sorcery.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Garret.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Garret.png",
+      "card_number": "98/143",
+      "rarity": "Jarl",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Khuth",
+      "className": "Troll",
+      "classImage": "F:\\zzz\\Master Photo List\\Troll\\Troll8.png",
+      "attacks": [
+        {
+          "name": "Sonic Blast",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "5"
+        },
+        {
+          "name": "Summoning Summoning",
+          "description": "No summoning 8 rounds",
+          "manaCost": "6"
+        }
+      ],
+      "Mana Card Cost": "6",
+      "ap": "AP 1",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Purity",
+        "image": "SMana/Purity.png"
+      },
+      "weakness": {
+        "Vigor": "Lava",
+        "image": "WMana/Lava.png"
+      },
+      "deckManaImage": "Mana/Fungus.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fungus\\Creature\\Khuth.png",
+      "print_path": "B:\\Cards\\Fungus(Print)\\Creature\\Khuth.png",
+      "card_number": "99/143",
+      "rarity": "Jarl",
+      "vigor": "Fungus",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Aelarionnara",
+      "className": "Vampire",
+      "classImage": "F:\\zzz\\Master Photo List\\Vampire\\Vampire5.png",
+      "attacks": [
+        {
+          "name": "Toxic Torrent",
+          "description": "Attacks all 4 damage",
+          "manaCost": "6"
+        },
+        {
+          "name": "Zephyr Gale",
+          "description": "Blocks flying 4 rounds",
+          "manaCost": "7"
+        }
+      ],
+      "Mana Card Cost": "11",
+      "ap": "AP 9",
+      "dp": "DP 7",
+      "strength": {
+        "Vigor": "Sun",
+        "image": "SMana/Sun.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Moon.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Moon\\Creature\\Aelarionnara.png",
+      "print_path": "B:\\Cards\\Moon(Print)\\Creature\\Aelarionnara.png",
+      "card_number": "100/143",
+      "rarity": "Jarl",
+      "vigor": "Moon",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Zheggonk",
+      "className": "Insect",
+      "classImage": "F:\\zzz\\Master Photo List\\Insect\\Insect13.png",
+      "attacks": [
+        {
+          "name": "Shockwave Tremor",
+          "description": "Silences target 3 rounds",
+          "manaCost": "1"
+        },
+        {
+          "name": "Darkstrike",
+          "description": "Silences target 2 rounds",
+          "manaCost": "1"
+        }
+      ],
+      "Mana Card Cost": "11",
+      "ap": "AP 7",
+      "dp": "DP 10",
+      "strength": {
+        "Vigor": "Ocean",
+        "image": "SMana/Ocean.png"
+      },
+      "weakness": {
+        "Vigor": "Lava",
+        "image": "WMana/Lava.png"
+      },
+      "deckManaImage": "Mana/Fungus.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fungus\\Creature\\Zheggonk.png",
+      "print_path": "B:\\Cards\\Fungus(Print)\\Creature\\Zheggonk.png",
+      "card_number": "101/143",
+      "rarity": "Jarl",
+      "vigor": "Fungus",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Elowenna",
+      "className": "Changling",
+      "classImage": "F:\\zzz\\Master Photo List\\Changling\\Changling8.png",
+      "attacks": [
+        {
+          "name": "Teleport",
+          "description": "Teleports caster random location",
+          "manaCost": "4"
+        },
+        {
+          "name": "Raging Flames",
+          "description": "Attacks opponent 3 damage",
+          "manaCost": "7"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 9",
+      "dp": "DP 9",
+      "strength": {
+        "Vigor": "Spirit",
+        "image": "SMana/Spirit.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Chaos.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Chaos\\Creature\\Elowenna.png",
+      "print_path": "B:\\Cards\\Chaos(Print)\\Creature\\Elowenna.png",
+      "card_number": "102/143",
+      "rarity": "Jarl",
+      "vigor": "Chaos",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Brinaya",
+      "className": "Bard",
+      "classImage": "F:\\zzz\\Master Photo List\\Bard\\Bard8.png",
+      "attacks": [
+        {
+          "name": "Winter Blast",
+          "description": "Opponent -4 life",
+          "manaCost": "2"
+        },
+        {
+          "name": "Temporal Anomaly",
+          "description": "Turns opponent creatures 3 rounds",
+          "manaCost": "3"
+        }
+      ],
+      "Mana Card Cost": "5",
+      "ap": "AP 6",
+      "dp": "DP 2",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Tar",
+        "image": "WMana/Tar.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Creature\\Brinaya.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Creature\\Brinaya.png",
+      "card_number": "103/143",
+      "rarity": "Jarl",
+      "vigor": "Spirit",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Getras",
+      "className": "Wolf",
+      "classImage": "F:\\zzz\\Master Photo List\\Wolf\\Wolf1.png",
+      "attacks": [
+        {
+          "name": "Shockwave Tremor",
+          "description": "Silences target 3 rounds",
+          "manaCost": "4"
+        },
+        {
+          "name": "Celestial Catastrophe",
+          "description": "Heals caster double successful attack",
+          "manaCost": "6"
+        }
+      ],
+      "Mana Card Cost": "9",
+      "ap": "AP 5",
+      "dp": "DP 5",
+      "strength": {
+        "Vigor": "Fairy",
+        "image": "SMana/Fairy.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Moon.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Moon\\Creature\\Getras.png",
+      "print_path": "B:\\Cards\\Moon(Print)\\Creature\\Getras.png",
+      "card_number": "104/143",
+      "rarity": "Jarl",
+      "vigor": "Moon",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Fradel",
+      "className": "Siren",
+      "classImage": "F:\\zzz\\Master Photo List\\Siren\\Siren9.png",
+      "attacks": [
+        {
+          "name": "Lightning Surge",
+          "description": "Reflects opponent spell x2 damage",
+          "manaCost": "6"
+        },
+        {
+          "name": "Firing Beaver",
+          "description": "Blocks ground 3 rounds",
+          "manaCost": "4"
+        }
+      ],
+      "Mana Card Cost": "6",
+      "ap": "AP 3",
+      "dp": "DP 5",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Lightning",
+        "image": "WMana/Lightning.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Fradel.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Fradel.png",
+      "card_number": "105/143",
+      "rarity": "Jarl",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Isolandra",
+      "className": "Necromancer",
+      "classImage": "F:\\zzz\\Master Photo List\\Necromancer\\Necromancer2.png",
+      "attacks": [
+        {
+          "name": "Blizzard Barrage",
+          "description": "No attacks 5 turns",
+          "manaCost": "10"
+        },
+        {
+          "name": "Nebula Nova",
+          "description": "Heals caster next damage dealt",
+          "manaCost": "10"
+        }
+      ],
+      "Mana Card Cost": "8",
+      "ap": "AP 6",
+      "dp": "DP 9",
+      "strength": {
+        "Vigor": "Earth",
+        "image": "SMana/Earth.png"
+      },
+      "weakness": {
+        "Vigor": "Lightning",
+        "image": "WMana/Lightning.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Creature\\Isolandra.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Creature\\Isolandra.png",
+      "card_number": "106/143",
+      "rarity": "Jarl",
+      "vigor": "Ocean",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Fellhen",
+      "className": "Vampire",
+      "classImage": "F:\\zzz\\Master Photo List\\Vampire\\Vampire5.png",
+      "attacks": [
+        {
+          "name": "Winter Blast",
+          "description": "Opponent -4 life",
+          "manaCost": "4"
+        },
+        {
+          "name": "Shimmering Mirage",
+          "description": "Opponent -4 life",
+          "manaCost": "7"
+        }
+      ],
+      "Mana Card Cost": "4",
+      "ap": "AP 1",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Fairy",
+        "image": "SMana/Fairy.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Moon.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Moon\\Creature\\Fellhen.png",
+      "print_path": "B:\\Cards\\Moon(Print)\\Creature\\Fellhen.png",
+      "card_number": "107/143",
+      "rarity": "Jarl",
+      "vigor": "Moon",
+      "type": "Creature",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Shield Wall",
+      "vigor_cost": "2",
+      "vigor_type": "Chaos",
+      "vigor_type_image": "Mana/Chaos.png",
+      "image": "F:\\zzz\\Weapons\\Shields\\img-P4O5vThzFRLeNu6J3XpgP.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Chaos.png",
+      "attack_description": "Form a shield wall with allies, providing cover and reducing damage taken by 10 hit points.",
+      "equipment_type": "Shields",
+      "shop_price": "356",
+      "file_name": "Shield Wall.png",
+      "print_file_path": "B:\\Cards\\Chaos(Print)\\Equipment\\Shield Wall.png",
+      "card_number": "108/143",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Toxic Mist",
+      "vigor_cost": "5",
+      "vigor_type": "Spirit",
+      "vigor_type_image": "Mana/Spirit.png",
+      "image": "F:\\zzz\\Weapons\\Poison-Potions\\Designer.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Spirit.png",
+      "attack_description": "Release a mist of poison, causing enemies within range to suffer 10 hit points of damage.",
+      "equipment_type": "Poison-Potions",
+      "shop_price": "612",
+      "file_name": "Toxic Mist.png",
+      "print_file_path": "B:\\Cards\\Spirit(Print)\\Equipment\\Toxic Mist.png",
+      "card_number": "109/143",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Turtle Formation",
+      "vigor_cost": "11",
+      "vigor_type": "Spirit",
+      "vigor_type_image": "Mana/Spirit.png",
+      "image": "F:\\zzz\\Weapons\\Shields\\img-PRQzvFRojbUNJW8f50hcG.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Spirit.png",
+      "attack_description": "Crouch behind the shield for full cover, negating damage from the next attack.",
+      "equipment_type": "Shields",
+      "shop_price": "209",
+      "file_name": "Turtle Formation.png",
+      "print_file_path": "B:\\Cards\\Spirit(Print)\\Equipment\\Turtle Formation.png",
+      "card_number": "110/143",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Swift Assassination",
+      "vigor_cost": "9",
+      "vigor_type": "Fairy",
+      "vigor_type_image": "Mana/Fairy.png",
+      "image": "F:\\zzz\\Weapons\\Daggers\\Dagger5.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Fairy.png",
+      "attack_description": "Quickly dispatch an unaware foe with a lethal dagger thrust, dealing 20 hit points of damage.",
+      "equipment_type": "Daggers",
+      "shop_price": "56",
+      "file_name": "Swift Assassination.png",
+      "print_file_path": "B:\\Cards\\Fairy(Print)\\Equipment\\Swift Assassination.png",
+      "card_number": "111/143",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Guardian's Intervention",
+      "vigor_cost": "12",
+      "vigor_type": "Moon",
+      "vigor_type_image": "Mana/Moon.png",
+      "image": "F:\\zzz\\Weapons\\Shields\\img-1Q5ZAVuis98hoa0AAryv4.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Moon.png",
+      "attack_description": "Step in to protect an ally, intercepting an attack with the shield and absorbing 10 hit points of damage.",
+      "equipment_type": "Shields",
+      "shop_price": "521",
+      "file_name": "Guardian's Intervention.png",
+      "print_file_path": "B:\\Cards\\Moon(Print)\\Equipment\\Guardian's Intervention.png",
+      "card_number": "112/143",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Guardian's Resolve",
+      "vigor_cost": "7",
+      "vigor_type": "Moon",
+      "vigor_type_image": "Mana/Moon.png",
+      "image": "F:\\zzz\\Weapons\\Shields\\img-8UZ5LIZhbdeCLMN9X3vvo.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Moon.png",
+      "attack_description": "Invoke the shield's protective magic, granting resistance to all damage for 1 round.",
+      "equipment_type": "Shields",
+      "shop_price": "607",
+      "file_name": "Guardian's Resolve.png",
+      "print_file_path": "B:\\Cards\\Moon(Print)\\Equipment\\Guardian's Resolve.png",
+      "card_number": "113/143",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Sword and Shield Bash",
+      "vigor_cost": "12",
+      "vigor_type": "Greed",
+      "vigor_type_image": "Mana/Greed.png",
+      "image": "F:\\zzz\\Weapons\\Swords\\Designer (6).png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Greed.png",
+      "attack_description": "Bash the enemy with the shield and follow up with a sword strike, dealing 15 hit points of damage.",
+      "equipment_type": "Swords",
+      "shop_price": "405",
+      "file_name": "Sword and Shield Bash.png",
+      "print_file_path": "B:\\Cards\\Greed(Print)\\Equipment\\Sword and Shield Bash.png",
+      "card_number": "114/143",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Potion of Precision",
+      "vigor_cost": "2",
+      "vigor_type": "Spirit",
+      "vigor_type_image": "Mana/Spirit.png",
+      "image": "F:\\zzz\\Weapons\\Attack-Potions\\img-oNneXfnHhIkALVHKd6PSc.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Spirit.png",
+      "attack_description": "Gain +5 bonus to attack rolls and deal an additional 5 hit points of damage with each successful attack for 3 rounds.",
+      "equipment_type": "Attack-Potions",
+      "shop_price": "551",
+      "file_name": "Potion of Precision.png",
+      "print_file_path": "B:\\Cards\\Spirit(Print)\\Equipment\\Potion of Precision.png",
+      "card_number": "115/143",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Lethal Injection",
+      "vigor_cost": "10",
+      "vigor_type": "Fairy",
+      "vigor_type_image": "Mana/Fairy.png",
+      "image": "F:\\zzz\\Weapons\\Poison-Potions\\img-T45E8xaqgR4RIEdDzOqfB.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Fairy.png",
+      "attack_description": "Inject a concentrated dose of poison into the enemy, dealing 30 hit points of damage.",
+      "equipment_type": "Poison-Potions",
+      "shop_price": "525",
+      "file_name": "Lethal Injection.png",
+      "print_file_path": "B:\\Cards\\Fairy(Print)\\Equipment\\Lethal Injection.png",
+      "card_number": "116/143",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Blade Dance",
+      "vigor_cost": "12",
+      "vigor_type": "Fungus",
+      "vigor_type_image": "Mana/Fungus.png",
+      "image": "F:\\zzz\\Weapons\\Daggers\\Dagger4.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Fungus.png",
+      "attack_description": "Perform an intricate series of dagger maneuvers, dealing 35 hit points of damage to multiple targets.",
+      "equipment_type": "Daggers",
+      "shop_price": "575",
+      "file_name": "Blade Dance.png",
+      "print_file_path": "B:\\Cards\\Fungus(Print)\\Equipment\\Blade Dance.png",
+      "card_number": "117/143",
+      "rarity": "Skilled",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Guardian's Intervention",
+      "vigor_cost": "9",
+      "vigor_type": "Chaos",
+      "vigor_type_image": "Mana/Chaos.png",
+      "image": "F:\\zzz\\Weapons\\Shields\\weapon11.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Chaos.png",
+      "attack_description": "Step in to protect an ally, intercepting an attack with the shield and absorbing 10 hit points of damage.",
+      "equipment_type": "Shields",
+      "shop_price": "501",
+      "file_name": "Guardian's Intervention.png",
+      "print_file_path": "B:\\Cards\\Chaos(Print)\\Equipment\\Guardian's Intervention.png",
+      "card_number": "118/143",
+      "rarity": "Skilled",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Elixir of Sanctuary",
+      "vigor_cost": "11",
+      "vigor_type": "Chaos",
+      "vigor_type_image": "Mana/Chaos.png",
+      "image": "F:\\zzz\\Weapons\\Defense-Potions\\img-I3a0ToFKZFMK9lugDSgsc.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Chaos.png",
+      "attack_description": "Create a protective barrier, granting immunity to all for 2 turns",
+      "equipment_type": "Defense-Potions",
+      "shop_price": "610",
+      "file_name": "Elixir of Sanctuary.png",
+      "print_file_path": "B:\\Cards\\Chaos(Print)\\Equipment\\Elixir of Sanctuary.png",
+      "card_number": "119/143",
+      "rarity": "Skilled",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Ultimate Healing Potion",
+      "vigor_cost": "9",
+      "vigor_type": "Fairy",
+      "vigor_type_image": "Mana/Fairy.png",
+      "image": "F:\\zzz\\Weapons\\Health-Potions\\img-LG8u6biMnNmD0y2Gf2n7f.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Fairy.png",
+      "attack_description": "Fully restore health.",
+      "equipment_type": "Health-Potions",
+      "shop_price": "304",
+      "file_name": "Ultimate Healing Potion.png",
+      "print_file_path": "B:\\Cards\\Fairy(Print)\\Equipment\\Ultimate Healing Potion.png",
+      "card_number": "120/143",
+      "rarity": "Skilled",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Draught of Destruction",
+      "vigor_cost": "2",
+      "vigor_type": "Chaos",
+      "vigor_type_image": "Mana/Chaos.png",
+      "image": "F:\\zzz\\Weapons\\Attack-Potions\\img-f82zdNqkkXm9RGgTpidq3.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Chaos.png",
+      "attack_description": "Increase attack damage by 25% for 5 rounds and gain advantage on attack rolls.",
+      "equipment_type": "Attack-Potions",
+      "shop_price": "191",
+      "file_name": "Draught of Destruction.png",
+      "print_file_path": "B:\\Cards\\Chaos(Print)\\Equipment\\Draught of Destruction.png",
+      "card_number": "121/143",
+      "rarity": "Skilled",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Doom Cleaver",
+      "vigor_cost": "8",
+      "vigor_type": "Moon",
+      "vigor_type_image": "Mana/Moon.png",
+      "image": "F:\\zzz\\Weapons\\Axes\\img-pUewN51R3FSgPSqOnJqUm.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Moon.png",
+      "attack_description": "Unleash a devastating blow that rends armor and flesh alike, dealing 30 hit points of damage and causing bleeding.",
+      "equipment_type": "Axes",
+      "shop_price": "496",
+      "file_name": "Doom Cleaver.png",
+      "print_file_path": "B:\\Cards\\Moon(Print)\\Equipment\\Doom Cleaver.png",
+      "card_number": "122/143",
+      "rarity": "Skilled",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Brutal Chop",
+      "vigor_cost": "11",
+      "vigor_type": "Chaos",
+      "vigor_type_image": "Mana/Chaos.png",
+      "image": "F:\\zzz\\Weapons\\Axes\\img-HttgOfAOst5T5g2iudkN2.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Chaos.png",
+      "attack_description": "Brutally chop down with the axe, dealing 5 hit points of damage.",
+      "equipment_type": "Axes",
+      "shop_price": "126",
+      "file_name": "Brutal Chop.png",
+      "print_file_path": "B:\\Cards\\Chaos(Print)\\Equipment\\Brutal Chop.png",
+      "card_number": "123/143",
+      "rarity": "Skilled",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Blade Storm",
+      "vigor_cost": "5",
+      "vigor_type": "Spirit",
+      "vigor_type_image": "Mana/Spirit.png",
+      "image": "F:\\zzz\\Weapons\\Swords\\img-LAbosGWn0DztRdSbLWcVv.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Spirit.png",
+      "attack_description": "Unleash a whirlwind of sword strikes, dealing 35 hit points of damage to all nearby enemies.",
+      "equipment_type": "Swords",
+      "shop_price": "68",
+      "file_name": "Blade Storm.png",
+      "print_file_path": "B:\\Cards\\Spirit(Print)\\Equipment\\Blade Storm.png",
+      "card_number": "124/143",
+      "rarity": "Karls",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Miraculous Draught",
+      "vigor_cost": "12",
+      "vigor_type": "Fairy",
+      "vigor_type_image": "Mana/Fairy.png",
+      "image": "F:\\zzz\\Weapons\\Health-Potions\\img-7duATDTNiiCTHaFEC12lX.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Fairy.png",
+      "attack_description": "Consume a miraculous draught, instantly restoring 35 hit points of health and gaining advantage on Constitution saving throws for 1 round.",
+      "equipment_type": "Health-Potions",
+      "shop_price": "73",
+      "file_name": "Miraculous Draught.png",
+      "print_file_path": "B:\\Cards\\Fairy(Print)\\Equipment\\Miraculous Draught.png",
+      "card_number": "125/143",
+      "rarity": "Karls",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Strength Elixir",
+      "vigor_cost": "10",
+      "vigor_type": "Fairy",
+      "vigor_type_image": "Mana/Fairy.png",
+      "image": "F:\\zzz\\Weapons\\Attack-Potions\\img-yiS4WL9WMXDozWV58OCLJ.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Fairy.png",
+      "attack_description": "Temporarily increase attack damage by 10% for 3 rounds.",
+      "equipment_type": "Attack-Potions",
+      "shop_price": "220",
+      "file_name": "Strength Elixir.png",
+      "print_file_path": "B:\\Cards\\Fairy(Print)\\Equipment\\Strength Elixir.png",
+      "card_number": "126/143",
+      "rarity": "Karls",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Shield Wall",
+      "vigor_cost": "6",
+      "vigor_type": "Spirit",
+      "vigor_type_image": "Mana/Spirit.png",
+      "image": "F:\\zzz\\Weapons\\Shields\\img-1Q5ZAVuis98hoa0AAryv4.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Spirit.png",
+      "attack_description": "Form a shield wall with allies, providing cover and reducing damage taken by 10 hit points.",
+      "equipment_type": "Shields",
+      "shop_price": "315",
+      "file_name": "Shield Wall.png",
+      "print_file_path": "B:\\Cards\\Spirit(Print)\\Equipment\\Shield Wall.png",
+      "card_number": "127/143",
+      "rarity": "Karls",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Fatal Venom",
+      "vigor_cost": "8",
+      "vigor_type": "Fungus",
+      "vigor_type_image": "Mana/Fungus.png",
+      "image": "F:\\zzz\\Weapons\\Poison-Potions\\img-11j5qSYzdVmWmZv6UmYoR.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Fungus.png",
+      "attack_description": "Coat weapons with lethal venom, dealing 35 hit points of damage with each strike.",
+      "equipment_type": "Poison-Potions",
+      "shop_price": "157",
+      "file_name": "Fatal Venom.png",
+      "print_file_path": "B:\\Cards\\Fungus(Print)\\Equipment\\Fatal Venom.png",
+      "card_number": "128/143",
+      "rarity": "Karls",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Tonic of Ferocity",
+      "vigor_cost": "7",
+      "vigor_type": "Moon",
+      "vigor_type_image": "Mana/Moon.png",
+      "image": "F:\\zzz\\Weapons\\Attack-Potions\\img-REIZegXQ4kyHumpuwsmC9.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Moon.png",
+      "attack_description": "Unleash a flurry of devastating attacks, dealing +10 bonus damage with each strike for 1 round.",
+      "equipment_type": "Attack-Potions",
+      "shop_price": "714",
+      "file_name": "Tonic of Ferocity.png",
+      "print_file_path": "B:\\Cards\\Moon(Print)\\Equipment\\Tonic of Ferocity.png",
+      "card_number": "129/143",
+      "rarity": "Jarl",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Sword of Flames",
+      "vigor_cost": "1",
+      "vigor_type": "Fungus",
+      "vigor_type_image": "Mana/Fungus.png",
+      "image": "F:\\zzz\\Weapons\\Swords\\img-z3zX7yLBpwJezYQmlbvKx.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Fungus.png",
+      "attack_description": "Enchant the sword with fire and strike, dealing 30 hit points of damage.",
+      "equipment_type": "Swords",
+      "shop_price": "105",
+      "file_name": "Sword of Flames.png",
+      "print_file_path": "B:\\Cards\\Fungus(Print)\\Equipment\\Sword of Flames.png",
+      "card_number": "130/143",
+      "rarity": "Jarl",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Charge",
+      "vigor_cost": "7",
+      "vigor_type": "Greed",
+      "vigor_type_image": "Mana/Greed.png",
+      "image": "F:\\zzz\\Spells(bot)\\Greed\\261930fa-3a27-4117-811b-16f09dfe95d7.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Greed.png",
+      "attack_name": "Charge",
+      "attack_description": "Rush towards the enemy with great force, dealing 20 hit points of damage upon impact.",
+      "shop_price": "501",
+      "file_name": "Charge.png",
+      "standard_path": "B:\\Cards\\Greed\\Runes\\Charge.png",
+      "print_path": "B:\\Cards\\Greed(Print)\\Runes\\Charge.png",
+      "card_number": "131/143",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Spectral Slash",
+      "vigor_cost": "11",
+      "vigor_type": "Moon",
+      "vigor_type_image": "Mana/Moon.png",
+      "image": "F:\\zzz\\Spells(bot)\\Moon\\fa693f8e-cdee-43eb-a258-0203afee1fba.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Moon.png",
+      "attack_name": "Spectral Slash",
+      "attack_description": "Slash at the enemy with a spectral blade, dealing 10-15 damage.",
+      "shop_price": "316",
+      "file_name": "Spectral Slash.png",
+      "standard_path": "B:\\Cards\\Moon\\Runes\\Spectral Slash.png",
+      "print_path": "B:\\Cards\\Moon(Print)\\Runes\\Spectral Slash.png",
+      "card_number": "132/143",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Ice Barrier",
+      "vigor_cost": "3",
+      "vigor_type": "Spirit",
+      "vigor_type_image": "Mana/Spirit.png",
+      "image": "F:\\zzz\\Spells(bot)\\Spirit\\f00c0779-f940-4c9e-8737-70ba33f6148e.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Spirit.png",
+      "attack_name": "Ice Barrier",
+      "attack_description": "Encase yourself in ice, reducing damage taken by 50% for 1 turn.",
+      "shop_price": "692",
+      "file_name": "Ice Barrier.png",
+      "standard_path": "B:\\Cards\\Spirit\\Runes\\Ice Barrier.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Runes\\Ice Barrier.png",
+      "card_number": "133/143",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Nature Embrace",
+      "vigor_cost": "10",
+      "vigor_type": "Moon",
+      "vigor_type_image": "Mana/Moon.png",
+      "image": "F:\\zzz\\Spells(bot)\\Moon\\fa693f8e-cdee-43eb-a258-0203afee1fba.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Moon.png",
+      "attack_name": "Nature Embrace",
+      "attack_description": "Call upon the power of nature to heal yourself or an ally for 10-15 hit points.",
+      "shop_price": "738",
+      "file_name": "Nature Embrace.png",
+      "standard_path": "B:\\Cards\\Moon\\Runes\\Nature Embrace.png",
+      "print_path": "B:\\Cards\\Moon(Print)\\Runes\\Nature Embrace.png",
+      "card_number": "134/143",
+      "rarity": "Thrall",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Whirlwind",
+      "vigor_cost": "11",
+      "vigor_type": "Chaos",
+      "vigor_type_image": "Mana/Chaos.png",
+      "image": "F:\\zzz\\Spells(bot)\\Chaos\\3.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Chaos.png",
+      "attack_name": "Whirlwind",
+      "attack_description": "Summon a whirlwind to strike all enemies, dealing 10-15 damage.",
+      "shop_price": "328",
+      "file_name": "Whirlwind.png",
+      "standard_path": "B:\\Cards\\Chaos\\Runes\\Whirlwind.png",
+      "print_path": "B:\\Cards\\Chaos(Print)\\Runes\\Whirlwind.png",
+      "card_number": "135/143",
+      "rarity": "Skilled",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Blessing of Strength",
+      "vigor_cost": "14",
+      "vigor_type": "Chaos",
+      "vigor_type_image": "Mana/Chaos.png",
+      "image": "F:\\zzz\\Spells(bot)\\Chaos\\2.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Chaos.png",
+      "attack_name": "Blessing of Strength",
+      "attack_description": "Grant a target ally increased strength, adding 5 to their attack for 3 turns.",
+      "shop_price": "189",
+      "file_name": "Blessing of Strength.png",
+      "standard_path": "B:\\Cards\\Chaos\\Runes\\Blessing of Strength.png",
+      "print_path": "B:\\Cards\\Chaos(Print)\\Runes\\Blessing of Strength.png",
+      "card_number": "136/143",
+      "rarity": "Skilled",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Toxic Cloud",
+      "vigor_cost": "12",
+      "vigor_type": "Moon",
+      "vigor_type_image": "Mana/Moon.png",
+      "image": "F:\\zzz\\Spells(bot)\\Moon\\558cefe4-7de0-439d-8132-3066bb4a9a93.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Moon.png",
+      "attack_name": "Toxic Cloud",
+      "attack_description": "Create a toxic cloud that deals 12-18 damage to enemies and reduces their accuracy.",
+      "shop_price": "168",
+      "file_name": "Toxic Cloud.png",
+      "standard_path": "B:\\Cards\\Moon\\Runes\\Toxic Cloud.png",
+      "print_path": "B:\\Cards\\Moon(Print)\\Runes\\Toxic Cloud.png",
+      "card_number": "137/143",
+      "rarity": "Skilled",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Shadow Cloak",
+      "vigor_cost": "14",
+      "vigor_type": "Chaos",
+      "vigor_type_image": "Mana/Chaos.png",
+      "image": "F:\\zzz\\Spells(bot)\\Chaos\\5.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Chaos.png",
+      "attack_name": "Shadow Cloak",
+      "attack_description": "Envelop yourself in shadows, granting a chance to dodge incoming attacks for 3 turns.",
+      "shop_price": "198",
+      "file_name": "Shadow Cloak.png",
+      "standard_path": "B:\\Cards\\Chaos\\Runes\\Shadow Cloak.png",
+      "print_path": "B:\\Cards\\Chaos(Print)\\Runes\\Shadow Cloak.png",
+      "card_number": "138/143",
+      "rarity": "Skilled",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Mend Wounds",
+      "vigor_cost": "4",
+      "vigor_type": "Moon",
+      "vigor_type_image": "Mana/Moon.png",
+      "image": "F:\\zzz\\Spells(bot)\\Moon\\26.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Moon.png",
+      "attack_name": "Mend Wounds",
+      "attack_description": "Mend the wounds of an ally, restoring 12-17 hit points.",
+      "shop_price": "162",
+      "file_name": "Mend Wounds.png",
+      "standard_path": "B:\\Cards\\Moon\\Runes\\Mend Wounds.png",
+      "print_path": "B:\\Cards\\Moon(Print)\\Runes\\Mend Wounds.png",
+      "card_number": "139/143",
+      "rarity": "Karls",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Vigor Surge",
+      "vigor_cost": "14",
+      "vigor_type": "Chaos",
+      "vigor_type_image": "Mana/Chaos.png",
+      "image": "F:\\zzz\\Spells(bot)\\Chaos\\7.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Chaos.png",
+      "attack_name": "Vigor Surge",
+      "attack_description": "Infuse an ally with vigor, restoring 25-30 hit points.",
+      "shop_price": "348",
+      "file_name": "Vigor Surge.png",
+      "standard_path": "B:\\Cards\\Chaos\\Runes\\Vigor Surge.png",
+      "print_path": "B:\\Cards\\Chaos(Print)\\Runes\\Vigor Surge.png",
+      "card_number": "140/143",
+      "rarity": "Karls",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Soul Bond",
+      "vigor_cost": "13",
+      "vigor_type": "Spirit",
+      "vigor_type_image": "Mana/Spirit.png",
+      "image": "F:\\zzz\\Spells(bot)\\Spirit\\38.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Spirit.png",
+      "attack_name": "Soul Bond",
+      "attack_description": "Form a soul bond with an ally, transferring 50% of damage taken to you for 3 turns.",
+      "shop_price": "268",
+      "file_name": "Soul Bond.png",
+      "standard_path": "B:\\Cards\\Spirit\\Runes\\Soul Bond.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Runes\\Soul Bond.png",
+      "card_number": "141/143",
+      "rarity": "Karls",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Holy Light",
+      "vigor_cost": "12",
+      "vigor_type": "Spirit",
+      "vigor_type_image": "Mana/Spirit.png",
+      "image": "F:\\zzz\\Spells(bot)\\Spirit\\db6c4273-d472-4b65-a587-3b907a5bf33d.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Spirit.png",
+      "attack_name": "Holy Light",
+      "attack_description": "Call down a beam of holy light to heal an ally for 20-25 hit points.",
+      "shop_price": "290",
+      "file_name": "Holy Light.png",
+      "standard_path": "B:\\Cards\\Spirit\\Runes\\Holy Light.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Runes\\Holy Light.png",
+      "card_number": "142/143",
+      "rarity": "Jarl",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Alariana",
+      "className": "Primordial",
+      "manaColor": "Spirit",
+      "classImage": "F:\\zzz\\Primordial\\Spirit\\18.png",
+      "attacks": [
+        {
+          "name": "Twilight Offering",
+          "description": "Summon a 5/5 Shadow Wraith token with Lifesteal.",
+          "manaCost": "19"
+        },
+        {
+          "name": "Blood Pact",
+          "description": "Gain 10 life for each sacrificed creature with more than 15 health.",
+          "manaCost": "14"
+        }
+      ],
+      "Mana Card Cost": "15",
+      "ap": "AP 14",
+      "dp": "DP 12",
+      "strength": {
+        "Vigor": "Sorcery",
+        "image": "SMana/Sorcery.png"
+      },
+      "weakness": {
+        "Vigor": "Tar",
+        "image": "WMana/Tar.png"
+      },
+      "deckManaImage": "Mana/Spirit.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Spirit\\Primordial\\Alariana.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Primordial\\Alariana.png",
+      "shop_price": "278",
+      "card_number": "143/143",
+      "rarity": "Konugr",
+      "vigor": "Spirit",
+      "type": "Primordial Being",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Elowenna",
+      "className": "Assassin",
+      "classImage": "F:\\zzz\\Master Photo List\\Assassin\\Assassin10.png",
+      "attacks": [
+        {
+          "name": "Summoning Summoning",
+          "description": "No summoning 8 rounds",
+          "manaCost": "10"
+        },
+        {
+          "name": "Vampire Strike",
+          "description": "Attacks opponent 2 damage",
+          "manaCost": "1"
+        }
+      ],
+      "Mana Card Cost": "8",
+      "ap": "AP 4",
+      "dp": "DP 6",
+      "strength": {
+        "Vigor": "Sun",
+        "image": "SMana/Sun.png"
+      },
+      "weakness": {
+        "Vigor": "Moon",
+        "image": "WMana/Moon.png"
+      },
+      "deckManaImage": "Mana/Greed.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Greed\\Creature\\Elowenna.png",
+      "print_path": "B:\\Cards\\Greed(Print)\\Creature\\Elowenna.png",
+      "card_number": "144/143",
+      "rarity": "Thrall",
+      "vigor": "Greed",
+      "type": "Creature",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Ravith",
+      "className": "Viking",
+      "classImage": "F:\\zzz\\Master Photo List\\Viking\\Viking11.png",
+      "attacks": [
+        {
+          "name": "Stellar Surge",
+          "description": "Heals caster next damage dealt",
+          "manaCost": "10"
+        },
+        {
+          "name": "Celestial Cascade",
+          "description": "Heals caster double successful attack",
+          "manaCost": "9"
+        }
+      ],
+      "Mana Card Cost": "5",
+      "ap": "AP 4",
+      "dp": "DP 4",
+      "strength": {
+        "Vigor": "Sorcery",
+        "image": "SMana/Sorcery.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Chaos.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Chaos\\Creature\\Ravith.png",
+      "print_path": "B:\\Cards\\Chaos(Print)\\Creature\\Ravith.png",
+      "card_number": "145/143",
+      "rarity": "Skilled",
+      "vigor": "Chaos",
+      "type": "Creature",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Kodin",
+      "className": "Fox",
+      "classImage": "F:\\zzz\\Master Photo List\\Fox\\Fox4.png",
+      "attacks": [
+        {
+          "name": "Spiritual Renewal",
+          "description": "Heals caster next damage dealt",
+          "manaCost": "8"
+        },
+        {
+          "name": "Paralyzing Venom",
+          "description": "Silences target 3 rounds",
+          "manaCost": "9"
+        }
+      ],
+      "Mana Card Cost": "12",
+      "ap": "AP 10",
+      "dp": "DP 9",
+      "strength": {
+        "Vigor": "Sun",
+        "image": "SMana/Sun.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Moon.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Moon\\Creature\\Kodin.png",
+      "print_path": "B:\\Cards\\Moon(Print)\\Creature\\Kodin.png",
+      "card_number": "146/143",
+      "rarity": "Skilled",
+      "vigor": "Moon",
+      "type": "Creature",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Medic",
+      "className": "Changling",
+      "classImage": "F:\\zzz\\Master Photo List\\Changling\\Changling.png",
+      "attacks": [
+        {
+          "name": "Life Strike",
+          "description": "Attacks opponent 1 damage",
+          "manaCost": "7"
+        },
+        {
+          "name": "Panther Whirlwind",
+          "description": "Blocks ground 2 rounds",
+          "manaCost": "1"
+        }
+      ],
+      "Mana Card Cost": "1",
+      "ap": "AP 2",
+      "dp": "DP 3",
+      "strength": {
+        "Vigor": "Spirit",
+        "image": "SMana/Spirit.png"
+      },
+      "weakness": {
+        "Vigor": "Sorcery",
+        "image": "WMana/Sorcery.png"
+      },
+      "deckManaImage": "Mana/Chaos.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Chaos\\Creature\\Medic.png",
+      "print_path": "B:\\Cards\\Chaos(Print)\\Creature\\Medic.png",
+      "card_number": "147/143",
+      "rarity": "Karls",
+      "vigor": "Chaos",
+      "type": "Creature",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Brilk",
+      "className": "Aarakocra",
+      "classImage": "F:\\zzz\\Master Photo List\\Aarakocra\\Arakocra33.png",
+      "attacks": [
+        {
+          "name": "Reaper's Touch",
+          "description": "Opponent -3 life",
+          "manaCost": "11"
+        },
+        {
+          "name": "Chaos Eruption",
+          "description": "Causes chaos, no attacks 6 turns",
+          "manaCost": "2"
+        }
+      ],
+      "Mana Card Cost": "7",
+      "ap": "AP 7",
+      "dp": "DP 5",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Fungus",
+        "image": "WMana/Fungus.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Creature\\Brilk.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Creature\\Brilk.png",
+      "card_number": "148/143",
+      "rarity": "Jarl",
+      "vigor": "Fairy",
+      "type": "Creature",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Berserker Rage",
+      "vigor_cost": "1",
+      "vigor_type": "Spirit",
+      "vigor_type_image": "Mana/Spirit.png",
+      "image": "F:\\zzz\\Weapons\\Axes\\img-xo1dt0YhS5tn1tOBoOpg0.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Spirit.png",
+      "attack_description": "Enter a berserker rage and unleash a series of axe strikes, dealing 20 hit points of damage.",
+      "equipment_type": "Axes",
+      "shop_price": "655",
+      "file_name": "Berserker Rage.png",
+      "print_file_path": "B:\\Cards\\Spirit(Print)\\Equipment\\Berserker Rage.png",
+      "card_number": "149/143",
+      "rarity": "Thrall",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Elixir of Sanctuary",
+      "vigor_cost": "1",
+      "vigor_type": "Fairy",
+      "vigor_type_image": "Mana/Fairy.png",
+      "image": "F:\\zzz\\Weapons\\Defense-Potions\\img-kmPds1tGaHjYQRw0XGQ6B.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Fairy.png",
+      "attack_description": "Create a protective barrier, granting immunity to all for 2 turns",
+      "equipment_type": "Defense-Potions",
+      "shop_price": "535",
+      "file_name": "Elixir of Sanctuary.png",
+      "print_file_path": "B:\\Cards\\Fairy(Print)\\Equipment\\Elixir of Sanctuary.png",
+      "card_number": "150/143",
+      "rarity": "Skilled",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Shield of Reflection",
+      "vigor_cost": "6",
+      "vigor_type": "Chaos",
+      "vigor_type_image": "Mana/Chaos.png",
+      "image": "F:\\zzz\\Weapons\\Shields\\img-8UZ5LIZhbdeCLMN9X3vvo.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Chaos.png",
+      "attack_description": "Reflect magical projectiles back at the caster, nullifying the incoming attack and dealing 15 hit points of damage.",
+      "equipment_type": "Shields",
+      "shop_price": "723",
+      "file_name": "Shield of Reflection.png",
+      "print_file_path": "B:\\Cards\\Chaos(Print)\\Equipment\\Shield of Reflection.png",
+      "card_number": "151/143",
+      "rarity": "Skilled",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Thundering Blow",
+      "vigor_cost": "6",
+      "vigor_type": "Greed",
+      "vigor_type_image": "Mana/Greed.png",
+      "image": "F:\\zzz\\Weapons\\Axes\\img-FYxdxlJ9ZqsDYqCehvcoH.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Greed.png",
+      "attack_description": "Strike the ground with the axe, sending shockwaves to enemies, dealing 30 hit points of damage.",
+      "equipment_type": "Axes",
+      "shop_price": "692",
+      "file_name": "Thundering Blow.png",
+      "print_file_path": "B:\\Cards\\Greed(Print)\\Equipment\\Thundering Blow.png",
+      "card_number": "152/143",
+      "rarity": "Karls",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Evasion Draught",
+      "vigor_cost": "7",
+      "vigor_type": "Greed",
+      "vigor_type_image": "Mana/Greed.png",
+      "image": "F:\\zzz\\Weapons\\Defense-Potions\\img-KxsghrQMqkUwUmselLWf1.png",
+      "type": "Accoutrements",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Greed.png",
+      "attack_description": "Grant advantage on Dexterity saving throws for 3 rounds.",
+      "equipment_type": "Defense-Potions",
+      "shop_price": "367",
+      "file_name": "Evasion Draught.png",
+      "print_file_path": "B:\\Cards\\Greed(Print)\\Equipment\\Evasion Draught.png",
+      "card_number": "153/143",
+      "rarity": "Jarl",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Cleansing Aura",
+      "vigor_cost": "5",
+      "vigor_type": "Spirit",
+      "vigor_type_image": "Mana/Spirit.png",
+      "image": "F:\\zzz\\Spells(bot)\\Spirit\\ab7d4a65-7742-48b4-9e1b-86594269d0e4.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Spirit.png",
+      "attack_name": "Cleansing Aura",
+      "attack_description": "Radiate a cleansing aura, removing all negative effects from allies.",
+      "shop_price": "271",
+      "file_name": "Cleansing Aura.png",
+      "standard_path": "B:\\Cards\\Spirit\\Runes\\Cleansing Aura.png",
+      "print_path": "B:\\Cards\\Spirit(Print)\\Runes\\Cleansing Aura.png",
+      "card_number": "154/143",
+      "rarity": "Thrall",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Fireball",
+      "vigor_cost": "10",
+      "vigor_type": "Greed",
+      "vigor_type_image": "Mana/Greed.png",
+      "image": "F:\\zzz\\Spells(bot)\\Greed\\13.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Greed.png",
+      "attack_name": "Fireball",
+      "attack_description": "Cast a fiery explosion, engulfing enemies in flames and dealing 15 hit points of damage.",
+      "shop_price": "75",
+      "file_name": "Fireball.png",
+      "standard_path": "B:\\Cards\\Greed\\Runes\\Fireball.png",
+      "print_path": "B:\\Cards\\Greed(Print)\\Runes\\Fireball.png",
+      "card_number": "155/143",
+      "rarity": "Skilled",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Radiant Beam",
+      "vigor_cost": "6",
+      "vigor_type": "Ocean",
+      "vigor_type_image": "Mana/Ocean.png",
+      "image": "F:\\zzz\\Spells(bot)\\Ocean\\30.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Ocean.png",
+      "attack_name": "Radiant Beam",
+      "attack_description": "Unleash a beam of radiant energy, dealing damage and potentially blinding enemies, dealing 12-17 damage.",
+      "shop_price": "441",
+      "file_name": "Radiant Beam.png",
+      "standard_path": "B:\\Cards\\Ocean\\Runes\\Radiant Beam.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Runes\\Radiant Beam.png",
+      "card_number": "156/143",
+      "rarity": "Karls",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Summon Familiar",
+      "vigor_cost": "3",
+      "vigor_type": "Fungus",
+      "vigor_type_image": "Mana/Fungus.png",
+      "image": "F:\\zzz\\Spells(bot)\\Fungus\\665515a5-b6a6-47bf-b517-9d0974f53537.png",
+      "type": "Runes",
+      "bottom_vigor_image": "F:\\zzz\\Spells\\Fungus.png",
+      "attack_name": "Summon Familiar",
+      "attack_description": "Summon a loyal creature to aid you in battle, dealing 5-8 damage per turn.",
+      "shop_price": "586",
+      "file_name": "Summon Familiar.png",
+      "standard_path": "B:\\Cards\\Fungus\\Runes\\Summon Familiar.png",
+      "print_path": "B:\\Cards\\Fungus(Print)\\Runes\\Summon Familiar.png",
+      "card_number": "157/143",
+      "rarity": "Jarl",
+      "is_extra": true,
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Elyssiana",
+      "className": "Primordial",
+      "manaColor": "Chaos",
+      "classImage": "F:\\zzz\\Primordial\\Chaos\\18.png",
+      "attacks": [
+        {
+          "name": "Phantasmal Bind",
+          "description": "Return a creature from your graveyard to your hand.",
+          "manaCost": "16"
+        },
+        {
+          "name": "Doom\u2019s Gambit",
+          "description": "Flip a coin. If heads, destroy a creature on the field with 15 or less health.",
+          "manaCost": "20"
+        }
+      ],
+      "Mana Card Cost": "16",
+      "ap": "AP 13",
+      "dp": "DP 16",
+      "strength": {
+        "Vigor": "Earth",
+        "image": "SMana/Earth.png"
+      },
+      "weakness": {
+        "Vigor": "Sun",
+        "image": "WMana/Sun.png"
+      },
+      "deckManaImage": "Mana/Chaos.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Chaos\\Primordial\\Elyssiana.png",
+      "print_path": "B:\\Cards\\Chaos(Print)\\Primordial\\Elyssiana.png",
+      "shop_price": "716",
+      "card_number": "158/143",
+      "rarity": "Konugr",
+      "vigor": "Chaos",
+      "type": "Primordial Being",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Zoran",
+      "className": "Primordial",
+      "manaColor": "Fairy",
+      "classImage": "F:\\zzz\\Primordial\\Fairy\\13.png",
+      "attacks": [
+        {
+          "name": "Shadow Snatch",
+          "description": "Roll a die. On a roll of 1-3, steal a card from the opponent\u2019s hand.",
+          "manaCost": "19"
+        },
+        {
+          "name": "Wraith\u2019s Claim",
+          "description": "Return an Equipment from your graveyard and attach it to a creature you control.",
+          "manaCost": "15"
+        }
+      ],
+      "Mana Card Cost": "16",
+      "ap": "AP 16",
+      "dp": "DP 11",
+      "strength": {
+        "Vigor": "Earth",
+        "image": "SMana/Earth.png"
+      },
+      "weakness": {
+        "Vigor": "Lava",
+        "image": "WMana/Lava.png"
+      },
+      "deckManaImage": "Mana/Fairy.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fairy\\Primordial\\Zoran.png",
+      "print_path": "B:\\Cards\\Fairy(Print)\\Primordial\\Zoran.png",
+      "shop_price": "471",
+      "card_number": "159/143",
+      "rarity": "Konugr",
+      "vigor": "Fairy",
+      "type": "Primordial Being",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Noggrurr",
+      "className": "Primordial",
+      "manaColor": "Fungus",
+      "classImage": "F:\\zzz\\Primordial\\Fungus\\27.png",
+      "attacks": [
+        {
+          "name": "Shadow Snatch",
+          "description": "Roll a die. On a roll of 1-3, steal a card from the opponent\u2019s hand.",
+          "manaCost": "17"
+        },
+        {
+          "name": "Abyssal Tribute",
+          "description": "Sacrifice a creature. If its health was 10 or more, deal 10 damage to any target.",
+          "manaCost": "12"
+        }
+      ],
+      "Mana Card Cost": "19",
+      "ap": "AP 17",
+      "dp": "DP 19",
+      "strength": {
+        "Vigor": "Ocean",
+        "image": "SMana/Ocean.png"
+      },
+      "weakness": {
+        "Vigor": "Purity",
+        "image": "WMana/Purity.png"
+      },
+      "deckManaImage": "Mana/Fungus.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Fungus\\Primordial\\Noggrurr.png",
+      "print_path": "B:\\Cards\\Fungus(Print)\\Primordial\\Noggrurr.png",
+      "shop_price": "138",
+      "card_number": "160/143",
+      "rarity": "Konugr",
+      "vigor": "Fungus",
+      "type": "Primordial Being",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Alaric",
+      "className": "Primordial",
+      "manaColor": "Greed",
+      "classImage": "F:\\zzz\\Primordial\\Greed\\17.png",
+      "attacks": [
+        {
+          "name": "Tainted Covenant",
+          "description": "Target opponent mills 5 cards.",
+          "manaCost": "17"
+        },
+        {
+          "name": "Abyssal Tribute",
+          "description": "Sacrifice a creature. If its health was 10 or more, deal 10 damage to any target.",
+          "manaCost": "20"
+        }
+      ],
+      "Mana Card Cost": "19",
+      "ap": "AP 18",
+      "dp": "DP 17",
+      "strength": {
+        "Vigor": "Fairy",
+        "image": "SMana/Fairy.png"
+      },
+      "weakness": {
+        "Vigor": "Purity",
+        "image": "WMana/Purity.png"
+      },
+      "deckManaImage": "Mana/Greed.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Greed\\Primordial\\Alaric.png",
+      "print_path": "B:\\Cards\\Greed(Print)\\Primordial\\Alaric.png",
+      "shop_price": "429",
+      "card_number": "161/143",
+      "rarity": "Konugr",
+      "vigor": "Greed",
+      "type": "Primordial Being",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Malachai",
+      "className": "Primordial",
+      "manaColor": "Moon",
+      "classImage": "F:\\zzz\\Primordial\\Moon\\7.png",
+      "attacks": [
+        {
+          "name": "Lurking Dagger",
+          "description": "Opponent discards a random card from their hand.",
+          "manaCost": "20"
+        },
+        {
+          "name": "Wraith\u2019s Claim",
+          "description": "Return an Equipment from your graveyard and attach it to a creature you control.",
+          "manaCost": "19"
+        }
+      ],
+      "Mana Card Cost": "14",
+      "ap": "AP 12",
+      "dp": "DP 13",
+      "strength": {
+        "Vigor": "Ocean",
+        "image": "SMana/Ocean.png"
+      },
+      "weakness": {
+        "Vigor": "Sorcery",
+        "image": "WMana/Sorcery.png"
+      },
+      "deckManaImage": "Mana/Moon.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Moon\\Primordial\\Malachai.png",
+      "print_path": "B:\\Cards\\Moon(Print)\\Primordial\\Malachai.png",
+      "shop_price": "500",
+      "card_number": "162/143",
+      "rarity": "Konugr",
+      "vigor": "Moon",
+      "type": "Primordial Being",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    },
+    {
+      "name": "Zheggonk",
+      "className": "Primordial",
+      "manaColor": "Ocean",
+      "classImage": "F:\\zzz\\Primordial\\Ocean\\5.png",
+      "attacks": [
+        {
+          "name": "Fate Reversal",
+          "description": "All creatures in your graveyard gain \"Resurrect 1\" (return with 1 health when destroyed).",
+          "manaCost": "13"
+        },
+        {
+          "name": "Fell Pact",
+          "description": "Roll a die. On 1-3, opponent sacrifices a creature. On 4-6, you draw a card.",
+          "manaCost": "11"
+        }
+      ],
+      "Mana Card Cost": "19",
+      "ap": "AP 19",
+      "dp": "DP 19",
+      "strength": {
+        "Vigor": "Lava",
+        "image": "SMana/Lava.png"
+      },
+      "weakness": {
+        "Vigor": "Lightning",
+        "image": "WMana/Lightning.png"
+      },
+      "deckManaImage": "Mana/Ocean.png",
+      "backgroundImage": "F:\\zzz\\background.png",
+      "standard_path": "B:\\Cards\\Ocean\\Primordial\\Zheggonk.png",
+      "print_path": "B:\\Cards\\Ocean(Print)\\Primordial\\Zheggonk.png",
+      "shop_price": "388",
+      "card_number": "163/143",
+      "rarity": "Konugr",
+      "vigor": "Ocean",
+      "type": "Primordial Being",
+      "manifest_path": "B:\\Cards\\Tangled Weave\\Tangled Weave_manifest.json"
+    }
+  ]
+}

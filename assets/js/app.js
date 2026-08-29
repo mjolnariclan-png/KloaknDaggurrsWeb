@@ -44,7 +44,7 @@ const KD = (() => {
     return {
       site:f.site,
       factions:f.factions.map((x,i)=>({...x,id:null,sort_order:(i+1)*10,is_live:!!x.revealed,rune_image_url:x.rune_image_url||null,number:x.number||`Book ${i+1}`})),
-      cards:f.cards.map((x,i)=>({...x,id:null,card_number:x.number,card_type:x.type,faction_slug:x.faction,image_url:x.image,sort_order:(i+1)*10,is_live:!!x.revealed})),
+      cards:f.cards.map((x,i)=>({...x,id:null,card_number:x.number,type:x.type,faction_slug:x.faction,image_url:x.image,sort_order:(i+1)*10,revealed:!!x.revealed,slug:x.slug||i.toString()})),
       whispers:f.whispers.map((x,i)=>({...x,id:null,published_at:x.date,image_url:x.image||null})),
       vault:f.vault.map((x,i)=>({...x,id:null,unlocked:x.status==="open"})),
       wars:f.wars?.map((x,i)=>({...x,id:null,sort_order:(i+1)*10,short_name:x.short_name||x.title||x.short_name}))||[]
@@ -59,9 +59,9 @@ const KD = (() => {
 
     try{
       const [fr,cr,wr,vr,ws]=await Promise.all([
-        sb.from("public_factions").select("*").order("sort_order"),
-        sb.from("public_cards").select("*").order("sort_order"),
-        sb.from("public_whispers").select("*").order("published_at",{ascending:false}),
+        sb.from("factions").select("*").order("sort_order"),
+        sb.from("cards").select("*").order("sort_order"),
+        sb.from("whispers").select("*").order("published_at",{ascending:false}),
         sb.rpc("get_vault_entries"),
         sb.from("wars").select("*").order("id")
       ]);
@@ -73,8 +73,9 @@ const KD = (() => {
 
       data.factions=(fr.data||[]).map((x,i)=>({...x,revealed:x.is_live,number:x.number||`Book ${i+1}`}));
       data.cards=(cr.data||[]).map(x=>({
-        ...x,number:x.card_number,type:x.card_type,faction:x.faction_slug,
-        image:x.image_url||"assets/img/card-back.svg",revealed:x.is_live
+        ...x,number:x.card_number,type:x.type,faction:x.faction_slug,
+        image:x.image_url||"assets/img/brand-mark.png",revealed:x.revealed,
+        slug:x.slug||x.id?.toString()
       }));
       data.whispers=(wr.data||[]).map(x=>({...x,date:x.published_at,image:x.image_url}));
       data.vault=(vr.data||[]).map(x=>({...x,is_live:x.unlocked}));
@@ -114,11 +115,44 @@ const KD = (() => {
   }
 
   function gameCard(c){
-    const open=live(c), f=faction(c.faction);
-    return `<a class="game-card rarity-${esc(c.rarity.toLowerCase())} ${open?"":"classified-card"} reveal" href="#/card/${encodeURIComponent(c.slug)}">
-      <div class="foil"></div><div class="card-top"><span>#${String(c.number).padStart(3,"0")}</span><span>${esc(c.rarity)}</span></div>
-      <div class="card-art"><img src="${esc(c.image||"assets/img/card-back.svg")}" alt=""></div>
-      <div class="card-copy"><span>${esc(f?.name||"UNKNOWN")}</span><h3>${esc(open?c.name:"██████████")}</h3><small>${esc(c.type)}</small>${countdown(c)}</div></a>`;
+    const open=live(c), f=faction(c.faction_slug||c.faction);
+    const cardImage = getCardImage(c);
+    return `<a class="game-card rarity-${esc((c.rarity||"Common").toLowerCase())} ${open?"":"classified-card"} reveal" href="#/card/${encodeURIComponent(c.slug||c.id)}">
+      <div class="foil"></div>
+      <div class="card-top"><span>${esc(c.card_number||c.number||"000")}</span><span>${esc(c.set_name||f?.name||"UNKNOWN")}</span></div>
+      <div class="card-art"><img src="${esc(cardImage)}" alt="${esc(c.name)}"></div>
+      <div class="card-copy"><h3>${esc(open?c.name:"██████████")}</h3><small>${esc(c.set_name||f?.name||"UNKNOWN")}</small></div></a>`;
+  }
+
+  function getCardImage(c){
+    if(c.image_url) return c.image_url;
+    if(c.image) return c.image;
+    
+    // Map card data to image path based on your folder structure
+    // Structure: assets/img/cards/[Faction]/[VigorType]/[CardType]/[VigorType_CardName].png
+    const f = faction(c.faction_slug||c.faction);
+    if(!f) return "assets/img/brand-mark.png"; // Use existing image as fallback
+    
+    const factionName = f.name;
+    const vigorType = c.vigor_type || 'Unknown';
+    const cardType = c.type || 'Unknown';
+    const cardName = c.name || 'Unknown';
+    
+    // Clean up names for file paths
+    const cleanFaction = factionName.replace(/ /g, ' '); // Keep spaces as they are in your folders
+    const cleanVigor = vigorType.replace(/ /g, ' ');
+    const cleanCardType = cardType === 'Primordial Being' ? 'Primordial' : cardType;
+    
+    // Your files seem to be named: [VigorType]_[CardName].png
+    // But for non-Vigor cards, they might just be [CardName].png
+    let cleanCardName;
+    if (cardType === 'Vigor') {
+      cleanCardName = `${cleanVigor}_${cardName.replace(/ /g, '_')}.png`;
+    } else {
+      cleanCardName = cardName.replace(/ /g, '_') + '.png';
+    }
+    
+    return `assets/img/cards/${cleanFaction}/${cleanVigor}/${cleanCardType}/${cleanCardName}`;
   }
 
   function whisper(w){
@@ -235,7 +269,47 @@ const KD = (() => {
   }
 
   function cardsPage(){
-    return `<section class="page-hero"><p class="eyebrow">KLANDESTINE CARD ARCHIVE</p><h1>THE HOARD</h1><p>Cards are now driven by PostgreSQL. Owner changes appear without rebuilding the site.</p></section><section class="section"><form id="card-filters" class="archive-filters"><select id="filter-faction"><option value="">All factions</option>${data.factions.map(f=>`<option value="${esc(f.slug)}">${esc(f.name)}</option>`).join("")}</select><select id="filter-rarity"><option value="">All rarities</option>${[...new Set(data.cards.map(c=>c.rarity))].map(v=>`<option>${esc(v)}</option>`).join("")}</select><select id="filter-type"><option value="">All types</option>${[...new Set(data.cards.map(c=>c.card_type||c.type))].map(v=>`<option>${esc(v)}</option>`).join("")}</select><button class="btn ghost">Filter Archive</button><button type="button" id="reset-filters" class="btn ghost">Reset</button></form><div id="cards-result" class="card-grid archive-grid">${data.cards.map(gameCard).join("")}</div></section>`;
+    const filteredCards = filterCards();
+    return `<section class="page-hero"><p class="eyebrow">KLANDESTINE CARD ARCHIVE</p><h1>THE ARSENAL</h1><p>Cards are now driven by PostgreSQL. Owner changes appear without rebuilding the site.</p></section><section class="section"><form id="card-filters" class="archive-filters"><input type="text" id="search-cards" placeholder="Search cards..." class="search-input"><select id="filter-faction"><option value="">All factions</option>${data.factions.map(f=>`<option value="${esc(f.slug)}">${esc(f.name)}</option>`).join("")}</select><select id="filter-rarity"><option value="">All rarities</option>${[...new Set(data.cards.map(c=>c.rarity))].filter(Boolean).map(v=>`<option>${esc(v)}</option>`).join("")}</select><select id="filter-type"><option value="">All types</option>${[...new Set(data.cards.map(c=>c.type))].filter(Boolean).map(v=>`<option>${esc(v)}</option>`).join("")}</select><select id="filter-vigor"><option value="">All vigor types</option>${[...new Set(data.cards.map(c=>c.vigor_type))].filter(Boolean).map(v=>`<option>${esc(v)}</option>`).join("")}</select><button class="btn ghost">Filter Archive</button><button type="button" id="reset-filters" class="btn ghost">Reset</button></form><div id="cards-result" class="card-grid archive-grid">${filteredCards.map(gameCard).join("")}</div></section>`;
+  }
+
+  function filterCards(){
+    const search = document.getElementById('search-cards')?.value?.toLowerCase() || '';
+    const faction = document.getElementById('filter-faction')?.value || '';
+    const rarity = document.getElementById('filter-rarity')?.value || '';
+    const type = document.getElementById('filter-type')?.value || '';
+    const vigor = document.getElementById('filter-vigor')?.value || '';
+
+    let filtered = data.cards.filter(c => {
+      if(search && !c.name.toLowerCase().includes(search)) return false;
+      if(faction && c.faction_slug !== faction) return false;
+      if(rarity && c.rarity !== rarity) return false;
+      if(type && c.type !== type) return false;
+      if(vigor && c.vigor_type !== vigor) return false;
+      return true;
+    });
+
+    // Limit to max 10 per faction with at least 1 of each type
+    const limitedCards = [];
+    const factionCounts = {};
+    const factionTypes = {};
+
+    filtered.forEach(c => {
+      const f = c.faction_slug;
+      if(!factionCounts[f]) factionCounts[f] = 0;
+      if(!factionTypes[f]) factionTypes[f] = new Set();
+
+      if(factionCounts[f] < 10 && !factionTypes[f].has(c.type)) {
+        limitedCards.push(c);
+        factionCounts[f]++;
+        factionTypes[f].add(c.type);
+      } else if(factionCounts[f] < 10) {
+        limitedCards.push(c);
+        factionCounts[f]++;
+      }
+    });
+
+    return limitedCards;
   }
 
   async function collectionQty(cardId){
@@ -245,9 +319,51 @@ const KD = (() => {
   }
 
   async function cardPage(slug){
-    const c=data.cards.find(x=>x.slug===slug); if(!c)return notFound("CARD DOSSIER");
+    const c=data.cards.find(x=>x.slug===slug||x.id==slug); if(!c)return notFound("CARD DOSSIER");
     const open=live(c),f=faction(c.faction_slug||c.faction),qty=await collectionQty(c.id);
-    return `<section class="card-dossier"><div><div class="game-card giant rarity-${esc((c.rarity||"Common").toLowerCase())} ${open?"":"classified-card"}"><div class="foil"></div><div class="card-top"><span>#${String(c.card_number??c.number??0).padStart(3,"0")}</span><span>${esc(c.rarity)}</span></div><div class="card-art"><img src="${esc(c.image_url||c.image||"assets/img/card-back.svg")}" alt=""></div><div class="card-copy"><span>${esc(c.faction_name||f?.name||"UNKNOWN")}</span><h2>${esc(open?c.name:"CLASSIFIED")}</h2><small>${esc(c.card_type||c.type)}</small></div></div></div><div class="card-record"><p class="eyebrow">CARD DOSSIER</p><h1>${esc(open?c.name:"██████████")}</h1>${open?`<div class="record-grid"><span>Faction</span><b>${esc(c.faction_name||f?.name||"Unknown")}</b><span>Rarity</span><b>${esc(c.rarity)}</b><span>Type</span><b>${esc(c.card_type||c.type)}</b></div><h3>ABILITY</h3><p>${esc(c.ability||"")}</p><h3>LORE</h3><p>${esc(c.lore||"")}</p>${session?.user&&c.id?`<form id="collection-form" data-card-id="${c.id}" class="collection-form"><label>Copies in My Archive <input id="collection-qty" type="number" min="0" max="99" value="${qty}"></label><button class="btn primary">Update Collection</button></form>`:`<a class="btn ghost" href="#/login">Sign in to track this card</a>`}`:countdown(c)}</div></section>`;
+    const cardImage = getCardImage(c);
+    const attacks = c.attacks ? (typeof c.attacks === 'string' ? JSON.parse(c.attacks) : c.attacks) : [];
+    
+    let statsHtml = '';
+    if(c.type === 'Creature' || c.type === 'Primordial Being') {
+      statsHtml = `
+        <div class="record-grid">
+          <span>Class</span><b>${esc(c.class_name||"Unknown")}</b>
+          <span>Attack Power</span><b>${esc(c.ap||"N/A")}</b>
+          <span>Defense Power</span><b>${esc(c.dp||"N/A")}</b>
+          <span>Mana Cost</span><b>${esc(c.mana_card_cost||"N/A")}</b>
+          <span>Strength Vigor</span><b>${esc(c.strength_vigor||"None")}</b>
+          <span>Weakness Vigor</span><b>${esc(c.weakness_vigor||"None")}</b>
+        </div>
+        ${attacks.length ? `<h3>ATTACKS</h3>${attacks.map(a=>`<div class="attack-item"><strong>${esc(a.name)}</strong> <span class="mana-cost">${esc(a.manaCost)} Mana</span><p>${esc(a.description)}</p></div>`).join("")}` : ''}
+      `;
+    } else if(c.type === 'Vigor') {
+      statsHtml = `
+        <div class="record-grid">
+          <span>Vigor Type</span><b>${esc(c.vigor_type||"Unknown")}</b>
+          <span>Vigor Cost</span><b>${esc(c.vigor_cost||"N/A")}</b>
+        </div>
+      `;
+    } else if(c.type === 'Accoutrements') {
+      statsHtml = `
+        <div class="record-grid">
+          <span>Equipment Type</span><b>${esc(c.equipment_type||"Unknown")}</b>
+          <span>Vigor Type</span><b>${esc(c.vigor_type||"Unknown")}</b>
+          <span>Vigor Cost</span><b>${esc(c.vigor_cost||"N/A")}</b>
+        </div>
+        <h3>ABILITY</h3><p>${esc(c.attack_description||"")}</p>
+      `;
+    } else if(c.type === 'Runes') {
+      statsHtml = `
+        <div class="record-grid">
+          <span>Vigor Type</span><b>${esc(c.vigor_type||"Unknown")}</b>
+          <span>Vigor Cost</span><b>${esc(c.vigor_cost||"N/A")}</b>
+        </div>
+        <h3>ABILITY</h3><p>${esc(c.attack_description||"")}</p>
+      `;
+    }
+    
+    return `<section class="card-dossier"><div><div class="game-card giant rarity-${esc((c.rarity||"Common").toLowerCase())} ${open?"":"classified-card"}"><div class="foil"></div><div class="card-top"><span>${esc(c.card_number||c.number||"000")}</span><span>${esc(c.rarity||"Unknown")}</span></div><div class="card-art"><img src="${esc(cardImage)}" alt="${esc(c.name)}"></div><div class="card-copy"><span>${esc(f?.name||"UNKNOWN")}</span><h2>${esc(open?c.name:"CLASSIFIED")}</h2><small>${esc(c.type)}</small></div></div></div><div class="card-record"><p class="eyebrow">CARD DOSSIER</p><h1>${esc(open?c.name:"██████████")}</h1>${open?`<div class="record-grid"><span>Faction</span><b>${esc(f?.name||"Unknown")}</b><span>Set</span><b>${esc(c.set_name||"Unknown")}</b><span>Rarity</span><b>${esc(c.rarity||"Unknown")}</b><span>Type</span><b>${esc(c.type||"Unknown")}</b></div>${statsHtml}${session?.user&&c.id?`<form id="collection-form" data-card-id="${c.id}" class="collection-form"><label>Copies in My Archive <input id="collection-qty" type="number" min="0" max="99" value="${qty}"></label><button class="btn primary">Update Collection</button></form>`:`<a class="btn ghost" href="#/login">Sign in to track this card</a>`}`:countdown(c)}</div></section>`;
   }
 
   function vaultPage(){

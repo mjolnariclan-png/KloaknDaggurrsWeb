@@ -807,6 +807,45 @@ select {
   gap: 10px;
   flex-wrap: wrap;
   margin-bottom: 35px;
+  padding: 20px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.search-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 10px 15px;
+  background: var(--dark);
+  border: 1px solid var(--line);
+  color: #fff;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.attack-item {
+  background: rgba(125, 67, 255, 0.1);
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  border-left: 3px solid var(--accent);
+}
+.attack-item strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--accent);
+}
+.mana-cost {
+  float: right;
+  color: var(--purple2);
+  font-size: 0.85rem;
+  background: rgba(147, 112, 219, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
 }
 .archive-filters select {
   width: auto;
