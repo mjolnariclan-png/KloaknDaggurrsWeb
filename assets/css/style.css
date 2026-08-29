@@ -1,39 +1,2838 @@
-:root{--bg:#060509;--panel:#100c17;--line:#2d2339;--ink:#f7f3fb;--muted:#a69cad;--purple:#7d43ff;--purple2:#b291ff;--gold:#c9a85d;--display:"Cinzel",Georgia,serif;--sans:"Inter",system-ui,sans-serif;--shadow:0 24px 80px rgba(0,0,0,.48)}
-*{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--bg)}body{margin:0;color:var(--ink);background:radial-gradient(circle at 8% 5%,rgba(125,67,255,.13),transparent 28%),radial-gradient(circle at 95% 40%,rgba(125,67,255,.05),transparent 25%),var(--bg);font-family:var(--sans);line-height:1.6;overflow-x:hidden}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}button,input,textarea,select{font:inherit}.site-noise{position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.035;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 1px,transparent 1px 3px)}.cursor-glow{position:fixed;width:420px;height:420px;border-radius:50%;background:rgba(125,67,255,.06);filter:blur(90px);pointer-events:none;z-index:-1;transform:translate(-50%,-50%)}
-.site-header{position:fixed;inset:0 0 auto;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:17px clamp(18px,4vw,65px);border-bottom:1px solid transparent;transition:.25s}.site-header.scrolled{background:rgba(6,5,9,.9);backdrop-filter:blur(20px);border-color:rgba(255,255,255,.07);padding-top:11px;padding-bottom:11px}.brand{display:flex;align-items:center;gap:11px}.brand img{width:42px}.brand span{display:flex;gap:7px;font-family:var(--display);font-size:.8rem;letter-spacing:.11em}.brand i{font-style:normal;color:var(--purple2)}.main-nav{display:flex;align-items:center;gap:clamp(12px,2vw,28px);font-size:.7rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase}.main-nav a{color:#cdc6d6;transition:.2s}.main-nav a:hover{color:#fff;text-shadow:0 0 18px var(--purple)}.nav-account{border:1px solid #433654;padding:9px 11px}.nav-toggle{display:none;background:none;border:0}.nav-toggle span{display:block;width:25px;height:2px;background:#fff;margin:5px}
-.hero{min-height:100vh;position:relative;display:grid;place-items:center;text-align:center;padding:145px 24px 85px;overflow:hidden}.hero-grid{position:absolute;inset:-20%;opacity:.08;background-image:linear-gradient(rgba(125,67,255,.3) 1px,transparent 1px),linear-gradient(90deg,rgba(125,67,255,.3) 1px,transparent 1px);background-size:70px 70px;transform:perspective(500px) rotateX(64deg)}.hero-sigil{position:absolute;width:min(590px,78vw);opacity:.16;filter:drop-shadow(0 0 80px rgba(125,67,255,.65))}.hero-copy{position:relative;z-index:5}.hero h1,.page-hero h1,.faction-hero h1{font-family:var(--display);font-size:clamp(4rem,12vw,10rem);line-height:.83;letter-spacing:.055em;margin:0;text-shadow:0 0 60px rgba(125,67,255,.22)}.hero-line{font-family:var(--display);font-size:clamp(1rem,2vw,1.4rem);color:#c8c0d0;margin:30px 0}.eyebrow{color:var(--purple2);letter-spacing:.22em;text-transform:uppercase;font-size:.68rem;font-weight:800;margin:0 0 13px}.hero-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.hero-actions.left{justify-content:flex-start}.btn{display:inline-flex;justify-content:center;align-items:center;min-height:47px;padding:0 19px;border:1px solid transparent;color:#fff;text-transform:uppercase;letter-spacing:.09em;font-size:.68rem;font-weight:800;cursor:pointer}.btn.primary{background:linear-gradient(135deg,#6430e0,#925fff);box-shadow:0 12px 35px rgba(125,67,255,.25)}.btn.ghost{background:rgba(255,255,255,.02);border-color:#3b3049}.btn:hover{transform:translateY(-2px)}.scroll-cue{position:absolute;bottom:23px;font-size:.56rem;letter-spacing:.2em;color:#766d80}.section{width:min(1240px,calc(100% - 40px));margin:auto;padding:100px 0}.narrow{width:min(900px,calc(100% - 40px))}.section-heading{max-width:760px;margin-bottom:48px}.section-heading h2,.vault-copy h2,.manual-copy h2{font-family:var(--display);font-size:clamp(2.2rem,5vw,4.4rem);line-height:1.03;margin:0 0 18px}.section-heading>p:not(.eyebrow),.vault-copy p,.muted{color:var(--muted)}.split-heading{max-width:none;display:flex;justify-content:space-between;align-items:end;gap:35px}.text-link{color:var(--purple2);font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
-.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.stat-card{min-height:185px;border:1px solid var(--line);background:var(--panel);padding:26px;display:flex;flex-direction:column;justify-content:flex-end;transform:perspective(900px) rotateX(var(--rx,0)) rotateY(var(--ry,0));box-shadow:var(--shadow)}.stat-card b{font-family:var(--display);font-size:3.2rem;line-height:1}.stat-card span{font-size:.63rem;color:var(--muted);letter-spacing:.13em;text-transform:uppercase}
-.faction-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.faction-tile{--accent:#7d43ff;position:relative;min-height:300px;padding:25px;border:1px solid var(--line);background:radial-gradient(circle at 50% 24%,color-mix(in srgb,var(--accent) 17%,transparent),transparent 35%),linear-gradient(145deg,#110d18,#09070c);display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;box-shadow:var(--shadow);transform:perspective(900px) rotateX(var(--rx,0)) rotateY(var(--ry,0))}.tile-index{position:absolute;top:15px;left:17px;color:#665d6e;font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}.rune-image{position:absolute;top:42px;left:50%;transform:translateX(-50%);width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 0 20px color-mix(in srgb,var(--accent) 40%,transparent))}.faction-emblem{font-family:var(--display);font-size:6rem;color:var(--accent);text-shadow:0 0 40px color-mix(in srgb,var(--accent) 50%,transparent)}.faction-emblem-image{width:120px;height:120px;object-fit:contain;filter:drop-shadow(0 0 30px color-mix(in srgb,var(--accent) 50%,transparent))}.faction-tile h3{font-family:var(--display);margin:0 0 6px}.faction-tile p{color:var(--muted);font-size:.82rem}.clearance{font-size:.56rem;color:var(--accent);font-weight:800;letter-spacing:.15em}.locked{filter:saturate(.35)}.countdown{margin:8px 0;color:var(--purple2);font:700 .7rem monospace}
-.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.archive-grid{grid-template-columns:repeat(4,1fr)}.game-card{--card-accent:#7256a5;position:relative;aspect-ratio:5/7;border:2px solid var(--card-accent);border-radius:18px;background:#09070d;padding:12px;overflow:hidden;box-shadow:var(--shadow);transform:perspective(1000px) rotateX(var(--rx,0)) rotateY(var(--ry,0));isolation:isolate}.rarity-common{--card-accent:#706c78}.rarity-uncommon{--card-accent:#a5b1c2}.rarity-rare{--card-accent:#7d43ff}.rarity-mythic{--card-accent:#d94cff}.rarity-gold{--card-accent:#d6ad4d}.foil{position:absolute;inset:-60%;z-index:4;pointer-events:none;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.24),transparent 20%),linear-gradient(115deg,transparent 42%,color-mix(in srgb,var(--card-accent) 28%,transparent) 50%,transparent 58%);mix-blend-mode:screen}.card-top{height:34px;display:flex;justify-content:space-between;font-size:.56rem;color:#bbb2c4}.card-art{height:61%;border:1px solid #27202f;overflow:hidden}.card-art img{width:100%;height:100%;object-fit:cover}.card-copy{padding:12px 5px}.card-copy span,.card-copy small{font-size:.55rem;color:#8f829a;text-transform:uppercase}.card-copy h2,.card-copy h3{font-family:var(--display);font-size:1.1rem;margin:4px 0}.classified-card{filter:saturate(.3) brightness(.72)}.giant{width:min(430px,90vw);margin:auto}
-.page-hero{min-height:58vh;padding:180px 24px 85px;text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center;background:radial-gradient(circle at 50% 48%,rgba(125,67,255,.15),transparent 34%)}.page-hero.compact{min-height:45vh}.page-hero h1{font-size:clamp(3.2rem,9vw,7rem)}.page-hero>p:last-child{max-width:720px;color:var(--muted)}.faction-hero{--accent:#7d43ff;min-height:70vh;padding:155px max(24px,8vw) 80px;display:grid;grid-template-columns:.8fr 1.2fr;gap:6vw;align-items:center}.faction-emblem{font-family:var(--display);font-size:min(30vw,19rem);color:var(--accent);text-align:center}.faction-emblem-image{width:120px;height:120px;object-fit:contain;filter:drop-shadow(0 0 30px color-mix(in srgb,var(--accent) 50%,transparent))}.faction-lore{display:grid;grid-template-columns:1.3fr .7fr;gap:7vw}.lore-copy p{font-family:Georgia,serif;color:#c8bfce;font-size:1.2rem}.lore-copy blockquote{border-left:2px solid var(--purple);padding:12px 24px}.dossier{border:1px solid var(--line);background:var(--panel);padding:26px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.classified-block{grid-column:1/-1;text-align:center;border:1px solid var(--line);padding:60px}.classified-block h2{font-family:var(--display);font-size:3rem}
-.card-dossier{min-height:100vh;width:min(1120px,calc(100% - 40px));margin:auto;padding:150px 0 90px;display:grid;grid-template-columns:.85fr 1.15fr;gap:7vw;align-items:center}.card-record h1{font-family:var(--display);font-size:clamp(2.8rem,6vw,5.6rem)}.record-grid{display:grid;grid-template-columns:110px 1fr;gap:8px 20px;border:1px solid var(--line);padding:20px}.collection-form{display:flex;gap:12px;align-items:end;margin-top:30px}.collection-form input{width:100px;background:#09070d;border:1px solid var(--line);color:#fff;padding:12px}
-.vault-tease{display:grid;grid-template-columns:1fr 1fr;gap:8vw;align-items:center}.vault-door{aspect-ratio:1;max-width:520px;border:1px solid #30263b;border-radius:50%;display:grid;place-items:center;background:repeating-radial-gradient(circle,#0b0810 0 55px,#16101f 56px 57px,#0b0810 58px 95px)}.vault-core{text-align:center;display:grid}.vault-core strong{font-family:var(--display);font-size:3rem}.vault-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.vault-file{border:1px solid var(--line);background:var(--panel);padding:28px;min-height:280px}.file-top{display:flex;justify-content:space-between;font-size:.55rem;color:#817789}.vault-file h2{font-family:var(--display);margin-top:40px}.vault-file p,.file-body{color:var(--muted)}.redactions{display:grid;gap:9px}.redactions i{height:10px;background:#2a252d}.terminal{border:1px solid #342743;background:#070509;padding:24px;font-family:monospace}.terminal-bar{border-bottom:1px solid var(--line);padding-bottom:10px;color:#796d83}.terminal pre{color:#9fddba}.terminal form{display:flex;gap:10px}.terminal input{flex:1;background:#030204;color:#b7ffc9;border:1px solid #284132;padding:13px}
-.timeline:before{content:"";position:absolute;left:125px;top:0;bottom:0;width:1px;background:linear-gradient(var(--purple),var(--line),transparent)}.timeline{position:relative}.timeline-entry{display:grid;grid-template-columns:94px 1fr;gap:65px;padding-bottom:58px}.timeline-entry time{font-size:.67rem;color:var(--purple2)}.timeline-entry>div{position:relative}.timeline-entry>div:before{content:"";position:absolute;width:9px;height:9px;border-radius:50%;background:var(--purple2);left:-39px;top:5px}.timeline-entry h2{font-family:var(--display)}.timeline-entry p{color:var(--muted)}.micro{font-size:.55rem;color:#796e82;letter-spacing:.14em}
-.service-grid,.rule-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.rule-steps{grid-template-columns:repeat(4,1fr)}.service-card,.rule-card{border:1px solid var(--line);background:var(--panel);padding:25px;min-height:280px;display:flex;flex-direction:column;justify-content:flex-end}.service-card>span,.rule-card>span{font-family:var(--display);font-size:3rem;color:#372b46;margin-bottom:auto}.service-card h2,.rule-card h2{font-family:var(--display);margin:0}.service-card p,.rule-card p{color:var(--muted)}.manual-copy p{color:var(--muted)}
-.form-section{width:min(900px,calc(100% - 40px))}.kd-form{display:grid;gap:17px;border:1px solid var(--line);background:var(--panel);padding:40px}.kd-form label{display:grid;gap:6px;font-size:.68rem;font-weight:700;text-transform:uppercase}.kd-form input,.kd-form textarea,.kd-form select,.archive-filters select{width:100%;background:#08060b;color:#fff;border:1px solid #33283e;padding:12px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.archive-filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:35px}.archive-filters select{width:auto;min-width:170px}.request-output,.admin-card,.archive-progress,.empty-panel{border:1px solid var(--line);background:var(--panel);padding:25px;margin-top:20px}.request-output pre{white-space:pre-wrap;color:#c9c0d0}.warning{color:#d9b578}.gallery-grid{columns:3 280px;column-gap:14px}.gallery-item{break-inside:avoid;margin:0 0 14px;border:1px solid var(--line);background:var(--panel)}.gallery-item figcaption{padding:10px;color:var(--muted)}.collection-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.collection-item{position:relative;border:1px solid var(--line);background:var(--panel);padding:20px}.collection-item h3{font-family:var(--display)}.collection-item b{position:absolute;right:15px;top:15px;color:var(--purple2)}.progress-meter{height:8px;background:#241d2c;margin-top:15px}.progress-meter i{display:block;height:100%;background:linear-gradient(90deg,#6b31e5,#b795ff)}.studio-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:16px}.studio-grid textarea{width:100%;height:65vh;background:#050407;color:#cfc5d8;border:1px solid var(--line);padding:15px;font:12px/1.5 monospace}.loading-panel,.fatal{min-height:70vh;padding:180px 30px;text-align:center}.fatal{min-height:auto;background:#461b26;color:#fff}
-.site-footer{width:min(1240px,calc(100% - 40px));margin:90px auto 0;padding:44px 0 24px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr .5fr 1fr;gap:38px}.footer-links{display:grid;gap:7px;color:#b8afc0;font-size:.75rem}.footer-bottom{grid-column:1/-1;border-top:1px solid #18131d;padding-top:16px;color:#5e5764;font-size:.62rem}.intro-sequence{position:fixed;z-index:1000;inset:0;background:#030204;display:grid;place-items:center;align-content:center;text-align:center}.intro-sequence img{width:min(280px,60vw);filter:drop-shadow(0 0 50px rgba(125,67,255,.6))}.intro-sequence h2{font-family:var(--display)}.intro-sequence p,.intro-sequence span{font-size:.58rem;letter-spacing:.2em;color:#8f8399}.intro-sequence.leave{opacity:0;transition:.8s}.intro-locked{overflow:hidden}.reveal{opacity:0;transform:translateY(22px);transition:.7s}.reveal.visible{opacity:1;transform:none}
-@media(max-width:1000px){.faction-grid{grid-template-columns:repeat(3,1fr)}.archive-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:820px){.nav-toggle{display:block}.main-nav{position:absolute;top:100%;left:12px;right:12px;display:none;flex-direction:column;align-items:stretch;background:#08060b;border:1px solid var(--line);padding:12px}.main-nav.open{display:flex}.stat-grid,.rule-steps,.faction-grid,.card-grid,.archive-grid{grid-template-columns:repeat(2,1fr)}.vault-tease,.faction-hero,.faction-lore,.card-dossier,.studio-grid{grid-template-columns:1fr}.site-footer{grid-template-columns:1fr 1fr}.footer-bottom{grid-column:1/-1}}
-@media(max-width:560px){.brand span strong:last-child{display:none}.hero h1{font-size:3.45rem}.section{padding:70px 0}.split-heading{align-items:start;flex-direction:column}.stat-grid,.rule-steps,.service-grid,.faction-grid,.card-grid,.archive-grid,.form-grid,.collection-grid{grid-template-columns:1fr}.vault-grid{grid-template-columns:1fr}.timeline:before{left:7px}.timeline-entry{grid-template-columns:1fr;gap:7px;padding-left:34px}.timeline-entry>div:before{left:-31px}.site-footer{grid-template-columns:1fr}.footer-bottom{grid-column:1}.archive-filters>*{width:100%!important}.terminal form{flex-direction:column}.gallery-grid{columns:1}}
-@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}.cursor-glow{display:none}}
+﻿/* ============================================================
+   KLOAK & DAGGURRS - COMPLETE SITE STYLES
+   Edit the labeled DESIGN CONTROLS section near the bottom for
+   safe visual customization. Earlier sections are the foundation.
+   ============================================================ */
 
-.backend-badge{display:inline-block;margin-top:22px;padding:6px 10px;border:1px solid var(--line);font-size:.55rem;letter-spacing:.12em}.backend-badge.online{color:#67e8b1;border-color:rgba(103,232,177,.35)}.backend-badge.offline{color:#e0af6a}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:25px}.admin-dashboard{padding-top:30px}.admin-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;position:sticky;top:76px;z-index:20;background:rgba(6,5,9,.92);padding:10px 0}.admin-tabs button{background:#100c17;color:#d8cfe0;border:1px solid var(--line);padding:9px 12px;cursor:pointer;text-transform:uppercase;font-size:.62rem;letter-spacing:.08em}.admin-pane{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.admin-pane[hidden]{display:none}.admin-card{display:grid;gap:12px}.admin-card label{display:grid;gap:5px;font-size:.65rem;text-transform:uppercase}.admin-card input,.admin-card textarea,.admin-card select{width:100%;background:#08060b;color:#fff;border:1px solid #33283e;padding:10px}.order-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.stars{color:var(--gold)}.check{display:flex!important;align-items:center;gap:8px}.check input{width:auto!important}.code-input-tabs{display:flex;gap:8px;margin-bottom:15px}.tab-btn{background:#100c17;color:#d8cfe0;border:1px solid var(--line);padding:8px 12px;cursor:pointer;text-transform:uppercase;font-size:.62rem;letter-spacing:.08em;transition:.2s}.tab-btn:hover{background:#1a1224}.tab-btn.active{background:#6b31e5;border-color:#6b31e5;color:#fff}.code-panel{margin-top:10px}.deck-info{font-size:.65rem;color:#796d83;margin-top:8px}.deck-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:20px}.home-factions{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.wars-container{display:flex;flex-direction:column;gap:30px}.war-row{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center;padding:30px 0;border-bottom:1px solid var(--line)}.war-faction{min-width:0}.war-info{padding:20px;border-left:1px solid var(--line);border-right:1px solid var(--line);max-width:400px}.war-info h3{font-family:var(--display);font-size:1.2rem;margin:0 0 15px;color:var(--accent);line-height:1.3}.war-info p{color:var(--muted);font-size:.85rem;line-height:1.6;margin:0}.hollow-end-section{margin-top:60px;padding:60px;border:2px solid #800080;background:radial-gradient(circle at 50% 0%,rgba(128,0,128,.15),transparent 50%)}.hollow-end-hero{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center}.hollow-end-emblem{width:150px;height:150px}.hollow-end-image{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 40px rgba(128,0,128,.6))}.hollow-end-lore p{font-family:Georgia,serif;color:#c8bfce;font-size:1.1rem;line-height:1.8;margin-bottom:20px}.hollow-end-lore blockquote{border-left:2px solid #800080;padding:15px 25px;color:#d9b578;font-style:italic}.wars-full-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.war-card{border:1px solid var(--line);background:var(--panel);padding:25px;min-height:200px}.war-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;padding-bottom:15px;border-bottom:1px solid var(--line)}.war-faction-name{font-family:var(--display);font-size:1.5rem;color:var(--accent)}.war-vs{font-family:var(--display);font-size:1.2rem;color:#796d83}.war-content h3{font-family:var(--display);font-size:1.1rem;margin:0 0 10px;color:var(--accent)}.war-content p{color:var(--muted);font-size:.85rem;line-height:1.5}.classified-war{color:#796d83;font-style:italic}
-@media(max-width:820px){.two-col,.admin-pane,.order-list{grid-template-columns:1fr}.admin-tabs{top:62px}}
+/* ============================================================
+   BASE SITE STYLES
+   ============================================================ */
 
-@media(max-width:560px){.brand img{width:34px}.brand span{gap:4px;font-size:.63rem;letter-spacing:.055em}.brand span strong:last-child{display:inline}}
+:root {
+  --bg: #060509;
+  --panel: #100c17;
+  --line: #2d2339;
+  --ink: #f7f3fb;
+  --muted: #a69cad;
+  --purple: #7d43ff;
+  --purple2: #b291ff;
+  --gold: #c9a85d;
+  --display: "Cinzel", Georgia, serif;
+  --sans: "Inter", system-ui, sans-serif;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.48);
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);
+}
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 8% 5%, rgba(125, 67, 255, 0.13), transparent 28%),
+    radial-gradient(
+      circle at 95% 40%,
+      rgba(125, 67, 255, 0.05),
+      transparent 25%
+    ),
+    var(--bg);
+  font-family: var(--sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+.site-noise {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.03) 0 1px,
+    transparent 1px 3px
+  );
+}
+.cursor-glow {
+  position: fixed;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: rgba(125, 67, 255, 0.06);
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+}
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 17px clamp(18px, 4vw, 65px);
+  border-bottom: 1px solid transparent;
+  transition: 0.25s;
+}
+.site-header.scrolled {
+  background: rgba(6, 5, 9, 0.9);
+  backdrop-filter: blur(20px);
+  border-color: rgba(255, 255, 255, 0.07);
+  padding-top: 11px;
+  padding-bottom: 11px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.brand img {
+  width: 42px;
+}
+.brand span {
+  display: flex;
+  gap: 7px;
+  font-family: var(--display);
+  font-size: 0.8rem;
+  letter-spacing: 0.11em;
+}
+.brand i {
+  font-style: normal;
+  color: var(--purple2);
+}
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 2vw, 28px);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.main-nav a {
+  color: #cdc6d6;
+  transition: 0.2s;
+}
+.main-nav a:hover {
+  color: #fff;
+  text-shadow: 0 0 18px var(--purple);
+}
+.nav-account {
+  border: 1px solid #433654;
+  padding: 9px 11px;
+}
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 0;
+}
+.nav-toggle span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background: #fff;
+  margin: 5px;
+}
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 145px 24px 85px;
+  overflow: hidden;
+}
+.hero-grid {
+  position: absolute;
+  inset: -20%;
+  opacity: 0.08;
+  background-image:
+    linear-gradient(rgba(125, 67, 255, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(125, 67, 255, 0.3) 1px, transparent 1px);
+  background-size: 70px 70px;
+  transform: perspective(500px) rotateX(64deg);
+}
+.hero-sigil {
+  position: absolute;
+  width: min(590px, 78vw);
+  opacity: 0.16;
+  filter: drop-shadow(0 0 80px rgba(125, 67, 255, 0.65));
+}
+.hero-copy {
+  position: relative;
+  z-index: 5;
+}
+.hero h1,
+.page-hero h1,
+.faction-hero h1 {
+  font-family: var(--display);
+  font-size: clamp(4rem, 12vw, 10rem);
+  line-height: 0.83;
+  letter-spacing: 0.055em;
+  margin: 0;
+  text-shadow: 0 0 60px rgba(125, 67, 255, 0.22);
+}
+.hero-line {
+  font-family: var(--display);
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  color: #c8c0d0;
+  margin: 30px 0;
+}
+.eyebrow {
+  color: var(--purple2);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  font-weight: 800;
+  margin: 0 0 13px;
+}
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.hero-actions.left {
+  justify-content: flex-start;
+}
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 47px;
+  padding: 0 19px;
+  border: 1px solid transparent;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 0.68rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+.btn.primary {
+  background: linear-gradient(135deg, #6430e0, #925fff);
+  box-shadow: 0 12px 35px rgba(125, 67, 255, 0.25);
+}
+.btn.ghost {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: #3b3049;
+}
+.btn:hover {
+  transform: translateY(-2px);
+}
+.scroll-cue {
+  position: absolute;
+  bottom: 23px;
+  font-size: 0.56rem;
+  letter-spacing: 0.2em;
+  color: #766d80;
+}
+.section {
+  width: min(1240px, calc(100% - 40px));
+  margin: auto;
+  padding: 100px 0;
+}
+.narrow {
+  width: min(900px, calc(100% - 40px));
+}
+.section-heading {
+  max-width: 760px;
+  margin-bottom: 48px;
+}
+.section-heading h2,
+.vault-copy h2,
+.manual-copy h2 {
+  font-family: var(--display);
+  font-size: clamp(2.2rem, 5vw, 4.4rem);
+  line-height: 1.03;
+  margin: 0 0 18px;
+}
+.section-heading > p:not(.eyebrow),
+.vault-copy p,
+.muted {
+  color: var(--muted);
+}
+.split-heading {
+  max-width: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 35px;
+}
+.text-link {
+  color: var(--purple2);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 13px;
+}
+.stat-card {
+  min-height: 185px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transform: perspective(900px) rotateX(var(--rx, 0)) rotateY(var(--ry, 0));
+  box-shadow: var(--shadow);
+}
+.stat-card b {
+  font-family: var(--display);
+  font-size: 3.2rem;
+  line-height: 1;
+}
+.stat-card span {
+  font-size: 0.63rem;
+  color: var(--muted);
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.faction-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 13px;
+}
+.faction-tile {
+  --accent: #7d43ff;
+  position: relative;
+  min-height: 300px;
+  padding: 25px;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(
+      circle at 50% 24%,
+      color-mix(in srgb, var(--accent) 17%, transparent),
+      transparent 35%
+    ),
+    linear-gradient(145deg, #110d18, #09070c);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transform: perspective(900px) rotateX(var(--rx, 0)) rotateY(var(--ry, 0));
+}
+.tile-index {
+  position: absolute;
+  top: 15px;
+  left: 17px;
+  color: #665d6e;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.rune-image {
+  position: absolute;
+  top: 42px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  filter: drop-shadow(
+    0 0 20px color-mix(in srgb, var(--accent) 40%, transparent)
+  );
+}
+.faction-emblem {
+  font-family: var(--display);
+  font-size: 6rem;
+  color: var(--accent);
+  text-shadow: 0 0 40px color-mix(in srgb, var(--accent) 50%, transparent);
+}
+.faction-emblem-image {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  filter: drop-shadow(
+    0 0 30px color-mix(in srgb, var(--accent) 50%, transparent)
+  );
+}
+.faction-tile h3 {
+  font-family: var(--display);
+  margin: 0 0 6px;
+}
+.faction-tile p {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+.clearance {
+  font-size: 0.56rem;
+  color: var(--accent);
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+.locked {
+  filter: saturate(0.35);
+}
+.countdown {
+  margin: 8px 0;
+  color: var(--purple2);
+  font: 700 0.7rem monospace;
+}
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.archive-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+.game-card {
+  --card-accent: #7256a5;
+  position: relative;
+  aspect-ratio: 5/7;
+  border: 2px solid var(--card-accent);
+  border-radius: 18px;
+  background: #09070d;
+  padding: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transform: perspective(1000px) rotateX(var(--rx, 0)) rotateY(var(--ry, 0));
+  isolation: isolate;
+}
+.rarity-common {
+  --card-accent: #706c78;
+}
+.rarity-uncommon {
+  --card-accent: #a5b1c2;
+}
+.rarity-rare {
+  --card-accent: #7d43ff;
+}
+.rarity-mythic {
+  --card-accent: #d94cff;
+}
+.rarity-gold {
+  --card-accent: #d6ad4d;
+}
+.foil {
+  position: absolute;
+  inset: -60%;
+  z-index: 4;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at var(--mx, 50%) var(--my, 50%),
+      rgba(255, 255, 255, 0.24),
+      transparent 20%
+    ),
+    linear-gradient(
+      115deg,
+      transparent 42%,
+      color-mix(in srgb, var(--card-accent) 28%, transparent) 50%,
+      transparent 58%
+    );
+  mix-blend-mode: screen;
+}
+.card-top {
+  height: 34px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.56rem;
+  color: #bbb2c4;
+}
+.card-art {
+  height: 61%;
+  border: 1px solid #27202f;
+  overflow: hidden;
+}
+.card-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card-copy {
+  padding: 12px 5px;
+}
+.card-copy span,
+.card-copy small {
+  font-size: 0.55rem;
+  color: #8f829a;
+  text-transform: uppercase;
+}
+.card-copy h2,
+.card-copy h3 {
+  font-family: var(--display);
+  font-size: 1.1rem;
+  margin: 4px 0;
+}
+.classified-card {
+  filter: saturate(0.3) brightness(0.72);
+}
+.giant {
+  width: min(430px, 90vw);
+  margin: auto;
+}
+.page-hero {
+  min-height: 58vh;
+  padding: 180px 24px 85px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(
+    circle at 50% 48%,
+    rgba(125, 67, 255, 0.15),
+    transparent 34%
+  );
+}
+.page-hero.compact {
+  min-height: 45vh;
+}
+.page-hero h1 {
+  font-size: clamp(3.2rem, 9vw, 7rem);
+}
+.page-hero > p:last-child {
+  max-width: 720px;
+  color: var(--muted);
+}
+.faction-hero {
+  --accent: #7d43ff;
+  min-height: 70vh;
+  padding: 155px max(24px, 8vw) 80px;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 6vw;
+  align-items: center;
+}
+.faction-emblem {
+  font-family: var(--display);
+  font-size: min(30vw, 19rem);
+  color: var(--accent);
+  text-align: center;
+}
+.faction-emblem-image {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  filter: drop-shadow(
+    0 0 30px color-mix(in srgb, var(--accent) 50%, transparent)
+  );
+}
+.faction-lore {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 7vw;
+}
+.lore-copy p {
+  font-family: Georgia, serif;
+  color: #c8bfce;
+  font-size: 1.2rem;
+}
+.lore-copy blockquote {
+  border-left: 2px solid var(--purple);
+  padding: 12px 24px;
+}
+.dossier {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  padding: 26px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.classified-block {
+  grid-column: 1/-1;
+  text-align: center;
+  border: 1px solid var(--line);
+  padding: 60px;
+}
+.classified-block h2 {
+  font-family: var(--display);
+  font-size: 3rem;
+}
+.card-dossier {
+  min-height: 100vh;
+  width: min(1120px, calc(100% - 40px));
+  margin: auto;
+  padding: 150px 0 90px;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 7vw;
+  align-items: center;
+}
+.card-record h1 {
+  font-family: var(--display);
+  font-size: clamp(2.8rem, 6vw, 5.6rem);
+}
+.record-grid {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 8px 20px;
+  border: 1px solid var(--line);
+  padding: 20px;
+}
+.collection-form {
+  display: flex;
+  gap: 12px;
+  align-items: end;
+  margin-top: 30px;
+}
+.collection-form input {
+  width: 100px;
+  background: #09070d;
+  border: 1px solid var(--line);
+  color: #fff;
+  padding: 12px;
+}
+.vault-tease {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8vw;
+  align-items: center;
+}
+.vault-door {
+  aspect-ratio: 1;
+  max-width: 520px;
+  border: 1px solid #30263b;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: repeating-radial-gradient(
+    circle,
+    #0b0810 0 55px,
+    #16101f 56px 57px,
+    #0b0810 58px 95px
+  );
+}
+.vault-core {
+  text-align: center;
+  display: grid;
+}
+.vault-core strong {
+  font-family: var(--display);
+  font-size: 3rem;
+}
+.vault-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.vault-file {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  padding: 28px;
+  min-height: 280px;
+}
+.file-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.55rem;
+  color: #817789;
+}
+.vault-file h2 {
+  font-family: var(--display);
+  margin-top: 40px;
+}
+.vault-file p,
+.file-body {
+  color: var(--muted);
+}
+.redactions {
+  display: grid;
+  gap: 9px;
+}
+.redactions i {
+  height: 10px;
+  background: #2a252d;
+}
+.terminal {
+  border: 1px solid #342743;
+  background: #070509;
+  padding: 24px;
+  font-family: monospace;
+}
+.terminal-bar {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 10px;
+  color: #796d83;
+}
+.terminal pre {
+  color: #9fddba;
+}
+.terminal form {
+  display: flex;
+  gap: 10px;
+}
+.terminal input {
+  flex: 1;
+  background: #030204;
+  color: #b7ffc9;
+  border: 1px solid #284132;
+  padding: 13px;
+}
+.timeline:before {
+  content: "";
+  position: absolute;
+  left: 125px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(var(--purple), var(--line), transparent);
+}
+.timeline {
+  position: relative;
+}
+.timeline-entry {
+  display: grid;
+  grid-template-columns: 94px 1fr;
+  gap: 65px;
+  padding-bottom: 58px;
+}
+.timeline-entry time {
+  font-size: 0.67rem;
+  color: var(--purple2);
+}
+.timeline-entry > div {
+  position: relative;
+}
+.timeline-entry > div:before {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--purple2);
+  left: -39px;
+  top: 5px;
+}
+.timeline-entry h2 {
+  font-family: var(--display);
+}
+.timeline-entry p {
+  color: var(--muted);
+}
+.micro {
+  font-size: 0.55rem;
+  color: #796e82;
+  letter-spacing: 0.14em;
+}
+.service-grid,
+.rule-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 13px;
+}
+.rule-steps {
+  grid-template-columns: repeat(4, 1fr);
+}
+.service-card,
+.rule-card {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  padding: 25px;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.service-card > span,
+.rule-card > span {
+  font-family: var(--display);
+  font-size: 3rem;
+  color: #372b46;
+  margin-bottom: auto;
+}
+.service-card h2,
+.rule-card h2 {
+  font-family: var(--display);
+  margin: 0;
+}
+.service-card p,
+.rule-card p {
+  color: var(--muted);
+}
+.manual-copy p {
+  color: var(--muted);
+}
+.form-section {
+  width: min(900px, calc(100% - 40px));
+}
+.kd-form {
+  display: grid;
+  gap: 17px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  padding: 40px;
+}
+.kd-form label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.kd-form input,
+.kd-form textarea,
+.kd-form select,
+.archive-filters select {
+  width: 100%;
+  background: #08060b;
+  color: #fff;
+  border: 1px solid #33283e;
+  padding: 12px;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.archive-filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 35px;
+}
+.archive-filters select {
+  width: auto;
+  min-width: 170px;
+}
+.request-output,
+.admin-card,
+.archive-progress,
+.empty-panel {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  padding: 25px;
+  margin-top: 20px;
+}
+.request-output pre {
+  white-space: pre-wrap;
+  color: #c9c0d0;
+}
+.warning {
+  color: #d9b578;
+}
+.gallery-grid {
+  columns: 3 280px;
+  column-gap: 14px;
+}
+.gallery-item {
+  break-inside: avoid;
+  margin: 0 0 14px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+.gallery-item figcaption {
+  padding: 10px;
+  color: var(--muted);
+}
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.collection-item {
+  position: relative;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  padding: 20px;
+}
+.collection-item h3 {
+  font-family: var(--display);
+}
+.collection-item b {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  color: var(--purple2);
+}
+.progress-meter {
+  height: 8px;
+  background: #241d2c;
+  margin-top: 15px;
+}
+.progress-meter i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #6b31e5, #b795ff);
+}
+.studio-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr;
+  gap: 16px;
+}
+.studio-grid textarea {
+  width: 100%;
+  height: 65vh;
+  background: #050407;
+  color: #cfc5d8;
+  border: 1px solid var(--line);
+  padding: 15px;
+  font: 12px/1.5 monospace;
+}
+.loading-panel,
+.fatal {
+  min-height: 70vh;
+  padding: 180px 30px;
+  text-align: center;
+}
+.fatal {
+  min-height: auto;
+  background: #461b26;
+  color: #fff;
+}
+.site-footer {
+  width: min(1240px, calc(100% - 40px));
+  margin: 90px auto 0;
+  padding: 44px 0 24px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 1fr 0.5fr 1fr;
+  gap: 38px;
+}
+.footer-links {
+  display: grid;
+  gap: 7px;
+  color: #b8afc0;
+  font-size: 0.75rem;
+}
+.footer-bottom {
+  grid-column: 1/-1;
+  border-top: 1px solid #18131d;
+  padding-top: 16px;
+  color: #5e5764;
+  font-size: 0.62rem;
+}
+.intro-sequence {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  background: #030204;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  text-align: center;
+}
+.intro-sequence img {
+  width: min(280px, 60vw);
+  filter: drop-shadow(0 0 50px rgba(125, 67, 255, 0.6));
+}
+.intro-sequence h2 {
+  font-family: var(--display);
+}
+.intro-sequence p,
+.intro-sequence span {
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  color: #8f8399;
+}
+.intro-sequence.leave {
+  opacity: 0;
+  transition: 0.8s;
+}
+.intro-locked {
+  overflow: hidden;
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: 0.7s;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+@media (max-width: 1000px) {
+  .faction-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .archive-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 820px) {
+  .nav-toggle {
+    display: block;
+  }
+  .main-nav {
+    position: absolute;
+    top: 100%;
+    left: 12px;
+    right: 12px;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    background: #08060b;
+    border: 1px solid var(--line);
+    padding: 12px;
+  }
+  .main-nav.open {
+    display: flex;
+  }
+  .stat-grid,
+  .rule-steps,
+  .faction-grid,
+  .card-grid,
+  .archive-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .vault-tease,
+  .faction-hero,
+  .faction-lore,
+  .card-dossier,
+  .studio-grid {
+    grid-template-columns: 1fr;
+  }
+  .site-footer {
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer-bottom {
+    grid-column: 1/-1;
+  }
+}
+@media (max-width: 560px) {
+  .brand span strong:last-child {
+    display: none;
+  }
+  .hero h1 {
+    font-size: 3.45rem;
+  }
+  .section {
+    padding: 70px 0;
+  }
+  .split-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+  .stat-grid,
+  .rule-steps,
+  .service-grid,
+  .faction-grid,
+  .card-grid,
+  .archive-grid,
+  .form-grid,
+  .collection-grid {
+    grid-template-columns: 1fr;
+  }
+  .vault-grid {
+    grid-template-columns: 1fr;
+  }
+  .timeline:before {
+    left: 7px;
+  }
+  .timeline-entry {
+    grid-template-columns: 1fr;
+    gap: 7px;
+    padding-left: 34px;
+  }
+  .timeline-entry > div:before {
+    left: -31px;
+  }
+  .site-footer {
+    grid-template-columns: 1fr;
+  }
+  .footer-bottom {
+    grid-column: 1;
+  }
+  .archive-filters > * {
+    width: 100% !important;
+  }
+  .terminal form {
+    flex-direction: column;
+  }
+  .gallery-grid {
+    columns: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .cursor-glow {
+    display: none;
+  }
+}
 
-@media(max-width:560px){.hero h1{max-width:100%;font-size:clamp(2.3rem,10vw,2.75rem);letter-spacing:.025em}}
+.backend-badge {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+}
+.backend-badge.online {
+  color: #67e8b1;
+  border-color: rgba(103, 232, 177, 0.35);
+}
+.backend-badge.offline {
+  color: #e0af6a;
+}
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+.admin-dashboard {
+  padding-top: 30px;
+}
+.admin-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+  position: sticky;
+  top: 76px;
+  z-index: 20;
+  background: rgba(6, 5, 9, 0.92);
+  padding: 10px 0;
+}
+.admin-tabs button {
+  background: #100c17;
+  color: #d8cfe0;
+  border: 1px solid var(--line);
+  padding: 9px 12px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+}
+.admin-pane {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+.admin-pane[hidden] {
+  display: none;
+}
+.admin-card {
+  display: grid;
+  gap: 12px;
+}
+.admin-card label {
+  display: grid;
+  gap: 5px;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+}
+.admin-card input,
+.admin-card textarea,
+.admin-card select {
+  width: 100%;
+  background: #08060b;
+  color: #fff;
+  border: 1px solid #33283e;
+  padding: 10px;
+}
+.order-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+.stars {
+  color: var(--gold);
+}
+.check {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+}
+.check input {
+  width: auto !important;
+}
+.code-input-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+.tab-btn {
+  background: #421d83;
+  color: #d8cfe0;
+  border: 1px solid var(--line);
+  padding: 8px 12px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  transition: 0.2s;
+}
+.tab-btn:hover {
+  background: #1a1224;
+}
+.tab-btn.active {
+  background: #6b31e5;
+  border-color: #6b31e5;
+  color: #fff;
+}
+.code-panel {
+  margin-top: 10px;
+}
+.deck-info {
+  font-size: 0.65rem;
+  color: #796d83;
+  margin-top: 8px;
+}
+.deck-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+.home-factions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 13px;
+}
+.wars-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.war-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 20px;
+  align-items: center;
+  padding: 30px 0;
+  border-bottom: 1px solid var(--line);
+}
+.war-faction {
+  min-width: 0;
+}
+.war-info {
+  padding: 20px;
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  max-width: 400px;
+}
+.war-info h3 {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  margin: 0 0 15px;
+  color: var(--accent);
+  line-height: 1.3;
+}
+.war-info p {
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin: 0;
+}
+.hollow-end-section {
+  margin-top: 60px;
+  padding: 60px;
+  border: 2px solid #800080;
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(128, 0, 128, 0.15),
+    transparent 50%
+  );
+}
+.hollow-end-hero {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.hollow-end-emblem {
+  width: 150px;
+  height: 150px;
+}
+.hollow-end-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 40px rgba(128, 0, 128, 0.6));
+}
+.hollow-end-lore p {
+  font-family: Georgia, serif;
+  color: #c8bfce;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+.hollow-end-lore blockquote {
+  border-left: 2px solid #800080;
+  padding: 15px 25px;
+  color: #d9b578;
+  font-style: italic;
+}
+.wars-full-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.war-card {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  padding: 25px;
+  min-height: 200px;
+}
+.war-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--line);
+}
+.war-faction-name {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  color: var(--accent);
+}
+.war-vs {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  color: #796d83;
+}
+.war-content h3 {
+  font-family: var(--display);
+  font-size: 1.1rem;
+  margin: 0 0 10px;
+  color: var(--accent);
+}
+.war-content p {
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.classified-war {
+  color: #796d83;
+  font-style: italic;
+}
+@media (max-width: 820px) {
+  .two-col,
+  .admin-pane,
+  .order-list {
+    grid-template-columns: 1fr;
+  }
+  .admin-tabs {
+    top: 62px;
+  }
+}
 
-@media(max-width:560px){.page-hero h1{max-width:100%;font-size:clamp(2rem,8.5vw,2.55rem);letter-spacing:.02em;overflow-wrap:anywhere}}
+@media (max-width: 560px) {
+  .brand img {
+    width: 34px;
+  }
+  .brand span {
+    gap: 4px;
+    font-size: 0.63rem;
+    letter-spacing: 0.055em;
+  }
+  .brand span strong:last-child {
+    display: inline;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero h1 {
+    max-width: 100%;
+    font-size: clamp(2.3rem, 10vw, 2.75rem);
+    letter-spacing: 0.025em;
+  }
+}
+
+@media (max-width: 560px) {
+  .page-hero h1 {
+    max-width: 100%;
+    font-size: clamp(2rem, 8.5vw, 2.55rem);
+    letter-spacing: 0.02em;
+    overflow-wrap: anywhere;
+  }
+}
 
 /* Shared color roles: ink for depth, gold for lore, verdigris for signal, ember for action. */
-:root{--bg:#0b1212;--panel:#16201d;--line:#3d5048;--ink:#f5eedf;--muted:#b5b9a9;--purple:#b64a36;--purple2:#d7ac62;--gold:#d7ac62;--shadow:0 24px 80px rgba(2,8,7,.58);--verdigris:#4ca69a;--ember:#d66a3d}
-body{background:radial-gradient(circle at 8% 5%,rgba(76,166,154,.16),transparent 29%),radial-gradient(circle at 94% 32%,rgba(214,106,61,.11),transparent 24%),radial-gradient(circle at 52% 100%,rgba(215,172,98,.07),transparent 34%),var(--bg)}
-.cursor-glow{background:rgba(76,166,154,.09)}
-.site-header.scrolled{background:rgba(11,18,18,.92);border-color:rgba(215,172,98,.18)}
-.main-nav a{color:#d4d5c8}.main-nav a:hover{color:var(--gold);text-shadow:0 0 18px rgba(215,172,98,.45)}.nav-account{border-color:rgba(76,166,154,.65);color:#dbe6d5}
-.hero-grid{background-image:linear-gradient(rgba(76,166,154,.32) 1px,transparent 1px),linear-gradient(90deg,rgba(76,166,154,.32) 1px,transparent 1px)}.hero-sigil{filter:drop-shadow(0 0 80px rgba(215,172,98,.45))}.hero h1,.page-hero h1,.faction-hero h1{text-shadow:0 0 60px rgba(215,172,98,.18)}
-.eyebrow,.text-link{color:var(--gold)}.btn.primary{background:linear-gradient(135deg,#a63e31,#d77a41);box-shadow:0 12px 35px rgba(166,62,49,.3)}.btn.ghost{border-color:rgba(76,166,154,.58);background:rgba(76,166,154,.07)}
-.stat-card,.vault-file,.service-card,.rule-card,.collection-item,.admin-card{background:linear-gradient(145deg,rgba(29,45,39,.96),rgba(14,25,23,.98));border-color:var(--line)}
-.page-hero{background:radial-gradient(circle at 50% 42%,rgba(215,172,98,.16),transparent 37%)}.timeline:before{background:linear-gradient(var(--verdigris),var(--gold),transparent)}.timeline-entry>div:before{background:var(--gold);box-shadow:0 0 12px rgba(215,172,98,.6)}.timeline-entry time{color:var(--verdigris)}
-.progress-meter{background:#293b35}.progress-meter i{background:linear-gradient(90deg,var(--verdigris),var(--gold))}.terminal{border-color:rgba(76,166,154,.54);background:#07110f}.terminal pre{color:#a7d9b5}.kd-form input,.kd-form textarea,.kd-form select,.archive-filters select,.admin-card input,.admin-card textarea,.admin-card select{border-color:#49645a;background:#0d1815}.tab-btn.active{background:var(--ember);border-color:var(--ember)}
+:root {
+  --bg: #0b1212;
+  --panel: #16201d;
+  --line: #3d5048;
+  --ink: #f5eedf;
+  --muted: #b5b9a9;
+  --purple: #b64a36;
+  --purple2: #d7ac62;
+  --gold: #d7ac62;
+  --shadow: 0 24px 80px rgba(2, 8, 7, 0.58);
+  --verdigris: #4ca69a;
+  --ember: #d66a3d;
+}
+body {
+  background:
+    radial-gradient(circle at 8% 5%, rgba(76, 166, 154, 0.16), transparent 29%),
+    radial-gradient(
+      circle at 94% 32%,
+      rgba(214, 106, 61, 0.11),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 52% 100%,
+      rgba(215, 172, 98, 0.07),
+      transparent 34%
+    ),
+    var(--bg);
+}
+.cursor-glow {
+  background: rgba(76, 166, 154, 0.09);
+}
+.site-header.scrolled {
+  background: rgba(11, 18, 18, 0.92);
+  border-color: rgba(215, 172, 98, 0.18);
+}
+.main-nav a {
+  color: #d4d5c8;
+}
+.main-nav a:hover {
+  color: var(--gold);
+  text-shadow: 0 0 18px rgba(215, 172, 98, 0.45);
+}
+.nav-account {
+  border-color: rgba(76, 166, 154, 0.65);
+  color: #dbe6d5;
+}
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(76, 166, 154, 0.32) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(76, 166, 154, 0.32) 1px, transparent 1px);
+}
+.hero-sigil {
+  filter: drop-shadow(0 0 80px rgba(215, 172, 98, 0.45));
+}
+.hero h1,
+.page-hero h1,
+.faction-hero h1 {
+  text-shadow: 0 0 60px rgba(215, 172, 98, 0.18);
+}
+.eyebrow,
+.text-link {
+  color: var(--gold);
+}
+.btn.primary {
+  background: linear-gradient(135deg, #a63e31, #d77a41);
+  box-shadow: 0 12px 35px rgba(166, 62, 49, 0.3);
+}
+.btn.ghost {
+  border-color: rgba(76, 166, 154, 0.58);
+  background: rgba(76, 166, 154, 0.07);
+}
+.stat-card,
+.vault-file,
+.service-card,
+.rule-card,
+.collection-item,
+.admin-card {
+  background: linear-gradient(
+    145deg,
+    rgba(29, 45, 39, 0.96),
+    rgba(14, 25, 23, 0.98)
+  );
+  border-color: var(--line);
+}
+.page-hero {
+  background: radial-gradient(
+    circle at 50% 42%,
+    rgba(215, 172, 98, 0.16),
+    transparent 37%
+  );
+}
+.timeline:before {
+  background: linear-gradient(var(--verdigris), var(--gold), transparent);
+}
+.timeline-entry > div:before {
+  background: var(--gold);
+  box-shadow: 0 0 12px rgba(215, 172, 98, 0.6);
+}
+.timeline-entry time {
+  color: var(--verdigris);
+}
+.progress-meter {
+  background: #293b35;
+}
+.progress-meter i {
+  background: linear-gradient(90deg, var(--verdigris), var(--gold));
+}
+.terminal {
+  border-color: rgba(76, 166, 154, 0.54);
+  background: #07110f;
+}
+.terminal pre {
+  color: #a7d9b5;
+}
+.kd-form input,
+.kd-form textarea,
+.kd-form select,
+.archive-filters select,
+.admin-card input,
+.admin-card textarea,
+.admin-card select {
+  border-color: #49645a;
+  background: #0d1815;
+}
+.tab-btn.active {
+  background: var(--ember);
+  border-color: var(--ember);
+}
+
+/* ============================================================
+   FANTASY THEME STYLES
+   ============================================================ */
+
+/* ============================================================
+-- FANTASY THEME OVERHAUL - More medieval/medieval aesthetic
+-- ============================================================
+
+/* Fantasy Color Palette */
+:root {
+  --fantasy-gold: #d4af37;
+  --fantasy-silver: #c0c0c0;
+  --fantasy-bronze: #cd7f32;
+  --fantasy-copper: #b87333;
+  --fantasy-iron: #434b4d;
+  --fantasy-mystic: #9b59b6;
+  --fantasy-dark: #1a1a2e;
+  --fantasy-parchment: #2d2d44;
+  --fantasy-parchment-light: #393950;
+  --fantasy-blood: #8b0000;
+  --fantasy-forest: #228b22;
+  --fantasy-sky: #4169e1;
+  --fantasy-shadow: #16161a;
+}
+
+/* Fantasy Faction Cards */
+.faction-tile {
+  --accent: #7d43ff;
+  position: relative;
+  min-height: 320px;
+  padding: 20px;
+  border: 2px solid var(--line);
+  background: linear-gradient(
+    145deg,
+    var(--fantasy-parchment),
+    var(--fantasy-dark)
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.5),
+    inset 0 0 20px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  transform: perspective(900px) rotateX(var(--rx, 0)) rotateY(var(--ry, 0));
+  position: relative;
+}
+
+.faction-tile::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 6px;
+  padding: 2px;
+  background: linear-gradient(135deg, var(--accent), transparent);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.faction-tile::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(
+    circle,
+    rgba(125, 67, 255, 0.1) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* Fantasy Rune Images */
+.rune-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  filter: drop-shadow(
+    0 0 25px color-mix(in srgb, var(--accent) 30%, transparent)
+  );
+  z-index: 2;
+}
+
+/* Faction-specific color overrides */
+.faction-tile[data-slug="ash-cycle"] {
+  --accent: #5c8fa1;
+  background: linear-gradient(145deg, #1b3540, #101d25);
+}
+.faction-tile[data-slug="first-light"] {
+  --accent: #ffd700;
+  background: linear-gradient(145deg, #3d3d2e, #1a1a1a);
+}
+.faction-tile[data-slug="golden-flow"] {
+  --accent: #b8860b;
+  background: linear-gradient(145deg, #2d2a1e, #1a1815);
+}
+.faction-tile[data-slug="crimson-oath"] {
+  --accent: #c54e42;
+  background: linear-gradient(145deg, #3a1f1d, #211213);
+}
+.faction-tile[data-slug="etched-power"] {
+  --accent: #8b4513;
+  background: linear-gradient(145deg, #2a221a, #1a1515);
+}
+.faction-tile[data-slug="tangled-weave"] {
+  --accent: #4682b4;
+  background: linear-gradient(145deg, #1a2a2e, #14161c);
+}
+.faction-tile[data-slug="eternal-reach"] {
+  --accent: #5a9ab5;
+  background: linear-gradient(145deg, #18313d, #101d25);
+}
+.faction-tile[data-slug="hidden-truth"] {
+  --accent: #696969;
+  background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+}
+.faction-tile[data-slug="hollows-end"] {
+  --accent: #8e4555;
+  background: linear-gradient(145deg, #321d24, #1b1115);
+}
+
+/* Enhanced tile index */
+.tile-index {
+  position: absolute;
+  top: 15px;
+  left: 17px;
+  color: var(--fantasy-gold);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-family: "Cinzel", serif;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+  z-index: 3;
+}
+
+/* Faction card text styling */
+.faction-tile h3 {
+  font-family: "Cinzel", serif;
+  margin: 0 0 8px;
+  font-size: 1.8rem;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  z-index: 3;
+}
+
+.faction-tile p {
+  color: #b8b8b8;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  z-index: 3;
+}
+
+.clearance {
+  font-size: 0.6rem;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-family: "Cinzel", serif;
+  text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 40%, transparent);
+  z-index: 3;
+}
+
+/* Fantasy War Cards */
+.war-card {
+  border: 2px solid var(--line);
+  background: linear-gradient(
+    145deg,
+    var(--fantasy-parchment),
+    var(--fantasy-dark)
+  );
+  padding: 30px;
+  min-height: 220px;
+  border-radius: 12px;
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.4),
+    inset 0 0 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.war-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  padding: 2px;
+  background: linear-gradient(135deg, var(--fantasy-mystic), transparent);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.war-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.war-faction-name {
+  font-family: "Cinzel", serif;
+  font-size: 1.6rem;
+  color: var(--fantasy-gold);
+  text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+.war-vs {
+  font-family: "Cinzel", serif;
+  font-size: 1.3rem;
+  color: var(--fantasy-silver);
+  font-weight: 700;
+}
+
+.war-content h3 {
+  font-family: "Cinzel", serif;
+  font-size: 1.3rem;
+  margin: 0 0 12px;
+  color: var(--accent);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.war-content p {
+  color: #a0a0a0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.classified-war {
+  color: var(--fantasy-silver);
+  font-size: 1rem;
+  font-family: "Cinzel", serif;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Fantasy Hollow End Section */
+.hollow-end-section {
+  margin-top: 80px;
+  padding: 80px;
+  border: 3px solid #800080;
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(128, 0, 128, 0.2) 0%,
+      transparent 50%
+    ),
+    linear-gradient(145deg, var(--fantasy-dark), #0a0a0a);
+  position: relative;
+}
+
+.hollow-end-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 12px;
+  padding: 3px;
+  background: linear-gradient(135deg, #800080, transparent);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.hollow-end-hero {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.hollow-end-emblem {
+  width: 180px;
+  height: 180px;
+}
+
+.hollow-end-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 50px rgba(128, 0, 128, 0.8));
+}
+
+.hollow-end-lore p {
+  font-family: Georgia, serif;
+  color: #c8bfce;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 25px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hollow-end-lore blockquote {
+  border-left: 3px solid #800080;
+  padding: 20px 30px;
+  color: #d9b578;
+  font-style: italic;
+  font-size: 1.1rem;
+  background: rgba(128, 0, 128, 0.1);
+  border-radius: 0 8px 8px 0;
+}
+
+/* Fantasy War Rows */
+.wars-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.war-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 30px;
+  align-items: center;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+
+.war-row::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--fantasy-mystic),
+    transparent
+  );
+}
+
+.war-faction {
+  min-width: 0;
+}
+
+.war-info {
+  padding: 25px;
+  border-left: 2px solid var(--line);
+  border-right: 2px solid var(--line);
+  max-width: 450px;
+  background: rgba(45, 45, 45, 0.1);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.war-info h3 {
+  font-family: "Cinzel", serif;
+  font-size: 1.4rem;
+  margin: 0 0 18px;
+  color: var(--accent);
+  line-height: 1.3;
+  text-shadow: 0 0 15px color-min(80%, var(--accent));
+}
+
+.war-info p {
+  color: #a0a0a0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Enhanced faction grid */
+.faction-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* Locked state enhancement */
+.locked {
+  filter: grayscale(0.8) brightness(0.7);
+  opacity: 0.9;
+}
+
+.locked::before {
+  background: linear-gradient(135deg, #666, transparent);
+}
+
+/* Responsive adjustments */
+@media (max-width: 820px) {
+  .faction-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .home-factions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hollow-end-section {
+    padding: 48px 32px;
+  }
+
+  .war-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 30px 0;
+  }
+
+  .war-info {
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 20px;
+    margin: 20px 0;
+  }
+
+  .war-row::after {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .faction-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-factions {
+    grid-template-columns: 1fr;
+  }
+
+  .faction-tile {
+    min-height: 280px;
+  }
+
+  .hollow-end-section {
+    margin-top: 48px;
+    padding: 32px 20px;
+  }
+
+  .hollow-end-hero {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .hollow-end-emblem {
+    width: 120px;
+    height: 120px;
+  }
+
+  .hollow-end-lore p {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .hollow-end-lore blockquote {
+    padding: 16px 18px;
+    font-size: 1rem;
+  }
+
+  .war-card {
+    padding: 22px 18px;
+  }
+
+  .war-header {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .war-faction-name {
+    font-size: 1.25rem;
+  }
+
+  .war-info {
+    padding: 18px 12px;
+  }
+}
+
+/* ============================================================
+   DESIGN CONTROLS - EDIT THIS SECTION
+   ============================================================ */
+
+/*
+  KLOAK & DAGGURRS DESIGN CONTROLS
+  Edit this file for visual changes. It loads after style.css and
+  fantasy-theme.css, so values here override the older CSS files.
+*/
+
+/* ============================================================
+   SITE-WIDE COLORS, FONTS, AND SURFACES
+   ============================================================ */
+:root {
+  /* Change these named swatches to recolor the complete theme. */
+  --void-black: #0d0d0e;
+  --charcoal: #1b1c19;
+  --leather-brown: #402a1b;
+  --parchment-white: #f6efdf;
+  --ash-white: #d8d3c6;
+  --blood-red: #a93832;
+  --ember-orange: #d66a3d;
+  --sun-yellow: #f0c75e;
+  --antique-gold: #c7953e;
+  --forest-green: #397353;
+  --verdigris-teal: #2e9d9a;
+  --river-blue: #4383a8;
+  --arcane-purple: #8050a8;
+
+  --bg: var(--void-black);
+  --panel: var(--charcoal);
+  --line: #5c503d;
+  --ink: var(--parchment-white);
+  --muted: var(--ash-white);
+  --gold: var(--sun-yellow);
+  --verdigris: var(--verdigris-teal);
+  --ember: var(--ember-orange);
+  --display: "Cinzel", Georgia, serif;
+  --sans: "Inter", system-ui, sans-serif;
+  --page-width: 1240px;
+  --section-spacing: 100px;
+}
+
+body {
+  background:
+    radial-gradient(circle at 8% 5%, rgba(46, 157, 154, 0.14), transparent 29%),
+    radial-gradient(
+      circle at 94% 32%,
+      rgba(169, 56, 50, 0.12),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 52% 100%,
+      rgba(240, 199, 94, 0.08),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 45% 55%,
+      rgba(128, 80, 168, 0.07),
+      transparent 34%
+    ),
+    var(--bg);
+}
+
+.section,
+.site-footer {
+  width: min(var(--page-width), calc(100% - 40px));
+}
+
+.section {
+  padding: var(--section-spacing) 0;
+}
+
+/* ============================================================
+   LOGO AND NAME AT TOP OF SITE
+   ============================================================ */
+:root {
+  --header-padding: 17px clamp(18px, 4vw, 65px);
+  --header-logo-size: 42px;
+  --header-name-size: 0.8rem;
+  --header-name-spacing: 0.11em;
+}
+
+.site-header {
+  padding: var(--header-padding);
+}
+
+.brand img {
+  width: var(--header-logo-size);
+}
+
+.brand span {
+  font-size: var(--header-name-size);
+  letter-spacing: var(--header-name-spacing);
+}
+
+.brand i,
+.eyebrow,
+.text-link {
+  color: var(--gold);
+}
+
+/* ============================================================
+   TOP NAVIGATION AND MENU BUTTON
+   ============================================================ */
+.main-nav a {
+  color: #d4d5c8;
+}
+
+.main-nav a:hover {
+  color: var(--gold);
+}
+
+.nav-account {
+  border-color: rgba(4, 226, 255, 0.65);
+}
+
+.nav-toggle span {
+  background: var(--ink);
+}
+
+/* ============================================================
+   HOMEPAGE HERO (THE FIRST FULL SCREEN)
+   ============================================================ */
+:root {
+  --hero-title-size: clamp(4rem, 12vw, 10rem);
+  --hero-title-color: var(--ink);
+  --hero-title-glow: rgba(215, 172, 98, 0.18);
+  --hero-sigil-opacity: 0.16;
+}
+
+.hero h1 {
+  font-size: var(--hero-title-size);
+  color: var(--hero-title-color);
+  text-shadow: 0 0 60px var(--hero-title-glow);
+}
+
+.hero-sigil {
+  opacity: var(--hero-sigil-opacity);
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(76, 166, 154, 0.32) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(76, 166, 154, 0.32) 1px, transparent 1px);
+}
+
+/* ============================================================
+   BUTTONS AND LINKS
+   ============================================================ */
+.btn.primary {
+  background: linear-gradient(135deg, #a63e31, #d77a41);
+  box-shadow: 0 12px 35px rgba(166, 62, 49, 0.3);
+}
+
+.btn.ghost {
+  border-color: rgba(76, 166, 154, 0.58);
+  background: rgba(76, 166, 154, 0.07);
+}
+
+/* ============================================================
+   FANTASY COLOR DISTRIBUTION
+   These rules put every palette color into a different visible role.
+   ============================================================ */
+
+/* Red, orange, yellow, and green: homepage number panels. */
+.stat-card:nth-child(1) {
+  border-top: 3px solid var(--blood-red);
+}
+.stat-card:nth-child(1) b {
+  color: #e0715c;
+}
+.stat-card:nth-child(2) {
+  border-top: 3px solid var(--ember-orange);
+}
+.stat-card:nth-child(2) b {
+  color: #f2a45d;
+}
+.stat-card:nth-child(3) {
+  border-top: 3px solid var(--sun-yellow);
+}
+.stat-card:nth-child(3) b {
+  color: var(--sun-yellow);
+}
+.stat-card:nth-child(4) {
+  border-top: 3px solid var(--forest-green);
+}
+.stat-card:nth-child(4) b {
+  color: #72bc87;
+}
+
+/* Red, orange, teal, and purple: the four steps on Decipher/Learn. */
+.rule-card:nth-child(1) {
+  border-top: 3px solid var(--blood-red);
+}
+.rule-card:nth-child(1) > span {
+  color: #df7260;
+}
+.rule-card:nth-child(2) {
+  border-top: 3px solid var(--ember-orange);
+}
+.rule-card:nth-child(2) > span {
+  color: #f1a050;
+}
+.rule-card:nth-child(3) {
+  border-top: 3px solid var(--verdigris-teal);
+}
+.rule-card:nth-child(3) > span {
+  color: #62c3bc;
+}
+.rule-card:nth-child(4) {
+  border-top: 3px solid var(--arcane-purple);
+}
+.rule-card:nth-child(4) > span {
+  color: #b68ee1;
+}
+
+/* Card archive rarity colors: gray, teal, blue, purple, and gold. */
+.rarity-common {
+  --card-accent: #8a8e8a;
+}
+.rarity-uncommon {
+  --card-accent: var(--verdigris-teal);
+}
+.rarity-rare {
+  --card-accent: var(--river-blue);
+}
+.rarity-mythic {
+  --card-accent: var(--arcane-purple);
+}
+.rarity-gold {
+  --card-accent: var(--antique-gold);
+}
+
+/* Archive and forge panels: brown for records, teal for terminals, gold for calls to attention. */
+.vault-file {
+  border-top: 3px solid var(--antique-gold);
+}
+.vault-file:nth-child(even) {
+  border-top-color: var(--arcane-purple);
+}
+.collection-item {
+  border-left: 3px solid var(--river-blue);
+}
+.admin-card {
+  border-left: 3px solid var(--leather-brown);
+}
+.terminal {
+  border-color: var(--verdigris-teal);
+  background: #071918;
+}
+.terminal-bar {
+  color: #0514a1;
+}
+.terminal pre {
+  color: #00eeff;
+}
+
+/* Timeline moves from teal to gold. Forms focus in purple to distinguish editing. */
+.timeline:before {
+  background: linear-gradient(
+    var(--verdigris-teal),
+    var(--river-blue),
+    var(--arcane-purple),
+    var(--sun-yellow),
+    transparent
+  );
+}
+.timeline-entry:nth-child(odd) > div:before {
+  background: var(--verdigris-teal);
+}
+.timeline-entry:nth-child(even) > div:before {
+  background: var(--ember-orange);
+}
+.kd-form input:focus,
+.kd-form textarea:focus,
+.kd-form select:focus,
+.archive-filters select:focus,
+.admin-card input:focus,
+.admin-card textarea:focus,
+.admin-card select:focus {
+  outline-color: var(--arcane-purple);
+}
+
+/* Footer gets a warmer brown boundary so it reads as a distinct ending. */
+.site-footer {
+  border-top-color: var(--leather-brown);
+}
+.footer-bottom {
+  border-top-color: rgba(199, 149, 62, 0.3);
+}
+
+/* ============================================================
+   FACTIONS PAGE AND FACTION CARDS
+   Each --accent is the card's highlight color.
+   ============================================================ */
+.faction-tile[data-slug="ash-cycle"] {
+  --accent: #5c8fa1;
+}
+.faction-tile[data-slug="first-light"] {
+  --accent: #e4ba54;
+}
+.faction-tile[data-slug="golden-flow"] {
+  --accent: #bd8734;
+}
+.faction-tile[data-slug="crimson-oath"] {
+  --accent: #c54e42;
+}
+.faction-tile[data-slug="etched-power"] {
+  --accent: #a4683a;
+}
+.faction-tile[data-slug="tangled-weave"] {
+  --accent: #4ca69a;
+}
+.faction-tile[data-slug="eternal-reach"] {
+  --accent: #5a9ab5;
+}
+.faction-tile[data-slug="hidden-truth"] {
+  --accent: #7f9981;
+}
+.faction-tile[data-slug="hollows-end"] {
+  --accent: #8e4555;
+}
+
+.faction-tile,
+.war-card {
+  border-radius: 8px;
+}
+
+.tile-index {
+  color: var(--gold);
+}
+
+.hollow-end-section {
+  border-color: #8e4555;
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(142, 69, 85, 0.2),
+    transparent 50%
+  );
+}
+
+/* ============================================================
+   CARDS, FORMS, VAULT, AND CONTENT PANELS
+   ============================================================ */
+.stat-card,
+.vault-file,
+.service-card,
+.rule-card,
+.collection-item,
+.admin-card {
+  border-color: var(--line);
+  background: linear-gradient(
+    145deg,
+    rgba(29, 45, 39, 0.96),
+    rgba(14, 25, 23, 0.98)
+  );
+}
+
+.page-hero {
+  background: radial-gradient(
+    circle at 50% 42%,
+    rgba(215, 172, 98, 0.16),
+    transparent 37%
+  );
+}
+
+.terminal {
+  border-color: rgba(76, 166, 154, 0.54);
+  background: #2f5f07;
+}
+
+.kd-form input,
+.kd-form textarea,
+.kd-form select,
+.archive-filters select,
+.admin-card input,
+.admin-card textarea,
+.admin-card select {
+  border-color: #49645a;
+  background: #0d1815;
+}
+
+/* ============================================================
+   SMALL TYPE DETAILS
+   These values control text that appears across multiple pages.
+   ============================================================ */
+:root {
+  --body-text-size: 1rem;
+  --body-line-height: 1.6;
+  --body-letter-spacing: 0;
+  --muted-text-size: 0.82rem;
+  --eyebrow-size: 0.68rem;
+  --eyebrow-spacing: 0.22em;
+  --section-title-size: clamp(2.2rem, 5vw, 4.4rem);
+  --section-title-line-height: 1.03;
+}
+
+body {
+  font-size: var(--body-text-size);
+  line-height: var(--body-line-height);
+  letter-spacing: var(--body-letter-spacing);
+}
+
+.eyebrow {
+  font-size: var(--eyebrow-size);
+  letter-spacing: var(--eyebrow-spacing);
+}
+
+.section-heading h2,
+.vault-copy h2,
+.manual-copy h2 {
+  font-size: var(--section-title-size);
+  line-height: var(--section-title-line-height);
+}
+
+.muted,
+.section-heading > p:not(.eyebrow) {
+  font-size: var(--muted-text-size);
+}
+
+/* ============================================================
+   PAGE BACKGROUND AND DECORATIVE EFFECTS
+   Change opacity first for a subtler or stronger atmosphere.
+   ============================================================ */
+:root {
+  --noise-opacity: 0.035;
+  --cursor-glow-size: 420px;
+  --cursor-glow-opacity: 0.09;
+  --hero-grid-opacity: 0.08;
+  --hero-grid-size: 70px;
+}
+
+.site-noise {
+  opacity: var(--noise-opacity);
+}
+
+.cursor-glow {
+  width: var(--cursor-glow-size);
+  height: var(--cursor-glow-size);
+  background: rgba(76, 166, 154, var(--cursor-glow-opacity));
+}
+
+.hero-grid {
+  opacity: var(--hero-grid-opacity);
+  background-size: var(--hero-grid-size) var(--hero-grid-size);
+}
+
+/* ============================================================
+   HEADER HEIGHT, LOGO, NAME, AND DROPDOWN NAVIGATION
+   ============================================================ */
+:root {
+  --brand-gap: 11px;
+  --nav-link-size: 0.7rem;
+  --nav-link-spacing: 0.07em;
+  --nav-gap: clamp(12px, 2vw, 28px);
+  --nav-account-padding: 9px 11px;
+  --mobile-menu-background: #0d1815;
+}
+
+.brand {
+  gap: var(--brand-gap);
+}
+
+.main-nav {
+  gap: var(--nav-gap);
+  font-size: var(--nav-link-size);
+  letter-spacing: var(--nav-link-spacing);
+}
+
+.nav-account {
+  padding: var(--nav-account-padding);
+}
+
+@media (max-width: 820px) {
+  .main-nav {
+    background: var(--mobile-menu-background);
+    border-color: var(--line);
+  }
+}
+
+/* ============================================================
+   HERO TITLE, SUBTITLE, LOGO MARK, AND ACTIONS
+   ============================================================ */
+:root {
+  --hero-top-padding: 145px;
+  --hero-bottom-padding: 85px;
+  --hero-subtitle-size: clamp(1rem, 2vw, 1.4rem);
+  --hero-subtitle-color: #d9d5c7;
+  --hero-action-gap: 12px;
+  --hero-sigil-width: min(590px, 78vw);
+  --hero-sigil-glow: rgba(215, 172, 98, 0.45);
+}
+
+.hero {
+  padding: var(--hero-top-padding) 24px var(--hero-bottom-padding);
+}
+
+.hero-line {
+  font-size: var(--hero-subtitle-size);
+  color: var(--hero-subtitle-color);
+}
+
+.hero-actions {
+  gap: var(--hero-action-gap);
+}
+
+.hero-sigil {
+  width: var(--hero-sigil-width);
+  filter: drop-shadow(0 0 80px var(--hero-sigil-glow));
+}
+
+/* ============================================================
+   ALL PAGE HEROES (FACTIONS, DECIPHER, VAULT, FORGE, ETC.)
+   ============================================================ */
+:root {
+  --page-hero-min-height: 58vh;
+  --page-hero-top-padding: 180px;
+  --page-hero-bottom-padding: 85px;
+  --page-title-size: clamp(3.2rem, 9vw, 7rem);
+  --page-title-glow: rgba(215, 172, 98, 0.18);
+  --page-summary-max-width: 720px;
+}
+
+.page-hero {
+  min-height: var(--page-hero-min-height);
+  padding: var(--page-hero-top-padding) 24px var(--page-hero-bottom-padding);
+}
+
+.page-hero h1 {
+  font-size: var(--page-title-size);
+  text-shadow: 0 0 60px var(--page-title-glow);
+}
+
+.page-hero > p:last-child {
+  max-width: var(--page-summary-max-width);
+}
+
+/* ============================================================
+   BUTTON SIZE, COLORS, BORDER, AND HOVER MOVEMENT
+   ============================================================ */
+:root {
+  --button-min-height: 47px;
+  --button-horizontal-padding: 19px;
+  --button-text-size: 0.68rem;
+  --button-text-spacing: 0.09em;
+  --button-hover-lift: -2px;
+  --button-border-width: 1px;
+  --primary-start: #a63e31;
+  --primary-end: #d77a41;
+  --secondary-border: rgba(76, 166, 154, 0.58);
+}
+
+.btn {
+  min-height: var(--button-min-height);
+  padding: 0 var(--button-horizontal-padding);
+  border-width: var(--button-border-width);
+  font-size: var(--button-text-size);
+  letter-spacing: var(--button-text-spacing);
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, var(--primary-start), var(--primary-end));
+}
+.btn.ghost {
+  border-color: var(--secondary-border);
+}
+.btn:hover {
+  transform: translateY(var(--button-hover-lift));
+}
+
+/* ============================================================
+   STANDARD PANEL AND CARD DETAILS
+   Used by stats, vault files, rules, collections, and admin panels.
+   ============================================================ */
+:root {
+  --panel-border-width: 1px;
+  --panel-radius: 8px;
+  --panel-padding: 25px;
+  --panel-shadow: 0 20px 55px rgba(2, 8, 7, 0.32);
+  --card-title-color: var(--ink);
+}
+
+.stat-card,
+.vault-file,
+.service-card,
+.rule-card,
+.collection-item,
+.admin-card,
+.kd-form,
+.terminal {
+  border-width: var(--panel-border-width);
+  border-radius: var(--panel-radius);
+  box-shadow: var(--panel-shadow);
+}
+
+.vault-file,
+.service-card,
+.rule-card,
+.collection-item,
+.admin-card {
+  padding: var(--panel-padding);
+}
+
+.service-card h2,
+.rule-card h2,
+.vault-file h2,
+.collection-item h3 {
+  color: var(--card-title-color);
+}
+
+/* ============================================================
+   STAT BOXES ON THE HOMEPAGE
+   ============================================================ */
+:root {
+  --stat-card-height: 185px;
+  --stat-card-padding: 26px;
+  --stat-number-size: 3.2rem;
+  --stat-label-size: 0.63rem;
+}
+
+.stat-card {
+  min-height: var(--stat-card-height);
+  padding: var(--stat-card-padding);
+}
+.stat-card b {
+  font-size: var(--stat-number-size);
+  color: var(--gold);
+}
+.stat-card span {
+  font-size: var(--stat-label-size);
+}
+
+/* ============================================================
+   FACTION TILE SIZE, SPACING, AND TEXT
+   Color is controlled in the faction list above.
+   ============================================================ */
+:root {
+  --faction-card-height: 320px;
+  --faction-card-padding: 20px;
+  --faction-card-radius: 8px;
+  --faction-rune-size: 100px;
+  --faction-title-size: 1.8rem;
+  --faction-description-size: 0.85rem;
+  --faction-label-size: 0.6rem;
+}
+
+.faction-tile {
+  min-height: var(--faction-card-height);
+  padding: var(--faction-card-padding);
+  border-radius: var(--faction-card-radius);
+}
+
+.rune-image {
+  width: var(--faction-rune-size);
+  height: var(--faction-rune-size);
+}
+.faction-tile h3 {
+  font-size: var(--faction-title-size);
+}
+.faction-tile p {
+  font-size: var(--faction-description-size);
+}
+.clearance {
+  font-size: var(--faction-label-size);
+}
+
+/* ============================================================
+   GAME CARD ARCHIVE
+   ============================================================ */
+:root {
+  --card-border-width: 2px;
+  --card-radius: 8px;
+  --card-padding: 12px;
+  --card-title-size: 1.1rem;
+  --card-art-height: 61%;
+}
+
+.game-card {
+  border-width: var(--card-border-width);
+  border-radius: var(--card-radius);
+  padding: var(--card-padding);
+}
+
+.card-art {
+  height: var(--card-art-height);
+}
+.card-copy h2,
+.card-copy h3 {
+  font-size: var(--card-title-size);
+}
+
+/* ============================================================
+   WARS PAGE AND HOLLOW END FEATURE
+   ============================================================ */
+:root {
+  --war-card-padding: 30px;
+  --war-card-radius: 8px;
+  --war-faction-name-size: 1.6rem;
+  --war-vs-size: 1.3rem;
+  --hollow-end-border: #8e4555;
+  --hollow-end-padding: 80px;
+}
+
+.war-card {
+  padding: var(--war-card-padding);
+  border-radius: var(--war-card-radius);
+}
+.war-faction-name {
+  font-size: var(--war-faction-name-size);
+}
+.war-vs {
+  font-size: var(--war-vs-size);
+}
+.hollow-end-section {
+  border-color: var(--hollow-end-border);
+  padding: var(--hollow-end-padding);
+}
+
+/* ============================================================
+   VAULT, TIMELINE, AND FORM FIELD DETAILS
+   ============================================================ */
+:root {
+  --vault-door-border: #3d5048;
+  --timeline-line-color: var(--verdigris);
+  --timeline-marker-color: var(--gold);
+  --field-padding: 12px;
+  --field-text-color: var(--ink);
+  --field-focus-color: var(--gold);
+}
+
+.vault-door {
+  border-color: var(--vault-door-border);
+}
+.timeline:before {
+  background: linear-gradient(
+    var(--timeline-line-color),
+    var(--gold),
+    transparent
+  );
+}
+.timeline-entry > div:before {
+  background: var(--timeline-marker-color);
+}
+
+.kd-form input,
+.kd-form textarea,
+.kd-form select,
+.archive-filters select,
+.admin-card input,
+.admin-card textarea,
+.admin-card select {
+  padding: var(--field-padding);
+  color: var(--field-text-color);
+}
+
+.kd-form input:focus,
+.kd-form textarea:focus,
+.kd-form select:focus,
+.archive-filters select:focus,
+.admin-card input:focus,
+.admin-card textarea:focus,
+.admin-card select:focus {
+  outline: 2px solid var(--field-focus-color);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+:root {
+  --footer-top-space: 90px;
+  --footer-padding: 44px 0 24px;
+  --footer-link-color: #d4d5c8;
+  --footer-link-hover: var(--gold);
+}
+
+.site-footer {
+  margin-top: var(--footer-top-space);
+  padding: var(--footer-padding);
+}
+.footer-links {
+  color: var(--footer-link-color);
+}
+.footer-links a:hover {
+  color: var(--footer-link-hover);
+}
+
+/* ============================================================
+   MOTION AND REVEAL EFFECTS
+   Set --reveal-duration to 0s to remove the entrance motion.
+   ============================================================ */
+:root {
+  --reveal-duration: 0.7s;
+  --reveal-distance: 22px;
+  --interaction-duration: 0.2s;
+}
+
+.reveal {
+  transform: translateY(var(--reveal-distance));
+  transition-duration: var(--reveal-duration);
+}
+.btn,
+.main-nav a,
+.tab-btn {
+  transition-duration: var(--interaction-duration);
+}
+
+/* ============================================================
+   MOBILE DESIGN CONTROLS
+   Keep titles and the full brand readable on phones.
+   ============================================================ */
+@media (max-width: 560px) {
+  :root {
+    --section-spacing: 70px;
+    --header-logo-size: 34px;
+    --header-name-size: 0.63rem;
+    --header-name-spacing: 0.055em;
+    --hero-title-size: clamp(2.3rem, 10vw, 2.75rem);
+  }
+
+  .page-hero h1 {
+    max-width: 100%;
+    font-size: clamp(2rem, 8.5vw, 2.55rem);
+    letter-spacing: 0.02em;
+    overflow-wrap: anywhere;
+  }
+}
