@@ -24,6 +24,8 @@
 
 @media(max-width:560px){.hero h1{max-width:100%;font-size:clamp(2.3rem,10vw,2.75rem);letter-spacing:.025em}}
 
+@media(max-width:560px){.page-hero h1{max-width:100%;font-size:clamp(2rem,8.5vw,2.55rem);letter-spacing:.02em;overflow-wrap:anywhere}}
+
 /* Shared color roles: ink for depth, gold for lore, verdigris for signal, ember for action. */
 :root{--bg:#0b1212;--panel:#16201d;--line:#3d5048;--ink:#f5eedf;--muted:#b5b9a9;--purple:#b64a36;--purple2:#d7ac62;--gold:#d7ac62;--shadow:0 24px 80px rgba(2,8,7,.58);--verdigris:#4ca69a;--ember:#d66a3d}
 body{background:radial-gradient(circle at 8% 5%,rgba(76,166,154,.16),transparent 29%),radial-gradient(circle at 94% 32%,rgba(214,106,61,.11),transparent 24%),radial-gradient(circle at 52% 100%,rgba(215,172,98,.07),transparent 34%),var(--bg)}
