@@ -12,6 +12,19 @@ const KD = (() => {
 
   let fallback=null, data=null, session=null, profile=null, backendOnline=false;
 
+  // Supabase/PostgREST caps a single request at 1000 rows; page through until exhausted.
+  async function fetchAll(build,pageSize=1000){
+    let from=0,rows=[];
+    while(true){
+      const {data,error}=await build().range(from,from+pageSize-1);
+      if(error) return {data:null,error};
+      rows=rows.concat(data||[]);
+      if(!data||data.length<pageSize) break;
+      from+=pageSize;
+    }
+    return {data:rows,error:null};
+  }
+
   const isAdmin=()=>profile && ["owner","admin"].includes(profile.role) && profile.active!==false;
   const live=item=>item?.is_live ?? (!!item?.revealed || item?.status==="open" || !!(item?.reveal_at&&new Date(item.reveal_at).getTime()<=Date.now()));
   const faction=slug=>data?.factions.find(f=>f.slug===slug);
@@ -59,12 +72,15 @@ const KD = (() => {
 
     try{
       // Public reads go through the sanitized views; raw tables are admin-only (RLS denies anon).
+      // Owners also see the raw factions table everywhere (not just Command Center) so
+      // classified/far-future factions stay fully invisible to everyone else.
+      const admin=isAdmin();
       const [fr,cr,wr,vr,ws]=await Promise.all([
-        sb.from("public_factions").select("*").order("sort_order"),
-        sb.from("public_cards").select("*").order("sort_order"),
-        sb.from("public_whispers").select("*").order("published_at",{ascending:false}),
+        fetchAll(()=>admin?sb.from("factions").select("*").order("sort_order"):sb.from("public_factions").select("*").order("sort_order")),
+        fetchAll(()=>sb.from("public_cards").select("*").order("sort_order")),
+        fetchAll(()=>sb.from("public_whispers").select("*").order("published_at",{ascending:false})),
         sb.rpc("get_vault_entries"),
-        sb.from("wars").select("*").order("id")
+        fetchAll(()=>sb.from("wars").select("*").order("id"))
       ]);
       if(fr.error) throw fr.error;
       if(cr.error) throw cr.error;
@@ -72,7 +88,10 @@ const KD = (() => {
       if(vr.error) throw vr.error;
       if(ws.error) throw ws.error;
 
-      data.factions=(fr.data||[]).map((x,i)=>({...x,revealed:x.is_live,number:x.number||`Book ${i+1}`}));
+      data.factions=(fr.data||[]).map((x,i)=>{
+        const isLive=x.is_live??(x.revealed||(!!x.reveal_at&&new Date(x.reveal_at)<=new Date()));
+        return {...x,is_live:isLive,revealed:isLive,number:x.number||`Book ${i+1}`};
+      });
       data.cards=(cr.data||[]).map(x=>({
         ...x,number:x.card_number,faction:x.faction_slug,revealed:x.is_live,
         slug:x.id?.toString()
@@ -433,23 +452,67 @@ const KD = (() => {
     return `<section class="page-hero compact"><p class="eyebrow">OPEN CHANNEL</p><h1>CONTACT</h1><p>Your transmission is stored securely for the K&D owner team.</p></section><section class="section form-section"><form id="contact-form" class="kd-form"><div class="form-grid"><label>Name<input id="ct-name" value="${esc(profile?.display_name||"")}" required></label><label>Email<input id="ct-email" type="email" value="${esc(session?.user?.email||"")}" required></label></div><label>Subject<input id="ct-subject" required></label><label>Message<textarea id="ct-message" rows="8" required></textarea></label><button class="btn primary">Transmit Message</button><p id="contact-message"></p></form></section>`;
   }
 
+  const ADMIN_SKIP_COLUMNS=new Set(["id","created_at"]);
+  const ADMIN_LONGTEXT_COLUMNS=/lore|ability|description|doctrine|body|tagline/;
+
+  function adminInputKind(dataType){
+    if(dataType.includes("bool")) return "boolean";
+    if(dataType.includes("json")) return "json";
+    if(dataType.includes("timestamp")||dataType==="date") return "datetime";
+    if(dataType.includes("int")||dataType==="numeric"||dataType==="double precision") return "number";
+    return "text";
+  }
+
+  function adminFieldHtml(col,record){
+    if(ADMIN_SKIP_COLUMNS.has(col.column_name)) return "";
+    const kind=adminInputKind(col.data_type), name=col.column_name, val=record[name];
+    const label=name.replace(/_/g," ");
+    if(kind==="boolean") return `<label class="check"><input type="checkbox" name="${esc(name)}" data-type="boolean" ${val?"checked":""}> ${esc(label)}</label>`;
+    if(kind==="datetime") return `<label>${esc(label)}<input type="datetime-local" name="${esc(name)}" data-type="datetime" value="${val?esc(String(val).slice(0,16)):""}"></label>`;
+    if(kind==="json") return `<label>${esc(label)}<textarea name="${esc(name)}" data-type="json">${esc(val?JSON.stringify(val):"")}</textarea></label>`;
+    if(kind==="number") return `<label>${esc(label)}<input type="number" name="${esc(name)}" data-type="number" value="${val??""}"></label>`;
+    if(ADMIN_LONGTEXT_COLUMNS.test(name)) return `<label>${esc(label)}<textarea name="${esc(name)}" data-type="text">${esc(val??"")}</textarea></label>`;
+    return `<label>${esc(label)}<input name="${esc(name)}" data-type="text" value="${esc(val??"")}"></label>`;
+  }
+
+  function adminFormPayload(form){
+    const payload={};
+    $$("[name]",form).forEach(el=>{
+      const name=el.name,type=el.dataset.type;
+      if(type==="boolean"){payload[name]=el.checked;return}
+      const v=el.value;
+      if(type==="number") payload[name]=v===""?null:Number(v);
+      else if(type==="datetime") payload[name]=v?new Date(v).toISOString():null;
+      else if(type==="json"){try{payload[name]=v?JSON.parse(v):null}catch{payload[name]=null}}
+      else payload[name]=v;
+    });
+    return payload;
+  }
+
   async function adminPage(){
     if(!session?.user)return requireLogin("Owner clearance required.");
     if(!isAdmin())return `<section class="page-hero"><p class="eyebrow">CLEARANCE DENIED</p><h1>COMMAND CENTER</h1><p>This identity does not have owner/admin clearance.</p></section>`;
-    const [orders,profiles,reviews,contacts,cards,factions]=await Promise.all([
+    const [orders,profiles,reviews,contacts,cards,factions,cardCols,factionCols]=await Promise.all([
       sb.from("forge_orders").select("*").order("created_at",{ascending:false}).limit(100),
       sb.from("profiles").select("*").order("created_at",{ascending:false}),
       sb.from("reviews").select("*").order("created_at",{ascending:false}).limit(100),
       sb.from("contacts").select("*").order("created_at",{ascending:false}).limit(100),
-      sb.from("cards").select("*").order("sort_order"),
-      sb.from("factions").select("*").order("sort_order")
+      fetchAll(()=>sb.from("cards").select("*").order("sort_order")),
+      fetchAll(()=>sb.from("factions").select("*").order("sort_order")),
+      sb.rpc("admin_table_columns",{p_table:"cards"}),
+      sb.rpc("admin_table_columns",{p_table:"factions"})
     ]);
+    const cardColumns=cardCols.data||[], factionColumns=factionCols.data||[];
+    if(cardCols.error) console.error("admin_table_columns(cards) failed:",cardCols.error);
+    if(factionCols.error) console.error("admin_table_columns(factions) failed:",factionCols.error);
+    const schemaWarning=(cardCols.error||factionCols.error)?`<div class="empty-panel">Schema introspection failed: ${esc((cardCols.error||factionCols.error).message)}</div>`:"";
     return `<section class="page-hero compact"><p class="eyebrow">OWNER SYSTEM // SUPABASE LIVE</p><h1>COMMAND CENTER</h1><p>Database-backed control without moving the frontend off GitHub.</p><div class="hero-actions"><button id="logout-button" class="btn ghost">Sign Out</button><a class="btn ghost" href="#/">View Site</a></div></section>
     <section class="section admin-dashboard">
+      ${schemaWarning}
       <div class="admin-tabs"><button data-admin-tab="orders">Forge Orders (${orders.data?.length||0})</button><button data-admin-tab="cards">Cards (${cards.data?.length||0})</button><button data-admin-tab="factions">Factions (${factions.data?.length||0})</button><button data-admin-tab="reviews">Reviews</button><button data-admin-tab="contacts">Inbox</button><button data-admin-tab="users">Users</button></div>
       <div class="admin-pane" data-pane="orders">${(orders.data||[]).map(o=>`<form class="admin-card admin-order-form" data-id="${o.id}"><span class="micro">${esc(o.order_code)}</span><h3>${esc(o.customer_name)}</h3><p>${esc(o.email)} · ${esc(o.print_type||"")}</p><label>Status<select name="status">${["new","quoted","approved","printing","quality_check","ready","completed","cancelled"].map(s=>`<option value="${s}" ${o.status===s?"selected":""}>${s.replaceAll("_"," ")}</option>`).join("")}</select></label><label>Customer Update<input name="customer_update" value="${esc(o.customer_update||"")}"></label><button class="btn primary">Save Order</button></form>`).join("")||`<div class="empty-panel">No Forge orders.</div>`}</div>
-      <div class="admin-pane" data-pane="cards" hidden>${(cards.data||[]).map(c=>`<form class="admin-card admin-card-form" data-id="${c.id}"><span class="micro">#${String(c.card_number).padStart(3,"0")} · ${esc(c.slug)}</span><label>Name<input name="name" value="${esc(c.name)}"></label><div class="form-grid"><label>Rarity<input name="rarity" value="${esc(c.rarity)}"></label><label>Type<input name="card_type" value="${esc(c.card_type)}"></label></div><label>Ability<textarea name="ability">${esc(c.ability||"")}</textarea></label><label>Lore<textarea name="lore">${esc(c.lore||"")}</textarea></label><label>Reveal At<input type="datetime-local" name="reveal_at" value="${c.reveal_at?esc(c.reveal_at.slice(0,16)):""}"></label><label class="check"><input type="checkbox" name="revealed" ${c.revealed?"checked":""}> Reveal immediately</label><button class="btn primary">Save Card</button></form>`).join("")}</div>
-      <div class="admin-pane" data-pane="factions" hidden>${(factions.data||[]).map(f=>`<form class="admin-card admin-faction-form" data-id="${f.id}"><span class="micro">${esc(f.slug)}</span><label>Name<input name="name" value="${esc(f.name)}"></label><label>Tagline<input name="tagline" value="${esc(f.tagline||"")}"></label><label>Lore<textarea name="lore">${esc(f.lore||"")}</textarea></label><label>Doctrine<textarea name="doctrine">${esc(f.doctrine||"")}</textarea></label><label>Reveal At<input type="datetime-local" name="reveal_at" value="${f.reveal_at?esc(f.reveal_at.slice(0,16)):""}"></label><label class="check"><input type="checkbox" name="revealed" ${f.revealed?"checked":""}> Reveal immediately</label><button class="btn primary">Save Faction</button></form>`).join("")}</div>
+      <div class="admin-pane" data-pane="cards" hidden>${(cards.data||[]).map(c=>`<form class="admin-card admin-card-form" data-id="${c.id}"><span class="micro">#${esc(c.card_number)} · ${esc(c.name)}</span>${cardColumns.map(col=>adminFieldHtml(col,c)).join("")}<button class="btn primary">Save Card</button></form>`).join("")}</div>
+      <div class="admin-pane" data-pane="factions" hidden>${(factions.data||[]).map(f=>`<form class="admin-card admin-faction-form" data-id="${f.id}"><span class="micro">${esc(f.slug)}</span>${factionColumns.map(col=>adminFieldHtml(col,f)).join("")}<button class="btn primary">Save Faction</button></form>`).join("")}</div>
       <div class="admin-pane" data-pane="reviews" hidden>${(reviews.data||[]).map(r=>`<article class="admin-card"><div class="stars">${"★".repeat(r.rating)}</div><h3>${esc(r.name)}</h3><p>${esc(r.body)}</p><p>${r.approved?"APPROVED":"WAITING"}</p>${!r.approved?`<button class="btn primary approve-review" data-id="${r.id}">Approve</button>`:""}</article>`).join("")}</div>
       <div class="admin-pane" data-pane="contacts" hidden>${(contacts.data||[]).map(c=>`<article class="admin-card"><span class="micro">${esc(c.status)} · ${fmtDate(c.created_at)}</span><h3>${esc(c.subject)}</h3><p><b>${esc(c.name)}</b> · ${esc(c.email)}</p><p>${esc(c.message)}</p>${c.status==="new"?`<button class="btn ghost mark-contact-read" data-id="${c.id}">Mark Read</button>`:""}</article>`).join("")}</div>
       <div class="admin-pane" data-pane="users" hidden>${(profiles.data||[]).map(u=>`<form class="admin-card admin-user-form" data-id="${u.id}"><h3>${esc(u.display_name||u.email||"User")}</h3><p>${esc(u.email||"")}</p><label>Role<select name="role">${["player","admin","owner"].map(r=>`<option ${u.role===r?"selected":""}>${r}</option>`).join("")}</select></label><label class="check"><input type="checkbox" name="active" ${u.active?"checked":""}> Active</label><button class="btn ghost">Save User</button></form>`).join("")}</div>
@@ -641,12 +704,12 @@ const KD = (() => {
     }));
 
     $$(".admin-card-form").forEach(f=>f.addEventListener("submit",async e=>{
-      e.preventDefault();const fd=new FormData(f),payload={name:fd.get("name"),rarity:fd.get("rarity"),card_type:fd.get("card_type"),ability:fd.get("ability"),lore:fd.get("lore"),revealed:fd.get("revealed")==="on",reveal_at:fd.get("reveal_at")?new Date(fd.get("reveal_at")).toISOString():null};
+      e.preventDefault();const payload=adminFormPayload(f);
       const {error}=await sb.from("cards").update(payload).eq("id",f.dataset.id);alert(error?error.message:"Card updated.");if(!error){data=null;render()}
     }));
 
     $$(".admin-faction-form").forEach(f=>f.addEventListener("submit",async e=>{
-      e.preventDefault();const fd=new FormData(f),payload={name:fd.get("name"),tagline:fd.get("tagline"),lore:fd.get("lore"),doctrine:fd.get("doctrine"),revealed:fd.get("revealed")==="on",reveal_at:fd.get("reveal_at")?new Date(fd.get("reveal_at")).toISOString():null};
+      e.preventDefault();const payload=adminFormPayload(f);
       const {error}=await sb.from("factions").update(payload).eq("id",f.dataset.id);alert(error?error.message:"Faction updated.");if(!error){data=null;render()}
     }));
 
