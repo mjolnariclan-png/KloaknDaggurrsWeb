@@ -149,7 +149,7 @@ const KD = (() => {
     if (cardType === 'Vigor') {
       cleanCardName = `${cleanVigor}_${cardName.replace(/ /g, '_')}.png`;
     } else {
-      cleanCardName = cardName.replace(/ /g, '_') + '.png';
+      cleanCardName = cardName + '.png';
     }
     
     return `assets/img/cards/${cleanFaction}/${cleanVigor}/${cleanCardType}/${cleanCardName}`;
