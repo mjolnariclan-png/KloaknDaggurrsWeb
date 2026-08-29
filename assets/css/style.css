@@ -23,3 +23,15 @@
 @media(max-width:560px){.brand img{width:34px}.brand span{gap:4px;font-size:.63rem;letter-spacing:.055em}.brand span strong:last-child{display:inline}}
 
 @media(max-width:560px){.hero h1{max-width:100%;font-size:clamp(2.3rem,10vw,2.75rem);letter-spacing:.025em}}
+
+/* Shared color roles: ink for depth, gold for lore, verdigris for signal, ember for action. */
+:root{--bg:#0b1212;--panel:#16201d;--line:#3d5048;--ink:#f5eedf;--muted:#b5b9a9;--purple:#b64a36;--purple2:#d7ac62;--gold:#d7ac62;--shadow:0 24px 80px rgba(2,8,7,.58);--verdigris:#4ca69a;--ember:#d66a3d}
+body{background:radial-gradient(circle at 8% 5%,rgba(76,166,154,.16),transparent 29%),radial-gradient(circle at 94% 32%,rgba(214,106,61,.11),transparent 24%),radial-gradient(circle at 52% 100%,rgba(215,172,98,.07),transparent 34%),var(--bg)}
+.cursor-glow{background:rgba(76,166,154,.09)}
+.site-header.scrolled{background:rgba(11,18,18,.92);border-color:rgba(215,172,98,.18)}
+.main-nav a{color:#d4d5c8}.main-nav a:hover{color:var(--gold);text-shadow:0 0 18px rgba(215,172,98,.45)}.nav-account{border-color:rgba(76,166,154,.65);color:#dbe6d5}
+.hero-grid{background-image:linear-gradient(rgba(76,166,154,.32) 1px,transparent 1px),linear-gradient(90deg,rgba(76,166,154,.32) 1px,transparent 1px)}.hero-sigil{filter:drop-shadow(0 0 80px rgba(215,172,98,.45))}.hero h1,.page-hero h1,.faction-hero h1{text-shadow:0 0 60px rgba(215,172,98,.18)}
+.eyebrow,.text-link{color:var(--gold)}.btn.primary{background:linear-gradient(135deg,#a63e31,#d77a41);box-shadow:0 12px 35px rgba(166,62,49,.3)}.btn.ghost{border-color:rgba(76,166,154,.58);background:rgba(76,166,154,.07)}
+.stat-card,.vault-file,.service-card,.rule-card,.collection-item,.admin-card{background:linear-gradient(145deg,rgba(29,45,39,.96),rgba(14,25,23,.98));border-color:var(--line)}
+.page-hero{background:radial-gradient(circle at 50% 42%,rgba(215,172,98,.16),transparent 37%)}.timeline:before{background:linear-gradient(var(--verdigris),var(--gold),transparent)}.timeline-entry>div:before{background:var(--gold);box-shadow:0 0 12px rgba(215,172,98,.6)}.timeline-entry time{color:var(--verdigris)}
+.progress-meter{background:#293b35}.progress-meter i{background:linear-gradient(90deg,var(--verdigris),var(--gold))}.terminal{border-color:rgba(76,166,154,.54);background:#07110f}.terminal pre{color:#a7d9b5}.kd-form input,.kd-form textarea,.kd-form select,.archive-filters select,.admin-card input,.admin-card textarea,.admin-card select{border-color:#49645a;background:#0d1815}.tab-btn.active{background:var(--ember);border-color:var(--ember)}

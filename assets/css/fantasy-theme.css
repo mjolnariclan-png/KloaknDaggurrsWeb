@@ -83,8 +83,8 @@
 
 /* Faction-specific color overrides */
 .faction-tile[data-slug="ash-cycle"] {
-  --accent: #9b59b6;
-  background: linear-gradient(145deg, #2d2d44, #1a1a2e);
+  --accent: #5c8fa1;
+  background: linear-gradient(145deg, #1b3540, #101d25);
 }
 .faction-tile[data-slug="first-light"] {
   --accent: #ffd700;
@@ -94,9 +94,9 @@
   --accent: #b8860b;
   background: linear-gradient(145deg, #2d2a1e, #1a1815);
 }
-.faction-tile[data-sslug="crimson-oath"] {
-  --accent: #dc143c;
-  background: linear-gradient(145deg, #2e1a1a, #1a1414);
+.faction-tile[data-slug="crimson-oath"] {
+  --accent: #c54e42;
+  background: linear-gradient(145deg, #3a1f1d, #211213);
 }
 .faction-tile[data-slug="etched-power"] {
   --accent: #8b4513;
@@ -107,16 +107,16 @@
   background: linear-gradient(145deg, #1a2a2e, #14161c);
 }
 .faction-tile[data-slug="eternal-reach"] {
-  --accent: #9370db;
-  background: linear-gradient(145deg, #2a1a3d, #14142a);
+  --accent: #5a9ab5;
+  background: linear-gradient(145deg, #18313d, #101d25);
 }
 .faction-tile[data-slug="hidden-truth"] {
   --accent: #696969;
   background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
 }
 .faction-tile[data-slug="hollows-end"] {
-  --accent: #800080;
-  background: linear-gradient(145deg, #2a1a2a, #141014);
+  --accent: #8e4555;
+  background: linear-gradient(145deg, #321d24, #1b1115);
 }
 
 /* Enhanced tile index */

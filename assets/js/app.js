@@ -540,6 +540,7 @@ const KD = (() => {
   }
 
   function enhance(){
+    $(".hero-copy.reveal")?.classList.add("visible");
     if("IntersectionObserver" in window&&!matchMedia("(prefers-reduced-motion: reduce)").matches){
       const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");io.unobserve(e.target)}}),{threshold:.08});$$(".reveal").forEach(x=>io.observe(x));
     }else $$(".reveal").forEach(x=>x.classList.add("visible"));
