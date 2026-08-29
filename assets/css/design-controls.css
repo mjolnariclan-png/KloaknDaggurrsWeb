@@ -8,14 +8,29 @@
    SITE-WIDE COLORS, FONTS, AND SURFACES
    ============================================================ */
 :root {
-  --bg: #0b1212;
-  --panel: #16201d;
-  --line: #3d5048;
-  --ink: #f5eedf;
-  --muted: #b5b9a9;
-  --gold: #d7ac62;
-  --verdigris: #4ca69a;
-  --ember: #d66a3d;
+  /* Change these named swatches to recolor the complete theme. */
+  --void-black: #0d0d0e;
+  --charcoal: #1b1c19;
+  --leather-brown: #402a1b;
+  --parchment-white: #f6efdf;
+  --ash-white: #d8d3c6;
+  --blood-red: #a93832;
+  --ember-orange: #d66a3d;
+  --sun-yellow: #f0c75e;
+  --antique-gold: #c7953e;
+  --forest-green: #397353;
+  --verdigris-teal: #2e9d9a;
+  --river-blue: #4383a8;
+  --arcane-purple: #8050a8;
+
+  --bg: var(--void-black);
+  --panel: var(--charcoal);
+  --line: #5c503d;
+  --ink: var(--parchment-white);
+  --muted: var(--ash-white);
+  --gold: var(--sun-yellow);
+  --verdigris: var(--verdigris-teal);
+  --ember: var(--ember-orange);
   --display: "Cinzel", Georgia, serif;
   --sans: "Inter", system-ui, sans-serif;
   --page-width: 1240px;
@@ -23,9 +38,10 @@
 }
 
 body {
-  background: radial-gradient(circle at 8% 5%, rgba(76, 166, 154, .16), transparent 29%),
-    radial-gradient(circle at 94% 32%, rgba(214, 106, 61, .11), transparent 24%),
-    radial-gradient(circle at 52% 100%, rgba(215, 172, 98, .07), transparent 34%), var(--bg);
+  background: radial-gradient(circle at 8% 5%, rgba(46, 157, 154, .14), transparent 29%),
+    radial-gradient(circle at 94% 32%, rgba(169, 56, 50, .12), transparent 24%),
+    radial-gradient(circle at 52% 100%, rgba(240, 199, 94, .08), transparent 34%),
+    radial-gradient(circle at 45% 55%, rgba(128, 80, 168, .07), transparent 34%), var(--bg);
 }
 
 .section,
@@ -78,7 +94,7 @@ body {
 }
 
 .nav-account {
-  border-color: rgba(76, 166, 154, .65);
+  border-color: rgba(4, 226, 255, 0.65);
 }
 
 .nav-toggle span {
@@ -122,6 +138,63 @@ body {
   border-color: rgba(76, 166, 154, .58);
   background: rgba(76, 166, 154, .07);
 }
+
+/* ============================================================
+   FANTASY COLOR DISTRIBUTION
+   These rules put every palette color into a different visible role.
+   ============================================================ */
+
+/* Red, orange, yellow, and green: homepage number panels. */
+.stat-card:nth-child(1) { border-top: 3px solid var(--blood-red); }
+.stat-card:nth-child(1) b { color: #e0715c; }
+.stat-card:nth-child(2) { border-top: 3px solid var(--ember-orange); }
+.stat-card:nth-child(2) b { color: #f2a45d; }
+.stat-card:nth-child(3) { border-top: 3px solid var(--sun-yellow); }
+.stat-card:nth-child(3) b { color: var(--sun-yellow); }
+.stat-card:nth-child(4) { border-top: 3px solid var(--forest-green); }
+.stat-card:nth-child(4) b { color: #72bc87; }
+
+/* Red, orange, teal, and purple: the four steps on Decipher/Learn. */
+.rule-card:nth-child(1) { border-top: 3px solid var(--blood-red); }
+.rule-card:nth-child(1) > span { color: #df7260; }
+.rule-card:nth-child(2) { border-top: 3px solid var(--ember-orange); }
+.rule-card:nth-child(2) > span { color: #f1a050; }
+.rule-card:nth-child(3) { border-top: 3px solid var(--verdigris-teal); }
+.rule-card:nth-child(3) > span { color: #62c3bc; }
+.rule-card:nth-child(4) { border-top: 3px solid var(--arcane-purple); }
+.rule-card:nth-child(4) > span { color: #b68ee1; }
+
+/* Card archive rarity colors: gray, teal, blue, purple, and gold. */
+.rarity-common { --card-accent: #8a8e8a; }
+.rarity-uncommon { --card-accent: var(--verdigris-teal); }
+.rarity-rare { --card-accent: var(--river-blue); }
+.rarity-mythic { --card-accent: var(--arcane-purple); }
+.rarity-gold { --card-accent: var(--antique-gold); }
+
+/* Archive and forge panels: brown for records, teal for terminals, gold for calls to attention. */
+.vault-file { border-top: 3px solid var(--antique-gold); }
+.vault-file:nth-child(even) { border-top-color: var(--arcane-purple); }
+.collection-item { border-left: 3px solid var(--river-blue); }
+.admin-card { border-left: 3px solid var(--leather-brown); }
+.terminal { border-color: var(--verdigris-teal); background: #071918; }
+.terminal-bar { color: #89c7be; }
+.terminal pre { color: #b9e0ab; }
+
+/* Timeline moves from teal to gold. Forms focus in purple to distinguish editing. */
+.timeline:before { background: linear-gradient(var(--verdigris-teal), var(--river-blue), var(--arcane-purple), var(--sun-yellow), transparent); }
+.timeline-entry:nth-child(odd) > div:before { background: var(--verdigris-teal); }
+.timeline-entry:nth-child(even) > div:before { background: var(--ember-orange); }
+.kd-form input:focus,
+.kd-form textarea:focus,
+.kd-form select:focus,
+.archive-filters select:focus,
+.admin-card input:focus,
+.admin-card textarea:focus,
+.admin-card select:focus { outline-color: var(--arcane-purple); }
+
+/* Footer gets a warmer brown boundary so it reads as a distinct ending. */
+.site-footer { border-top-color: var(--leather-brown); }
+.footer-bottom { border-top-color: rgba(199, 149, 62, .3); }
 
 /* ============================================================
    FACTIONS PAGE AND FACTION CARDS
@@ -170,7 +243,7 @@ body {
 
 .terminal {
   border-color: rgba(76, 166, 154, .54);
-  background: #07110f;
+  background: #10e4b9;
 }
 
 .kd-form input,
