@@ -386,6 +386,14 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
   }
+
+  .home-factions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hollow-end-section {
+    padding: 48px 32px;
+  }
   
   .war-row {
     grid-template-columns: 1fr;
@@ -411,6 +419,19 @@
   .faction-grid {
     grid-template-columns: 1fr;
   }
+
+  .home-factions {
+    grid-template-columns: 1fr;
+  }
+
+  .faction-tile {
+    min-height: 280px;
+  }
+
+  .hollow-end-section {
+    margin-top: 48px;
+    padding: 32px 20px;
+  }
   
   .hollow-end-hero {
     grid-template-columns: 1fr;
@@ -420,5 +441,34 @@
   .hollow-end-emblem {
     width: 120px;
     height: 120px;
+  }
+
+  .hollow-end-lore p {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .hollow-end-lore blockquote {
+    padding: 16px 18px;
+    font-size: 1rem;
+  }
+
+  .war-card {
+    padding: 22px 18px;
+  }
+
+  .war-header {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .war-faction-name {
+    font-size: 1.25rem;
+  }
+
+  .war-info {
+    padding: 18px 12px;
   }
 }

@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 840">
-<defs><radialGradient id="r"><stop stop-color="#31185f"/><stop offset=".5" stop-color="#120d1d"/><stop offset="1" stop-color="#060509"/></radialGradient></defs>
-<rect width="600" height="840" rx="35" fill="url(#r)"/><rect x="28" y="28" width="544" height="784" rx="24" fill="none" stroke="#8f5aff" stroke-width="3"/>
-<circle cx="300" cy="420" r="170" fill="none" stroke="#7040bf" stroke-width="2"/>
-<path d="M300 220 386 307 356 418 405 555 300 625 195 555 244 418 214 307Z" fill="#09070d" stroke="#a77cff" stroke-width="7"/>
-<path d="m300 278-42 101 42 36 42-36-42-101Zm0 137-57 81 57 51 57-51-57-81Z" fill="none" stroke="#d0bcff" stroke-width="8"/>
-<text x="300" y="106" text-anchor="middle" fill="#d7c9ee" font-family="Georgia" font-size="28" letter-spacing="7">KLOAK &amp; DAGGURRS</text>
-<text x="300" y="752" text-anchor="middle" fill="#8e76b1" font-family="Georgia" font-size="21" letter-spacing="10">KLANDESTINE</text>
-</svg>
