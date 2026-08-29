@@ -30,21 +30,31 @@ with (security_invoker = false)
 as
 select
   c.id,
-  c.slug,
   c.card_number,
+  c.set_name,
   c.rarity,
-  c.card_type,
+  c.type,
+  c.vigor_type,
+  c.vigor_cost,
+  c.class_name,
+  c.ap,
+  c.dp,
+  c.mana_card_cost,
+  c.strength_vigor,
+  c.weakness_vigor,
+  c.attacks,
+  c.equipment_type,
+  c.attack_name,
+  c.attack_description,
   c.sort_order,
   c.reveal_at,
   case when f.revealed or (f.reveal_at is not null and f.reveal_at <= now()) then f.slug else null end as faction_slug,
   case when f.revealed or (f.reveal_at is not null and f.reveal_at <= now()) then f.name else 'UNKNOWN' end as faction_name,
   (c.revealed or (c.reveal_at is not null and c.reveal_at <= now())) as is_live,
   case when c.revealed or (c.reveal_at is not null and c.reveal_at <= now()) then c.name else 'CLASSIFIED' end as name,
-  case when c.revealed or (c.reveal_at is not null and c.reveal_at <= now()) then c.ability else null end as ability,
-  case when c.revealed or (c.reveal_at is not null and c.reveal_at <= now()) then c.lore else null end as lore,
   case when c.revealed or (c.reveal_at is not null and c.reveal_at <= now()) then c.image_url else null end as image_url
 from public.cards c
-left join public.factions f on f.id = c.faction_id;
+left join public.factions f on f.slug = c.faction_slug;
 
 create or replace view public.public_whispers
 with (security_invoker = false)

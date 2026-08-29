@@ -58,10 +58,11 @@ const KD = (() => {
     if(!sb) return data;
 
     try{
+      // Public reads go through the sanitized views; raw tables are admin-only (RLS denies anon).
       const [fr,cr,wr,vr,ws]=await Promise.all([
-        sb.from("factions").select("*").order("sort_order"),
-        sb.from("cards").select("*").order("sort_order"),
-        sb.from("whispers").select("*").order("published_at",{ascending:false}),
+        sb.from("public_factions").select("*").order("sort_order"),
+        sb.from("public_cards").select("*").order("sort_order"),
+        sb.from("public_whispers").select("*").order("published_at",{ascending:false}),
         sb.rpc("get_vault_entries"),
         sb.from("wars").select("*").order("id")
       ]);
@@ -73,9 +74,8 @@ const KD = (() => {
 
       data.factions=(fr.data||[]).map((x,i)=>({...x,revealed:x.is_live,number:x.number||`Book ${i+1}`}));
       data.cards=(cr.data||[]).map(x=>({
-        ...x,number:x.card_number,type:x.type,faction:x.faction_slug,
-        image:x.image_url||"assets/img/brand-mark.png",revealed:x.revealed,
-        slug:x.slug||x.id?.toString()
+        ...x,number:x.card_number,faction:x.faction_slug,revealed:x.is_live,
+        slug:x.id?.toString()
       }));
       data.whispers=(wr.data||[]).map(x=>({...x,date:x.published_at,image:x.image_url}));
       data.vault=(vr.data||[]).map(x=>({...x,is_live:x.unlocked}));
@@ -119,9 +119,8 @@ const KD = (() => {
     const cardImage = getCardImage(c);
     return `<a class="game-card rarity-${esc((c.rarity||"Common").toLowerCase())} ${open?"":"classified-card"} reveal" href="#/card/${encodeURIComponent(c.slug||c.id)}">
       <div class="foil"></div>
-      <div class="card-top"><span>${esc(c.card_number||c.number||"000")}</span><span>${esc(c.set_name||f?.name||"UNKNOWN")}</span></div>
       <div class="card-art"><img src="${esc(cardImage)}" alt="${esc(c.name)}"></div>
-      <div class="card-copy"><h3>${esc(open?c.name:"██████████")}</h3><small>${esc(c.set_name||f?.name||"UNKNOWN")}</small></div></a>`;
+      <div class="card-caption"><span class="cap-number">${esc(c.card_number||c.number||"000")}</span><span class="cap-name">${esc(open?c.name:"CLASSIFIED")}</span><span class="cap-faction">${esc(c.set_name||f?.name||"UNKNOWN")}</span></div></a>`;
   }
 
   function getCardImage(c){
@@ -129,7 +128,7 @@ const KD = (() => {
     if(c.image) return c.image;
     
     // Map card data to image path based on your folder structure
-    // Structure: assets/img/cards/[Faction]/[VigorType]/[CardType]/[VigorType_CardName].png
+    // Structure: assets/img/cards/[Faction]/[VigorType]/[CardType]/[FileName].png
     const f = faction(c.faction_slug||c.faction);
     if(!f) return "assets/img/brand-mark.png"; // Use existing image as fallback
     
@@ -143,8 +142,9 @@ const KD = (() => {
     const cleanVigor = vigorType.replace(/ /g, ' ');
     const cleanCardType = cardType === 'Primordial Being' ? 'Primordial' : cardType;
     
-    // Your files seem to be named: [VigorType]_[CardName].png
-    // But for non-Vigor cards, they might just be [CardName].png
+    // File naming pattern:
+    // Vigor cards: [VigorType]_[CardName].png (e.g., Chaos_Warpbinder.png)
+    // All other cards: [CardName].png (e.g., Apocalypse.png, Bromunt.png)
     let cleanCardName;
     if (cardType === 'Vigor') {
       cleanCardName = `${cleanVigor}_${cardName.replace(/ /g, '_')}.png`;
@@ -363,7 +363,7 @@ const KD = (() => {
       `;
     }
     
-    return `<section class="card-dossier"><div><div class="game-card giant rarity-${esc((c.rarity||"Common").toLowerCase())} ${open?"":"classified-card"}"><div class="foil"></div><div class="card-top"><span>${esc(c.card_number||c.number||"000")}</span><span>${esc(c.rarity||"Unknown")}</span></div><div class="card-art"><img src="${esc(cardImage)}" alt="${esc(c.name)}"></div><div class="card-copy"><span>${esc(f?.name||"UNKNOWN")}</span><h2>${esc(open?c.name:"CLASSIFIED")}</h2><small>${esc(c.type)}</small></div></div></div><div class="card-record"><p class="eyebrow">CARD DOSSIER</p><h1>${esc(open?c.name:"██████████")}</h1>${open?`<div class="record-grid"><span>Faction</span><b>${esc(f?.name||"Unknown")}</b><span>Set</span><b>${esc(c.set_name||"Unknown")}</b><span>Rarity</span><b>${esc(c.rarity||"Unknown")}</b><span>Type</span><b>${esc(c.type||"Unknown")}</b></div>${statsHtml}${session?.user&&c.id?`<form id="collection-form" data-card-id="${c.id}" class="collection-form"><label>Copies in My Archive <input id="collection-qty" type="number" min="0" max="99" value="${qty}"></label><button class="btn primary">Update Collection</button></form>`:`<a class="btn ghost" href="#/login">Sign in to track this card</a>`}`:countdown(c)}</div></section>`;
+    return `<section class="card-dossier"><div><div class="game-card giant rarity-${esc((c.rarity||"Common").toLowerCase())} ${open?"":"classified-card"}"><div class="foil"></div><div class="card-art"><img src="${esc(cardImage)}" alt="${esc(c.name)}"></div><div class="card-caption"><span class="cap-number">${esc(c.card_number||c.number||"000")}</span><span class="cap-name">${esc(open?c.name:"CLASSIFIED")}</span><span class="cap-faction">${esc(f?.name||"UNKNOWN")}</span></div></div></div><div class="card-record"><p class="eyebrow">CARD DOSSIER</p><h1>${esc(open?c.name:"██████████")}</h1>${open?`<div class="record-grid"><span>Faction</span><b>${esc(f?.name||"Unknown")}</b><span>Set</span><b>${esc(c.set_name||"Unknown")}</b><span>Rarity</span><b>${esc(c.rarity||"Unknown")}</b><span>Type</span><b>${esc(c.type||"Unknown")}</b></div>${statsHtml}${session?.user&&c.id?`<form id="collection-form" data-card-id="${c.id}" class="collection-form"><label>Copies in My Archive <input id="collection-qty" type="number" min="0" max="99" value="${qty}"></label><button class="btn primary">Update Collection</button></form>`:`<a class="btn ghost" href="#/login">Sign in to track this card</a>`}`:countdown(c)}</div></section>`;
   }
 
   function vaultPage(){

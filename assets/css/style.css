@@ -405,14 +405,17 @@ select {
   --card-accent: #7256a5;
   position: relative;
   aspect-ratio: 5/7;
-  border: 2px solid var(--card-accent);
+  border: 2px solid #7d43ff;
   border-radius: 18px;
   background: #09070d;
-  padding: 12px;
+  padding: 8px;
   overflow: hidden;
   box-shadow: var(--shadow);
   transform: perspective(1000px) rotateX(var(--rx, 0)) rotateY(var(--ry, 0));
   isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 .rarity-common {
   --card-accent: #706c78;
@@ -448,37 +451,42 @@ select {
     );
   mix-blend-mode: screen;
 }
-.card-top {
-  height: 34px;
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.56rem;
-  color: #bbb2c4;
-}
 .card-art {
-  height: 61%;
+  flex: 1;
+  min-height: 0;
   border: 1px solid #27202f;
+  border-radius: 10px;
   overflow: hidden;
+  background: #050308;
+  display: flex;
 }
 .card-art img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
-.card-copy {
-  padding: 12px 5px;
-}
-.card-copy span,
-.card-copy small {
+.card-caption {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 6px;
   font-size: 0.55rem;
   color: #8f829a;
   text-transform: uppercase;
 }
-.card-copy h2,
-.card-copy h3 {
+.card-caption .cap-name {
+  text-align: center;
   font-family: var(--display);
-  font-size: 1.1rem;
-  margin: 4px 0;
+  font-size: 0.8rem;
+  color: #f2eefa;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card-caption .cap-number,
+.card-caption .cap-faction {
+  white-space: nowrap;
 }
 .classified-card {
   filter: saturate(0.3) brightness(0.72);
@@ -2721,7 +2729,6 @@ body {
   --card-radius: 8px;
   --card-padding: 12px;
   --card-title-size: 1.1rem;
-  --card-art-height: 61%;
 }
 
 .game-card {
@@ -2730,11 +2737,7 @@ body {
   padding: var(--card-padding);
 }
 
-.card-art {
-  height: var(--card-art-height);
-}
-.card-copy h2,
-.card-copy h3 {
+.card-caption .cap-name {
   font-size: var(--card-title-size);
 }
 
