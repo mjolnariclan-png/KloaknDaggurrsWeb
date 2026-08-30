@@ -77,7 +77,7 @@ const KD = (() => {
       const admin=isAdmin();
       const [fr,cr,wr,vr,ws]=await Promise.all([
         fetchAll(()=>admin?sb.from("factions").select("*").order("sort_order"):sb.from("public_factions").select("*").order("sort_order")),
-        fetchAll(()=>sb.from("public_cards").select("*").order("sort_order")),
+        fetchAll(()=>admin?sb.from("cards").select("*").order("sort_order"):sb.from("public_cards").select("*").order("sort_order")),
         fetchAll(()=>sb.from("public_whispers").select("*").order("published_at",{ascending:false})),
         sb.rpc("get_vault_entries"),
         fetchAll(()=>sb.from("wars").select("*").order("id"))
@@ -92,10 +92,10 @@ const KD = (() => {
         const isLive=x.is_live??(x.revealed||(!!x.reveal_at&&new Date(x.reveal_at)<=new Date()));
         return {...x,is_live:isLive,revealed:isLive,number:x.number||`Book ${i+1}`};
       });
-      data.cards=(cr.data||[]).map(x=>({
-        ...x,number:x.card_number,faction:x.faction_slug,revealed:x.is_live,
-        slug:x.id?.toString()
-      }));
+      data.cards=(cr.data||[]).map(x=>{
+        const isLive=x.is_live??(x.revealed||(!!x.reveal_at&&new Date(x.reveal_at)<=new Date()));
+        return {...x,is_live:isLive,number:x.card_number,faction:x.faction_slug,revealed:isLive,slug:x.id?.toString()};
+      });
       data.whispers=(wr.data||[]).map(x=>({...x,date:x.published_at,image:x.image_url}));
       data.vault=(vr.data||[]).map(x=>({...x,is_live:x.unlocked}));
       data.wars=(ws.data||[]).map(x=>({...x,short_name:x.short_name||x.title,title:x.title}));
