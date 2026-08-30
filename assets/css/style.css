@@ -936,6 +936,113 @@ select {
   padding: 2px 8px;
   border-radius: 4px;
 }
+.rules-nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.rule-tab {
+  background: var(--dark);
+  color: #a89bb5;
+  border: 1px solid var(--line);
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+.rule-tab:hover {
+  color: #fff;
+  border-color: var(--accent);
+}
+.rule-tab.active {
+  color: #fff;
+  border-color: #7d43ff;
+  background: color-mix(in srgb, #7d43ff 18%, var(--dark));
+}
+.rules-content {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 30px;
+}
+.rules-section {
+  max-width: 800px;
+}
+.rules-section h2 {
+  font-family: var(--display);
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+  color: #f2eefa;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+}
+.rule-block {
+  margin-bottom: 24px;
+  padding: 20px;
+  background: rgba(125, 67, 255, 0.05);
+  border: 1px solid rgba(125, 67, 255, 0.2);
+  border-radius: 8px;
+}
+.rule-block h3 {
+  font-family: var(--display);
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  color: #f2eefa;
+}
+.rule-block p,
+.rule-block li {
+  color: #a89bb5;
+  line-height: 1.6;
+}
+.rule-block ul,
+.rule-block ol {
+  margin-left: 20px;
+}
+.phase-item {
+  margin-bottom: 16px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+}
+.phase-item h4 {
+  font-family: var(--display);
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  color: #7d43ff;
+}
+.card-type-item {
+  margin-bottom: 12px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.2);
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+}
+.card-type-item h4 {
+  font-family: var(--display);
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  color: #f2eefa;
+}
+.crossgame-item {
+  margin-bottom: 16px;
+  padding: 16px;
+  background: rgba(147, 112, 219, 0.1);
+  border-radius: 6px;
+}
+.crossgame-item h4 {
+  font-family: var(--display);
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  color: var(--purple2);
+}
 .archive-filters select {
   width: auto;
   min-width: 170px;

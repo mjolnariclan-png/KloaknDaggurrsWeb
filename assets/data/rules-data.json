@@ -1,0 +1,140 @@
+{
+  "title": "KLANDESTINE FIELD MANUAL",
+  "subtitle": "Know the rules. Hide your allegiance. Never assume the table is telling you the truth.",
+  "sections": [
+    {
+      "id": "basics",
+      "title": "The Basics",
+      "order": 1,
+      "content": {
+        "objective": "Be the last faction standing, or fulfill your faction's secret victory condition before the others catch on.",
+        "whatYouNeed": [
+          "1 deck of K&D cards (120 cards)",
+          "3-6 players",
+          "1 faction token per player (hidden)",
+          "20-30 minutes per game"
+        ],
+        "overview": "Kloak & Daggurrs: Klandestine is a game of hidden allegiances, strategic deception, and calculated betrayal. Each player secretly belongs to one of thirteen factions, each with unique abilities and win conditions."
+      }
+    },
+    {
+      "id": "setup",
+      "title": "Game Setup",
+      "order": 2,
+      "content": {
+        "steps": [
+          "Shuffle the deck thoroughly.",
+          "Each player draws 5 cards.",
+          "Each player secretly draws 1 faction card and keeps it hidden.",
+          "Place the remaining deck in the center.",
+          "Choose a starting player randomly."
+        ],
+        "factionSetup": "Your faction determines your special ability and your secret win condition. Never reveal your faction unless a card effect forces you to."
+      }
+    },
+    {
+      "id": "turns",
+      "title": "Turn Structure",
+      "order": 3,
+      "content": {
+        "overview": "Each turn consists of three phases:",
+        "phases": [
+          {
+            "name": "1. Draw Phase",
+            "description": "Draw 2 cards from the deck. If the deck is empty, shuffle the discard pile."
+          },
+          {
+            "name": "2. Action Phase",
+            "description": "Play up to 2 cards from your hand. Cards can be:",
+            "options": [
+              "Played face-up: Immediate effect resolves.",
+              "Played face-down: Placed as a 'Kloak' — a hidden trap or bluff.",
+              "Discarded: Draw 1 replacement card."
+            ]
+          },
+          {
+            "name": "3. End Phase",
+            "description": "Max hand size is 7. Discard down if needed. Pass turn clockwise."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cards",
+      "title": "Card Types",
+      "order": 4,
+      "content": {
+        "overview": "Cards come in different rarities with different power levels:",
+        "cardTypes": [
+          {
+            "name": "Common Cards",
+            "description": "Basic actions: Draw, Discard, Block. The foundation of every hand."
+          },
+          {
+            "name": "Uncommon Cards",
+            "description": "Utility effects: Peek at a Kloak, force a discard, swap hands."
+          },
+          {
+            "name": "Rare Cards",
+            "description": "Powerful one-time effects: Steal a Kloak, reveal a faction, nullify an action."
+          },
+          {
+            "name": "Mythic Cards",
+            "description": "Game-changing abilities: Reset the board, force all players to reveal, swap factions."
+          },
+          {
+            "name": "Gold Cards",
+            "description": "Faction-specific ultimates. Only usable if you control the matching faction. Devastating when played correctly."
+          }
+        ]
+      }
+    },
+    {
+      "id": "combat",
+      "title": "Combat & Kloaks",
+      "order": 5,
+      "content": {
+        "overview": "When a player attacks another, the defender may flip a face-down Kloak card. The Kloak's hidden effect resolves immediately — this could block the attack, redirect it, or trigger a trap.",
+        "resolvingKloaks": [
+          "Attacker declares target.",
+          "Defender chooses to flip 0, 1, or 2 Kloaks.",
+          "Kloak effects resolve in order played.",
+          "If attack still valid, damage is dealt.",
+          "Flipped Kloaks go to discard."
+        ],
+        "bluffing": "You can play any card face-down as a Kloak — even a Common. The threat is often more powerful than the card itself."
+      }
+    },
+    {
+      "id": "crossgame",
+      "title": "Cross-Game Usage",
+      "order": 6,
+      "content": {
+        "overview": "K&D cards are designed to be modular. Use them as:",
+        "uses": [
+          {
+            "name": "Magic: The Gathering — Commander Tokens",
+            "description": "Gold cards make excellent custom commander representations. Their faction abilities map well to commander color identities."
+          },
+          {
+            "name": "D&D — Spell Cards & NPC Factions",
+            "description": "Use the thirteen factions as rival guilds in your campaign. Card effects translate directly to encounter abilities."
+          },
+          {
+            "name": "Board Games — Event Deck",
+            "description": "Shuffle K&D cards into any game's event deck. The rarity system balances randomness."
+          },
+          {
+            "name": "Custom Formats",
+            "description": "Build your own formats. Some community favorites:",
+            "formats": [
+              "Kloak Only: All cards played face-down. Pure bluffing.",
+              "Faction Wars: Players openly play their faction. No secrets.",
+              "Solitaire: Survive 20 turns against an automated 'Shadow' deck."
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

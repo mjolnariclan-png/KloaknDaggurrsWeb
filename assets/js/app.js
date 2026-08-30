@@ -72,6 +72,15 @@ const KD = (() => {
     if(!sb) return data;
 
     try{
+      const rulesResponse = await fetch("assets/data/rules-data.json");
+      if(rulesResponse.ok){
+        data.rules = await rulesResponse.json();
+      }
+    }catch(e){
+      console.warn("Failed to load rules data:", e);
+    }
+
+    try{
       // Public reads go through the sanitized views; raw tables are admin-only (RLS denies anon).
       // Owners also see the raw factions table everywhere (not just Command Center) so
       // classified/far-future factions stay fully invisible to everyone else.
@@ -432,7 +441,75 @@ const KD = (() => {
   }
 
   function learnPage(){
-    return `<section class="page-hero"><p class="eyebrow">FIELD MANUAL 01</p><h1>LEARN KLANDESTINE</h1><p>Know the rules. Hide your allegiance. Never assume the table is telling you the truth.</p></section><section class="section"><div class="rule-steps"><article class="rule-card"><span>01</span><h2>DRAW</h2><p>Build options before the table understands what you are holding.</p></article><article class="rule-card"><span>02</span><h2>DECEIVE</h2><p>Use Kloaks and hidden information to make certainty impossible.</p></article><article class="rule-card"><span>03</span><h2>MANEUVER</h2><p>Attack, bargain, pressure, or let someone else do the damage.</p></article><article class="rule-card"><span>04</span><h2>FULFILL</h2><p>Every faction wants something. Win before the table learns exactly what.</p></article></div></section><section class="section manual-copy"><h2>Setup</h2><p>Klandestine begins with hidden allegiance. Prepare the deck, establish the players, distribute required faction information, and keep private information private.</p><h2>Kloaks</h2><p>Kloaks preserve uncertainty. Bluff, protect intent, create false narratives, and force opponents to decide without complete information.</p><h2>Victory</h2><p>Victory is faction-dependent. Everyone is trying to win. Nobody is required to tell you how.</p></section>`;
+    let rulesData = data.rules;
+    if(!rulesData){
+      // Return loading state while fetching
+      return `<section class="page-hero"><p class="eyebrow">FIELD MANUAL 01</p><h1>KLANDESTINE FIELD MANUAL</h1><p>Know the rules. Hide your allegiance. Never assume the table is telling you the truth.</p></section><section class="section"><div class="loading-panel">Loading rules data...</div></section>`;
+    }
+    const activeSection = currentLearnSection || rulesData.sections[0].id;
+    
+    const section = rulesData.sections.find(s => s.id === activeSection);
+    
+    return `<section class="page-hero"><p class="eyebrow">FIELD MANUAL 01</p><h1>${esc(rulesData.title)}</h1><p>${esc(rulesData.subtitle)}</p></section>
+    <section class="section">
+      <div class="rules-nav">
+        ${rulesData.sections.map(s=>`<button class="rule-tab ${s.id===activeSection?"active":""}" data-section="${esc(s.id)}">${esc(s.title)}</button>`).join("")}
+      </div>
+      <div class="rules-content">
+        ${renderRulesSection(section)}
+      </div>
+    </section>`;
+  }
+
+  let currentLearnSection = null;
+
+  function renderRulesSection(section){
+    if(!section) return `<div class="empty-panel">Section not found.</div>`;
+    
+    let content = `<div class="rules-section"><h2>${esc(section.title)}</h2>`;
+    
+    if(section.content.objective) {
+      content += `<div class="rule-block"><h3>Objective</h3><p>${esc(section.content.objective)}</p></div>`;
+    }
+    
+    if(section.content.whatYouNeed) {
+      content += `<div class="rule-block"><h3>What You Need</h3><ul>${section.content.whatYouNeed.map(item=>`<li>${esc(item)}</li>`).join("")}</ul></div>`;
+    }
+    
+    if(section.content.overview) {
+      content += `<div class="rule-block"><h3>Overview</h3><p>${esc(section.content.overview)}</p></div>`;
+    }
+    
+    if(section.content.steps) {
+      content += `<div class="rule-block"><h3>Setup Steps</h3><ol>${section.content.steps.map(step=>`<li>${esc(step)}</li>`).join("")}</ol></div>`;
+    }
+    
+    if(section.content.factionSetup) {
+      content += `<div class="rule-block"><h3>Faction Setup</h3><p>${esc(section.content.factionSetup)}</p></div>`;
+    }
+    
+    if(section.content.phases) {
+      content += `<div class="rule-block"><h3>Turn Phases</h3>${section.content.phases.map(phase=>`<div class="phase-item"><h4>${esc(phase.name)}</h4><p>${esc(phase.description)}</p>${phase.options?`<ul>${phase.options.map(opt=>`<li>${esc(opt)}</li>`).join("")}</ul>`:""}</div>`).join("")}</div>`;
+    }
+    
+    if(section.content.cardTypes) {
+      content += `<div class="rule-block"><h3>Card Types</h3>${section.content.cardTypes.map(type=>`<div class="card-type-item"><h4>${esc(type.name)}</h4><p>${esc(type.description)}</p></div>`).join("")}</div>`;
+    }
+    
+    if(section.content.resolvingKloaks) {
+      content += `<div class="rule-block"><h3>Resolving Kloaks</h3><ol>${section.content.resolvingKloaks.map(step=>`<li>${esc(step)}</li>`).join("")}</ol></div>`;
+    }
+    
+    if(section.content.bluffing) {
+      content += `<div class="rule-block"><h3>Bluffing</h3><p>${esc(section.content.bluffing)}</p></div>`;
+    }
+    
+    if(section.content.uses) {
+      content += `<div class="rule-block"><h3>Cross-Game Uses</h3>${section.content.uses.map(use=>`<div class="crossgame-item"><h4>${esc(use.name)}</h4><p>${esc(use.description)}</p>${use.formats?`<ul>${use.formats.map(fmt=>`<li><strong>${esc(fmt)}</strong></li>`).join("")}</ul>`:""}</div>`).join("")}</div>`;
+    }
+    
+    content += `</div>`;
+    return content;
   }
 
   function forgePage(){
@@ -635,6 +712,17 @@ const KD = (() => {
 
   function bind(){
     $("#intro")?.addEventListener("click",e=>{localStorage.setItem("kd-intro-v5","1");e.currentTarget.remove();document.body.classList.remove("intro-locked")});
+
+    $(".rules-nav")?.addEventListener("click",e=>{
+      const tab=e.target.closest(".rule-tab");
+      if(!tab)return;
+      currentLearnSection=tab.dataset.section;
+      $$(".rule-tab").forEach(t=>t.classList.toggle("active",t===tab));
+      const rulesData=data.rules;
+      if(!rulesData)return;
+      const section=rulesData.sections.find(s=>s.id===currentLearnSection);
+      $(".rules-content").innerHTML=renderRulesSection(section);
+    });
 
     $("#auth-form")?.addEventListener("submit",async e=>{
       e.preventDefault(); const mode=e.currentTarget.dataset.mode,email=$("#auth-email").value.trim(),password=$("#auth-password").value,msg=$("#auth-message");
