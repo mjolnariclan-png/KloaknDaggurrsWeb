@@ -480,6 +480,10 @@ const KD = (() => {
       content += `<div class="rule-block"><h3>Overview</h3><p>${esc(section.content.overview)}</p></div>`;
     }
     
+    if(section.content.deckBuilding) {
+      content += `<div class="rule-block"><h3>Deck Building</h3><p>${esc(section.content.deckBuilding)}</p></div>`;
+    }
+    
     if(section.content.steps) {
       content += `<div class="rule-block"><h3>Setup Steps</h3><ol>${section.content.steps.map(step=>`<li>${esc(step)}</li>`).join("")}</ol></div>`;
     }
@@ -492,8 +496,40 @@ const KD = (() => {
       content += `<div class="rule-block"><h3>Turn Phases</h3>${section.content.phases.map(phase=>`<div class="phase-item"><h4>${esc(phase.name)}</h4><p>${esc(phase.description)}</p>${phase.options?`<ul>${phase.options.map(opt=>`<li>${esc(opt)}</li>`).join("")}</ul>`:""}</div>`).join("")}</div>`;
     }
     
+    if(section.content.rules) {
+      content += `<div class="rule-block"><h3>Rules</h3><ul>${section.content.rules.map(rule=>`<li>${esc(rule)}</li>`).join("")}</ul></div>`;
+    }
+    
+    if(section.content.vigorTypes) {
+      content += `<div class="rule-block"><h3>Vigor Types</h3><p>The 14 Vigor types:</p><div class="vigor-types-grid">${section.content.vigorTypes.map(v=>`<span class="vigor-tag">${esc(v)}</span>`).join("")}</div></div>`;
+    }
+    
+    if(section.content.advantageRules) {
+      content += `<div class="rule-block highlight"><h3>Type Advantage Rules</h3><p>${esc(section.content.advantageRules)}</p></div>`;
+    }
+    
+    if(section.content.strengthChart) {
+      content += `<div class="rule-block"><h3>Strength Chart</h3><p>Each Vigor type is strong against:</p>${Object.entries(section.content.strengthChart).map(([type,strongAgainst])=>`<div class="vigor-matchup"><strong>${esc(type)}</strong> → ${strongAgainst.map(s=>`<span class="vigor-tag">${esc(s)}</span>`).join(" ")}</div>`).join("")}</div>`;
+    }
+    
+    if(section.content.weaknessChart) {
+      content += `<div class="rule-block"><h3>Weakness Chart</h3><p>Each Vigor type is weak against:</p>${Object.entries(section.content.weaknessChart).map(([type,weakAgainst])=>`<div class="vigor-matchup"><strong>${esc(type)}</strong> → ${weakAgainst.map(w=>`<span class="vigor-tag weak">${esc(w)}</span>`).join(" ")}</div>`).join("")}</div>`;
+    }
+    
     if(section.content.cardTypes) {
       content += `<div class="rule-block"><h3>Card Types</h3>${section.content.cardTypes.map(type=>`<div class="card-type-item"><h4>${esc(type.name)}</h4><p>${esc(type.description)}</p></div>`).join("")}</div>`;
+    }
+    
+    if(section.content.rarity) {
+      content += `<div class="rule-block"><h3>Rarity System</h3><p>${esc(section.content.rarity)}</p></div>`;
+    }
+    
+    if(section.content.combatRules) {
+      content += `<div class="rule-block"><h3>Combat Rules</h3><ol>${section.content.combatRules.map(rule=>`<li>${esc(rule)}</li>`).join("")}</ol></div>`;
+    }
+    
+    if(section.content.cardStats) {
+      content += `<div class="rule-block"><h3>Card Statistics</h3><div class="stats-grid">${Object.entries(section.content.cardStats).map(([stat,desc])=>`<div class="stat-item"><strong>${esc(stat.toUpperCase())}</strong><p>${esc(desc)}</p></div>`).join("")}</div></div>`;
     }
     
     if(section.content.resolvingKloaks) {
@@ -502,6 +538,10 @@ const KD = (() => {
     
     if(section.content.bluffing) {
       content += `<div class="rule-block"><h3>Bluffing</h3><p>${esc(section.content.bluffing)}</p></div>`;
+    }
+    
+    if(section.content.factions) {
+      content += `<div class="rule-block"><h3>The 8 Factions</h3>${section.content.factions.map(f=>`<div class="faction-item"><h4>${esc(f.name)}</h4><span class="vigor-tag">${esc(f.vigorType)}</span><p>${esc(f.description)}</p></div>`).join("")}</div>`;
     }
     
     if(section.content.uses) {

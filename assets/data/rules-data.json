@@ -1,20 +1,19 @@
 {
   "title": "KLANDESTINE FIELD MANUAL",
-  "subtitle": "Know the rules. Hide your allegiance. Never assume the table is telling you the truth.",
+  "subtitle": "Master the shadows. Know the rules. Dominate the battlefield.",
   "sections": [
     {
       "id": "basics",
       "title": "The Basics",
       "order": 1,
       "content": {
-        "objective": "Be the last faction standing, or fulfill your faction's secret victory condition before the others catch on.",
+        "objective": "Reduce your opponent's health to 0 to win the game!",
         "whatYouNeed": [
-          "1 deck of K&D cards (120 cards)",
-          "3-6 players",
-          "1 faction token per player (hidden)",
+          "1 deck of K&D cards (60 cards)",
+          "2+ players",
           "20-30 minutes per game"
         ],
-        "overview": "Kloak & Daggurrs: Klandestine is a game of hidden allegiances, strategic deception, and calculated betrayal. Each player secretly belongs to one of thirteen factions, each with unique abilities and win conditions."
+        "overview": "Kloak & Daggurrs: Klandestine is a game of strategic card combat with hidden allegiances, mana management, and type-based advantages. Each player builds a deck around their chosen faction's vigor type and battle for supremacy."
       }
     },
     {
@@ -23,13 +22,13 @@
       "order": 2,
       "content": {
         "steps": [
-          "Shuffle the deck thoroughly.",
-          "Each player draws 5 cards.",
-          "Each player secretly draws 1 faction card and keeps it hidden.",
-          "Place the remaining deck in the center.",
-          "Choose a starting player randomly."
+          "Shuffle your 60-card deck thoroughly.",
+          "Draw 7 cards to start the game.",
+          "Set your starting health to 30.",
+          "Set your starting mana to 0.",
+          "Determine who goes first (highest roll or coin flip)."
         ],
-        "factionSetup": "Your faction determines your special ability and your secret win condition. Never reveal your faction unless a card effect forces you to."
+        "deckBuilding": "A deck needs exactly 60 cards. You can have up to 4 copies of the same card. Build your deck around your mana type for synergies, or mix types for versatility!"
       }
     },
     {
@@ -41,11 +40,11 @@
         "phases": [
           {
             "name": "1. Draw Phase",
-            "description": "Draw 2 cards from the deck. If the deck is empty, shuffle the discard pile."
+            "description": "Draw 1 card from your deck. If your deck is empty, shuffle your discard pile."
           },
           {
             "name": "2. Action Phase",
-            "description": "Play up to 2 cards from your hand. Cards can be:",
+            "description": "Play cards, use abilities, and attack. Cards can be:",
             "options": [
               "Played face-up: Immediate effect resolves.",
               "Played face-down: Placed as a 'Kloak' — a hidden trap or bluff.",
@@ -60,41 +59,112 @@
       }
     },
     {
-      "id": "cards",
-      "title": "Card Types",
+      "id": "mana",
+      "title": "Mana System",
+      "order": 3,
+      "content": {
+        "overview": "Mana is your resource for playing cards and activating abilities.",
+        "rules": [
+          "Your maximum mana is 20.",
+          "You start with 0 mana.",
+          "Play Mana cards to increase generation (+1 per card).",
+          "Each card has a mana cost shown in the top corner.",
+          "Plan your turns to use as much mana as possible.",
+          "Save big creatures for when you have enough mana."
+        ]
+      }
+    },
+    {
+      "id": "vigor",
+      "title": "Vigor Types & Advantages",
       "order": 4,
       "content": {
-        "overview": "Cards come in different rarities with different power levels:",
+        "overview": "There are 14 Vigor types, each with strengths and weaknesses. Mastering these matchups is key to victory!",
+        "vigorTypes": [
+          "Chaos", "Earth", "Fairy", "Fungus", "Greed", "Lava", "Lightning", "Moon", "Ocean", "Purity", "Sorcery", "Spirit", "Sun", "Tar"
+        ],
+        "advantageRules": "Attacking with a type advantage deals 1.5x damage! Attacking a type you're weak to deals only 0.5x damage. Learn the matchups to dominate!",
+        "strengthChart": {
+          "Lava": ["Greed", "Sorcery", "Ocean", "Earth", "Spirit"],
+          "Ocean": ["Fairy", "Earth", "Sorcery", "Lava", "Tar"],
+          "Sun": ["Fairy", "Moon", "Ocean", "Tar", "Lightning"],
+          "Fungus": ["Spirit", "Sorcery", "Lightning", "Ocean", "Earth"],
+          "Tar": ["Sorcery", "Spirit", "Ocean", "Fairy", "Greed"],
+          "Lightning": ["Fungus", "Spirit", "Sun", "Moon", "Lava"],
+          "Moon": ["Greed", "Fairy", "Earth", "Lightning", "Tar"],
+          "Earth": ["Sorcery", "Greed", "Sun", "Fungus", "Lightning"],
+          "Greed": ["Tar", "Ocean", "Sun", "Lightning", "Sorcery"],
+          "Spirit": ["Fairy", "Ocean", "Greed", "Sun", "Sorcery"],
+          "Sorcery": ["Spirit", "Fairy", "Lava", "Moon", "Sun"],
+          "Fairy": ["Lightning", "Earth", "Sorcery", "Tar", "Lava"],
+          "Purity": ["Chaos", "Tar", "Lava", "Fungus", "Moon"],
+          "Chaos": ["Fairy", "Spirit", "Sun", "Lightning", "Ocean"]
+        },
+        "weaknessChart": {
+          "Lava": ["Fungus", "Tar", "Fairy", "Lightning", "Moon"],
+          "Ocean": ["Greed", "Sun", "Fungus", "Spirit", "Lightning"],
+          "Sun": ["Spirit", "Greed", "Earth", "Lava", "Fungus"],
+          "Fungus": ["Sun", "Lava", "Moon", "Greed", "Fairy"],
+          "Tar": ["Lava", "Earth", "Moon", "Fungus", "Sun"],
+          "Lightning": ["Ocean", "Sorcery", "Greed", "Tar", "Earth"],
+          "Moon": ["Fungus", "Sorcery", "Spirit", "Ocean", "Sun"],
+          "Earth": ["Spirit", "Ocean", "Tar", "Fairy", "Moon"],
+          "Greed": ["Moon", "Spirit", "Fairy", "Lava", "Earth"],
+          "Spirit": ["Lightning", "Earth", "Moon", "Lava", "Fungus"],
+          "Sorcery": ["Earth", "Fungus", "Ocean", "Greed", "Tar"],
+          "Fairy": ["Greed", "Ocean", "Moon", "Spirit", "Fungus"],
+          "Purity": ["Greed", "Chaos", "Earth", "Spirit", "Tar"],
+          "Chaos": ["Earth", "Tar", "Greed", "Moon", "Fungus"]
+        }
+      }
+    },
+    {
+      "id": "cards",
+      "title": "Card Types",
+      "order": 5,
+      "content": {
+        "overview": "Cards come in different types with different purposes:",
         "cardTypes": [
           {
-            "name": "Common Cards",
-            "description": "Basic actions: Draw, Discard, Block. The foundation of every hand."
+            "name": "Vigor Cards",
+            "description": "Mana generators and resource cards. Play these to build your mana pool and set up your strategy."
           },
           {
-            "name": "Uncommon Cards",
-            "description": "Utility effects: Peek at a Kloak, force a discard, swap hands."
+            "name": "Creature Cards",
+            "description": "Your main attackers and defenders. Each has Attack Power (AP) and Defense Power (DP). Creatures can't attack the turn they're played."
           },
           {
-            "name": "Rare Cards",
-            "description": "Powerful one-time effects: Steal a Kloak, reveal a faction, nullify an action."
+            "name": "Accoutrements",
+            "description": "Equipment and items that boost your creatures or provide special abilities."
           },
           {
-            "name": "Mythic Cards",
-            "description": "Game-changing abilities: Reset the board, force all players to reveal, swap factions."
+            "name": "Runes",
+            "description": "Instant spells and effects that can turn the tide of battle at critical moments."
           },
           {
-            "name": "Gold Cards",
-            "description": "Faction-specific ultimates. Only usable if you control the matching faction. Devastating when played correctly."
+            "name": "Primordial Beings",
+            "description": "Legendary creatures with immense power. Devastating when played correctly."
           }
-        ]
+        ],
+        "rarity": "Cards come in different rarities: Thrall (Common), Skilled (Uncommon), Karls (Rare), Jarl (Mythic), and Konugr (Legendary). Higher rarity cards have more powerful effects."
       }
     },
     {
       "id": "combat",
       "title": "Combat & Kloaks",
-      "order": 5,
+      "order": 6,
       "content": {
         "overview": "When a player attacks another, the defender may flip a face-down Kloak card. The Kloak's hidden effect resolves immediately — this could block the attack, redirect it, or trigger a trap.",
+        "combatRules": [
+          "Select your creature to attack with",
+          "Choose a target (enemy creature or opponent directly)",
+          "Damage is calculated with mana type multipliers",
+          "If no enemy creatures exist, attack goes directly to opponent's health"
+        ],
+        "cardStats": {
+          "ap": "Attack Power (AP) - Damage dealt when attacking. Higher AP means more damage to enemies.",
+          "dp": "Defense Power (DP) - Your creature's health. When DP reaches 0, the creature is destroyed."
+        },
         "resolvingKloaks": [
           "Attacker declares target.",
           "Defender chooses to flip 0, 1, or 2 Kloaks.",
@@ -106,9 +176,59 @@
       }
     },
     {
+      "id": "factions",
+      "title": "The 8 Factions",
+      "order": 7,
+      "content": {
+        "overview": "Choose your allegiance wisely. Each faction has unique abilities and focuses on specific vigor types.",
+        "factions": [
+          {
+            "name": "Ash Cycle",
+            "vigorType": "Chaos",
+            "description": "Masters of deception and chaos tactics."
+          },
+          {
+            "name": "Crimson Oath", 
+            "vigorType": "Greed",
+            "description": "Relentless pursuers of power and wealth."
+          },
+          {
+            "name": "Etched Power",
+            "vigorType": "Earth",
+            "description": "Defenders of the land and stability."
+          },
+          {
+            "name": "Eternal Reach",
+            "vigorType": "Spirit",
+            "description": "Guardians of the ethereal and ancient wisdom."
+          },
+          {
+            "name": "First Light",
+            "vigorType": "Sun",
+            "description": "Harbingers of dawn and celestial power."
+          },
+          {
+            "name": "Golden Flow",
+            "vigorType": "Ocean",
+            "description": "Navigators of tides and emotional currents."
+          },
+          {
+            "name": "Hidden Truth",
+            "vigorType": "Moon",
+            "description": "Keepers of secrets and lunar mysteries."
+          },
+          {
+            "name": "Hollow End",
+            "vigorType": "Fungus",
+            "description": "Embracers of decay and regrowth cycles."
+          }
+        ]
+      }
+    },
+    {
       "id": "crossgame",
       "title": "Cross-Game Usage",
-      "order": 6,
+      "order": 8,
       "content": {
         "overview": "K&D cards are designed to be modular. Use them as:",
         "uses": [
@@ -118,7 +238,7 @@
           },
           {
             "name": "D&D — Spell Cards & NPC Factions",
-            "description": "Use the thirteen factions as rival guilds in your campaign. Card effects translate directly to encounter abilities."
+            "description": "Use the eight factions as rival guilds in your campaign. Card effects translate directly to encounter abilities."
           },
           {
             "name": "Board Games — Event Deck",
