@@ -11,6 +11,7 @@ const KD = (() => {
   );
 
   let fallback=null, data=null, session=null, profile=null, backendOnline=false;
+  let adminCache=null, adminCardFaction=null;
 
   // Supabase/PostgREST caps a single request at 1000 rows; page through until exhausted.
   async function fetchAll(build,pageSize=1000){
@@ -117,6 +118,24 @@ const KD = (() => {
       a.textContent="Sign In";
       a.href="#/login";
     }
+  }
+
+  // Groups revealed factions by the "Tome" prefix in their number field
+  // (e.g. "Tome I, Book III" -> series "Tome I") for the nested nav dropdown.
+  function renderFactionsNav(){
+    const box=$("#nav-factions-dropdown");
+    if(!box) return;
+    const series=new Map();
+    (data?.factions||[]).forEach(f=>{
+      const label=String(f.number||"").split(",")[0].trim()||"Factions";
+      if(!series.has(label)) series.set(label,[]);
+      series.get(label).push(f);
+    });
+    const seriesHtml=[...series.entries()].map(([label,facs])=>`
+      <details class="nav-series"><summary>${esc(label)}</summary><div class="nav-series-menu">
+        ${facs.map(f=>`<a href="#/faction/${encodeURIComponent(f.slug)}">${esc(live(f)?f.name:"CLASSIFIED")}</a>`).join("")}
+      </div></details>`).join("");
+    box.innerHTML=`<a href="#/factions" class="nav-dropdown-all">View All Factions</a>${seriesHtml}`;
   }
 
   function factionCard(f,i){
@@ -489,9 +508,8 @@ const KD = (() => {
     return payload;
   }
 
-  async function adminPage(){
-    if(!session?.user)return requireLogin("Owner clearance required.");
-    if(!isAdmin())return `<section class="page-hero"><p class="eyebrow">CLEARANCE DENIED</p><h1>COMMAND CENTER</h1><p>This identity does not have owner/admin clearance.</p></section>`;
+  async function loadAdminData(force=false){
+    if(adminCache && !force) return adminCache;
     const [orders,profiles,reviews,contacts,cards,factions,cardCols,factionCols]=await Promise.all([
       sb.from("forge_orders").select("*").order("created_at",{ascending:false}).limit(100),
       sb.from("profiles").select("*").order("created_at",{ascending:false}),
@@ -502,20 +520,44 @@ const KD = (() => {
       sb.rpc("admin_table_columns",{p_table:"cards"}),
       sb.rpc("admin_table_columns",{p_table:"factions"})
     ]);
-    const cardColumns=cardCols.data||[], factionColumns=factionCols.data||[];
     if(cardCols.error) console.error("admin_table_columns(cards) failed:",cardCols.error);
     if(factionCols.error) console.error("admin_table_columns(factions) failed:",factionCols.error);
-    const schemaWarning=(cardCols.error||factionCols.error)?`<div class="empty-panel">Schema introspection failed: ${esc((cardCols.error||factionCols.error).message)}</div>`:"";
+    adminCache={
+      orders:orders.data||[], profiles:profiles.data||[], reviews:reviews.data||[], contacts:contacts.data||[],
+      cards:cards.data||[], factions:factions.data||[],
+      cardColumns:cardCols.data||[], factionColumns:factionCols.data||[],
+      schemaWarning:(cardCols.error||factionCols.error)?`<div class="empty-panel">Schema introspection failed: ${esc((cardCols.error||factionCols.error).message)}</div>`:""
+    };
+    return adminCache;
+  }
+
+  // Cards pane only renders the selected faction's forms — with 1600+ cards,
+  // building every form at once made Command Center painfully slow.
+  function renderCardsList(cards,cardColumns,factionSlug){
+    const rows=cards.filter(c=>c.faction_slug===factionSlug);
+    if(!rows.length) return `<div class="empty-panel">No cards for this faction.</div>`;
+    return rows.map(c=>`<form class="admin-card admin-card-form" data-id="${c.id}"><span class="micro">#${esc(c.card_number)} · ${esc(c.name)}</span>${cardColumns.map(col=>adminFieldHtml(col,c)).join("")}<button class="btn primary">Save Card</button></form>`).join("");
+  }
+
+  async function adminPage(){
+    if(!session?.user)return requireLogin("Owner clearance required.");
+    if(!isAdmin())return `<section class="page-hero"><p class="eyebrow">CLEARANCE DENIED</p><h1>COMMAND CENTER</h1><p>This identity does not have owner/admin clearance.</p></section>`;
+    const {orders,profiles,reviews,contacts,cards,factions,cardColumns,factionColumns,schemaWarning}=await loadAdminData();
+    const factionOptions=[...new Map(factions.map(f=>[f.slug,f])).values()].sort((a,b)=>(a.sort_order||0)-(b.sort_order||0));
+    if(!adminCardFaction||!factionOptions.some(f=>f.slug===adminCardFaction)) adminCardFaction=factionOptions[0]?.slug||null;
     return `<section class="page-hero compact"><p class="eyebrow">OWNER SYSTEM // SUPABASE LIVE</p><h1>COMMAND CENTER</h1><p>Database-backed control without moving the frontend off GitHub.</p><div class="hero-actions"><button id="logout-button" class="btn ghost">Sign Out</button><a class="btn ghost" href="#/">View Site</a></div></section>
     <section class="section admin-dashboard">
       ${schemaWarning}
-      <div class="admin-tabs"><button data-admin-tab="orders">Forge Orders (${orders.data?.length||0})</button><button data-admin-tab="cards">Cards (${cards.data?.length||0})</button><button data-admin-tab="factions">Factions (${factions.data?.length||0})</button><button data-admin-tab="reviews">Reviews</button><button data-admin-tab="contacts">Inbox</button><button data-admin-tab="users">Users</button></div>
-      <div class="admin-pane" data-pane="orders">${(orders.data||[]).map(o=>`<form class="admin-card admin-order-form" data-id="${o.id}"><span class="micro">${esc(o.order_code)}</span><h3>${esc(o.customer_name)}</h3><p>${esc(o.email)} · ${esc(o.print_type||"")}</p><label>Status<select name="status">${["new","quoted","approved","printing","quality_check","ready","completed","cancelled"].map(s=>`<option value="${s}" ${o.status===s?"selected":""}>${s.replaceAll("_"," ")}</option>`).join("")}</select></label><label>Customer Update<input name="customer_update" value="${esc(o.customer_update||"")}"></label><button class="btn primary">Save Order</button></form>`).join("")||`<div class="empty-panel">No Forge orders.</div>`}</div>
-      <div class="admin-pane" data-pane="cards" hidden>${(cards.data||[]).map(c=>`<form class="admin-card admin-card-form" data-id="${c.id}"><span class="micro">#${esc(c.card_number)} · ${esc(c.name)}</span>${cardColumns.map(col=>adminFieldHtml(col,c)).join("")}<button class="btn primary">Save Card</button></form>`).join("")}</div>
-      <div class="admin-pane" data-pane="factions" hidden>${(factions.data||[]).map(f=>`<form class="admin-card admin-faction-form" data-id="${f.id}"><span class="micro">${esc(f.slug)}</span>${factionColumns.map(col=>adminFieldHtml(col,f)).join("")}<button class="btn primary">Save Faction</button></form>`).join("")}</div>
-      <div class="admin-pane" data-pane="reviews" hidden>${(reviews.data||[]).map(r=>`<article class="admin-card"><div class="stars">${"★".repeat(r.rating)}</div><h3>${esc(r.name)}</h3><p>${esc(r.body)}</p><p>${r.approved?"APPROVED":"WAITING"}</p>${!r.approved?`<button class="btn primary approve-review" data-id="${r.id}">Approve</button>`:""}</article>`).join("")}</div>
-      <div class="admin-pane" data-pane="contacts" hidden>${(contacts.data||[]).map(c=>`<article class="admin-card"><span class="micro">${esc(c.status)} · ${fmtDate(c.created_at)}</span><h3>${esc(c.subject)}</h3><p><b>${esc(c.name)}</b> · ${esc(c.email)}</p><p>${esc(c.message)}</p>${c.status==="new"?`<button class="btn ghost mark-contact-read" data-id="${c.id}">Mark Read</button>`:""}</article>`).join("")}</div>
-      <div class="admin-pane" data-pane="users" hidden>${(profiles.data||[]).map(u=>`<form class="admin-card admin-user-form" data-id="${u.id}"><h3>${esc(u.display_name||u.email||"User")}</h3><p>${esc(u.email||"")}</p><label>Role<select name="role">${["player","admin","owner"].map(r=>`<option ${u.role===r?"selected":""}>${r}</option>`).join("")}</select></label><label class="check"><input type="checkbox" name="active" ${u.active?"checked":""}> Active</label><button class="btn ghost">Save User</button></form>`).join("")}</div>
+      <div class="admin-tabs"><button data-admin-tab="orders">Forge Orders (${orders.length})</button><button data-admin-tab="cards">Cards (${cards.length})</button><button data-admin-tab="factions">Factions (${factions.length})</button><button data-admin-tab="reviews">Reviews</button><button data-admin-tab="contacts">Inbox</button><button data-admin-tab="users">Users</button></div>
+      <div class="admin-pane" data-pane="orders">${orders.map(o=>`<form class="admin-card admin-order-form" data-id="${o.id}"><span class="micro">${esc(o.order_code)}</span><h3>${esc(o.customer_name)}</h3><p>${esc(o.email)} · ${esc(o.print_type||"")}</p><label>Status<select name="status">${["new","quoted","approved","printing","quality_check","ready","completed","cancelled"].map(s=>`<option value="${s}" ${o.status===s?"selected":""}>${s.replaceAll("_"," ")}</option>`).join("")}</select></label><label>Customer Update<input name="customer_update" value="${esc(o.customer_update||"")}"></label><button class="btn primary">Save Order</button></form>`).join("")||`<div class="empty-panel">No Forge orders.</div>`}</div>
+      <div class="admin-pane" data-pane="cards" hidden>
+        <div class="admin-subtabs">${factionOptions.map(f=>`<button data-card-faction="${esc(f.slug)}" class="${f.slug===adminCardFaction?"active":""}">${esc(f.name)} (${cards.filter(c=>c.faction_slug===f.slug).length})</button>`).join("")}</div>
+        <div id="admin-cards-list">${renderCardsList(cards,cardColumns,adminCardFaction)}</div>
+      </div>
+      <div class="admin-pane" data-pane="factions" hidden>${factions.map(f=>`<form class="admin-card admin-faction-form" data-id="${f.id}"><span class="micro">${esc(f.slug)}</span>${factionColumns.map(col=>adminFieldHtml(col,f)).join("")}<button class="btn primary">Save Faction</button></form>`).join("")}</div>
+      <div class="admin-pane" data-pane="reviews" hidden>${reviews.map(r=>`<article class="admin-card"><div class="stars">${"★".repeat(r.rating)}</div><h3>${esc(r.name)}</h3><p>${esc(r.body)}</p><p>${r.approved?"APPROVED":"WAITING"}</p>${!r.approved?`<button class="btn primary approve-review" data-id="${r.id}">Approve</button>`:""}</article>`).join("")}</div>
+      <div class="admin-pane" data-pane="contacts" hidden>${contacts.map(c=>`<article class="admin-card"><span class="micro">${esc(c.status)} · ${fmtDate(c.created_at)}</span><h3>${esc(c.subject)}</h3><p><b>${esc(c.name)}</b> · ${esc(c.email)}</p><p>${esc(c.message)}</p>${c.status==="new"?`<button class="btn ghost mark-contact-read" data-id="${c.id}">Mark Read</button>`:""}</article>`).join("")}</div>
+      <div class="admin-pane" data-pane="users" hidden>${profiles.map(u=>`<form class="admin-card admin-user-form" data-id="${u.id}"><h3>${esc(u.display_name||u.email||"User")}</h3><p>${esc(u.email||"")}</p><label>Role<select name="role">${["player","admin","owner"].map(r=>`<option ${u.role===r?"selected":""}>${r}</option>`).join("")}</select></label><label class="check"><input type="checkbox" name="active" ${u.active?"checked":""}> Active</label><button class="btn ghost">Save User</button></form>`).join("")}</div>
     </section>`;
   }
 
@@ -578,6 +620,7 @@ const KD = (() => {
     else app.innerHTML=notFound();
 
     updateHeader();
+    renderFactionsNav();
     bind();
     enhance();
     if(p==="reviews")loadReviews();
@@ -698,24 +741,36 @@ const KD = (() => {
       $$(".admin-pane").forEach(p=>p.hidden=p.dataset.pane!==b.dataset.adminTab);
     });
 
+    $(".admin-subtabs")?.addEventListener("click",e=>{
+      const b=e.target.closest("[data-card-faction]");if(!b||!adminCache)return;
+      adminCardFaction=b.dataset.cardFaction;
+      $$(".admin-subtabs button").forEach(x=>x.classList.toggle("active",x===b));
+      $("#admin-cards-list").innerHTML=renderCardsList(adminCache.cards,adminCache.cardColumns,adminCardFaction);
+    });
+
     $$(".admin-order-form").forEach(f=>f.addEventListener("submit",async e=>{
       e.preventDefault();const fd=new FormData(f),payload={status:fd.get("status"),customer_update:fd.get("customer_update"),updated_at:new Date().toISOString()};
-      const {error}=await sb.from("forge_orders").update(payload).eq("id",f.dataset.id);alert(error?error.message:"Order updated.");if(!error)render();
+      const {error}=await sb.from("forge_orders").update(payload).eq("id",f.dataset.id);alert(error?error.message:"Order updated.");
     }));
 
-    $$(".admin-card-form").forEach(f=>f.addEventListener("submit",async e=>{
+    $("[data-pane='cards']")?.addEventListener("submit",async e=>{
+      const f=e.target.closest(".admin-card-form");if(!f)return;
       e.preventDefault();const payload=adminFormPayload(f);
-      const {error}=await sb.from("cards").update(payload).eq("id",f.dataset.id);alert(error?error.message:"Card updated.");if(!error){data=null;render()}
-    }));
+      const {error}=await sb.from("cards").update(payload).eq("id",f.dataset.id);
+      alert(error?error.message:"Card updated.");
+      if(!error&&adminCache){const idx=adminCache.cards.findIndex(c=>String(c.id)===f.dataset.id);if(idx>-1)Object.assign(adminCache.cards[idx],payload);}
+    });
 
     $$(".admin-faction-form").forEach(f=>f.addEventListener("submit",async e=>{
       e.preventDefault();const payload=adminFormPayload(f);
-      const {error}=await sb.from("factions").update(payload).eq("id",f.dataset.id);alert(error?error.message:"Faction updated.");if(!error){data=null;render()}
+      const {error}=await sb.from("factions").update(payload).eq("id",f.dataset.id);
+      alert(error?error.message:"Faction updated.");
+      if(!error&&adminCache){const idx=adminCache.factions.findIndex(x=>String(x.id)===f.dataset.id);if(idx>-1)Object.assign(adminCache.factions[idx],payload);}
     }));
 
-    $$(".approve-review").forEach(b=>b.addEventListener("click",async()=>{const {error}=await sb.from("reviews").update({approved:true}).eq("id",b.dataset.id);alert(error?error.message:"Review approved.");if(!error)render()}));
-    $$(".mark-contact-read").forEach(b=>b.addEventListener("click",async()=>{const {error}=await sb.from("contacts").update({status:"read"}).eq("id",b.dataset.id);if(error)alert(error.message);else render()}));
-    $$(".admin-user-form").forEach(f=>f.addEventListener("submit",async e=>{e.preventDefault();const fd=new FormData(f),{error}=await sb.rpc("admin_set_user_role",{target_user:f.dataset.id,new_role:fd.get("role"),new_active:fd.get("active")==="on"});alert(error?error.message:"User updated.");if(!error)render()}));
+    $$(".approve-review").forEach(b=>b.addEventListener("click",async()=>{const {error}=await sb.from("reviews").update({approved:true}).eq("id",b.dataset.id);alert(error?error.message:"Review approved.");if(!error){adminCache=null;render()}}));
+    $$(".mark-contact-read").forEach(b=>b.addEventListener("click",async()=>{const {error}=await sb.from("contacts").update({status:"read"}).eq("id",b.dataset.id);if(error)alert(error.message);else{adminCache=null;render()}}));
+    $$(".admin-user-form").forEach(f=>f.addEventListener("submit",async e=>{e.preventDefault();const fd=new FormData(f),{error}=await sb.rpc("admin_set_user_role",{target_user:f.dataset.id,new_role:fd.get("role"),new_active:fd.get("active")==="on"});alert(error?error.message:"User updated.");if(!error){adminCache=null;render()}}));
   }
 
   function enhance(){
@@ -740,7 +795,9 @@ const KD = (() => {
   const header=$("#site-header");addEventListener("scroll",()=>header.classList.toggle("scrolled",scrollY>25),{passive:true});
   const toggle=$(".nav-toggle"),nav=$(".main-nav");
   toggle.addEventListener("click",()=>{const o=toggle.getAttribute("aria-expanded")==="true";toggle.setAttribute("aria-expanded",String(!o));nav.classList.toggle("open",!o)});
-  $$("a",nav).forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
+  nav.addEventListener("click",e=>{
+    if(e.target.closest("a")){nav.classList.remove("open");$$("details[open]",nav).forEach(d=>d.open=false)}
+  });
   addEventListener("pointermove",e=>{const g=$(".cursor-glow");g.style.left=e.clientX+"px";g.style.top=e.clientY+"px"},{passive:true});
   addEventListener("hashchange",render);
 

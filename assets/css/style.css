@@ -138,6 +138,88 @@ select {
   border: 1px solid #433654;
   padding: 9px 11px;
 }
+.nav-dropdown-details {
+  position: relative;
+}
+.nav-dropdown-details summary {
+  color: #cdc6d6;
+  cursor: pointer;
+  list-style: none;
+  transition: 0.2s;
+}
+.nav-dropdown-details summary::-webkit-details-marker {
+  display: none;
+}
+.nav-dropdown-details summary::after {
+  content: "▾";
+  font-size: 0.6rem;
+  margin-left: 5px;
+  opacity: 0.7;
+}
+.nav-dropdown-details[open] summary,
+.nav-dropdown-details summary:hover {
+  color: #fff;
+  text-shadow: 0 0 18px var(--purple);
+}
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+  min-width: 220px;
+  background: #0d0a13;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px;
+  display: grid;
+  gap: 2px;
+  box-shadow: var(--shadow);
+  z-index: 40;
+}
+.nav-dropdown-menu a,
+.nav-dropdown-all {
+  display: block;
+  padding: 7px 9px;
+  color: #cdc6d6;
+  font-size: 0.65rem;
+  border-radius: 5px;
+}
+.nav-dropdown-menu a:hover,
+.nav-dropdown-all:hover {
+  color: #fff;
+  background: rgba(125, 67, 255, 0.16);
+}
+.nav-dropdown-all {
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+.nav-series summary {
+  padding: 7px 9px;
+  cursor: pointer;
+  list-style: none;
+  color: #cdc6d6;
+  font-size: 0.65rem;
+  border-radius: 5px;
+}
+.nav-series summary::-webkit-details-marker {
+  display: none;
+}
+.nav-series summary:hover {
+  color: #fff;
+  background: rgba(125, 67, 255, 0.16);
+}
+.nav-series-menu {
+  display: grid;
+  gap: 1px;
+  padding-left: 10px;
+}
+@media (max-width: 820px) {
+  .nav-dropdown-menu {
+    position: static;
+    box-shadow: none;
+    margin-top: 6px;
+  }
+}
 .nav-toggle {
   display: none;
   background: none;
@@ -1171,6 +1253,34 @@ select {
 }
 .admin-pane[hidden] {
   display: none;
+}
+.admin-subtabs {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+.admin-subtabs button {
+  background: #100c17;
+  color: #a89bb5;
+  border: 1px solid var(--line);
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.admin-subtabs button.active {
+  color: #fff;
+  border-color: #7d43ff;
+  background: color-mix(in srgb, #7d43ff 18%, #100c17);
+}
+#admin-cards-list {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
 }
 .admin-card {
   display: grid;
