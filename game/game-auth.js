@@ -30,11 +30,11 @@
     async function authenticatedFetch(url, options = {}) {
         const token = await getAuthToken();
         
-        // If URL is relative, prepend game server URL
+        // If URL is relative and gameServerUrl is configured, prepend it
+        // Otherwise use same-origin (relative URLs work without prepending)
         let fullUrl = url;
-        if (url.startsWith('/')) {
-            const gameServerUrl = window.KD_CONFIG?.gameServerUrl || 'http://localhost:3005';
-            fullUrl = gameServerUrl + url;
+        if (url.startsWith('/') && window.KD_CONFIG?.gameServerUrl) {
+            fullUrl = window.KD_CONFIG.gameServerUrl + url;
         }
         
         const headers = {
