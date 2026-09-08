@@ -1,0 +1,95 @@
+{
+  "deck_name": "Voidflame Circle",
+  "set": "Golden Flow",
+  "vigor": "Ocean",
+  "cards": [
+    {
+      "name": "Coralhowler",
+      "quantity": 22
+    },
+    {
+      "name": "Zrunk",
+      "quantity": 1
+    },
+    {
+      "name": "Malachai",
+      "quantity": 3
+    },
+    {
+      "name": "Malachor",
+      "quantity": 3
+    },
+    {
+      "name": "Nodrimkk",
+      "quantity": 3
+    },
+    {
+      "name": "Fradel",
+      "quantity": 3
+    },
+    {
+      "name": "Medric",
+      "quantity": 4
+    },
+    {
+      "name": "Isoldeira",
+      "quantity": 1
+    },
+    {
+      "name": "Elarae",
+      "quantity": 2
+    },
+    {
+      "name": "Alaricor",
+      "quantity": 3
+    },
+    {
+      "name": "Stotrirk",
+      "quantity": 1
+    },
+    {
+      "name": "Javaram",
+      "quantity": 1
+    },
+    {
+      "name": "Power Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Axe of Doom",
+      "quantity": 1
+    },
+    {
+      "name": "Blazing Fury",
+      "quantity": 2
+    },
+    {
+      "name": "Last Stand",
+      "quantity": 3
+    },
+    {
+      "name": "Shadowsong",
+      "quantity": 1
+    },
+    {
+      "name": "Treasure Hoard",
+      "quantity": 1
+    },
+    {
+      "name": "Arcane Shot",
+      "quantity": 1
+    },
+    {
+      "name": "Magma Blast",
+      "quantity": 1
+    },
+    {
+      "name": "Soulfire",
+      "quantity": 1
+    },
+    {
+      "name": "Revitalize",
+      "quantity": 1
+    }
+  ]
+}

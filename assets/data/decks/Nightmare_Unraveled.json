@@ -1,0 +1,83 @@
+{
+  "deck_name": "Nightmare Unraveled",
+  "set": "Hollow End",
+  "vigor": "Ocean",
+  "cards": [
+    {
+      "name": "Aquagiant",
+      "quantity": 22
+    },
+    {
+      "name": "Elowen",
+      "quantity": 3
+    },
+    {
+      "name": "Fenris",
+      "quantity": 2
+    },
+    {
+      "name": "Codza",
+      "quantity": 2
+    },
+    {
+      "name": "Zorrin",
+      "quantity": 6
+    },
+    {
+      "name": "Hrith",
+      "quantity": 3
+    },
+    {
+      "name": "Darielle",
+      "quantity": 6
+    },
+    {
+      "name": "Seraphim",
+      "quantity": 1
+    },
+    {
+      "name": "Lysaeris",
+      "quantity": 2
+    },
+    {
+      "name": "Blade Dance",
+      "quantity": 2
+    },
+    {
+      "name": "Strength Elixir",
+      "quantity": 2
+    },
+    {
+      "name": "Shadow Strike",
+      "quantity": 2
+    },
+    {
+      "name": "Venomous Spikes",
+      "quantity": 1
+    },
+    {
+      "name": "Thunderstorm",
+      "quantity": 1
+    },
+    {
+      "name": "Gold Rush",
+      "quantity": 1
+    },
+    {
+      "name": "Magma Blast",
+      "quantity": 1
+    },
+    {
+      "name": "Ground Tremor",
+      "quantity": 1
+    },
+    {
+      "name": "Tornado Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Spectral Blades",
+      "quantity": 1
+    }
+  ]
+}

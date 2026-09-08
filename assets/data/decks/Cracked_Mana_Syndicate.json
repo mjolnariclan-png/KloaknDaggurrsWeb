@@ -1,0 +1,115 @@
+{
+  "deck_name": "Cracked Mana Syndicate",
+  "set": "Eternal Reach",
+  "vigor": "Earth",
+  "cards": [
+    {
+      "name": "Boulderhowler",
+      "quantity": 22
+    },
+    {
+      "name": "Atha",
+      "quantity": 1
+    },
+    {
+      "name": "Serahel",
+      "quantity": 2
+    },
+    {
+      "name": "Lysael",
+      "quantity": 1
+    },
+    {
+      "name": "Elowethian",
+      "quantity": 1
+    },
+    {
+      "name": "Elyssia",
+      "quantity": 2
+    },
+    {
+      "name": "Elysian",
+      "quantity": 1
+    },
+    {
+      "name": "Hrittonk",
+      "quantity": 3
+    },
+    {
+      "name": "Lenden",
+      "quantity": 2
+    },
+    {
+      "name": "Lorelind",
+      "quantity": 3
+    },
+    {
+      "name": "Evandor",
+      "quantity": 1
+    },
+    {
+      "name": "Zhiddalk",
+      "quantity": 1
+    },
+    {
+      "name": "Gatek",
+      "quantity": 2
+    },
+    {
+      "name": "Eldarian",
+      "quantity": 1
+    },
+    {
+      "name": "Chroth",
+      "quantity": 1
+    },
+    {
+      "name": "Chruddith",
+      "quantity": 1
+    },
+    {
+      "name": "Fenris",
+      "quantity": 1
+    },
+    {
+      "name": "Adrenaline Shot",
+      "quantity": 1
+    },
+    {
+      "name": "Savage Rampage",
+      "quantity": 3
+    },
+    {
+      "name": "Deflective Bash",
+      "quantity": 3
+    },
+    {
+      "name": "Static Discharge",
+      "quantity": 1
+    },
+    {
+      "name": "Pixie Dust",
+      "quantity": 1
+    },
+    {
+      "name": "Apocalypse",
+      "quantity": 1
+    },
+    {
+      "name": "Wrath of the Titans",
+      "quantity": 1
+    },
+    {
+      "name": "Mud Shield",
+      "quantity": 1
+    },
+    {
+      "name": "Magic Missile",
+      "quantity": 1
+    },
+    {
+      "name": "Dasrin",
+      "quantity": 1
+    }
+  ]
+}

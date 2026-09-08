@@ -1,0 +1,91 @@
+{
+  "deck_name": "Mutationforge Brood",
+  "set": "First Light",
+  "vigor": "Earth",
+  "cards": [
+    {
+      "name": "Stonestrider",
+      "quantity": 22
+    },
+    {
+      "name": "Noggrurr",
+      "quantity": 6
+    },
+    {
+      "name": "Lorelind",
+      "quantity": 3
+    },
+    {
+      "name": "Lenden",
+      "quantity": 5
+    },
+    {
+      "name": "Stirralk",
+      "quantity": 2
+    },
+    {
+      "name": "Isolandra",
+      "quantity": 5
+    },
+    {
+      "name": "Alariana",
+      "quantity": 1
+    },
+    {
+      "name": "Lysandria",
+      "quantity": 3
+    },
+    {
+      "name": "Whirlwind Swing",
+      "quantity": 1
+    },
+    {
+      "name": "Potion of Endurance",
+      "quantity": 1
+    },
+    {
+      "name": "Whirlwind Slash",
+      "quantity": 1
+    },
+    {
+      "name": "Shield Wall",
+      "quantity": 1
+    },
+    {
+      "name": "Silent Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Elixir of Berserker",
+      "quantity": 1
+    },
+    {
+      "name": "Major Healing Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Sunfire Burst",
+      "quantity": 1
+    },
+    {
+      "name": "Dragons Breath",
+      "quantity": 1
+    },
+    {
+      "name": "Ice Barrier",
+      "quantity": 1
+    },
+    {
+      "name": "Rejuvenation",
+      "quantity": 1
+    },
+    {
+      "name": "Spectral Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Divine Revive",
+      "quantity": 1
+    }
+  ]
+}

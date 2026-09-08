@@ -1,0 +1,71 @@
+{
+  "deck_name": "Havocclaw Raiders",
+  "set": "Hidden Truth",
+  "vigor": "Moon",
+  "cards": [
+    {
+      "name": "Duskserpent",
+      "quantity": 22
+    },
+    {
+      "name": "Elowethian",
+      "quantity": 6
+    },
+    {
+      "name": "Gorinus",
+      "quantity": 6
+    },
+    {
+      "name": "Guardian's Intervention",
+      "quantity": 6
+    },
+    {
+      "name": "Power Potion",
+      "quantity": 6
+    },
+    {
+      "name": "Frenzy Tonic",
+      "quantity": 1
+    },
+    {
+      "name": "Swift Assassination",
+      "quantity": 1
+    },
+    {
+      "name": "Frenzied Assault",
+      "quantity": 1
+    },
+    {
+      "name": "Whirlwind Slash",
+      "quantity": 1
+    },
+    {
+      "name": "Shadow Step",
+      "quantity": 1
+    },
+    {
+      "name": "Summon Familiar",
+      "quantity": 1
+    },
+    {
+      "name": "Feint",
+      "quantity": 1
+    },
+    {
+      "name": "Gold Rush",
+      "quantity": 1
+    },
+    {
+      "name": "Wrath of the Titans",
+      "quantity": 2
+    },
+    {
+      "name": "Ground Tremor",
+      "quantity": 2
+    },
+    {
+      "name": "Necrotic Blast",
+      "quantity": 2
+    }
+  ]
+}

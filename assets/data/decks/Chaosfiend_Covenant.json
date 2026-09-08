@@ -1,0 +1,67 @@
+{
+  "deck_name": "Chaosfiend Covenant",
+  "set": "Golden Flow",
+  "vigor": "Purity",
+  "cards": [
+    {
+      "name": "Holyhunter",
+      "quantity": 22
+    },
+    {
+      "name": "Aelarion",
+      "quantity": 6
+    },
+    {
+      "name": "Noggrurr",
+      "quantity": 6
+    },
+    {
+      "name": "Klarvish",
+      "quantity": 6
+    },
+    {
+      "name": "Seraphina",
+      "quantity": 6
+    },
+    {
+      "name": "Greater Healing Potion",
+      "quantity": 2
+    },
+    {
+      "name": "Venomous Spikes",
+      "quantity": 2
+    },
+    {
+      "name": "Powerful Swing",
+      "quantity": 2
+    },
+    {
+      "name": "Skull Crusher",
+      "quantity": 1
+    },
+    {
+      "name": "Venomous Sting",
+      "quantity": 2
+    },
+    {
+      "name": "Execution",
+      "quantity": 1
+    },
+    {
+      "name": "Enchanted Forest",
+      "quantity": 1
+    },
+    {
+      "name": "Arcane Infusion",
+      "quantity": 1
+    },
+    {
+      "name": "Counterattack",
+      "quantity": 1
+    },
+    {
+      "name": "Blizzard",
+      "quantity": 1
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "deck_name": "Anarchy’s Vanguard",
+  "set": "Hidden Truth",
+  "vigor": "Sorcery",
+  "cards": [
+    {
+      "name": "Hexspawn",
+      "quantity": 22
+    },
+    {
+      "name": "Varmot",
+      "quantity": 6
+    },
+    {
+      "name": "Frenzied Assault",
+      "quantity": 6
+    },
+    {
+      "name": "Elixir of Vitality",
+      "quantity": 6
+    },
+    {
+      "name": "Bulwark Defense",
+      "quantity": 6
+    },
+    {
+      "name": "Draught of Deflection",
+      "quantity": 5
+    },
+    {
+      "name": "Precision Stab",
+      "quantity": 1
+    },
+    {
+      "name": "Berserker Brew",
+      "quantity": 1
+    },
+    {
+      "name": "Healing Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Shroud of Darkness",
+      "quantity": 1
+    },
+    {
+      "name": "Renewal",
+      "quantity": 1
+    },
+    {
+      "name": "Blizzard",
+      "quantity": 1
+    },
+    {
+      "name": "Moonbeam",
+      "quantity": 1
+    },
+    {
+      "name": "Earthquake",
+      "quantity": 1
+    },
+    {
+      "name": "Thunderstorm",
+      "quantity": 1
+    }
+  ]
+}

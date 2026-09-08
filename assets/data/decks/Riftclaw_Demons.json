@@ -1,0 +1,95 @@
+{
+  "deck_name": "Riftclaw Demons",
+  "set": "Golden Flow",
+  "vigor": "Spirit",
+  "cards": [
+    {
+      "name": "Wraithbreaker",
+      "quantity": 22
+    },
+    {
+      "name": "Elowenna",
+      "quantity": 2
+    },
+    {
+      "name": "Zrunk",
+      "quantity": 3
+    },
+    {
+      "name": "Norrin",
+      "quantity": 4
+    },
+    {
+      "name": "Isolde",
+      "quantity": 3
+    },
+    {
+      "name": "Seraphina",
+      "quantity": 4
+    },
+    {
+      "name": "Anda",
+      "quantity": 3
+    },
+    {
+      "name": "Zinn",
+      "quantity": 2
+    },
+    {
+      "name": "Aelarianth",
+      "quantity": 1
+    },
+    {
+      "name": "Meidas",
+      "quantity": 1
+    },
+    {
+      "name": "Deveris",
+      "quantity": 1
+    },
+    {
+      "name": "Strength Elixir",
+      "quantity": 1
+    },
+    {
+      "name": "Superior Healing Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Dual Wield Flurry",
+      "quantity": 2
+    },
+    {
+      "name": "Savage Rampage",
+      "quantity": 3
+    },
+    {
+      "name": "Venom Spray",
+      "quantity": 1
+    },
+    {
+      "name": "Mind Control",
+      "quantity": 1
+    },
+    {
+      "name": "Celestial Blessing",
+      "quantity": 1
+    },
+    {
+      "name": "Shadow Cloak",
+      "quantity": 1
+    },
+    {
+      "name": "Flame Shield",
+      "quantity": 1
+    },
+    {
+      "name": "Ice Barrier",
+      "quantity": 1
+    },
+    {
+      "name": "Galadrielle",
+      "quantity": 1
+    }
+  ]
+}

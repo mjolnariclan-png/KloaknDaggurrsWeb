@@ -1,0 +1,83 @@
+{
+  "deck_name": "Runes of Ruination",
+  "set": "Eternal Reach",
+  "vigor": "Fairy",
+  "cards": [
+    {
+      "name": "Dreamfang",
+      "quantity": 22
+    },
+    {
+      "name": "Hrith",
+      "quantity": 6
+    },
+    {
+      "name": "Evadne",
+      "quantity": 4
+    },
+    {
+      "name": "Katemari",
+      "quantity": 6
+    },
+    {
+      "name": "Elysian",
+      "quantity": 4
+    },
+    {
+      "name": "Elyssiana",
+      "quantity": 5
+    },
+    {
+      "name": "Cleave",
+      "quantity": 1
+    },
+    {
+      "name": "Frenzy Tonic",
+      "quantity": 1
+    },
+    {
+      "name": "Berserker Rage",
+      "quantity": 1
+    },
+    {
+      "name": "Whirlwind Slash",
+      "quantity": 1
+    },
+    {
+      "name": "Guardian's Intervention",
+      "quantity": 1
+    },
+    {
+      "name": "Axe Throw and Return",
+      "quantity": 1
+    },
+    {
+      "name": "Thundering Blow",
+      "quantity": 1
+    },
+    {
+      "name": "Wrath of the Titans",
+      "quantity": 1
+    },
+    {
+      "name": "Arcane Barrier",
+      "quantity": 1
+    },
+    {
+      "name": "Ground Tremor",
+      "quantity": 1
+    },
+    {
+      "name": "Tidal Wave",
+      "quantity": 1
+    },
+    {
+      "name": "Frostbite",
+      "quantity": 1
+    },
+    {
+      "name": "Arcane Bolt",
+      "quantity": 1
+    }
+  ]
+}

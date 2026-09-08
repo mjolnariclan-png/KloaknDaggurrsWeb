@@ -1,0 +1,99 @@
+{
+  "deck_name": "Insanity Spiral",
+  "set": "Hollow End",
+  "vigor": "Moon",
+  "cards": [
+    {
+      "name": "Shadehowler",
+      "quantity": 22
+    },
+    {
+      "name": "Alarionna",
+      "quantity": 3
+    },
+    {
+      "name": "Elowen",
+      "quantity": 2
+    },
+    {
+      "name": "Seraphielia",
+      "quantity": 5
+    },
+    {
+      "name": "Aldarian",
+      "quantity": 3
+    },
+    {
+      "name": "Kodin",
+      "quantity": 6
+    },
+    {
+      "name": "Lysandria",
+      "quantity": 1
+    },
+    {
+      "name": "Isolindor",
+      "quantity": 1
+    },
+    {
+      "name": "Brukarr",
+      "quantity": 3
+    },
+    {
+      "name": "Lysaeris",
+      "quantity": 1
+    },
+    {
+      "name": "Whirlwind Slash",
+      "quantity": 1
+    },
+    {
+      "name": "Tonic of Invincibility",
+      "quantity": 1
+    },
+    {
+      "name": "Shield Block",
+      "quantity": 1
+    },
+    {
+      "name": "Frenzy Tonic",
+      "quantity": 1
+    },
+    {
+      "name": "Adrenaline Shot",
+      "quantity": 1
+    },
+    {
+      "name": "Rejuvenating Tonic",
+      "quantity": 1
+    },
+    {
+      "name": "Divine Justice",
+      "quantity": 1
+    },
+    {
+      "name": "Purification",
+      "quantity": 1
+    },
+    {
+      "name": "Mend Wounds",
+      "quantity": 1
+    },
+    {
+      "name": "Judgment",
+      "quantity": 1
+    },
+    {
+      "name": "Holy Light",
+      "quantity": 1
+    },
+    {
+      "name": "Tidal Wave",
+      "quantity": 1
+    },
+    {
+      "name": "Healing Touch",
+      "quantity": 1
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "deck_name": "Reality-Break Choir",
+  "set": "Etched Power",
+  "vigor": "Sun",
+  "cards": [
+    {
+      "name": "Flarebreaker",
+      "quantity": 22
+    },
+    {
+      "name": "Bezyl",
+      "quantity": 6
+    },
+    {
+      "name": "Dogolk",
+      "quantity": 6
+    },
+    {
+      "name": "Jerax",
+      "quantity": 6
+    },
+    {
+      "name": "Zorgalk",
+      "quantity": 6
+    },
+    {
+      "name": "Faelor",
+      "quantity": 1
+    },
+    {
+      "name": "Elixir of Vitality",
+      "quantity": 1
+    },
+    {
+      "name": "Elixir of Resilience",
+      "quantity": 1
+    },
+    {
+      "name": "Swift Slash",
+      "quantity": 1
+    },
+    {
+      "name": "Swift Assassination",
+      "quantity": 1
+    },
+    {
+      "name": "Guardian's Intervention",
+      "quantity": 1
+    },
+    {
+      "name": "Power Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Strength Elixir",
+      "quantity": 1
+    },
+    {
+      "name": "Wrath of the Titans",
+      "quantity": 1
+    },
+    {
+      "name": "Fungal Bloom",
+      "quantity": 1
+    },
+    {
+      "name": "Whirlwind Attack",
+      "quantity": 1
+    },
+    {
+      "name": "Spore Burst",
+      "quantity": 1
+    },
+    {
+      "name": "Thunderstorm",
+      "quantity": 1
+    },
+    {
+      "name": "Moonbeam",
+      "quantity": 1
+    }
+  ]
+}

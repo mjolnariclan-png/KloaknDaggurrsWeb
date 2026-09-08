@@ -1,0 +1,91 @@
+{
+  "deck_name": "Blightspawn Coven",
+  "set": "First Light",
+  "vigor": "Spirit",
+  "cards": [
+    {
+      "name": "Wraithhowler",
+      "quantity": 22
+    },
+    {
+      "name": "Isolde",
+      "quantity": 6
+    },
+    {
+      "name": "Ravith",
+      "quantity": 3
+    },
+    {
+      "name": "Brukarr",
+      "quantity": 6
+    },
+    {
+      "name": "Ragnar",
+      "quantity": 2
+    },
+    {
+      "name": "Saral",
+      "quantity": 2
+    },
+    {
+      "name": "Getras",
+      "quantity": 2
+    },
+    {
+      "name": "Lysandria",
+      "quantity": 4
+    },
+    {
+      "name": "Thunderous Impact",
+      "quantity": 1
+    },
+    {
+      "name": "Adrenaline Shot",
+      "quantity": 1
+    },
+    {
+      "name": "Shield Wall",
+      "quantity": 1
+    },
+    {
+      "name": "Venomous Laceration",
+      "quantity": 1
+    },
+    {
+      "name": "Elixir of Sanctuary",
+      "quantity": 1
+    },
+    {
+      "name": "Stalwart Defense",
+      "quantity": 1
+    },
+    {
+      "name": "Evasion Draught",
+      "quantity": 1
+    },
+    {
+      "name": "Earth Shield",
+      "quantity": 1
+    },
+    {
+      "name": "Static Discharge",
+      "quantity": 1
+    },
+    {
+      "name": "Soul Drain",
+      "quantity": 1
+    },
+    {
+      "name": "Divine Intervention",
+      "quantity": 1
+    },
+    {
+      "name": "Sunfire Burst",
+      "quantity": 1
+    },
+    {
+      "name": "Ethereal Strike",
+      "quantity": 1
+    }
+  ]
+}

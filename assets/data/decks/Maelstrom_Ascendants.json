@@ -1,0 +1,95 @@
+{
+  "deck_name": "Maelstrom Ascendants",
+  "set": "First Light",
+  "vigor": "Purity",
+  "cards": [
+    {
+      "name": "Virtuecrawler",
+      "quantity": 22
+    },
+    {
+      "name": "Lirren",
+      "quantity": 1
+    },
+    {
+      "name": "Brinaya",
+      "quantity": 3
+    },
+    {
+      "name": "Deveris",
+      "quantity": 3
+    },
+    {
+      "name": "Cozda",
+      "quantity": 6
+    },
+    {
+      "name": "Fradel",
+      "quantity": 2
+    },
+    {
+      "name": "Lysandria",
+      "quantity": 3
+    },
+    {
+      "name": "Isabaelin",
+      "quantity": 2
+    },
+    {
+      "name": "Ithellis",
+      "quantity": 2
+    },
+    {
+      "name": "Medric",
+      "quantity": 1
+    },
+    {
+      "name": "Faelorius",
+      "quantity": 1
+    },
+    {
+      "name": "Nirr",
+      "quantity": 1
+    },
+    {
+      "name": "Evasion Draught",
+      "quantity": 2
+    },
+    {
+      "name": "Draught of Deflection",
+      "quantity": 2
+    },
+    {
+      "name": "Whirlwind Swing",
+      "quantity": 2
+    },
+    {
+      "name": "Stalwart Defense",
+      "quantity": 1
+    },
+    {
+      "name": "Mirror Image",
+      "quantity": 1
+    },
+    {
+      "name": "Ice Lance",
+      "quantity": 1
+    },
+    {
+      "name": "Cleansing Aura",
+      "quantity": 1
+    },
+    {
+      "name": "Whirlwind",
+      "quantity": 1
+    },
+    {
+      "name": "Blackout",
+      "quantity": 1
+    },
+    {
+      "name": "Shadow Bolt",
+      "quantity": 1
+    }
+  ]
+}

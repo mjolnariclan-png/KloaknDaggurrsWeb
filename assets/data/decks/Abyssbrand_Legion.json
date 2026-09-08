@@ -1,0 +1,75 @@
+{
+  "deck_name": "Abyssbrand Legion",
+  "set": "Crimson Oath",
+  "vigor": "Sorcery",
+  "cards": [
+    {
+      "name": "Hexhorror",
+      "quantity": 22
+    },
+    {
+      "name": "Medic",
+      "quantity": 6
+    },
+    {
+      "name": "Galadrielleth",
+      "quantity": 6
+    },
+    {
+      "name": "Deris",
+      "quantity": 6
+    },
+    {
+      "name": "Athron",
+      "quantity": 6
+    },
+    {
+      "name": "Assassin's Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Doom Cleaver",
+      "quantity": 1
+    },
+    {
+      "name": "Divine Justice",
+      "quantity": 1
+    },
+    {
+      "name": "Armor Tonic",
+      "quantity": 1
+    },
+    {
+      "name": "Vanguard Stance",
+      "quantity": 1
+    },
+    {
+      "name": "Acrobatic Flourish",
+      "quantity": 2
+    },
+    {
+      "name": "Thunderstorm",
+      "quantity": 1
+    },
+    {
+      "name": "Venom Spray",
+      "quantity": 1
+    },
+    {
+      "name": "Pixie Dust",
+      "quantity": 1
+    },
+    {
+      "name": "Fire Dart",
+      "quantity": 1
+    },
+    {
+      "name": "Greed's Grasp",
+      "quantity": 2
+    },
+    {
+      "name": "Shroud of Darkness",
+      "quantity": 1
+    }
+  ]
+}

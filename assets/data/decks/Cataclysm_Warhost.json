@@ -1,0 +1,99 @@
+{
+  "deck_name": "Cataclysm Warhost",
+  "set": "Hidden Truth",
+  "vigor": "Fungus",
+  "cards": [
+    {
+      "name": "Festershaper",
+      "quantity": 22
+    },
+    {
+      "name": "Seraphion",
+      "quantity": 2
+    },
+    {
+      "name": "Adna",
+      "quantity": 3
+    },
+    {
+      "name": "Isabeau",
+      "quantity": 1
+    },
+    {
+      "name": "Stotrirk",
+      "quantity": 2
+    },
+    {
+      "name": "Felvan",
+      "quantity": 6
+    },
+    {
+      "name": "Hrithius",
+      "quantity": 3
+    },
+    {
+      "name": "Zrunk",
+      "quantity": 3
+    },
+    {
+      "name": "Isolindor",
+      "quantity": 2
+    },
+    {
+      "name": "Galadrielor",
+      "quantity": 1
+    },
+    {
+      "name": "Carirol",
+      "quantity": 1
+    },
+    {
+      "name": "Skull Crusher",
+      "quantity": 2
+    },
+    {
+      "name": "Doom Cleaver",
+      "quantity": 2
+    },
+    {
+      "name": "Turtle Formation",
+      "quantity": 1
+    },
+    {
+      "name": "Strength Elixir",
+      "quantity": 1
+    },
+    {
+      "name": "Power Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Shadow Veil",
+      "quantity": 1
+    },
+    {
+      "name": "Enchanted Forest",
+      "quantity": 1
+    },
+    {
+      "name": "Counterattack",
+      "quantity": 1
+    },
+    {
+      "name": "Ice Lance",
+      "quantity": 1
+    },
+    {
+      "name": "Death Ray",
+      "quantity": 1
+    },
+    {
+      "name": "Tidal Wave",
+      "quantity": 1
+    },
+    {
+      "name": "Elysandra",
+      "quantity": 1
+    }
+  ]
+}

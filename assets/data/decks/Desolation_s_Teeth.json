@@ -1,0 +1,95 @@
+{
+  "deck_name": "Desolation’s Teeth",
+  "set": "Hollow End",
+  "vigor": "Fairy",
+  "cards": [
+    {
+      "name": "Petalholder",
+      "quantity": 22
+    },
+    {
+      "name": "Felvan",
+      "quantity": 6
+    },
+    {
+      "name": "Isolindrella",
+      "quantity": 3
+    },
+    {
+      "name": "Evanthia",
+      "quantity": 3
+    },
+    {
+      "name": "Yevrith",
+      "quantity": 3
+    },
+    {
+      "name": "Seraphiel",
+      "quantity": 2
+    },
+    {
+      "name": "Isolde",
+      "quantity": 3
+    },
+    {
+      "name": "Aricel",
+      "quantity": 4
+    },
+    {
+      "name": "Seraphinae",
+      "quantity": 1
+    },
+    {
+      "name": "Divine Justice",
+      "quantity": 1
+    },
+    {
+      "name": "Axe of Doom",
+      "quantity": 1
+    },
+    {
+      "name": "Frenzy Tonic",
+      "quantity": 1
+    },
+    {
+      "name": "Assassin's Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Fatal Venom",
+      "quantity": 1
+    },
+    {
+      "name": "Sword of Flames",
+      "quantity": 1
+    },
+    {
+      "name": "Healing Elixir",
+      "quantity": 1
+    },
+    {
+      "name": "Ground Tremor",
+      "quantity": 1
+    },
+    {
+      "name": "Spore Burst",
+      "quantity": 1
+    },
+    {
+      "name": "Frostbite",
+      "quantity": 1
+    },
+    {
+      "name": "Soulfire",
+      "quantity": 1
+    },
+    {
+      "name": "Viscous Slam",
+      "quantity": 1
+    },
+    {
+      "name": "Earthquake",
+      "quantity": 1
+    }
+  ]
+}

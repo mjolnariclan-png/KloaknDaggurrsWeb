@@ -1,0 +1,83 @@
+{
+  "deck_name": "Ravaging Maelstrom",
+  "set": "Hollow End",
+  "vigor": "Earth",
+  "cards": [
+    {
+      "name": "Rockspawn",
+      "quantity": 22
+    },
+    {
+      "name": "Brathon",
+      "quantity": 5
+    },
+    {
+      "name": "Ravith",
+      "quantity": 5
+    },
+    {
+      "name": "Aldarian",
+      "quantity": 4
+    },
+    {
+      "name": "Chroth",
+      "quantity": 4
+    },
+    {
+      "name": "Faelorius",
+      "quantity": 2
+    },
+    {
+      "name": "Malachor",
+      "quantity": 1
+    },
+    {
+      "name": "Goikas",
+      "quantity": 4
+    },
+    {
+      "name": "Greater Healing Potion",
+      "quantity": 2
+    },
+    {
+      "name": "Berserker Rage",
+      "quantity": 1
+    },
+    {
+      "name": "Last Stand",
+      "quantity": 1
+    },
+    {
+      "name": "Rejuvenating Tonic",
+      "quantity": 1
+    },
+    {
+      "name": "Divine Justice",
+      "quantity": 2
+    },
+    {
+      "name": "Charge",
+      "quantity": 1
+    },
+    {
+      "name": "Death Ray",
+      "quantity": 1
+    },
+    {
+      "name": "Vampiric Touch",
+      "quantity": 1
+    },
+    {
+      "name": "Mind Control",
+      "quantity": 1
+    },
+    {
+      "name": "Healing Rain",
+      "quantity": 1
+    },
+    {
+      "name": "Feint",
+      "quantity": 1
+    }
+  ]
+}

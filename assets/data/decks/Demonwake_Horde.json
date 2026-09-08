@@ -1,0 +1,103 @@
+{
+  "deck_name": "Demonwake Horde",
+  "set": "Golden Flow",
+  "vigor": "Earth",
+  "cards": [
+    {
+      "name": "Rootgiant",
+      "quantity": 22
+    },
+    {
+      "name": "Evander",
+      "quantity": 2
+    },
+    {
+      "name": "Medic",
+      "quantity": 4
+    },
+    {
+      "name": "Brigrik",
+      "quantity": 5
+    },
+    {
+      "name": "Brugoth",
+      "quantity": 2
+    },
+    {
+      "name": "Galadrielleth",
+      "quantity": 1
+    },
+    {
+      "name": "Zrunk",
+      "quantity": 4
+    },
+    {
+      "name": "Aldariel",
+      "quantity": 4
+    },
+    {
+      "name": "Gatek",
+      "quantity": 1
+    },
+    {
+      "name": "Meirow",
+      "quantity": 1
+    },
+    {
+      "name": "Potion of Endurance",
+      "quantity": 1
+    },
+    {
+      "name": "Shield Block",
+      "quantity": 1
+    },
+    {
+      "name": "Healing Salve",
+      "quantity": 1
+    },
+    {
+      "name": "Draught of Deflection",
+      "quantity": 1
+    },
+    {
+      "name": "Frenzy Tonic",
+      "quantity": 1
+    },
+    {
+      "name": "Venomous Laceration",
+      "quantity": 1
+    },
+    {
+      "name": "Potion of Might",
+      "quantity": 1
+    },
+    {
+      "name": "Feint",
+      "quantity": 1
+    },
+    {
+      "name": "Arcane Bolt",
+      "quantity": 1
+    },
+    {
+      "name": "Arcane Infusion",
+      "quantity": 1
+    },
+    {
+      "name": "Tidal Wave",
+      "quantity": 1
+    },
+    {
+      "name": "Sunfire Burst",
+      "quantity": 1
+    },
+    {
+      "name": "Blessing of Strength",
+      "quantity": 1
+    },
+    {
+      "name": "Brathon",
+      "quantity": 1
+    }
+  ]
+}

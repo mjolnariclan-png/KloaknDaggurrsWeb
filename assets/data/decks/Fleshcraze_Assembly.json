@@ -1,0 +1,103 @@
+{
+  "deck_name": "Fleshcraze Assembly",
+  "set": "Crimson Oath",
+  "vigor": "Lightning",
+  "cards": [
+    {
+      "name": "Shockbeast",
+      "quantity": 22
+    },
+    {
+      "name": "Aricelle",
+      "quantity": 3
+    },
+    {
+      "name": "Isolindria",
+      "quantity": 5
+    },
+    {
+      "name": "Evandorius",
+      "quantity": 6
+    },
+    {
+      "name": "Elowenya",
+      "quantity": 1
+    },
+    {
+      "name": "Evadne",
+      "quantity": 2
+    },
+    {
+      "name": "Femunt",
+      "quantity": 2
+    },
+    {
+      "name": "Alarionna",
+      "quantity": 1
+    },
+    {
+      "name": "Thugrok",
+      "quantity": 1
+    },
+    {
+      "name": "Thinn",
+      "quantity": 1
+    },
+    {
+      "name": "Evandor",
+      "quantity": 3
+    },
+    {
+      "name": "Divine Justice",
+      "quantity": 1
+    },
+    {
+      "name": "Vanguard Stance",
+      "quantity": 1
+    },
+    {
+      "name": "Elixir of Berserker",
+      "quantity": 1
+    },
+    {
+      "name": "Rejuvenating Tonic",
+      "quantity": 1
+    },
+    {
+      "name": "Shield Block",
+      "quantity": 1
+    },
+    {
+      "name": "Dual Wield Flurry",
+      "quantity": 1
+    },
+    {
+      "name": "Adrenaline Shot",
+      "quantity": 1
+    },
+    {
+      "name": "Whirlwind",
+      "quantity": 1
+    },
+    {
+      "name": "Treasure Hoard",
+      "quantity": 1
+    },
+    {
+      "name": "Earth Shield",
+      "quantity": 1
+    },
+    {
+      "name": "Spiritual Guidance",
+      "quantity": 1
+    },
+    {
+      "name": "Static Discharge",
+      "quantity": 1
+    },
+    {
+      "name": "Searing Strike",
+      "quantity": 1
+    }
+  ]
+}

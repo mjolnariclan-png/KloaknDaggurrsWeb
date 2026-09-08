@@ -1,0 +1,83 @@
+{
+  "deck_name": "Putrid Evolution",
+  "set": "Crimson Oath",
+  "vigor": "Lava",
+  "cards": [
+    {
+      "name": "Pyreseeker",
+      "quantity": 22
+    },
+    {
+      "name": "Malachor",
+      "quantity": 6
+    },
+    {
+      "name": "Getras",
+      "quantity": 5
+    },
+    {
+      "name": "Orassa",
+      "quantity": 5
+    },
+    {
+      "name": "Stirralk",
+      "quantity": 6
+    },
+    {
+      "name": "Burr",
+      "quantity": 3
+    },
+    {
+      "name": "Shielding Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Guardian's Intervention",
+      "quantity": 1
+    },
+    {
+      "name": "Venomous Laceration",
+      "quantity": 1
+    },
+    {
+      "name": "Corrosive Splash",
+      "quantity": 1
+    },
+    {
+      "name": "Toxic Mist",
+      "quantity": 1
+    },
+    {
+      "name": "Power Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Ragnaroks Wrath",
+      "quantity": 1
+    },
+    {
+      "name": "Chain Spark",
+      "quantity": 1
+    },
+    {
+      "name": "Magic Missile",
+      "quantity": 1
+    },
+    {
+      "name": "Feint",
+      "quantity": 1
+    },
+    {
+      "name": "Sneak Attack",
+      "quantity": 1
+    },
+    {
+      "name": "Flame Shield",
+      "quantity": 1
+    },
+    {
+      "name": "Revitalize",
+      "quantity": 1
+    }
+  ]
+}

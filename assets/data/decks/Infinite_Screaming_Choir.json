@@ -1,0 +1,99 @@
+{
+  "deck_name": "Infinite Screaming Choir",
+  "set": "Tangled Weave",
+  "vigor": "Moon",
+  "cards": [
+    {
+      "name": "Nightspawn",
+      "quantity": 22
+    },
+    {
+      "name": "Orananni",
+      "quantity": 6
+    },
+    {
+      "name": "Medic",
+      "quantity": 5
+    },
+    {
+      "name": "Chrevarr",
+      "quantity": 3
+    },
+    {
+      "name": "Codza",
+      "quantity": 3
+    },
+    {
+      "name": "Lysael",
+      "quantity": 3
+    },
+    {
+      "name": "Nodrimkk",
+      "quantity": 1
+    },
+    {
+      "name": "Athron",
+      "quantity": 2
+    },
+    {
+      "name": "Cyrel",
+      "quantity": 1
+    },
+    {
+      "name": "Alariana",
+      "quantity": 1
+    },
+    {
+      "name": "Greater Healing Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Fortitude Elixir",
+      "quantity": 1
+    },
+    {
+      "name": "Potion of Precision",
+      "quantity": 1
+    },
+    {
+      "name": "Powerful Swing",
+      "quantity": 1
+    },
+    {
+      "name": "Elixir of Resilience",
+      "quantity": 1
+    },
+    {
+      "name": "Elixir of Sanctuary",
+      "quantity": 1
+    },
+    {
+      "name": "Guardian's Resolve",
+      "quantity": 1
+    },
+    {
+      "name": "Arcane Explosion",
+      "quantity": 1
+    },
+    {
+      "name": "Mind Blast",
+      "quantity": 1
+    },
+    {
+      "name": "Solar Flare",
+      "quantity": 1
+    },
+    {
+      "name": "Renewal",
+      "quantity": 1
+    },
+    {
+      "name": "Ethereal Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Arcane Shot",
+      "quantity": 1
+    }
+  ]
+}

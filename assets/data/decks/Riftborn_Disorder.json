@@ -1,0 +1,103 @@
+{
+  "deck_name": "Riftborn Disorder",
+  "set": "Ash Cycle",
+  "vigor": "Greed",
+  "cards": [
+    {
+      "name": "Gildedhorror",
+      "quantity": 22
+    },
+    {
+      "name": "Alariana",
+      "quantity": 4
+    },
+    {
+      "name": "Medic",
+      "quantity": 5
+    },
+    {
+      "name": "Galadriel",
+      "quantity": 2
+    },
+    {
+      "name": "Jarion",
+      "quantity": 1
+    },
+    {
+      "name": "Lorelindra",
+      "quantity": 2
+    },
+    {
+      "name": "Zinn",
+      "quantity": 2
+    },
+    {
+      "name": "Fenris",
+      "quantity": 2
+    },
+    {
+      "name": "Faelorius",
+      "quantity": 2
+    },
+    {
+      "name": "Dogolk",
+      "quantity": 3
+    },
+    {
+      "name": "Zorgalk",
+      "quantity": 2
+    },
+    {
+      "name": "Elixir of Sanctuary",
+      "quantity": 1
+    },
+    {
+      "name": "Tonic of Invincibility",
+      "quantity": 1
+    },
+    {
+      "name": "Elixir of Resilience",
+      "quantity": 1
+    },
+    {
+      "name": "Precision Stab",
+      "quantity": 1
+    },
+    {
+      "name": "Draught of Deflection",
+      "quantity": 1
+    },
+    {
+      "name": "Strength Elixir",
+      "quantity": 1
+    },
+    {
+      "name": "Armor Tonic",
+      "quantity": 1
+    },
+    {
+      "name": "Lightning Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Solar Flare",
+      "quantity": 1
+    },
+    {
+      "name": "Flame Shield",
+      "quantity": 1
+    },
+    {
+      "name": "Summon Familiar",
+      "quantity": 1
+    },
+    {
+      "name": "Wrath of the Titans",
+      "quantity": 1
+    },
+    {
+      "name": "Mystic Barrier",
+      "quantity": 1
+    }
+  ]
+}

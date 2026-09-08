@@ -1,0 +1,91 @@
+{
+  "deck_name": "Plaguelash Collective",
+  "set": "First Light",
+  "vigor": "Fungus",
+  "cards": [
+    {
+      "name": "Moldfang",
+      "quantity": 22
+    },
+    {
+      "name": "Aldric",
+      "quantity": 3
+    },
+    {
+      "name": "Zorrin",
+      "quantity": 6
+    },
+    {
+      "name": "Elyssia",
+      "quantity": 6
+    },
+    {
+      "name": "Aeric",
+      "quantity": 3
+    },
+    {
+      "name": "Atha",
+      "quantity": 4
+    },
+    {
+      "name": "Meidas",
+      "quantity": 2
+    },
+    {
+      "name": "Elowen",
+      "quantity": 1
+    },
+    {
+      "name": "Thundering Blow",
+      "quantity": 1
+    },
+    {
+      "name": "Stalwart Defense",
+      "quantity": 1
+    },
+    {
+      "name": "Whirlwind Swing",
+      "quantity": 1
+    },
+    {
+      "name": "Potion of Endurance",
+      "quantity": 1
+    },
+    {
+      "name": "Shielding Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Guardian's Intervention",
+      "quantity": 1
+    },
+    {
+      "name": "Draught of Deflection",
+      "quantity": 1
+    },
+    {
+      "name": "Ice Shard",
+      "quantity": 1
+    },
+    {
+      "name": "Invisibility",
+      "quantity": 1
+    },
+    {
+      "name": "Shadow Step",
+      "quantity": 1
+    },
+    {
+      "name": "Tidal Wave",
+      "quantity": 1
+    },
+    {
+      "name": "Soul Drain",
+      "quantity": 1
+    },
+    {
+      "name": "Execution",
+      "quantity": 1
+    }
+  ]
+}

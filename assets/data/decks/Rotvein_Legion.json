@@ -1,0 +1,95 @@
+{
+  "deck_name": "Rotvein Legion",
+  "set": "First Light",
+  "vigor": "Ocean",
+  "cards": [
+    {
+      "name": "Aquaholder",
+      "quantity": 22
+    },
+    {
+      "name": "Saral",
+      "quantity": 2
+    },
+    {
+      "name": "Hirsca",
+      "quantity": 6
+    },
+    {
+      "name": "Darian",
+      "quantity": 2
+    },
+    {
+      "name": "Seraphiel",
+      "quantity": 5
+    },
+    {
+      "name": "Brilk",
+      "quantity": 4
+    },
+    {
+      "name": "Femunt",
+      "quantity": 3
+    },
+    {
+      "name": "Thadiror",
+      "quantity": 2
+    },
+    {
+      "name": "Aldarian",
+      "quantity": 1
+    },
+    {
+      "name": "Venomous Spikes",
+      "quantity": 1
+    },
+    {
+      "name": "Minor Healing Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Draught of Deflection",
+      "quantity": 1
+    },
+    {
+      "name": "Toxic Mist",
+      "quantity": 1
+    },
+    {
+      "name": "Potion of Might",
+      "quantity": 1
+    },
+    {
+      "name": "Elixir of Vitality",
+      "quantity": 1
+    },
+    {
+      "name": "Healing Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Shadow Bolt",
+      "quantity": 1
+    },
+    {
+      "name": "Divine Wrath",
+      "quantity": 1
+    },
+    {
+      "name": "Blizzard",
+      "quantity": 1
+    },
+    {
+      "name": "Nature Embrace",
+      "quantity": 1
+    },
+    {
+      "name": "Magma Blast",
+      "quantity": 1
+    },
+    {
+      "name": "Sneak Strike",
+      "quantity": 1
+    }
+  ]
+}

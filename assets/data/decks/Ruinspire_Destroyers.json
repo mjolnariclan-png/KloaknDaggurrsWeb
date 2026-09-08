@@ -1,0 +1,87 @@
+{
+  "deck_name": "Ruinspire Destroyers",
+  "set": "Hidden Truth",
+  "vigor": "Greed",
+  "cards": [
+    {
+      "name": "Coinwarden",
+      "quantity": 22
+    },
+    {
+      "name": "Goikas",
+      "quantity": 3
+    },
+    {
+      "name": "Etomunt",
+      "quantity": 3
+    },
+    {
+      "name": "Tador",
+      "quantity": 4
+    },
+    {
+      "name": "Lorelind",
+      "quantity": 5
+    },
+    {
+      "name": "Ardis",
+      "quantity": 3
+    },
+    {
+      "name": "Seraphyne",
+      "quantity": 4
+    },
+    {
+      "name": "Chroth",
+      "quantity": 2
+    },
+    {
+      "name": "Elysia",
+      "quantity": 1
+    },
+    {
+      "name": "Precision Stab",
+      "quantity": 1
+    },
+    {
+      "name": "Bulwark Defense",
+      "quantity": 3
+    },
+    {
+      "name": "Mighty Blow",
+      "quantity": 1
+    },
+    {
+      "name": "Ultimate Healing Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Corrosive Splash",
+      "quantity": 1
+    },
+    {
+      "name": "Purify",
+      "quantity": 1
+    },
+    {
+      "name": "Divine Revive",
+      "quantity": 1
+    },
+    {
+      "name": "Charge",
+      "quantity": 1
+    },
+    {
+      "name": "Vitality Drain",
+      "quantity": 1
+    },
+    {
+      "name": "Pixie Dust",
+      "quantity": 1
+    },
+    {
+      "name": "Tremor",
+      "quantity": 1
+    }
+  ]
+}

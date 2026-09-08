@@ -1,0 +1,87 @@
+{
+  "deck_name": "Warpscourge Marauders",
+  "set": "Hidden Truth",
+  "vigor": "Chaos",
+  "cards": [
+    {
+      "name": "Shatterholder",
+      "quantity": 22
+    },
+    {
+      "name": "Hugitrak",
+      "quantity": 5
+    },
+    {
+      "name": "Ragnar",
+      "quantity": 6
+    },
+    {
+      "name": "Aldariel",
+      "quantity": 3
+    },
+    {
+      "name": "Darielle",
+      "quantity": 3
+    },
+    {
+      "name": "Eloweth",
+      "quantity": 3
+    },
+    {
+      "name": "Athron",
+      "quantity": 5
+    },
+    {
+      "name": "Sword and Shield Bash",
+      "quantity": 1
+    },
+    {
+      "name": "Raging Inferno",
+      "quantity": 1
+    },
+    {
+      "name": "Fortitude Elixir",
+      "quantity": 1
+    },
+    {
+      "name": "Shield Block",
+      "quantity": 1
+    },
+    {
+      "name": "Dual Wield Flurry",
+      "quantity": 1
+    },
+    {
+      "name": "Frenzied Assault",
+      "quantity": 1
+    },
+    {
+      "name": "Venomous Spikes",
+      "quantity": 1
+    },
+    {
+      "name": "Counterattack",
+      "quantity": 1
+    },
+    {
+      "name": "Soul Drain",
+      "quantity": 1
+    },
+    {
+      "name": "Arcane Bolt",
+      "quantity": 1
+    },
+    {
+      "name": "Spectral Blades",
+      "quantity": 1
+    },
+    {
+      "name": "Shadowsong",
+      "quantity": 1
+    },
+    {
+      "name": "Revitalize",
+      "quantity": 1
+    }
+  ]
+}

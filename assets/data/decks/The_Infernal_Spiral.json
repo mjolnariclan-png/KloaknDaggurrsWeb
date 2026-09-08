@@ -1,0 +1,107 @@
+{
+  "deck_name": "The Infernal Spiral",
+  "set": "Golden Flow",
+  "vigor": "Fungus",
+  "cards": [
+    {
+      "name": "Rotweaver",
+      "quantity": 22
+    },
+    {
+      "name": "Atha",
+      "quantity": 3
+    },
+    {
+      "name": "Isabaelin",
+      "quantity": 4
+    },
+    {
+      "name": "Perkin",
+      "quantity": 2
+    },
+    {
+      "name": "Elowenna",
+      "quantity": 2
+    },
+    {
+      "name": "Thetorr",
+      "quantity": 5
+    },
+    {
+      "name": "Evandorius",
+      "quantity": 2
+    },
+    {
+      "name": "Hrolgar",
+      "quantity": 1
+    },
+    {
+      "name": "Tonn",
+      "quantity": 1
+    },
+    {
+      "name": "Elowenndria",
+      "quantity": 2
+    },
+    {
+      "name": "Evadne",
+      "quantity": 2
+    },
+    {
+      "name": "Berserker Rage",
+      "quantity": 1
+    },
+    {
+      "name": "Fatal Venom",
+      "quantity": 1
+    },
+    {
+      "name": "Shield Block",
+      "quantity": 1
+    },
+    {
+      "name": "Healing Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Superior Healing Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Armor Tonic",
+      "quantity": 1
+    },
+    {
+      "name": "Swift Slash",
+      "quantity": 1
+    },
+    {
+      "name": "Summon Familiar",
+      "quantity": 1
+    },
+    {
+      "name": "Poison Cloud",
+      "quantity": 1
+    },
+    {
+      "name": "Spectral Blades",
+      "quantity": 1
+    },
+    {
+      "name": "Spectral Slash",
+      "quantity": 1
+    },
+    {
+      "name": "Mend Wounds",
+      "quantity": 1
+    },
+    {
+      "name": "Blizzard",
+      "quantity": 1
+    },
+    {
+      "name": "Brozurk",
+      "quantity": 1
+    }
+  ]
+}

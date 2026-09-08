@@ -1,0 +1,79 @@
+{
+  "deck_name": "Echoes of the Unhinged",
+  "set": "Hollow End",
+  "vigor": "Lightning",
+  "cards": [
+    {
+      "name": "Shockgiant",
+      "quantity": 22
+    },
+    {
+      "name": "Ragnar",
+      "quantity": 6
+    },
+    {
+      "name": "Isoldeira",
+      "quantity": 3
+    },
+    {
+      "name": "Lorelei",
+      "quantity": 4
+    },
+    {
+      "name": "Aelarion",
+      "quantity": 4
+    },
+    {
+      "name": "Evandorin",
+      "quantity": 1
+    },
+    {
+      "name": "Brukarr",
+      "quantity": 4
+    },
+    {
+      "name": "Saral",
+      "quantity": 3
+    },
+    {
+      "name": "Shadow Step",
+      "quantity": 2
+    },
+    {
+      "name": "Miraculous Draught",
+      "quantity": 2
+    },
+    {
+      "name": "Flashing Blade",
+      "quantity": 2
+    },
+    {
+      "name": "Thunderous Impact",
+      "quantity": 1
+    },
+    {
+      "name": "Shadow Blast",
+      "quantity": 1
+    },
+    {
+      "name": "Radiant Beam",
+      "quantity": 1
+    },
+    {
+      "name": "Arcane Explosion",
+      "quantity": 1
+    },
+    {
+      "name": "Divine Intervention",
+      "quantity": 1
+    },
+    {
+      "name": "Doom Bolt",
+      "quantity": 1
+    },
+    {
+      "name": "Arcane Blast",
+      "quantity": 1
+    }
+  ]
+}

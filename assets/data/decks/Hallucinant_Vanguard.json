@@ -1,0 +1,91 @@
+{
+  "deck_name": "Hallucinant Vanguard",
+  "set": "Hollow End",
+  "vigor": "Spirit",
+  "cards": [
+    {
+      "name": "Wraithcaller",
+      "quantity": 22
+    },
+    {
+      "name": "Burr",
+      "quantity": 2
+    },
+    {
+      "name": "Tador",
+      "quantity": 4
+    },
+    {
+      "name": "Chrevarr",
+      "quantity": 6
+    },
+    {
+      "name": "Hugitrak",
+      "quantity": 6
+    },
+    {
+      "name": "Elyssia",
+      "quantity": 3
+    },
+    {
+      "name": "Malachai",
+      "quantity": 3
+    },
+    {
+      "name": "Serahel",
+      "quantity": 1
+    },
+    {
+      "name": "Frenzy Tonic",
+      "quantity": 1
+    },
+    {
+      "name": "Elixir of Vitality",
+      "quantity": 1
+    },
+    {
+      "name": "Swift Slash",
+      "quantity": 1
+    },
+    {
+      "name": "Axe Throw and Return",
+      "quantity": 1
+    },
+    {
+      "name": "Ragnaroks Wrath",
+      "quantity": 1
+    },
+    {
+      "name": "Doom Cleaver",
+      "quantity": 1
+    },
+    {
+      "name": "Reflective Brew",
+      "quantity": 1
+    },
+    {
+      "name": "Arcane Bolt",
+      "quantity": 1
+    },
+    {
+      "name": "Summon Familiar",
+      "quantity": 1
+    },
+    {
+      "name": "Nature Embrace",
+      "quantity": 1
+    },
+    {
+      "name": "Conjure Shield",
+      "quantity": 1
+    },
+    {
+      "name": "Sneak Attack",
+      "quantity": 1
+    },
+    {
+      "name": "Death Ray",
+      "quantity": 1
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "deck_name": "Frenzied Aetherborn",
+  "set": "Tangled Weave",
+  "vigor": "Greed",
+  "cards": [
+    {
+      "name": "Golddivider",
+      "quantity": 22
+    },
+    {
+      "name": "Eldarian",
+      "quantity": 3
+    },
+    {
+      "name": "Galadriel",
+      "quantity": 6
+    },
+    {
+      "name": "Seraphina",
+      "quantity": 5
+    },
+    {
+      "name": "Evander",
+      "quantity": 3
+    },
+    {
+      "name": "Klanak",
+      "quantity": 4
+    },
+    {
+      "name": "Lirren",
+      "quantity": 4
+    },
+    {
+      "name": "Venomous Spikes",
+      "quantity": 1
+    },
+    {
+      "name": "Lethal Injection",
+      "quantity": 1
+    },
+    {
+      "name": "Major Healing Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Miraculous Draught",
+      "quantity": 1
+    },
+    {
+      "name": "Assassin's Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Minor Healing Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Vanguard Stance",
+      "quantity": 1
+    },
+    {
+      "name": "Soulfire",
+      "quantity": 1
+    },
+    {
+      "name": "Ground Tremor",
+      "quantity": 1
+    },
+    {
+      "name": "Fungal Bloom",
+      "quantity": 1
+    },
+    {
+      "name": "Purification",
+      "quantity": 1
+    },
+    {
+      "name": "Entangling Roots",
+      "quantity": 1
+    },
+    {
+      "name": "Gold Rush",
+      "quantity": 1
+    }
+  ]
+}

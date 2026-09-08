@@ -1,0 +1,75 @@
+{
+  "deck_name": "Entropy’s Crown",
+  "set": "Ash Cycle",
+  "vigor": "Moon",
+  "cards": [
+    {
+      "name": "Nighthorror",
+      "quantity": 22
+    },
+    {
+      "name": "Jerax",
+      "quantity": 5
+    },
+    {
+      "name": "Saral",
+      "quantity": 6
+    },
+    {
+      "name": "Alarion",
+      "quantity": 6
+    },
+    {
+      "name": "Thinn",
+      "quantity": 6
+    },
+    {
+      "name": "Perkin",
+      "quantity": 2
+    },
+    {
+      "name": "Fortitude Elixir",
+      "quantity": 1
+    },
+    {
+      "name": "Ultimate Healing Potion",
+      "quantity": 3
+    },
+    {
+      "name": "Ragnaroks Wrath",
+      "quantity": 1
+    },
+    {
+      "name": "Healing Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Powerful Swing",
+      "quantity": 1
+    },
+    {
+      "name": "Doom Bolt",
+      "quantity": 1
+    },
+    {
+      "name": "Summon Familiar",
+      "quantity": 1
+    },
+    {
+      "name": "Divine Shield",
+      "quantity": 1
+    },
+    {
+      "name": "Execution",
+      "quantity": 1
+    },
+    {
+      "name": "Lava Surge",
+      "quantity": 1
+    },
+    {
+      "name": "Meteor Strike",
+      "quantity": 1
+    }
+  ]
+}

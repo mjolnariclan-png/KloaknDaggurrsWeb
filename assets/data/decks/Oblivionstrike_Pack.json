@@ -1,0 +1,83 @@
+{
+  "deck_name": "Oblivionstrike Pack",
+  "set": "Hollow End",
+  "vigor": "Chaos",
+  "cards": [
+    {
+      "name": "Rifthowler",
+      "quantity": 22
+    },
+    {
+      "name": "Brinoll",
+      "quantity": 2
+    },
+    {
+      "name": "Medric",
+      "quantity": 4
+    },
+    {
+      "name": "Isoldeira",
+      "quantity": 5
+    },
+    {
+      "name": "Serahel",
+      "quantity": 5
+    },
+    {
+      "name": "Garret",
+      "quantity": 2
+    },
+    {
+      "name": "Illen",
+      "quantity": 3
+    },
+    {
+      "name": "Saral",
+      "quantity": 2
+    },
+    {
+      "name": "Bromunt",
+      "quantity": 2
+    },
+    {
+      "name": "Acrobatic Flourish",
+      "quantity": 2
+    },
+    {
+      "name": "Sentinel's Vigilance",
+      "quantity": 1
+    },
+    {
+      "name": "Whirlwind Swing",
+      "quantity": 2
+    },
+    {
+      "name": "Healing Salve",
+      "quantity": 2
+    },
+    {
+      "name": "Apocalypse",
+      "quantity": 1
+    },
+    {
+      "name": "Magma Blast",
+      "quantity": 1
+    },
+    {
+      "name": "Fungal Bloom",
+      "quantity": 1
+    },
+    {
+      "name": "Soul Drain",
+      "quantity": 1
+    },
+    {
+      "name": "Summon Familiar",
+      "quantity": 1
+    },
+    {
+      "name": "Thunderstrike",
+      "quantity": 1
+    }
+  ]
+}

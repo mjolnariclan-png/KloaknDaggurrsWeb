@@ -1,0 +1,95 @@
+{
+  "deck_name": "The Maddened Mass",
+  "set": "Hollow End",
+  "vigor": "Fungus",
+  "cards": [
+    {
+      "name": "Rotspawn",
+      "quantity": 22
+    },
+    {
+      "name": "Fenris",
+      "quantity": 4
+    },
+    {
+      "name": "Thinn",
+      "quantity": 3
+    },
+    {
+      "name": "Jerax",
+      "quantity": 6
+    },
+    {
+      "name": "Chruddith",
+      "quantity": 3
+    },
+    {
+      "name": "Isolde",
+      "quantity": 3
+    },
+    {
+      "name": "Illen",
+      "quantity": 3
+    },
+    {
+      "name": "Hrith",
+      "quantity": 2
+    },
+    {
+      "name": "Hrithius",
+      "quantity": 1
+    },
+    {
+      "name": "Venomous Spikes",
+      "quantity": 1
+    },
+    {
+      "name": "Evasion Draught",
+      "quantity": 1
+    },
+    {
+      "name": "Sword of Flames",
+      "quantity": 1
+    },
+    {
+      "name": "Blade Storm",
+      "quantity": 1
+    },
+    {
+      "name": "Healing Salve",
+      "quantity": 1
+    },
+    {
+      "name": "Acrobatic Flourish",
+      "quantity": 1
+    },
+    {
+      "name": "Ragnaroks Wrath",
+      "quantity": 1
+    },
+    {
+      "name": "Blizzard",
+      "quantity": 1
+    },
+    {
+      "name": "Shadow Step",
+      "quantity": 1
+    },
+    {
+      "name": "Divine Revive",
+      "quantity": 1
+    },
+    {
+      "name": "Frost Nova",
+      "quantity": 1
+    },
+    {
+      "name": "Moonlit Surge",
+      "quantity": 1
+    },
+    {
+      "name": "Fire Dart",
+      "quantity": 1
+    }
+  ]
+}
