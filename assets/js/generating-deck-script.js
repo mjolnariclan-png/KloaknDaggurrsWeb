@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM fully loaded and parsed.");
     const queryParams = new URLSearchParams(window.location.search);
     const cardSet = queryParams.get("card-set") || 'Ash Cycle';
-    const deckSize = parseInt(queryParams.get("deck-size"));
+    const deckSize = parseInt(queryParams.get("deck-size")) || 60; // Default to 60 if not provided
     const vigorType = queryParams.get("vigor-type") || null;
     const mode = queryParams.get("mode") || 'ai';
 
@@ -64,8 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
         generateDeck(deckSize, mode, cardSet, vigorType);
     } else {
         console.error("Invalid deck size.");
-        alert("Invalid deck size. Please enter a deck size between 60 and 100."); // Debugging statement
-        // Optionally, redirect to an error page or handle the error appropriately
-        // window.location.href = "error-page.html"; // Change URL as needed
+        alert("Invalid deck size. Please enter a deck size between 60 and 100.");
+        window.location.href = "index.html";
     }
 });

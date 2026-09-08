@@ -1,7 +1,7 @@
 // Load available decks from API
 async function loadDecks() {
     try {
-        const response = await fetch('/api/decks');
+        const response = await fetch('http://localhost:3005/api/decks');
         const data = await response.json();
         if (data.success) {
             const deckSelect = document.getElementById('deck');
@@ -23,6 +23,11 @@ async function loadDecks() {
 // Load decks when page loads
 document.addEventListener("DOMContentLoaded", loadDecks);
 
+// Back to menu button
+document.getElementById("back-to-menu-btn").addEventListener("click", function() {
+    window.location.href = "index.html";
+});
+
 document.getElementById("deck-selection-form").addEventListener("submit", async function(event) {
     event.preventDefault();
     const deckName = document.getElementById("deck").value;
@@ -38,7 +43,7 @@ document.getElementById("deck-selection-form").addEventListener("submit", async 
 
     try {
         // Load the full deck data from API
-        const response = await fetch(`/api/decks/${encodeURIComponent(deckName)}`);
+        const response = await fetch(`http://localhost:3005/api/decks/${encodeURIComponent(deckName)}`);
         const data = await response.json();
         
         if (data.success) {
@@ -46,8 +51,9 @@ document.getElementById("deck-selection-form").addEventListener("submit", async 
             sessionStorage.setItem('selectedDeck', JSON.stringify(data.deck));
             sessionStorage.setItem('gameMode', mode);
             
-            // Go directly to battlefield
-            const url = `battlefield.html?mode=${mode}`;
+            // Go to loading screen first
+            const deckSize = data.deck.cards ? data.deck.cards.length : 60;
+            const url = `loading.html?mode=${mode}&deck=${encodeURIComponent(deckName)}&deck-size=${deckSize}`;
             window.location.href = url;
         } else {
             alert("Error loading deck: " + data.error);

@@ -1,0 +1,95 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../img/kdbg.png') center/cover no-repeat, linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    background-blend-mode: overlay;
+}
+
+.credits-container {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #ffd700;
+    border-radius: 15px;
+    padding: 40px;
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.credits-container h1 {
+    color: #ffd700;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+.credits-section {
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.credits-section h2 {
+    color: #4ecdc4;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    border-bottom: 1px solid #4a4a6a;
+    padding-bottom: 10px;
+}
+
+.credits-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.credits-section li {
+    color: #fff;
+    padding: 8px 0;
+    font-size: 1.1em;
+    border-bottom: 1px solid rgba(74, 74, 106, 0.3);
+}
+
+.credits-section li:last-child {
+    border-bottom: none;
+}
+
+.credits-footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #ffd700;
+}
+
+.credits-footer p {
+    color: #ffd700;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 12px 30px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn.primary {
+    background: linear-gradient(145deg, #ffd700, #ffcc00);
+    color: #1a1a2e;
+    font-weight: bold;
+}
+
+.btn.primary:hover {
+    background: linear-gradient(145deg, #ffec3b, #ffd700);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}

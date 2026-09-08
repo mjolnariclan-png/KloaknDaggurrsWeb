@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const deckBuilderButton = document.getElementById("deck-builder-btn");
     const optionsButton = document.getElementById("options-btn");
     const creditsButton = document.getElementById("credits-btn");
+    const backToWebsiteButton = document.getElementById("back-to-website-btn");
 
     startGameButton.addEventListener("click", function() {
         // Navigate to deck selection for AI game
@@ -22,11 +23,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
     optionsButton.addEventListener("click", function() {
         // Navigate to the options screen
-        window.location.href = "options.html"; // Change the URL as needed
+        window.location.href = "options.html";
     });
 
     creditsButton.addEventListener("click", function() {
         // Navigate to the credits screen
-        window.location.href = "credits.html"; // Change the URL as needed
+        window.location.href = "credits.html";
+    });
+
+    backToWebsiteButton.addEventListener("click", function() {
+        // Navigate to the main website
+        window.location.href = "https://www.kloakndaggurrs.com";
     });
 });

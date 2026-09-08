@@ -1,0 +1,62 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../img/kdbg.png') center/cover no-repeat, linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    background-blend-mode: overlay;
+}
+
+.loading-container {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #ffd700;
+    border-radius: 15px;
+    padding: 40px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+}
+
+.loading-container h1 {
+    color: #ffd700;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.progress-container {
+    margin: 30px 0;
+}
+
+.progress-bar {
+    background: #1a1a2e;
+    border: 2px solid #4a4a6a;
+    border-radius: 10px;
+    height: 30px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, #4ecdc4, #3db8b0);
+    height: 100%;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+.progress-text {
+    color: #4ecdc4;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#loading-message {
+    color: #aaa;
+    font-size: 1em;
+    margin-top: 20px;
+}

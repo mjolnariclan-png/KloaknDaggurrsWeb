@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Options</title>
+    <link rel="stylesheet" href="../assets/css/options-styles.css">
+</head>
+<body>
+    <div class="options-container">
+        <h1>OPTIONS</h1>
+        
+        <div class="options-section">
+            <h2>Game Settings</h2>
+            <div class="option-item">
+                <label for="battle-speed">Battle Speed:</label>
+                <select id="battle-speed">
+                    <option value="1x">1x (Normal)</option>
+                    <option value="2x">2x (Fast)</option>
+                </select>
+            </div>
+            <div class="option-item">
+                <label for="card-back">Card Back:</label>
+                <select id="card-back">
+                    <option value="default">Default</option>
+                    <option value="dark">Dark Theme</option>
+                    <option value="light">Light Theme</option>
+                </select>
+            </div>
+            <div class="option-item">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="show-tutorials">
+                    <span>Show Tutorials</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="options-section">
+            <h2>Audio Settings</h2>
+            <div class="option-item">
+                <label for="master-volume">Master Volume:</label>
+                <input type="range" id="master-volume" min="0" max="100" value="100">
+            </div>
+            <div class="option-item">
+                <label for="music-volume">Music Volume:</label>
+                <input type="range" id="music-volume" min="0" max="100" value="80">
+            </div>
+            <div class="option-item">
+                <label for="sfx-volume">SFX Volume:</label>
+                <input type="range" id="sfx-volume" min="0" max="100" value="100">
+            </div>
+        </div>
+        
+        <div class="options-buttons">
+            <button id="save-options-btn" class="btn primary">Save Options</button>
+            <button id="back-to-menu-btn" class="btn ghost">Back to Menu</button>
+        </div>
+    </div>
+    
+    <script src="../assets/js/options-script.js"></script>
+</body>
+</html>

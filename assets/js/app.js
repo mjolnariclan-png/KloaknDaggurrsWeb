@@ -687,27 +687,37 @@
   }
 
   function gameBattlefieldPage(){
-    return `<section class="game-section"><iframe src="game/battlefield.html" style="width:100%;height:800px;border:none;"></iframe></section>`;
+    window.location.href = 'game/battlefield.html';
+    return '';
   }
 
   function gameDeckSelectionPage(){
-    return `<section class="game-section"><iframe src="game/deck-selection.html" style="width:100%;height:600px;border:none;"></iframe></section>`;
+    window.location.href = 'game/deck-selection.html';
+    return '';
   }
 
   function gameDeckBuilderPage(){
-    return `<section class="game-section"><iframe src="game/deck-builder.html" style="width:100%;height:600px;border:none;"></iframe></section>`;
+    window.location.href = 'game/deck-builder.html';
+    return '';
+  }
+
+  function gameEntryPage(){
+    return `<section class="page-hero"><p class="eyebrow">BATTLE ARENA</p><h1>MAIN MENU</h1><p>Choose your path.</p><div class="hero-actions"><a class="btn primary" href="game/deck-selection.html?mode=ai">Single Player (vs AI)</a><a class="btn ghost" href="game/deck-selection.html?mode=multiplayer">Multiplayer</a><a class="btn ghost" href="game/deck-builder.html">Test Deck</a><a class="btn ghost" href="game/options.html">Options</a><a class="btn ghost" href="game/credits.html">Credits</a><a class="btn ghost" href="https://www.kloakndaggurrs.com">Return to Website</a></div></section>`;
   }
 
   function gameBoardPage(){
-    return `<section class="game-section"><iframe src="game/game-board.html" style="width:100%;height:600px;border:none;"></iframe></section>`;
+    window.location.href = 'game/game-board.html';
+    return '';
   }
 
   function gameGeneratingDeckPage(){
-    return `<section class="game-section"><iframe src="game/generating-deck.html" style="width:100%;height:600px;border:none;"></iframe></section>`;
+    window.location.href = 'game/generating-deck.html';
+    return '';
   }
 
   function gameMultiplayerPage(){
-    return `<section class="game-section"><iframe src="game/multiplayer.html" style="width:100%;height:800px;border:none;"></iframe></section>`;
+    window.location.href = 'game/multiplayer.html';
+    return '';
   }
 
   function notFound(label="SIGNAL"){
@@ -763,6 +773,7 @@
     else if(p==="contact")app.innerHTML=contactPage();
     else if(p==="admin")app.innerHTML=await adminPage();
     else if(p==="game")app.innerHTML=gamePage();
+    else if(p==="game-entry")app.innerHTML=gameEntryPage();
     else if(p==="game-battlefield")app.innerHTML=gameBattlefieldPage();
     else if(p==="game-deck-selection")app.innerHTML=gameDeckSelectionPage();
     else if(p==="game-deck-builder")app.innerHTML=gameDeckBuilderPage();

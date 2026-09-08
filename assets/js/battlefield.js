@@ -666,7 +666,7 @@ class BattlefieldUI {
             turnNumber: document.querySelector('.turn-number'),
             turnPhase: document.querySelector('.turn-phase'),
             drawCardBtn: document.getElementById('draw-card-btn'),
-            autoPlayVigorBtn = document.getElementById('auto-play-vigor-btn'),
+            autoPlayVigorBtn: document.getElementById('auto-play-vigor-btn'),
             endTurnBtn = document.getElementById('end-turn-btn'),
             quitBtn: document.getElementById('quit-btn'),
             menuBtn = document.getElementById('menu-btn'),

@@ -9,20 +9,18 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('../img/dsbg.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    background: url('../img/kdbg.png') center/cover no-repeat, linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    background-blend-mode: overlay;
 }
 
 .container {
-    background-image: url('../img/csbg.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    padding: 20px;
-    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #ffd700;
+    border-radius: 15px;
+    padding: 40px;
     text-align: center;
+    max-width: 500px;
+    width: 90%;
 }
 
 label, select, input {

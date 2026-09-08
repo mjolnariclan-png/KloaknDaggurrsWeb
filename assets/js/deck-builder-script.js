@@ -1,9 +1,36 @@
-// Load player's decks from their collection
+// Load player's decks from server
 async function loadPlayerDecks() {
     try {
         if (!sessionStorage.getItem('selectedDeck')) {
-            // If no deck selected, load from player's collection
-            const { data: decks, error } = await sb.rpc('get_user_decks');
+            // Load decks from server API
+            const response = await fetch('http://localhost:3005/api/decks');
+            const data = await response.json();
+            
+            if (!data.success) {
+                console.error('Error loading decks:', data.error);
+                document.getElementById('decks-container').innerHTML = '<p>Error loading decks</p>';
+                return;
+            }
+            
+            const container = document.getElementById('decks-container');
+            
+            if (!data.decks || data.decks.length === 0) {
+                container.innerHTML = '<p>No decks available.</p>';
+                return;
+            }
+            
+            container.innerHTML = data.decks.map(deck => `
+                <div class="deck-card" data-deck-name="${deck.name}">
+                    <h3>${deck.name}</h3>
+                    <p>${deck.set} - ${deck.vigor}</p>
+                    <button class="btn primary select-deck-btn" data-deck="${deck.name}">Select Deck</button>
+                </div>
+            `).join('');
+        }
+    } catch (error) {
+        console.error('Error in loadPlayerDecks:', error);
+    }
+}
             
             if (error) {
                 console.error('Error loading decks:', error);
@@ -64,7 +91,7 @@ document.addEventListener('click', async function(e) {
         
         // Load full deck data
         try {
-            const response = await fetch(`/api/decks/${encodeURIComponent(deckName)}`);
+            const response = await fetch(`http://localhost:3005/api/decks/${encodeURIComponent(deckName)}`);
             const data = await response.json();
             
             if (data.success) {
