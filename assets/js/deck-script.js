@@ -102,14 +102,19 @@ document.getElementById("deck-selection-form").addEventListener("submit", async 
         const data = await response.json();
         
         if (data.success) {
-            // Store deck data in sessionStorage for the battlefield
+            // Store deck data in sessionStorage
             sessionStorage.setItem('selectedDeck', JSON.stringify(data.deck));
             sessionStorage.setItem('gameMode', mode);
             
-            // Go to loading screen first
-            const deckSize = data.deck.cards ? data.deck.cards.length : 60;
-            const url = `loading.html?mode=${mode}&deck=${encodeURIComponent(deckName)}&deck-size=${deckSize}`;
-            window.location.href = url;
+            // Multiplayer goes to lobby, AI goes to loading screen
+            if (mode === 'multiplayer') {
+                window.location.href = 'multiplayer.html';
+            } else {
+                // AI mode goes to loading screen
+                const deckSize = data.deck.cards ? data.deck.cards.length : 60;
+                const url = `loading.html?mode=${mode}&deck=${encodeURIComponent(deckName)}&deck-size=${deckSize}`;
+                window.location.href = url;
+            }
         } else {
             alert("Error loading deck: " + data.error);
         }

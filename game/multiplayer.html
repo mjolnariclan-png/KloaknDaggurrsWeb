@@ -950,13 +950,19 @@
 
         // Join lobby
         joinLobbyBtn.addEventListener('click', async () => {
-            const authSession = await window.KD_GAME_AUTH_READY;
-            playerId = authSession.user.id;
-            const defaultName = authSession.user.user_metadata?.display_name || authSession.user.email?.split('@')[0] || 'Player';
-            const playerName = playerNameInput.value || defaultName;
-            lobbyStatus.textContent = 'Joining lobby...';
-            
             try {
+                const authSession = await window.GameAuth.getSession();
+                if (!authSession || !authSession.user) {
+                    lobbyStatus.textContent = 'Please log in first';
+                    lobbyStatus.style.color = 'red';
+                    return;
+                }
+                
+                playerId = authSession.user.id;
+                const defaultName = authSession.user.user_metadata?.display_name || authSession.user.email?.split('@')[0] || 'Player';
+                const playerName = playerNameInput.value || defaultName;
+                lobbyStatus.textContent = 'Joining lobby...';
+                
                 const response = await fetch(`${API_BASE}/join-lobby`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },

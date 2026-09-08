@@ -56,13 +56,8 @@ body {
     margin-bottom: 5px;
 }
 
-.life-count, .opponent-life {
+.scallous-count, .opponent-scallous {
     color: #ff6b6b;
-    font-weight: bold;
-}
-
-.mana-count, .opponent-mana {
-    color: #4ecdc4;
     font-weight: bold;
 }
 

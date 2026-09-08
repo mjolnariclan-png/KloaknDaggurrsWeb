@@ -651,16 +651,13 @@ class BattlefieldUI {
         this.elements = {
             playerHand: document.getElementById('player-hand'),
             playerBattlefield: document.getElementById('player-battlefield'),
-            opponentHand: document.getElementById('opponent-hand'),
             opponentBattlefield: document.getElementById('opponent-battlefield'),
             playerHandZone: document.getElementById('player-hand-zone'),
             handToggle: document.getElementById('hand-toggle'),
             clickOutsideDetector: document.getElementById('click-outside-detector'),
-            playerLife: document.querySelector('.life-count'),
-            playerMana: document.querySelector('.mana-count'),
+            playerScallous: document.querySelector('.scallous-count'),
             playerVigor: document.querySelector('.vigor-count'),
-            opponentLife: document.querySelector('.opponent-life'),
-            opponentMana: document.querySelector('.opponent-mana'),
+            opponentScallous: document.querySelector('.opponent-scallous'),
             opponentVigor: document.querySelector('.opponent-vigor'),
             turnIndicator: document.querySelector('.turn-indicator'),
             turnNumber: document.querySelector('.turn-number'),
@@ -1113,13 +1110,11 @@ class BattlefieldUI {
     
     render() {
         // Update player info
-        this.elements.playerLife.textContent = `Life: ${this.gameState.player.life}`;
-        this.elements.playerMana.textContent = `Mana: ${this.gameState.player.mana}`;
+        this.elements.playerScallous.textContent = `Scallous: ${this.gameState.player.life}`;
         this.elements.playerVigor.textContent = `Vigor: ${this.gameState.calculateMana(this.gameState.player)}`;
         
         // Update opponent info
-        this.elements.opponentLife.textContent = `Life: ${this.gameState.opponent.life}`;
-        this.elements.opponentMana.textContent = `Mana: ${this.gameState.opponent.mana}`;
+        this.elements.opponentScallous.textContent = `Scallous: ${this.gameState.opponent.life}`;
         this.elements.opponentVigor.textContent = `Vigor: ${this.gameState.calculateMana(this.gameState.opponent)}`;
         
         // Update turn info

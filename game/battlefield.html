@@ -15,8 +15,7 @@
         <div class="game-header">
             <div class="player-info">
                 <span class="player-name">Player</span>
-                <span class="life-count">Life: 30</span>
-                <span class="mana-count">Mana: 0</span>
+                <span class="scallous-count">Scallous: 30</span>
                 <span class="vigor-count">Vigor: 0</span>
             </div>
             <div class="turn-info">
@@ -26,26 +25,15 @@
             </div>
             <div class="opponent-info">
                 <span class="opponent-name">Opponent</span>
-                <span class="opponent-life">Life: 30</span>
-                <span class="opponent-mana">Mana: 0</span>
+                <span class="opponent-scallous">Scallous: 30</span>
                 <span class="opponent-vigor">Vigor: 0</span>
             </div>
         </div>
         
-        <!-- Mode Selection -->
-        <div class="mode-selection" id="mode-selection">
-            <button id="ai-mode-btn" class="mode-btn">Play vs AI</button>
-            <button id="twoplayer-mode-btn" class="mode-btn">2 Player Mode</button>
-        </div>
-
         <!-- Main Battlefield Area -->
         <div class="battlefield-container" id="battlefield-container">
-            <!-- Opponent Zones -->
+            <!-- Opponent Battlefield -->
             <div class="opponent-zones">
-                <div class="zone opponent-hand-zone" id="opponent-hand-zone">
-                    <div class="zone-label">Opponent Hand</div>
-                    <div class="zone-content" id="opponent-hand"></div>
-                </div>
                 <div class="zone opponent-battlefield-zone" id="opponent-battlefield-zone">
                     <div class="zone-label">Opponent Battlefield</div>
                     <div class="zone-content" id="opponent-battlefield"></div>
@@ -73,6 +61,12 @@
             <button id="end-turn-btn" class="control-btn">End Turn (Space)</button>
             <button id="quit-btn" class="control-btn">Quit</button>
             <button id="menu-btn" class="control-btn">Return to Menu</button>
+        </div>
+        
+        <!-- Mode Selection -->
+        <div class="mode-selection" id="mode-selection" style="display: none;">
+            <button id="ai-mode-btn" class="mode-btn">Play vs AI</button>
+            <button id="twoplayer-mode-btn" class="mode-btn">2 Player Mode</button>
         </div>
         
         <!-- Timer Display -->
