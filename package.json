@@ -4,9 +4,20 @@
   "version": "1.0.0",
   "description": "Local admin tooling for the Kloak & Daggurrs site (card sync scripts, etc).",
   "scripts": {
-    "sync-cards": "node supabase/sync-cards.js"
+    "sync-cards": "node supabase/sync-cards.js",
+    "start-game": "node server-multiplayer.js",
+    "update-cards": "node upload-manifests.js && node upload-images.js",
+    "update-manifests": "node upload-manifests.js",
+    "update-images": "node upload-images.js",
+    "update-urls": "node update-mongodb-urls.js",
+    "check-data": "node check-mongodb-data.js"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.45.0"
+    "@supabase/supabase-js": "^2.45.0",
+    "cloudinary": "^2.11.0",
+    "express": "^4.19.2",
+    "mongodb": "^7.6.0",
+    "mysql": "^2.18.1"
   }
+}
 }

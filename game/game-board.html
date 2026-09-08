@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Board</title>
+    <link rel="stylesheet" href="../assets/css/game-board-styles.css">
+</head>
+<body>
+    <div class="game-board">
+        <div class="player-area">
+            <h2>Your Hand</h2>
+            <div id="hand"></div>
+            <button id="draw-card-btn">Draw Card</button>
+        </div>
+        <div class="opponent-area">
+            <h2>Opponent's Hand</h2>
+            <div id="opponent-hand"></div>
+            <button id="draw-card-btn">Draw Card</button>
+        </div>
+        <div class="battlefield">
+            <h2>Battlefield</h2>
+            <button onclick="location.href='battlefield.html'">Try Responsive Battlefield</button>
+            <button onclick="location.href='index.html'">Return to Main Menu</button>
+            <div id="battlefield"></div>
+        </div>
+    </div>
+
+    <script type="module" src="../assets/js/game-board.js"></script>
+</body>
+</html>
