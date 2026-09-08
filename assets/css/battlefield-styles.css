@@ -23,7 +23,7 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background: url('dbbg.png') center/cover no-repeat, linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    background: url('../img/dbbg.png') center/cover no-repeat, linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     overflow: hidden;
     max-width: 100%;
     max-height: 100%;

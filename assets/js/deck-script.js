@@ -1,7 +1,7 @@
 // Load available decks from local files
 async function loadDecks() {
     try {
-        const response = await fetch('assets/data/decks');
+        const response = await fetch('../assets/data/decks');
         const text = await response.text();
         const deckFiles = text.split('\n').filter(line => line.endsWith('.json'));
         
@@ -40,7 +40,7 @@ document.getElementById("deck-selection-form").addEventListener("submit", async 
 
     try {
         // Load the full deck data from local file
-        const response = await fetch(`assets/data/decks/${deckName}.json`);
+        const response = await fetch(`../assets/data/decks/${deckName}.json`);
         const deck = await response.json();
         
         // Store deck data in sessionStorage for the battlefield

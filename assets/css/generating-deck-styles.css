@@ -10,14 +10,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('lsbg.png');
+    background-image: url('../img/lsbg.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 #generating-deck-container {
-    background-image: url('pbbg.png');
+    background-image: url('../img/pbbg.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

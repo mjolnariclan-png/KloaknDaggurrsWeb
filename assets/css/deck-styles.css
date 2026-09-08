@@ -9,14 +9,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('dsbg.png');
+    background-image: url('../img/dsbg.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 .container {
-    background-image: url('csbg.png');
+    background-image: url('../img/csbg.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

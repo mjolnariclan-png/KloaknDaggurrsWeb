@@ -683,7 +683,7 @@ const KD = (() => {
   }
 
   function gamePage(){
-    return `<section class="page-hero"><p class="eyebrow">BATTLE ARENA</p><h1>KLOAK & DAGGURRS</h1><p>Enter the battlefield and test your strategic prowess.</p><div class="hero-actions"><a class="btn primary" href="#/game-battlefield">Enter Battlefield</a><a class="btn ghost" href="#/game-deck-selection">Select Deck</a><a class="btn ghost" href="#/game-board">Game Board</a><a class="btn ghost" href="#/game-generating-deck">Generate Deck</a><a class="btn ghost" href="#/game-multiplayer">Multiplayer</a></div></section>`;
+    return `<section class="page-hero"><p class="eyebrow">BATTLE ARENA</p><h1>KLOAK & DAGGURRS</h1><p>Enter the battlefield and test your strategic prowess.</p><div class="hero-actions"><a class="btn primary" href="game/index.html" target="_blank">Enter Game</a></div></section>`;
   }
 
   function gameBattlefieldPage(){
