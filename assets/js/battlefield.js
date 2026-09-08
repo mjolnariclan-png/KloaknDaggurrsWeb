@@ -898,6 +898,44 @@ class BattlefieldUI {
     handleEndTurn() {
         this.gameState.endTurn();
         this.render();
+        
+        // If it's now opponent's turn and not multiplayer, run AI
+        if (!this.gameState.isPlayerTurn && !this.gameState.isTwoPlayer) {
+            setTimeout(() => this.runAITurn(), 1000);
+        }
+    }
+    
+    runAITurn() {
+        if (this.gameState.gameOver || this.gameState.isPlayerTurn) return;
+        
+        // Simple AI: Play all playable vigor cards, then play a creature if possible
+        const opponent = this.gameState.opponent;
+        
+        // Play vigor cards first
+        const vigorCards = opponent.hand.filter(c => c.type === 'vigor');
+        vigorCards.forEach(card => {
+            if (opponent.battlefield.length < 7) {
+                this.gameState.playCard(opponent, card, 'battlefield');
+            }
+        });
+        
+        // Play a creature if we have mana
+        const creatures = opponent.hand.filter(c => c.type === 'creature' && c.manaCost <= opponent.mana);
+        if (creatures.length > 0 && opponent.battlefield.length < 7) {
+            const creature = creatures[0];
+            this.gameState.playCard(opponent, creature, 'battlefield');
+        }
+        
+        // Attack player if we have creatures
+        opponent.battlefield.forEach(creature => {
+            if (creature.type === 'creature' && creature.defense > 0) {
+                this.gameState.attackPlayer(creature, this.gameState.player, opponent);
+            }
+        });
+        
+        // End AI turn
+        this.gameState.endTurn();
+        this.render();
     }
     
     handleResize() {
@@ -1129,13 +1167,6 @@ class BattlefieldUI {
         this.gameState.player.battlefield.forEach(card => {
             const cardEl = this.createCardElement(card, false, false);
             this.elements.playerBattlefield.appendChild(cardEl);
-        });
-        
-        // Render opponent hand (face down)
-        this.elements.opponentHand.innerHTML = '';
-        this.gameState.opponent.hand.forEach(card => {
-            const cardEl = this.createCardElement(card, true, false);
-            this.elements.opponentHand.appendChild(cardEl);
         });
         
         // Render opponent battlefield
