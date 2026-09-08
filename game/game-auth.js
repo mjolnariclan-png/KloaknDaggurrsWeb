@@ -10,20 +10,32 @@
     // Initialize Supabase client
     let supabaseClient;
 
-    if (typeof window.supabase !== 'undefined' && window.supabase) {
-        // Use existing supabase if already loaded
-        supabaseClient = window.supabase;
-    } else {
-        // Create new Supabase client
-        supabaseClient = window.supabase.createClient(
-            KD_CONFIG.supabaseUrl,
-            KD_CONFIG.supabasePublishableKey,
-            { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } }
-        );
+    // Wait for Supabase to be available
+    function initSupabase() {
+        if (typeof window.supabase !== 'undefined' && window.supabase) {
+            // Use existing supabase if already loaded
+            supabaseClient = window.supabase;
+        } else if (typeof createClient !== 'undefined') {
+            // Create new Supabase client
+            supabaseClient = createClient(
+                KD_CONFIG.supabaseUrl,
+                KD_CONFIG.supabasePublishableKey,
+                { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } }
+            );
+        } else {
+            console.error('Supabase not available');
+        }
     }
+
+    // Initialize immediately
+    initSupabase();
 
     // Get current session
     async function getSession() {
+        if (!supabaseClient) {
+            console.error('Supabase client not initialized');
+            return null;
+        }
         const { data: { session }, error } = await supabaseClient.auth.getSession();
         if (error) {
             console.error('Error getting session:', error);
@@ -82,7 +94,9 @@
 
     // Logout
     async function logout() {
-        await supabaseClient.auth.signOut();
+        if (supabaseClient) {
+            await supabaseClient.auth.signOut();
+        }
         window.location.href = 'https://www.kloakndaggurrs.com';
     }
 

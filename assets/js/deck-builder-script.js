@@ -31,23 +31,6 @@ async function loadPlayerDecks() {
         console.error('Error in loadPlayerDecks:', error);
     }
 }
-            
-            if (error) {
-                console.error('Error loading decks:', error);
-                document.getElementById('decks-container').innerHTML = '<p>Error loading decks</p>';
-                return;
-            }
-            
-            const container = document.getElementById('decks-container');
-            
-            if (!decks || decks.length === 0) {
-                container.innerHTML = '<p>No decks in your collection. Redeem deck codes to get started.</p>';
-                return;
-            }
-            
-            container.innerHTML = decks.map(deck => `
-                <div class="deck-card" data-deck-name="${deck.deck_name}">
-                    <h3>${deck.deck_name}</h3>
                     <p>${deck.total_cards} cards</p>
                     <p>Vigor: ${deck.vigor || 'Unknown'}</p>
                     <button class="btn primary select-deck-btn" data-deck="${deck.deck_name}">Select Deck</button>

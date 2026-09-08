@@ -13,7 +13,7 @@ LANGUAGE plpgsql
 SECURITY DEFINER
 AS $$
 DECLARE
-    game_server_url TEXT := 'http://localhost:3005';
+    game_server_url TEXT := 'https://api.kloakndaggurrs.com'; -- Change to your production game server URL
     api_url TEXT;
     response TEXT;
     result JSON;
@@ -69,7 +69,7 @@ $$;
 /*
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
 
-const GAME_SERVER_URL = 'http://localhost:3005';
+const GAME_SERVER_URL = 'https://api.kloakndaggurrs.com'; -- Change to your production game server URL
 
 serve(async (req) => {
   const { set, type, vigorType } = await req.json();
