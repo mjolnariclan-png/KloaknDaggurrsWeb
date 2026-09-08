@@ -63,10 +63,3 @@ document.getElementById("deck-selection-form").addEventListener("submit", async 
         alert("Error loading deck. Please try again.");
     }
 });
-            alert("Error loading deck: " + data.error);
-        }
-    } catch (error) {
-        console.error('Error loading deck:', error);
-        alert("Error loading deck. Please try again.");
-    }
-});
