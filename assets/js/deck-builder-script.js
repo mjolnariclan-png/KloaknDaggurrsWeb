@@ -1,7 +1,42 @@
-// Load player's decks from API (MongoDB)
+// Load user's unlocked factions from Supabase
+async function loadUnlockedFactions() {
+    try {
+        const user = await window.GameAuth.getUser();
+        
+        if (!user) {
+            console.log('User not authenticated, using default factions');
+            return ['First Light', 'Ash Cycle']; // Default fallback for unauthenticated users
+        }
+        
+        const { data, error } = await window.GameAuth.supabase
+            .from('vault_unlocks')
+            .select('faction')
+            .eq('user_id', user.id);
+        
+        if (error) {
+            console.error('Error loading unlocked factions:', error);
+            return ['First Light', 'Ash Cycle']; // Default fallback
+        }
+        
+        if (!data || data.length === 0) {
+            console.log('No unlocked factions found, using defaults');
+            return ['First Light', 'Ash Cycle']; // Default fallback
+        }
+        
+        return data.map(u => u.faction);
+    } catch (error) {
+        console.error('Error loading unlocked factions:', error);
+        return ['First Light', 'Ash Cycle']; // Default fallback
+    }
+}
+
+// Load player's decks from API (MongoDB), filtered by unlocked factions
 async function loadPlayerDecks() {
     try {
         if (!sessionStorage.getItem('selectedDeck')) {
+            const unlockedFactions = await loadUnlockedFactions();
+            console.log('Unlocked factions:', unlockedFactions);
+            
             // Load decks from server API
             const response = await window.GameAuth.authenticatedFetch('/api/decks');
             const data = await response.json();
@@ -12,14 +47,23 @@ async function loadPlayerDecks() {
                 return;
             }
             
+            // Filter decks by unlocked factions
+            const filteredDecks = data.decks.filter(deck => {
+                const deckSet = deck.set.toLowerCase();
+                return unlockedFactions.some(faction => {
+                    const factionLower = faction.toLowerCase();
+                    return deckSet.includes(factionLower) || factionLower.includes(deckSet);
+                });
+            });
+            
             const container = document.getElementById('decks-container');
             
-            if (!data.decks || data.decks.length === 0) {
-                container.innerHTML = '<p>No decks available.</p>';
+            if (!filteredDecks || filteredDecks.length === 0) {
+                container.innerHTML = '<p>No decks available for your unlocked factions.</p>';
                 return;
             }
             
-            container.innerHTML = data.decks.map(deck => `
+            container.innerHTML = filteredDecks.map(deck => `
                 <div class="deck-card" data-deck-name="${deck.name}">
                     <h3>${deck.name}</h3>
                     <p>${deck.set} - ${deck.vigor}</p>
