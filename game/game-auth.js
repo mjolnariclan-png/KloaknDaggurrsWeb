@@ -2,40 +2,16 @@
 // Uses the same Supabase auth as the main website
 
 (function() {
-    const KD_CONFIG = window.KD_CONFIG || {
-        supabaseUrl: 'https://egpujmjpmeuhiostfrnu.supabase.co',
-        supabasePublishableKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVncHVqbWpwbWV1aGlvc3Rmcm51Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyNjY1MzgsImV4cCI6MjEwMDg0MjUzOH0.MMvVnbHo30tCCAprv5CfjwVhLGGO1Bz16-T2y-WReJk'
-    };
+    // Use the Supabase client initialized in the HTML
+    const supabaseClient = window.supabase;
 
-    // Initialize Supabase client
-    let supabaseClient;
-
-    // Wait for Supabase to be available
-    function initSupabase() {
-        if (typeof window.supabase !== 'undefined' && window.supabase) {
-            // Use existing supabase if already loaded
-            supabaseClient = window.supabase;
-        } else if (typeof createClient !== 'undefined') {
-            // Create new Supabase client
-            supabaseClient = createClient(
-                KD_CONFIG.supabaseUrl,
-                KD_CONFIG.supabasePublishableKey,
-                { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } }
-            );
-        } else {
-            console.error('Supabase not available');
-        }
+    if (!supabaseClient) {
+        console.error('Supabase client not found. Make sure it is initialized before loading this script.');
+        return;
     }
-
-    // Initialize immediately
-    initSupabase();
 
     // Get current session
     async function getSession() {
-        if (!supabaseClient) {
-            console.error('Supabase client not initialized');
-            return null;
-        }
         const { data: { session }, error } = await supabaseClient.auth.getSession();
         if (error) {
             console.error('Error getting session:', error);
@@ -94,9 +70,7 @@
 
     // Logout
     async function logout() {
-        if (supabaseClient) {
-            await supabaseClient.auth.signOut();
-        }
+        await supabaseClient.auth.signOut();
         window.location.href = 'https://www.kloakndaggurrs.com';
     }
 
