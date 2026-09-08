@@ -3,7 +3,7 @@ async function loadPlayerDecks() {
     try {
         if (!sessionStorage.getItem('selectedDeck')) {
             // Load decks from server API
-            const response = await fetch('/api/decks');
+            const response = await window.GameAuth.authenticatedFetch('/api/decks');
             const data = await response.json();
             
             if (!data.success) {
@@ -91,7 +91,7 @@ document.addEventListener('click', async function(e) {
         
         // Load full deck data from API (MongoDB + Cloudinary)
         try {
-            const response = await fetch(`/api/decks/${encodeURIComponent(deckName)}`);
+            const response = await window.GameAuth.authenticatedFetch(`/api/decks/${encodeURIComponent(deckName)}`);
             const data = await response.json();
             
             if (data.success) {

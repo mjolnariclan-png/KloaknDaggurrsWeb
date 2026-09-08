@@ -5,6 +5,9 @@
   "main": "server-production.js",
   "scripts": {
     "start": "node server-production.js",
+    "start-game": "node server-multiplayer.js",
+    "migrate-mongodb": "node migrate-mongodb.js",
+    "migrate-decks": "node migrate-decks.js",
     "check": "node --check server-production.js"
   },
   "engines": {

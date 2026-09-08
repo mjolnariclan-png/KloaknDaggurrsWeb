@@ -3,8 +3,14 @@ const path = require('path');
 const fs = require('fs');
 const { MongoClient } = require('mongodb');
 const { v2: cloudinary } = require('cloudinary');
+const { createClient } = require('@supabase/supabase-js');
 const app = express();
 const PORT = process.env.PORT || 3005;
+
+// Supabase Configuration
+const supabaseUrl = process.env.SUPABASE_URL || 'https://egpujmjpmeuhiostfrnu.supabase.co';
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVncHVqbWpwbWV1aGlvc3Rmcm51Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyNjY1MzgsImV4cCI6MjEwMDg0MjUzOH0.MMvVnbHo30tCCAprv5CfjwVhLGGO1Bz16-T2y-WReJk';
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 // MongoDB Connection
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://mjolnariclan17:JuPiTeR2015!@tcg-game-db.ak26dwh.mongodb.net/?appName=tcg-game-db&retryWrites=true&w=majority&tls=true&tlsAllowInvalidCertificates=true&serverSelectionTimeoutMS=5000';
@@ -114,9 +120,20 @@ async function connectToMongoDB() {
 async function createProgressionIndexes() {
     try {
         // Player progression collection
-        const players = db.collection('players');
-        await players.createIndex({ user_id: 1 }, { unique: true });
-        await players.createIndex({ level: 1, prestige: 1 });
+        const playerProgression = db.collection('player_progression');
+        await playerProgression.createIndex({ user_id: 1 }, { unique: true });
+        await playerProgression.createIndex({ level: 1, prestige: 1 });
+        
+        // Prebuilt decks collection
+        const prebuiltDecks = db.collection('prebuilt_decks');
+        await prebuiltDecks.createIndex({ deck_name: 1 }, { unique: true });
+        await prebuiltDecks.createIndex({ set: 1 });
+        
+        // Player decks collection
+        const playerDecks = db.collection('player_decks');
+        await playerDecks.createIndex({ user_id: 1 });
+        await playerDecks.createIndex({ user_id: 1, is_custom: 1 });
+        await playerDecks.createIndex({ created_at: -1 });
         
         // Queue penalties collection
         const penalties = db.collection('queue_penalties');
@@ -206,6 +223,31 @@ app.use((req, res, next) => {
 // Middleware to parse JSON
 app.use(express.json());
 
+// Supabase Token Validation Middleware
+async function validateSupabaseToken(req, res, next) {
+    const authHeader = req.headers.authorization;
+    
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        return res.status(401).json({ success: false, error: 'Missing or invalid authorization header' });
+    }
+    
+    const token = authHeader.substring(7);
+    
+    try {
+        const { data, error } = await supabase.auth.getUser(token);
+        
+        if (error) {
+            return res.status(401).json({ success: false, error: 'Invalid token' });
+        }
+        
+        // Attach user info to request
+        req.user = data.user;
+        next();
+    } catch (error) {
+        return res.status(401).json({ success: false, error: 'Token validation failed' });
+    }
+}
+
 // Serve static files from test game directory
 app.use(express.static(__dirname));
 
@@ -232,36 +274,17 @@ app.get('/api/sets', (req, res) => {
     });
 });
 
-// Get available decks
-app.get('/api/decks', (req, res) => {
+// Get available decks (from MongoDB prebuilt_decks)
+app.get('/api/decks', async (req, res) => {
     try {
-        const fs = require('fs');
-        const path = require('path');
-        const decksDir = path.join(__dirname, 'decks');
+        const prebuiltDecks = db.collection('prebuilt_decks');
+        const decks = await prebuiltDecks.find({}, { projection: { deck_name: 1, set: 1, vigor: 1 } }).toArray();
         
-        if (!fs.existsSync(decksDir)) {
-            return res.json({ success: true, decks: [] });
-        }
-        
-        const deckFiles = fs.readdirSync(decksDir).filter(file => file.endsWith('.json'));
-        const decks = [];
-        
-        deckFiles.forEach(file => {
-            try {
-                const deckPath = path.join(decksDir, file);
-                const deckData = JSON.parse(fs.readFileSync(deckPath, 'utf8'));
-                decks.push({
-                    name: deckData.deck_name,
-                    set: deckData.set,
-                    vigor: deckData.vigor,
-                    file: file
-                });
-            } catch (error) {
-                console.error(`Error reading deck file ${file}:`, error);
-            }
-        });
-        
-        res.json({ success: true, decks });
+        res.json({ success: true, decks: decks.map(d => ({
+            name: d.deck_name,
+            set: d.set,
+            vigor: d.vigor
+        })) });
     } catch (error) {
         console.error('Error loading decks:', error);
         res.json({ success: false, error: error.message, decks: [] });
@@ -272,24 +295,9 @@ app.get('/api/decks', (req, res) => {
 app.get('/api/decks/:deckName', async (req, res) => {
     try {
         const { deckName } = req.params;
-        const fs = require('fs');
-        const path = require('path');
-        const decksDir = path.join(__dirname, 'decks');
+        const prebuiltDecks = db.collection('prebuilt_decks');
         
-        // Find the deck file
-        const deckFiles = fs.readdirSync(decksDir).filter(file => file.endsWith('.json'));
-        let deckData = null;
-        let deckFile = null;
-        
-        for (const file of deckFiles) {
-            const deckPath = path.join(decksDir, file);
-            const data = JSON.parse(fs.readFileSync(deckPath, 'utf8'));
-            if (data.deck_name === deckName) {
-                deckData = data;
-                deckFile = file;
-                break;
-            }
-        }
+        const deckData = await prebuiltDecks.findOne({ deck_name: deckName });
         
         if (!deckData) {
             return res.json({ success: false, error: 'Deck not found' });
@@ -330,6 +338,72 @@ app.get('/api/decks/:deckName', async (req, res) => {
     }
 });
 
+// Create custom deck (with prestige limits)
+app.post('/api/decks/custom', validateSupabaseToken, async (req, res) => {
+    try {
+        const { userId } = req.user;
+        const { deckName, set, vigor, cards } = req.body;
+        
+        const playerProgression = db.collection('player_progression');
+        const player = await playerProgression.findOne({ user_id: userId });
+        
+        if (!player) {
+            return res.json({ success: false, error: 'Player progression not found' });
+        }
+        
+        // Calculate custom deck limit based on prestige
+        let customDeckLimit = 0;
+        if (player.prestige === 0) customDeckLimit = 1;
+        else if (player.prestige === 2) customDeckLimit = 2;
+        else if (player.prestige >= 4) customDeckLimit = 3;
+        
+        // Check existing custom decks
+        const playerDecks = db.collection('player_decks');
+        const existingCustomDecks = await playerDecks.countDocuments({ user_id: userId, is_custom: true });
+        
+        if (existingCustomDecks >= customDeckLimit) {
+            return res.json({ 
+                success: false, 
+                error: `Custom deck limit reached. Prestige ${player.prestige} allows ${customDeckLimit} custom deck(s).` 
+            });
+        }
+        
+        // Create custom deck
+        const newDeck = {
+            user_id: userId,
+            deck_name: deckName,
+            set: set,
+            vigor: vigor,
+            cards: cards,
+            is_custom: true,
+            created_at: new Date(),
+            updated_at: new Date()
+        };
+        
+        await playerDecks.insertOne(newDeck);
+        
+        res.json({ success: true, deck: newDeck });
+    } catch (error) {
+        console.error('Error creating custom deck:', error);
+        res.json({ success: false, error: error.message });
+    }
+});
+
+// Get player's decks (prebuilt + custom)
+app.get('/api/player/:userId/decks', async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const playerDecks = db.collection('player_decks');
+        
+        const decks = await playerDecks.find({ user_id: userId }).sort({ created_at: -1 }).toArray();
+        
+        res.json({ success: true, decks });
+    } catch (error) {
+        console.error('Error getting player decks:', error);
+        res.json({ success: false, error: error.message });
+    }
+});
+
 // Get cards from a specific set
 app.get('/api/cards/:setName', (req, res) => {
     const { setName } = req.params;
@@ -359,6 +433,57 @@ app.get('/api/cards/:setName', (req, res) => {
         cards: cards,
         total: cards.length
     });
+});
+
+// Proxy endpoint for Supabase to query MongoDB cards
+app.get('/api/cards-public', async (req, res) => {
+    try {
+        const { set, type, vigorType } = req.query;
+        
+        let cards = [];
+        
+        if (set) {
+            // Get cards from specific set
+            if (cardManifests[set]) {
+                cards = cardManifests[set].cards;
+            }
+        } else {
+            // Get all cards from all sets
+            Object.values(cardManifests).forEach(manifest => {
+                cards = cards.concat(manifest.cards);
+            });
+        }
+        
+        // Filter by type if specified
+        if (type) {
+            cards = cards.filter(card => card.type && card.type.toLowerCase() === type.toLowerCase());
+        }
+        
+        // Filter by vigor type if specified
+        if (vigorType) {
+            cards = cards.filter(card => {
+                const cardVigor = card.vigor || card.vigor_type;
+                return cardVigor && cardVigor.toLowerCase() === vigorType.toLowerCase();
+            });
+        }
+        
+        // Transform cards for website display (include MongoDB _id)
+        const transformedCards = cards.map(card => ({
+            _id: card._id,
+            name: card.name,
+            type: card.type,
+            vigor: card.vigor || card.vigor_type,
+            rarity: card.rarity,
+            set: set || card.set_name,
+            description: card.description,
+            image: card.standard_path || card.image
+        }));
+        
+        res.json({ success: true, cards: transformedCards, total: transformedCards.length });
+    } catch (error) {
+        console.error('Error fetching public cards:', error);
+        res.json({ success: false, error: error.message, cards: [], total: 0 });
+    }
 });
 
 // Join lobby endpoint
@@ -1284,9 +1409,9 @@ function generateFallbackDeck(player) {
 app.get('/api/player/:userId', async (req, res) => {
     try {
         const { userId } = req.params;
-        const players = db.collection('players');
+        const playerProgression = db.collection('player_progression');
         
-        let player = await players.findOne({ user_id: userId });
+        let player = await playerProgression.findOne({ user_id: userId });
         
         if (!player) {
             // Create new player progression
@@ -1302,7 +1427,7 @@ app.get('/api/player/:userId', async (req, res) => {
                 created_at: new Date(),
                 last_played: new Date()
             };
-            await players.insertOne(player);
+            await playerProgression.insertOne(player);
         }
         
         res.json({ success: true, player });
@@ -1318,8 +1443,8 @@ app.post('/api/player/:userId/xp', async (req, res) => {
         const { userId } = req.params;
         const { xp, mode } = req.body; // mode: 'ai' (50%), 'multiplayer' (100%)
         
-        const players = db.collection('players');
-        const player = await players.findOne({ user_id: userId });
+        const playerProgression = db.collection('player_progression');
+        const player = await playerProgression.findOne({ user_id: userId });
         
         if (!player) {
             return res.json({ success: false, error: 'Player not found' });
@@ -1343,14 +1468,14 @@ app.post('/api/player/:userId/xp', async (req, res) => {
             player.xp_to_next = xpTable[player.level] || 0;
         }
         
-        await players.updateOne(
+        await playerProgression.updateOne(
             { user_id: userId },
             { $set: { 
                 xp: player.xp,
                 total_xp: player.total_xp,
                 level: player.level,
                 xp_to_next: player.xp_to_next,
-                last_played: player.last_played
+                updated_at: new Date()
             }}
         );
         
@@ -1365,8 +1490,8 @@ app.post('/api/player/:userId/xp', async (req, res) => {
 app.post('/api/player/:userId/prestige', async (req, res) => {
     try {
         const { userId } = req.params;
-        const players = db.collection('players');
-        const player = await players.findOne({ user_id: userId });
+        const playerProgression = db.collection('player_progression');
+        const player = await playerProgression.findOne({ user_id: userId });
         
         if (!player) {
             return res.json({ success: false, error: 'Player not found' });
@@ -1386,13 +1511,14 @@ app.post('/api/player/:userId/prestige', async (req, res) => {
         player.xp = 0;
         player.xp_to_next = XP_TABLE[`prestige${player.prestige}`][1];
         
-        await players.updateOne(
+        await playerProgression.updateOne(
             { user_id: userId },
             { $set: { 
                 prestige: player.prestige,
                 level: player.level,
                 xp: player.xp,
-                xp_to_next: player.xp_to_next
+                xp_to_next: player.xp_to_next,
+                updated_at: new Date()
             }}
         );
         
@@ -1411,8 +1537,8 @@ app.post('/api/matchmaking/join', async (req, res) => {
         const { userId, playerName, deck } = req.body;
         
         // Get player progression
-        const players = db.collection('players');
-        const player = await players.findOne({ user_id: userId });
+        const playerProgression = db.collection('player_progression');
+        const player = await playerProgression.findOne({ user_id: userId });
         
         if (!player) {
             return res.json({ success: false, error: 'Player not found' });
