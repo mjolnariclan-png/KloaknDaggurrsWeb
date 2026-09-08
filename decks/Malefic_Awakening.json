@@ -1,0 +1,79 @@
+{
+  "deck_name": "Malefic Awakening",
+  "set": "Etched Power",
+  "vigor": "Earth",
+  "cards": [
+    {
+      "name": "Boulderbinder",
+      "quantity": 22
+    },
+    {
+      "name": "Malachai",
+      "quantity": 6
+    },
+    {
+      "name": "Stotrirk",
+      "quantity": 6
+    },
+    {
+      "name": "Ardis",
+      "quantity": 6
+    },
+    {
+      "name": "Elixir of Sanctuary",
+      "quantity": 1
+    },
+    {
+      "name": "Bulwark Defense",
+      "quantity": 1
+    },
+    {
+      "name": "Dual Wield Flurry",
+      "quantity": 1
+    },
+    {
+      "name": "Frenzy Tonic",
+      "quantity": 1
+    },
+    {
+      "name": "Sword of Flames",
+      "quantity": 1
+    },
+    {
+      "name": "Stalwart Defense",
+      "quantity": 2
+    },
+    {
+      "name": "Ragnaroks Wrath",
+      "quantity": 2
+    },
+    {
+      "name": "Vampiric Touch",
+      "quantity": 2
+    },
+    {
+      "name": "Spore Burst",
+      "quantity": 2
+    },
+    {
+      "name": "Sneak Strike",
+      "quantity": 2
+    },
+    {
+      "name": "Moonbeam",
+      "quantity": 2
+    },
+    {
+      "name": "Volatile Explosion",
+      "quantity": 1
+    },
+    {
+      "name": "Spectral Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Tirk",
+      "quantity": 1
+    }
+  ]
+}

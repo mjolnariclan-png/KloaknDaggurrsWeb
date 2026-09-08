@@ -1,0 +1,83 @@
+{
+  "deck_name": "Frenzyborn Ravagers",
+  "set": "Hidden Truth",
+  "vigor": "Lava",
+  "cards": [
+    {
+      "name": "Infernoholder",
+      "quantity": 22
+    },
+    {
+      "name": "Thetorr",
+      "quantity": 6
+    },
+    {
+      "name": "Evandorin",
+      "quantity": 6
+    },
+    {
+      "name": "Elowenndor",
+      "quantity": 6
+    },
+    {
+      "name": "Isolindria",
+      "quantity": 6
+    },
+    {
+      "name": "Potion of Might",
+      "quantity": 1
+    },
+    {
+      "name": "Berserker Brew",
+      "quantity": 1
+    },
+    {
+      "name": "Doom Cleaver",
+      "quantity": 1
+    },
+    {
+      "name": "Tonic of Ferocity",
+      "quantity": 1
+    },
+    {
+      "name": "Whirlwind Swing",
+      "quantity": 1
+    },
+    {
+      "name": "Precision Stab",
+      "quantity": 1
+    },
+    {
+      "name": "Superior Healing Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Mud Shield",
+      "quantity": 1
+    },
+    {
+      "name": "Mirror Image",
+      "quantity": 1
+    },
+    {
+      "name": "Sunfire Burst",
+      "quantity": 1
+    },
+    {
+      "name": "Toxic Cloud",
+      "quantity": 1
+    },
+    {
+      "name": "Flame Shield",
+      "quantity": 1
+    },
+    {
+      "name": "Rock Slide",
+      "quantity": 1
+    },
+    {
+      "name": "Illen",
+      "quantity": 1
+    }
+  ]
+}

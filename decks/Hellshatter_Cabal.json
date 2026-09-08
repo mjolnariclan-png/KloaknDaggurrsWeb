@@ -1,0 +1,87 @@
+{
+  "deck_name": "Hellshatter Cabal",
+  "set": "Crimson Oath",
+  "vigor": "Moon",
+  "cards": [
+    {
+      "name": "Shadeshaper",
+      "quantity": 22
+    },
+    {
+      "name": "Isabaelin",
+      "quantity": 5
+    },
+    {
+      "name": "Faelan",
+      "quantity": 3
+    },
+    {
+      "name": "Seraphionel",
+      "quantity": 3
+    },
+    {
+      "name": "Zhaddimkk",
+      "quantity": 3
+    },
+    {
+      "name": "Deveris",
+      "quantity": 3
+    },
+    {
+      "name": "Fradel",
+      "quantity": 1
+    },
+    {
+      "name": "Brinaya",
+      "quantity": 4
+    },
+    {
+      "name": "Lenden",
+      "quantity": 2
+    },
+    {
+      "name": "Elysian",
+      "quantity": 1
+    },
+    {
+      "name": "Cleave",
+      "quantity": 4
+    },
+    {
+      "name": "Major Healing Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Fatal Venom",
+      "quantity": 1
+    },
+    {
+      "name": "Minor Healing Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Apocalypse",
+      "quantity": 1
+    },
+    {
+      "name": "Volatile Explosion",
+      "quantity": 1
+    },
+    {
+      "name": "Arcane Shot",
+      "quantity": 1
+    },
+    {
+      "name": "Corruption",
+      "quantity": 1
+    },
+    {
+      "name": "Death Ray",
+      "quantity": 1
+    },
+    {
+      "name": "Entangling Roots",
+      "quantity": 1
+    }
+  ]
+}

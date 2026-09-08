@@ -1,0 +1,79 @@
+{
+  "deck_name": "Chaosfire Battalion",
+  "set": "Hidden Truth",
+  "vigor": "Tar",
+  "cards": [
+    {
+      "name": "Tardivider",
+      "quantity": 22
+    },
+    {
+      "name": "Alaric",
+      "quantity": 4
+    },
+    {
+      "name": "Isolindria",
+      "quantity": 6
+    },
+    {
+      "name": "Tador",
+      "quantity": 1
+    },
+    {
+      "name": "Evandor",
+      "quantity": 4
+    },
+    {
+      "name": "Lorelei",
+      "quantity": 5
+    },
+    {
+      "name": "Dasrin",
+      "quantity": 5
+    },
+    {
+      "name": "Greater Healing Potion",
+      "quantity": 2
+    },
+    {
+      "name": "Sword and Shield Bash",
+      "quantity": 1
+    },
+    {
+      "name": "Divine Justice",
+      "quantity": 1
+    },
+    {
+      "name": "Strength Elixir",
+      "quantity": 2
+    },
+    {
+      "name": "Reflective Brew",
+      "quantity": 1
+    },
+    {
+      "name": "Celestial Blessing",
+      "quantity": 1
+    },
+    {
+      "name": "Whirlwind",
+      "quantity": 1
+    },
+    {
+      "name": "Volatile Explosion",
+      "quantity": 1
+    },
+    {
+      "name": "Shadow Cloak",
+      "quantity": 1
+    },
+    {
+      "name": "Thunderstrike",
+      "quantity": 1
+    },
+    {
+      "name": "Execution",
+      "quantity": 1
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "deck_name": "Whispering Riftbound",
+  "set": "Hollow End",
+  "vigor": "Greed",
+  "cards": [
+    {
+      "name": "Coinholder",
+      "quantity": 22
+    },
+    {
+      "name": "Elysianthia",
+      "quantity": 2
+    },
+    {
+      "name": "Faelan",
+      "quantity": 2
+    },
+    {
+      "name": "Galadrielor",
+      "quantity": 3
+    },
+    {
+      "name": "Femunt",
+      "quantity": 2
+    },
+    {
+      "name": "Seraphina",
+      "quantity": 4
+    },
+    {
+      "name": "Aldarian",
+      "quantity": 5
+    },
+    {
+      "name": "Faelor",
+      "quantity": 2
+    },
+    {
+      "name": "Stuvrith",
+      "quantity": 2
+    },
+    {
+      "name": "Illen",
+      "quantity": 2
+    },
+    {
+      "name": "Thoddirk",
+      "quantity": 1
+    },
+    {
+      "name": "Venomous Laceration",
+      "quantity": 1
+    },
+    {
+      "name": "Berserker Rage",
+      "quantity": 1
+    },
+    {
+      "name": "Deadly Vial",
+      "quantity": 1
+    },
+    {
+      "name": "Reflective Brew",
+      "quantity": 1
+    },
+    {
+      "name": "Silent Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Strength Elixir",
+      "quantity": 1
+    },
+    {
+      "name": "Potion of Precision",
+      "quantity": 1
+    },
+    {
+      "name": "Protective Ward",
+      "quantity": 1
+    },
+    {
+      "name": "Counterattack",
+      "quantity": 1
+    },
+    {
+      "name": "Spectral Blades",
+      "quantity": 1
+    },
+    {
+      "name": "Siphon Life",
+      "quantity": 1
+    },
+    {
+      "name": "Mend Wounds",
+      "quantity": 1
+    },
+    {
+      "name": "Necrotic Blast",
+      "quantity": 1
+    }
+  ]
+}

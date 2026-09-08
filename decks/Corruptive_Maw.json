@@ -1,0 +1,79 @@
+{
+  "deck_name": "Corruptive Maw",
+  "set": "First Light",
+  "vigor": "Fairy",
+  "cards": [
+    {
+      "name": "Moonholder",
+      "quantity": 22
+    },
+    {
+      "name": "Brinoll",
+      "quantity": 3
+    },
+    {
+      "name": "Kodin",
+      "quantity": 6
+    },
+    {
+      "name": "Katemari",
+      "quantity": 3
+    },
+    {
+      "name": "Getras",
+      "quantity": 6
+    },
+    {
+      "name": "Gorinus",
+      "quantity": 5
+    },
+    {
+      "name": "Brukarr",
+      "quantity": 2
+    },
+    {
+      "name": "Evasion Draught",
+      "quantity": 2
+    },
+    {
+      "name": "Reflective Brew",
+      "quantity": 2
+    },
+    {
+      "name": "Blade Storm",
+      "quantity": 1
+    },
+    {
+      "name": "Toxic Mist",
+      "quantity": 1
+    },
+    {
+      "name": "Cleave",
+      "quantity": 1
+    },
+    {
+      "name": "Protective Ward",
+      "quantity": 1
+    },
+    {
+      "name": "Shroud of Darkness",
+      "quantity": 1
+    },
+    {
+      "name": "Greed's Grasp",
+      "quantity": 1
+    },
+    {
+      "name": "Execution",
+      "quantity": 1
+    },
+    {
+      "name": "Spore Burst",
+      "quantity": 1
+    },
+    {
+      "name": "Flame Shield",
+      "quantity": 1
+    }
+  ]
+}

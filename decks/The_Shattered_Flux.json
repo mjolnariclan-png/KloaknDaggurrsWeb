@@ -1,0 +1,103 @@
+{
+  "deck_name": "The Shattered Flux",
+  "set": "Ash Cycle",
+  "vigor": "Lightning",
+  "cards": [
+    {
+      "name": "Voltfang",
+      "quantity": 22
+    },
+    {
+      "name": "Femunt",
+      "quantity": 4
+    },
+    {
+      "name": "Fellhen",
+      "quantity": 2
+    },
+    {
+      "name": "Isabaelle",
+      "quantity": 4
+    },
+    {
+      "name": "Galadrielleth",
+      "quantity": 5
+    },
+    {
+      "name": "Darian",
+      "quantity": 1
+    },
+    {
+      "name": "Elowenya",
+      "quantity": 1
+    },
+    {
+      "name": "Ravith",
+      "quantity": 3
+    },
+    {
+      "name": "Nodrimkk",
+      "quantity": 1
+    },
+    {
+      "name": "Brukarr",
+      "quantity": 1
+    },
+    {
+      "name": "Varmot",
+      "quantity": 3
+    },
+    {
+      "name": "Guardian's Resolve",
+      "quantity": 1
+    },
+    {
+      "name": "Adrenaline Shot",
+      "quantity": 1
+    },
+    {
+      "name": "Cleave",
+      "quantity": 1
+    },
+    {
+      "name": "Mighty Blow",
+      "quantity": 1
+    },
+    {
+      "name": "Swift Slash",
+      "quantity": 1
+    },
+    {
+      "name": "Doom Cleaver",
+      "quantity": 1
+    },
+    {
+      "name": "Whirlwind Swing",
+      "quantity": 1
+    },
+    {
+      "name": "Charge",
+      "quantity": 1
+    },
+    {
+      "name": "Necrotic Blast",
+      "quantity": 1
+    },
+    {
+      "name": "Doom Bolt",
+      "quantity": 1
+    },
+    {
+      "name": "Spectral Blades",
+      "quantity": 1
+    },
+    {
+      "name": "Vampiric Touch",
+      "quantity": 1
+    },
+    {
+      "name": "Whirlwind Attack",
+      "quantity": 1
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "deck_name": "The Outer Rot",
+  "set": "Tangled Weave",
+  "vigor": "Spirit",
+  "cards": [
+    {
+      "name": "Haunthorror",
+      "quantity": 22
+    },
+    {
+      "name": "Bromunt",
+      "quantity": 4
+    },
+    {
+      "name": "Evandorin",
+      "quantity": 5
+    },
+    {
+      "name": "Herin",
+      "quantity": 3
+    },
+    {
+      "name": "Malachai",
+      "quantity": 3
+    },
+    {
+      "name": "Malachon",
+      "quantity": 4
+    },
+    {
+      "name": "Thetorr",
+      "quantity": 2
+    },
+    {
+      "name": "Elarae",
+      "quantity": 1
+    },
+    {
+      "name": "Evanthia",
+      "quantity": 2
+    },
+    {
+      "name": "Deris",
+      "quantity": 1
+    },
+    {
+      "name": "Elixir of Resilience",
+      "quantity": 1
+    },
+    {
+      "name": "Guardian's Resolve",
+      "quantity": 1
+    },
+    {
+      "name": "Adrenaline Shot",
+      "quantity": 1
+    },
+    {
+      "name": "Power Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Elixir of Vitality",
+      "quantity": 1
+    },
+    {
+      "name": "Healing Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Sentinel's Vigilance",
+      "quantity": 1
+    },
+    {
+      "name": "Regeneration",
+      "quantity": 1
+    },
+    {
+      "name": "Celestial Blessing",
+      "quantity": 1
+    },
+    {
+      "name": "Thunderstrike",
+      "quantity": 1
+    },
+    {
+      "name": "Magma Blast",
+      "quantity": 1
+    },
+    {
+      "name": "Arcane Barrier",
+      "quantity": 1
+    },
+    {
+      "name": "Renewal",
+      "quantity": 1
+    }
+  ]
+}

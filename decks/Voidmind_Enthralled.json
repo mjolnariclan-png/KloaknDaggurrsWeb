@@ -1,0 +1,91 @@
+{
+  "deck_name": "Voidmind Enthralled",
+  "set": "Tangled Weave",
+  "vigor": "Fungus",
+  "cards": [
+    {
+      "name": "Shroommancer",
+      "quantity": 22
+    },
+    {
+      "name": "Serahel",
+      "quantity": 3
+    },
+    {
+      "name": "Evanthia",
+      "quantity": 3
+    },
+    {
+      "name": "Klanak",
+      "quantity": 1
+    },
+    {
+      "name": "Thomi",
+      "quantity": 3
+    },
+    {
+      "name": "Elarae",
+      "quantity": 6
+    },
+    {
+      "name": "Lorelindra",
+      "quantity": 3
+    },
+    {
+      "name": "Orananni",
+      "quantity": 1
+    },
+    {
+      "name": "Hrithius",
+      "quantity": 2
+    },
+    {
+      "name": "Zinn",
+      "quantity": 3
+    },
+    {
+      "name": "Miraculous Draught",
+      "quantity": 2
+    },
+    {
+      "name": "Potion of Endurance",
+      "quantity": 1
+    },
+    {
+      "name": "Berserker Brew",
+      "quantity": 2
+    },
+    {
+      "name": "Blade Dance",
+      "quantity": 1
+    },
+    {
+      "name": "Venomous Spikes",
+      "quantity": 1
+    },
+    {
+      "name": "Renewal",
+      "quantity": 1
+    },
+    {
+      "name": "Spiritual Renewal",
+      "quantity": 1
+    },
+    {
+      "name": "Entangling Roots",
+      "quantity": 1
+    },
+    {
+      "name": "Lightning Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Conjure Shield",
+      "quantity": 1
+    },
+    {
+      "name": "Dragons Breath",
+      "quantity": 1
+    }
+  ]
+}

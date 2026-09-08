@@ -1,0 +1,87 @@
+{
+  "deck_name": "Chaotic Convergence",
+  "set": "Ash Cycle",
+  "vigor": "Chaos",
+  "cards": [
+    {
+      "name": "Chaosgiant",
+      "quantity": 22
+    },
+    {
+      "name": "Seraphiel",
+      "quantity": 5
+    },
+    {
+      "name": "Ragnar",
+      "quantity": 2
+    },
+    {
+      "name": "Seraphielia",
+      "quantity": 3
+    },
+    {
+      "name": "Ilren",
+      "quantity": 4
+    },
+    {
+      "name": "Lorelei",
+      "quantity": 2
+    },
+    {
+      "name": "Gorinus",
+      "quantity": 4
+    },
+    {
+      "name": "Herin",
+      "quantity": 5
+    },
+    {
+      "name": "Swift Assassination",
+      "quantity": 1
+    },
+    {
+      "name": "Elixir of Vitality",
+      "quantity": 1
+    },
+    {
+      "name": "Healing Salve",
+      "quantity": 1
+    },
+    {
+      "name": "Quick Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Dual Wield Flurry",
+      "quantity": 2
+    },
+    {
+      "name": "Guardian's Intervention",
+      "quantity": 1
+    },
+    {
+      "name": "Sneak Attack",
+      "quantity": 1
+    },
+    {
+      "name": "Ground Tremor",
+      "quantity": 1
+    },
+    {
+      "name": "Lunar Blessing",
+      "quantity": 1
+    },
+    {
+      "name": "Divine Intervention",
+      "quantity": 1
+    },
+    {
+      "name": "Shadow Cloak",
+      "quantity": 1
+    },
+    {
+      "name": "Shroud of Darkness",
+      "quantity": 1
+    }
+  ]
+}

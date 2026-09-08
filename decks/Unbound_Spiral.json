@@ -1,0 +1,71 @@
+{
+  "deck_name": "Unbound Spiral",
+  "set": "Ash Cycle",
+  "vigor": "Sorcery",
+  "cards": [
+    {
+      "name": "Mysticweaver",
+      "quantity": 22
+    },
+    {
+      "name": "Isabaelle",
+      "quantity": 6
+    },
+    {
+      "name": "Elarae",
+      "quantity": 5
+    },
+    {
+      "name": "Josris",
+      "quantity": 5
+    },
+    {
+      "name": "Faelor",
+      "quantity": 4
+    },
+    {
+      "name": "Elysander",
+      "quantity": 5
+    },
+    {
+      "name": "Thundering Blow",
+      "quantity": 3
+    },
+    {
+      "name": "Deadly Vial",
+      "quantity": 1
+    },
+    {
+      "name": "Blazing Fury",
+      "quantity": 1
+    },
+    {
+      "name": "Turtle Formation",
+      "quantity": 2
+    },
+    {
+      "name": "Shadowsong",
+      "quantity": 1
+    },
+    {
+      "name": "Greed's Grasp",
+      "quantity": 1
+    },
+    {
+      "name": "Arcane Shot",
+      "quantity": 1
+    },
+    {
+      "name": "Holy Light",
+      "quantity": 1
+    },
+    {
+      "name": "Necrotic Blast",
+      "quantity": 1
+    },
+    {
+      "name": "Enchanted Forest",
+      "quantity": 1
+    }
+  ]
+}

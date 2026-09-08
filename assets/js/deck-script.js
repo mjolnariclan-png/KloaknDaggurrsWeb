@@ -1,19 +1,17 @@
-// Load available decks from local files
+// Load available decks from API
 async function loadDecks() {
     try {
-        const response = await fetch('../assets/data/decks');
-        const text = await response.text();
-        const deckFiles = text.split('\n').filter(line => line.endsWith('.json'));
-        
-        const deckSelect = document.getElementById('deck');
-        deckSelect.innerHTML = '<option value="">Select a deck...</option>';
-        
-        for (const file of deckFiles) {
-            const deckName = file.replace('.json', '');
-            const option = document.createElement('option');
-            option.value = deckName;
-            option.textContent = deckName.replace(/_/g, ' ');
-            deckSelect.appendChild(option);
+        const response = await fetch('/api/decks');
+        const data = await response.json();
+        if (data.success) {
+            const deckSelect = document.getElementById('deck');
+            deckSelect.innerHTML = '<option value="">Select a deck...</option>';
+            data.decks.forEach(deck => {
+                const option = document.createElement('option');
+                option.value = deck.name;
+                option.textContent = `${deck.name} (${deck.set} - ${deck.vigor})`;
+                deckSelect.appendChild(option);
+            });
         }
     } catch (error) {
         console.error('Error loading decks:', error);
@@ -39,17 +37,21 @@ document.getElementById("deck-selection-form").addEventListener("submit", async 
     }
 
     try {
-        // Load the full deck data from local file
-        const response = await fetch(`../assets/data/decks/${deckName}.json`);
-        const deck = await response.json();
+        // Load the full deck data from API
+        const response = await fetch(`/api/decks/${encodeURIComponent(deckName)}`);
+        const data = await response.json();
         
-        // Store deck data in sessionStorage for the battlefield
-        sessionStorage.setItem('selectedDeck', JSON.stringify(deck));
-        sessionStorage.setItem('gameMode', mode);
-        
-        // Go directly to battlefield
-        const url = `battlefield.html?mode=${mode}`;
-        window.location.href = url;
+        if (data.success) {
+            // Store deck data in sessionStorage for the battlefield
+            sessionStorage.setItem('selectedDeck', JSON.stringify(data.deck));
+            sessionStorage.setItem('gameMode', mode);
+            
+            // Go directly to battlefield
+            const url = `battlefield.html?mode=${mode}`;
+            window.location.href = url;
+        } else {
+            alert("Error loading deck: " + data.error);
+        }
     } catch (error) {
         console.error('Error loading deck:', error);
         alert("Error loading deck. Please try again.");

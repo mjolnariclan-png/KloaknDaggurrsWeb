@@ -1,0 +1,95 @@
+{
+  "deck_name": "Fractured Thought Swarm",
+  "set": "Hollow End",
+  "vigor": "Sorcery",
+  "cards": [
+    {
+      "name": "Mysticserpent",
+      "quantity": 22
+    },
+    {
+      "name": "Isoldeira",
+      "quantity": 5
+    },
+    {
+      "name": "Bromkk",
+      "quantity": 4
+    },
+    {
+      "name": "Elowenna",
+      "quantity": 4
+    },
+    {
+      "name": "Katemari",
+      "quantity": 2
+    },
+    {
+      "name": "Anda",
+      "quantity": 4
+    },
+    {
+      "name": "Deythorn",
+      "quantity": 4
+    },
+    {
+      "name": "Jerax",
+      "quantity": 1
+    },
+    {
+      "name": "Brigrik",
+      "quantity": 1
+    },
+    {
+      "name": "Quick Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Power Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Brutal Chop",
+      "quantity": 1
+    },
+    {
+      "name": "Armor Tonic",
+      "quantity": 1
+    },
+    {
+      "name": "Shadow Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Healing Salve",
+      "quantity": 1
+    },
+    {
+      "name": "Swift Assassination",
+      "quantity": 1
+    },
+    {
+      "name": "Fireball",
+      "quantity": 1
+    },
+    {
+      "name": "Static Discharge",
+      "quantity": 1
+    },
+    {
+      "name": "Judgment",
+      "quantity": 1
+    },
+    {
+      "name": "Apocalypse",
+      "quantity": 1
+    },
+    {
+      "name": "Divine Intervention",
+      "quantity": 1
+    },
+    {
+      "name": "Chain Spark",
+      "quantity": 1
+    }
+  ]
+}

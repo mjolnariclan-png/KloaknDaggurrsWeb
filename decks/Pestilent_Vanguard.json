@@ -1,0 +1,87 @@
+{
+  "deck_name": "Pestilent Vanguard",
+  "set": "Crimson Oath",
+  "vigor": "Greed",
+  "cards": [
+    {
+      "name": "Treasuredivider",
+      "quantity": 22
+    },
+    {
+      "name": "Thoddirk",
+      "quantity": 3
+    },
+    {
+      "name": "Aeric",
+      "quantity": 6
+    },
+    {
+      "name": "Meirow",
+      "quantity": 5
+    },
+    {
+      "name": "Bavran",
+      "quantity": 3
+    },
+    {
+      "name": "Baka",
+      "quantity": 3
+    },
+    {
+      "name": "Isolindrella",
+      "quantity": 1
+    },
+    {
+      "name": "Evandorin",
+      "quantity": 1
+    },
+    {
+      "name": "Isoldeira",
+      "quantity": 3
+    },
+    {
+      "name": "Tonic of Invincibility",
+      "quantity": 2
+    },
+    {
+      "name": "Berserker Brew",
+      "quantity": 1
+    },
+    {
+      "name": "Thundering Blow",
+      "quantity": 1
+    },
+    {
+      "name": "Venomous Slash",
+      "quantity": 1
+    },
+    {
+      "name": "Elixir of Resilience",
+      "quantity": 2
+    },
+    {
+      "name": "Ethereal Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Flame Shield",
+      "quantity": 1
+    },
+    {
+      "name": "Rejuvenation",
+      "quantity": 1
+    },
+    {
+      "name": "Necrotic Blast",
+      "quantity": 1
+    },
+    {
+      "name": "Radiant Beam",
+      "quantity": 1
+    },
+    {
+      "name": "Blessing of Strength",
+      "quantity": 1
+    }
+  ]
+}

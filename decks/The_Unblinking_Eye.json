@@ -1,0 +1,75 @@
+{
+  "deck_name": "The Unblinking Eye",
+  "set": "Etched Power",
+  "vigor": "Tar",
+  "cards": [
+    {
+      "name": "Sludgegiant",
+      "quantity": 22
+    },
+    {
+      "name": "Lysandor",
+      "quantity": 6
+    },
+    {
+      "name": "Hirsca",
+      "quantity": 5
+    },
+    {
+      "name": "Serahel",
+      "quantity": 4
+    },
+    {
+      "name": "Deveris",
+      "quantity": 6
+    },
+    {
+      "name": "Evandorius",
+      "quantity": 4
+    },
+    {
+      "name": "Power Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Minor Healing Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Tonic of Ferocity",
+      "quantity": 3
+    },
+    {
+      "name": "Assassin's Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Swift Assassination",
+      "quantity": 1
+    },
+    {
+      "name": "Counterattack",
+      "quantity": 1
+    },
+    {
+      "name": "Viscous Slam",
+      "quantity": 1
+    },
+    {
+      "name": "Soul Bond",
+      "quantity": 1
+    },
+    {
+      "name": "Frost Nova",
+      "quantity": 1
+    },
+    {
+      "name": "Life Drain",
+      "quantity": 1
+    },
+    {
+      "name": "Lightning Bolt",
+      "quantity": 1
+    }
+  ]
+}

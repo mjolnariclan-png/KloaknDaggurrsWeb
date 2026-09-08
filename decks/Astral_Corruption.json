@@ -1,0 +1,95 @@
+{
+  "deck_name": "Astral Corruption",
+  "set": "Tangled Weave",
+  "vigor": "Fairy",
+  "cards": [
+    {
+      "name": "Dreamweaver",
+      "quantity": 22
+    },
+    {
+      "name": "Thetorr",
+      "quantity": 4
+    },
+    {
+      "name": "Herin",
+      "quantity": 5
+    },
+    {
+      "name": "Hirsca",
+      "quantity": 6
+    },
+    {
+      "name": "Darielle",
+      "quantity": 1
+    },
+    {
+      "name": "Orananni",
+      "quantity": 2
+    },
+    {
+      "name": "Deythorn",
+      "quantity": 3
+    },
+    {
+      "name": "Elowenya",
+      "quantity": 1
+    },
+    {
+      "name": "Aldariel",
+      "quantity": 3
+    },
+    {
+      "name": "Potion of Might",
+      "quantity": 1
+    },
+    {
+      "name": "Turtle Formation",
+      "quantity": 1
+    },
+    {
+      "name": "Axe Throw and Return",
+      "quantity": 1
+    },
+    {
+      "name": "Armor Tonic",
+      "quantity": 1
+    },
+    {
+      "name": "Blade Dance",
+      "quantity": 1
+    },
+    {
+      "name": "Bulwark Defense",
+      "quantity": 1
+    },
+    {
+      "name": "Reflective Brew",
+      "quantity": 1
+    },
+    {
+      "name": "Spectral Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Vampiric Touch",
+      "quantity": 1
+    },
+    {
+      "name": "Shroud of Darkness",
+      "quantity": 1
+    },
+    {
+      "name": "Mind Control",
+      "quantity": 1
+    },
+    {
+      "name": "Mend Wounds",
+      "quantity": 1
+    },
+    {
+      "name": "Whirlwind",
+      "quantity": 1
+    }
+  ]
+}

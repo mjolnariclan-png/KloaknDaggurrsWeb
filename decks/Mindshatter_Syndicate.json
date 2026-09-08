@@ -1,0 +1,75 @@
+{
+  "deck_name": "Mindshatter Syndicate",
+  "set": "Etched Power",
+  "vigor": "Purity",
+  "cards": [
+    {
+      "name": "Halodivider",
+      "quantity": 22
+    },
+    {
+      "name": "Aricel",
+      "quantity": 6
+    },
+    {
+      "name": "Nalsi",
+      "quantity": 6
+    },
+    {
+      "name": "Isabaelin",
+      "quantity": 6
+    },
+    {
+      "name": "Deris",
+      "quantity": 6
+    },
+    {
+      "name": "Turtle Formation",
+      "quantity": 2
+    },
+    {
+      "name": "Rejuvenating Tonic",
+      "quantity": 1
+    },
+    {
+      "name": "Shield Block",
+      "quantity": 1
+    },
+    {
+      "name": "Draught of Deflection",
+      "quantity": 2
+    },
+    {
+      "name": "Raging Inferno",
+      "quantity": 1
+    },
+    {
+      "name": "Frostbite",
+      "quantity": 1
+    },
+    {
+      "name": "Cleansing Aura",
+      "quantity": 1
+    },
+    {
+      "name": "Poison Cloud",
+      "quantity": 1
+    },
+    {
+      "name": "Divine Intervention",
+      "quantity": 1
+    },
+    {
+      "name": "Treasure Hoard",
+      "quantity": 1
+    },
+    {
+      "name": "Apocalypse",
+      "quantity": 1
+    },
+    {
+      "name": "Aelarionna",
+      "quantity": 1
+    }
+  ]
+}

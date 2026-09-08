@@ -1,0 +1,63 @@
+{
+  "deck_name": "Arcane Havoc Circle",
+  "set": "Tangled Weave",
+  "vigor": "Ocean",
+  "cards": [
+    {
+      "name": "Wavebinder",
+      "quantity": 22
+    },
+    {
+      "name": "Stotrirk",
+      "quantity": 6
+    },
+    {
+      "name": "Evander",
+      "quantity": 6
+    },
+    {
+      "name": "Chran",
+      "quantity": 6
+    },
+    {
+      "name": "Precision Stab",
+      "quantity": 5
+    },
+    {
+      "name": "Cleave",
+      "quantity": 3
+    },
+    {
+      "name": "Minor Healing Potion",
+      "quantity": 3
+    },
+    {
+      "name": "Turtle Formation",
+      "quantity": 2
+    },
+    {
+      "name": "Spectral Blades",
+      "quantity": 2
+    },
+    {
+      "name": "Blessing of Strength",
+      "quantity": 1
+    },
+    {
+      "name": "Tidal Wave",
+      "quantity": 1
+    },
+    {
+      "name": "Celestial Blessing",
+      "quantity": 1
+    },
+    {
+      "name": "Sneak Attack",
+      "quantity": 1
+    },
+    {
+      "name": "Divine Revive",
+      "quantity": 1
+    }
+  ]
+}

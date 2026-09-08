@@ -1,0 +1,103 @@
+{
+  "deck_name": "Spellquake Surge",
+  "set": "Tangled Weave",
+  "vigor": "Chaos",
+  "cards": [
+    {
+      "name": "Warpcrawler",
+      "quantity": 22
+    },
+    {
+      "name": "Elowenya",
+      "quantity": 5
+    },
+    {
+      "name": "Dasrin",
+      "quantity": 2
+    },
+    {
+      "name": "Athron",
+      "quantity": 4
+    },
+    {
+      "name": "Hrith",
+      "quantity": 3
+    },
+    {
+      "name": "Brilk",
+      "quantity": 2
+    },
+    {
+      "name": "Zrunk",
+      "quantity": 2
+    },
+    {
+      "name": "Darian",
+      "quantity": 2
+    },
+    {
+      "name": "Evandorin",
+      "quantity": 2
+    },
+    {
+      "name": "Elysiria",
+      "quantity": 1
+    },
+    {
+      "name": "Givrark",
+      "quantity": 2
+    },
+    {
+      "name": "Venomous Cloud",
+      "quantity": 1
+    },
+    {
+      "name": "Shield Block",
+      "quantity": 1
+    },
+    {
+      "name": "Axe of Doom",
+      "quantity": 1
+    },
+    {
+      "name": "Turtle Formation",
+      "quantity": 1
+    },
+    {
+      "name": "Frenzied Assault",
+      "quantity": 1
+    },
+    {
+      "name": "Bulwark Defense",
+      "quantity": 1
+    },
+    {
+      "name": "Dual Wield Flurry",
+      "quantity": 1
+    },
+    {
+      "name": "Whirlwind Attack",
+      "quantity": 1
+    },
+    {
+      "name": "Chain Lightning",
+      "quantity": 1
+    },
+    {
+      "name": "Evasion",
+      "quantity": 1
+    },
+    {
+      "name": "Moonlit Surge",
+      "quantity": 1
+    },
+    {
+      "name": "Shroud of Darkness",
+      "quantity": 1
+    },
+    {
+      "name": "Meteor Strike",
+      "quantity": 1
+    }
+  ]
+}

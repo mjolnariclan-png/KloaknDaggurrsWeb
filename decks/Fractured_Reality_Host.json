@@ -1,0 +1,87 @@
+{
+  "deck_name": "Fractured Reality Host",
+  "set": "Ash Cycle",
+  "vigor": "Lava",
+  "cards": [
+    {
+      "name": "Ashwarden",
+      "quantity": 22
+    },
+    {
+      "name": "Elysia",
+      "quantity": 2
+    },
+    {
+      "name": "Isolandra",
+      "quantity": 3
+    },
+    {
+      "name": "Aldariel",
+      "quantity": 5
+    },
+    {
+      "name": "Lorelei",
+      "quantity": 3
+    },
+    {
+      "name": "Thetorr",
+      "quantity": 1
+    },
+    {
+      "name": "Stirralk",
+      "quantity": 1
+    },
+    {
+      "name": "Baka",
+      "quantity": 2
+    },
+    {
+      "name": "Galadrielleth",
+      "quantity": 2
+    },
+    {
+      "name": "Tonn",
+      "quantity": 2
+    },
+    {
+      "name": "Dasrin",
+      "quantity": 2
+    },
+    {
+      "name": "Aeric",
+      "quantity": 2
+    },
+    {
+      "name": "Venomous Cloud",
+      "quantity": 2
+    },
+    {
+      "name": "Sword of Flames",
+      "quantity": 5
+    },
+    {
+      "name": "Radiant Beam",
+      "quantity": 1
+    },
+    {
+      "name": "Nature Embrace",
+      "quantity": 1
+    },
+    {
+      "name": "Death Ray",
+      "quantity": 1
+    },
+    {
+      "name": "Arcane Shield",
+      "quantity": 1
+    },
+    {
+      "name": "Lava Surge",
+      "quantity": 1
+    },
+    {
+      "name": "Wrath of the Titans",
+      "quantity": 1
+    }
+  ]
+}

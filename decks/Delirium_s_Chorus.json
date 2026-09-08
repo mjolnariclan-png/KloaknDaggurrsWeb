@@ -1,0 +1,87 @@
+{
+  "deck_name": "Delirium’s Chorus",
+  "set": "Hollow End",
+  "vigor": "Lava",
+  "cards": [
+    {
+      "name": "Ashseeker",
+      "quantity": 22
+    },
+    {
+      "name": "Elowethian",
+      "quantity": 6
+    },
+    {
+      "name": "Kodin",
+      "quantity": 4
+    },
+    {
+      "name": "Thomi",
+      "quantity": 2
+    },
+    {
+      "name": "Galadrielor",
+      "quantity": 6
+    },
+    {
+      "name": "Evandorius",
+      "quantity": 4
+    },
+    {
+      "name": "Orassa",
+      "quantity": 1
+    },
+    {
+      "name": "Alarion",
+      "quantity": 1
+    },
+    {
+      "name": "Alariana",
+      "quantity": 1
+    },
+    {
+      "name": "Elixir of Vitality",
+      "quantity": 3
+    },
+    {
+      "name": "Savage Rampage",
+      "quantity": 1
+    },
+    {
+      "name": "Bulwark Defense",
+      "quantity": 1
+    },
+    {
+      "name": "Sword of Flames",
+      "quantity": 1
+    },
+    {
+      "name": "Frenzy Tonic",
+      "quantity": 1
+    },
+    {
+      "name": "Protective Ward",
+      "quantity": 1
+    },
+    {
+      "name": "Ethereal Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Holy Smite",
+      "quantity": 1
+    },
+    {
+      "name": "Soul Bond",
+      "quantity": 1
+    },
+    {
+      "name": "Dragons Breath",
+      "quantity": 1
+    },
+    {
+      "name": "Gold Rush",
+      "quantity": 1
+    }
+  ]
+}

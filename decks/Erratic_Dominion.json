@@ -1,0 +1,83 @@
+{
+  "deck_name": "Erratic Dominion",
+  "set": "Ash Cycle",
+  "vigor": "Tar",
+  "cards": [
+    {
+      "name": "Tarwarden",
+      "quantity": 22
+    },
+    {
+      "name": "Fradel",
+      "quantity": 4
+    },
+    {
+      "name": "Burr",
+      "quantity": 6
+    },
+    {
+      "name": "Evandor",
+      "quantity": 6
+    },
+    {
+      "name": "Deveris",
+      "quantity": 6
+    },
+    {
+      "name": "Fenris",
+      "quantity": 3
+    },
+    {
+      "name": "Quick Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Dual Wield Flurry",
+      "quantity": 1
+    },
+    {
+      "name": "Thundering Blow",
+      "quantity": 1
+    },
+    {
+      "name": "Reflective Brew",
+      "quantity": 1
+    },
+    {
+      "name": "Elixir of Vitality",
+      "quantity": 1
+    },
+    {
+      "name": "Ragnaroks Wrath",
+      "quantity": 1
+    },
+    {
+      "name": "Power Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Flame Shield",
+      "quantity": 1
+    },
+    {
+      "name": "Meteor Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Thunderclap",
+      "quantity": 1
+    },
+    {
+      "name": "Ice Lance",
+      "quantity": 1
+    },
+    {
+      "name": "Arcane Shield",
+      "quantity": 1
+    },
+    {
+      "name": "Revitalize",
+      "quantity": 1
+    }
+  ]
+}

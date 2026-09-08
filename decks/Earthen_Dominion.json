@@ -1,0 +1,91 @@
+{
+  "deck_name": "Earthen Dominion",
+  "set": "Hollow End",
+  "vigor": "Tar",
+  "cards": [
+    {
+      "name": "Bogserpent",
+      "quantity": 22
+    },
+    {
+      "name": "Hrith",
+      "quantity": 2
+    },
+    {
+      "name": "Alaric",
+      "quantity": 6
+    },
+    {
+      "name": "Bavran",
+      "quantity": 5
+    },
+    {
+      "name": "Alaricor",
+      "quantity": 4
+    },
+    {
+      "name": "Brugoth",
+      "quantity": 1
+    },
+    {
+      "name": "Brinaya",
+      "quantity": 2
+    },
+    {
+      "name": "Zheggonk",
+      "quantity": 1
+    },
+    {
+      "name": "Saral",
+      "quantity": 1
+    },
+    {
+      "name": "Alarion",
+      "quantity": 2
+    },
+    {
+      "name": "Silent Strike",
+      "quantity": 2
+    },
+    {
+      "name": "Deadly Vial",
+      "quantity": 1
+    },
+    {
+      "name": "Armor Tonic",
+      "quantity": 1
+    },
+    {
+      "name": "Elixir of Berserker",
+      "quantity": 3
+    },
+    {
+      "name": "Ice Lance",
+      "quantity": 1
+    },
+    {
+      "name": "Spectral Slash",
+      "quantity": 1
+    },
+    {
+      "name": "Static Discharge",
+      "quantity": 1
+    },
+    {
+      "name": "Solar Flare",
+      "quantity": 1
+    },
+    {
+      "name": "Soul Bond",
+      "quantity": 1
+    },
+    {
+      "name": "Meteor Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Codza",
+      "quantity": 1
+    }
+  ]
+}

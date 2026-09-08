@@ -1,0 +1,71 @@
+{
+  "deck_name": "Stargloom Aberrants",
+  "set": "Etched Power",
+  "vigor": "Lightning",
+  "cards": [
+    {
+      "name": "Sparkfiend",
+      "quantity": 22
+    },
+    {
+      "name": "Burr",
+      "quantity": 6
+    },
+    {
+      "name": "Lysandor",
+      "quantity": 6
+    },
+    {
+      "name": "Isoldeira",
+      "quantity": 6
+    },
+    {
+      "name": "Elysiria",
+      "quantity": 6
+    },
+    {
+      "name": "Draught of Destruction",
+      "quantity": 2
+    },
+    {
+      "name": "Sentinel's Vigilance",
+      "quantity": 3
+    },
+    {
+      "name": "Healing Salve",
+      "quantity": 1
+    },
+    {
+      "name": "Tonic of Ferocity",
+      "quantity": 1
+    },
+    {
+      "name": "Swift Slash",
+      "quantity": 1
+    },
+    {
+      "name": "Searing Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Moonlit Surge",
+      "quantity": 1
+    },
+    {
+      "name": "Blessing of Strength",
+      "quantity": 1
+    },
+    {
+      "name": "Shadow Step",
+      "quantity": 1
+    },
+    {
+      "name": "Fireball",
+      "quantity": 1
+    },
+    {
+      "name": "Earthquake",
+      "quantity": 1
+    }
+  ]
+}

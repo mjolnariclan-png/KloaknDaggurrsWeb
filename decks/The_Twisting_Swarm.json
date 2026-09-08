@@ -1,0 +1,87 @@
+{
+  "deck_name": "The Twisting Swarm",
+  "set": "Crimson Oath",
+  "vigor": "Tar",
+  "cards": [
+    {
+      "name": "Sludgeseeker",
+      "quantity": 22
+    },
+    {
+      "name": "Elyssiana",
+      "quantity": 5
+    },
+    {
+      "name": "Brilk",
+      "quantity": 3
+    },
+    {
+      "name": "Zhork",
+      "quantity": 4
+    },
+    {
+      "name": "Herin",
+      "quantity": 5
+    },
+    {
+      "name": "Elowen",
+      "quantity": 4
+    },
+    {
+      "name": "Atha",
+      "quantity": 4
+    },
+    {
+      "name": "Minor Healing Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Divine Justice",
+      "quantity": 1
+    },
+    {
+      "name": "Venomous Cloud",
+      "quantity": 1
+    },
+    {
+      "name": "Elixir of Resilience",
+      "quantity": 1
+    },
+    {
+      "name": "Ragnaroks Wrath",
+      "quantity": 1
+    },
+    {
+      "name": "Shield of Reflection",
+      "quantity": 1
+    },
+    {
+      "name": "Shadow Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Spectral Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Summon Familiar",
+      "quantity": 1
+    },
+    {
+      "name": "Solar Flare",
+      "quantity": 1
+    },
+    {
+      "name": "Divine Intervention",
+      "quantity": 1
+    },
+    {
+      "name": "Revitalize",
+      "quantity": 1
+    },
+    {
+      "name": "Volatile Explosion",
+      "quantity": 1
+    }
+  ]
+}

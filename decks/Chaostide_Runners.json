@@ -1,0 +1,103 @@
+{
+  "deck_name": "Chaostide Runners",
+  "set": "Eternal Reach",
+  "vigor": "Sun",
+  "cards": [
+    {
+      "name": "Flarecaller",
+      "quantity": 22
+    },
+    {
+      "name": "Brigrik",
+      "quantity": 3
+    },
+    {
+      "name": "Etomunt",
+      "quantity": 2
+    },
+    {
+      "name": "Meidas",
+      "quantity": 1
+    },
+    {
+      "name": "Faelan",
+      "quantity": 2
+    },
+    {
+      "name": "Isabaelin",
+      "quantity": 2
+    },
+    {
+      "name": "Alarionna",
+      "quantity": 4
+    },
+    {
+      "name": "Katemari",
+      "quantity": 4
+    },
+    {
+      "name": "Zhaddimkk",
+      "quantity": 3
+    },
+    {
+      "name": "Hugitrak",
+      "quantity": 3
+    },
+    {
+      "name": "Shield Block",
+      "quantity": 1
+    },
+    {
+      "name": "Powerful Swing",
+      "quantity": 1
+    },
+    {
+      "name": "Skull Crusher",
+      "quantity": 1
+    },
+    {
+      "name": "Deflective Bash",
+      "quantity": 1
+    },
+    {
+      "name": "Turtle Formation",
+      "quantity": 1
+    },
+    {
+      "name": "Cleave",
+      "quantity": 1
+    },
+    {
+      "name": "Minor Healing Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Necrotic Blast",
+      "quantity": 1
+    },
+    {
+      "name": "Viscous Slam",
+      "quantity": 1
+    },
+    {
+      "name": "Sunfire Burst",
+      "quantity": 1
+    },
+    {
+      "name": "Apocalypse",
+      "quantity": 1
+    },
+    {
+      "name": "Shadow Veil",
+      "quantity": 1
+    },
+    {
+      "name": "Celestial Blessing",
+      "quantity": 1
+    },
+    {
+      "name": "Aricel",
+      "quantity": 1
+    }
+  ]
+}

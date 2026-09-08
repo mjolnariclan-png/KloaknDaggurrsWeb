@@ -1,0 +1,95 @@
+{
+  "deck_name": "Mindwarp Dominion",
+  "set": "Hollow End",
+  "vigor": "Purity",
+  "cards": [
+    {
+      "name": "Virtuebinder",
+      "quantity": 22
+    },
+    {
+      "name": "Varmot",
+      "quantity": 1
+    },
+    {
+      "name": "Kotack",
+      "quantity": 3
+    },
+    {
+      "name": "Isabaelle",
+      "quantity": 5
+    },
+    {
+      "name": "Stotrirk",
+      "quantity": 6
+    },
+    {
+      "name": "Perkin",
+      "quantity": 4
+    },
+    {
+      "name": "Zhorrin",
+      "quantity": 3
+    },
+    {
+      "name": "Klarvish",
+      "quantity": 2
+    },
+    {
+      "name": "Potion of Might",
+      "quantity": 1
+    },
+    {
+      "name": "Elixir of Berserker",
+      "quantity": 1
+    },
+    {
+      "name": "Turtle Formation",
+      "quantity": 1
+    },
+    {
+      "name": "Shielding Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Axe Throw and Return",
+      "quantity": 1
+    },
+    {
+      "name": "Ultimate Healing Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Dual Wield Flurry",
+      "quantity": 1
+    },
+    {
+      "name": "Blackout",
+      "quantity": 1
+    },
+    {
+      "name": "Thunderstorm",
+      "quantity": 1
+    },
+    {
+      "name": "Ethereal Form",
+      "quantity": 1
+    },
+    {
+      "name": "Divine Intervention",
+      "quantity": 1
+    },
+    {
+      "name": "Tornado Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Vitality Drain",
+      "quantity": 1
+    },
+    {
+      "name": "Aelarionnara",
+      "quantity": 1
+    }
+  ]
+}

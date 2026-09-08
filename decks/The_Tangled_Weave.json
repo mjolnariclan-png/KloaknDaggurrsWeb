@@ -1,0 +1,119 @@
+{
+  "deck_name": "The Tangled Weave",
+  "set": "Eternal Reach",
+  "vigor": "Spirit",
+  "cards": [
+    {
+      "name": "Hauntbreaker",
+      "quantity": 22
+    },
+    {
+      "name": "Cozda",
+      "quantity": 3
+    },
+    {
+      "name": "Getras",
+      "quantity": 2
+    },
+    {
+      "name": "Isabaelin",
+      "quantity": 1
+    },
+    {
+      "name": "Cyrel",
+      "quantity": 2
+    },
+    {
+      "name": "Elysianthia",
+      "quantity": 1
+    },
+    {
+      "name": "Miranni",
+      "quantity": 2
+    },
+    {
+      "name": "Stuvrith",
+      "quantity": 1
+    },
+    {
+      "name": "Badarr",
+      "quantity": 3
+    },
+    {
+      "name": "Norrin",
+      "quantity": 1
+    },
+    {
+      "name": "Harnar",
+      "quantity": 1
+    },
+    {
+      "name": "Malachon",
+      "quantity": 2
+    },
+    {
+      "name": "Brinoll",
+      "quantity": 3
+    },
+    {
+      "name": "Yevrith",
+      "quantity": 2
+    },
+    {
+      "name": "Madara",
+      "quantity": 1
+    },
+    {
+      "name": "Sword and Shield Bash",
+      "quantity": 1
+    },
+    {
+      "name": "Fatal Venom",
+      "quantity": 1
+    },
+    {
+      "name": "Sentinel's Vigilance",
+      "quantity": 1
+    },
+    {
+      "name": "Blade Dance",
+      "quantity": 1
+    },
+    {
+      "name": "Swift Assassination",
+      "quantity": 1
+    },
+    {
+      "name": "Shadow Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Doom Cleaver",
+      "quantity": 1
+    },
+    {
+      "name": "Magic Missile",
+      "quantity": 1
+    },
+    {
+      "name": "Conjure Shield",
+      "quantity": 1
+    },
+    {
+      "name": "Arcane Shield",
+      "quantity": 1
+    },
+    {
+      "name": "Riposte",
+      "quantity": 1
+    },
+    {
+      "name": "Viscous Slam",
+      "quantity": 1
+    },
+    {
+      "name": "Vitality Drain",
+      "quantity": 1
+    }
+  ]
+}

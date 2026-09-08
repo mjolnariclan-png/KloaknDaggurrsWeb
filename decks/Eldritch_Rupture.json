@@ -1,0 +1,79 @@
+{
+  "deck_name": "Eldritch Rupture",
+  "set": "Etched Power",
+  "vigor": "Sorcery",
+  "cards": [
+    {
+      "name": "Hexhunter",
+      "quantity": 22
+    },
+    {
+      "name": "Chran",
+      "quantity": 6
+    },
+    {
+      "name": "Zhiddalk",
+      "quantity": 6
+    },
+    {
+      "name": "Lorelei",
+      "quantity": 6
+    },
+    {
+      "name": "Athron",
+      "quantity": 6
+    },
+    {
+      "name": "Blade Dance",
+      "quantity": 1
+    },
+    {
+      "name": "Vanguard Stance",
+      "quantity": 1
+    },
+    {
+      "name": "Raging Inferno",
+      "quantity": 1
+    },
+    {
+      "name": "Guardian's Resolve",
+      "quantity": 1
+    },
+    {
+      "name": "Potion of Precision",
+      "quantity": 1
+    },
+    {
+      "name": "Toxic Mist",
+      "quantity": 1
+    },
+    {
+      "name": "Elixir of Sanctuary",
+      "quantity": 2
+    },
+    {
+      "name": "Blizzard",
+      "quantity": 1
+    },
+    {
+      "name": "Tar Trap",
+      "quantity": 1
+    },
+    {
+      "name": "Lightning Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Holy Light",
+      "quantity": 1
+    },
+    {
+      "name": "Fungal Bloom",
+      "quantity": 1
+    },
+    {
+      "name": "Thunderstrike",
+      "quantity": 1
+    }
+  ]
+}

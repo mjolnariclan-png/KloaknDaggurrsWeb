@@ -1,0 +1,103 @@
+{
+  "deck_name": "Pandemonium Heralds",
+  "set": "Golden Flow",
+  "vigor": "Fairy",
+  "cards": [
+    {
+      "name": "Dreamwarden",
+      "quantity": 22
+    },
+    {
+      "name": "Faelor",
+      "quantity": 4
+    },
+    {
+      "name": "Malachai",
+      "quantity": 1
+    },
+    {
+      "name": "Evander",
+      "quantity": 4
+    },
+    {
+      "name": "Femunt",
+      "quantity": 2
+    },
+    {
+      "name": "Evandor",
+      "quantity": 2
+    },
+    {
+      "name": "Hrolgar",
+      "quantity": 3
+    },
+    {
+      "name": "Jarion",
+      "quantity": 3
+    },
+    {
+      "name": "Alarion",
+      "quantity": 3
+    },
+    {
+      "name": "Isabaelin",
+      "quantity": 2
+    },
+    {
+      "name": "Alariana",
+      "quantity": 1
+    },
+    {
+      "name": "Tonic of Ferocity",
+      "quantity": 1
+    },
+    {
+      "name": "Sword of Flames",
+      "quantity": 1
+    },
+    {
+      "name": "Axe of Doom",
+      "quantity": 1
+    },
+    {
+      "name": "Savage Rampage",
+      "quantity": 1
+    },
+    {
+      "name": "Fortitude Elixir",
+      "quantity": 1
+    },
+    {
+      "name": "Ultimate Healing Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Skull Crusher",
+      "quantity": 1
+    },
+    {
+      "name": "Greed's Grasp",
+      "quantity": 1
+    },
+    {
+      "name": "Tremor",
+      "quantity": 1
+    },
+    {
+      "name": "Wrath of the Titans",
+      "quantity": 1
+    },
+    {
+      "name": "Arcane Barrier",
+      "quantity": 1
+    },
+    {
+      "name": "Spiritual Renewal",
+      "quantity": 1
+    },
+    {
+      "name": "Renewal",
+      "quantity": 1
+    }
+  ]
+}

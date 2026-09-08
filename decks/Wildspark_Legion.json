@@ -1,0 +1,99 @@
+{
+  "deck_name": "Wildspark Legion",
+  "set": "Eternal Reach",
+  "vigor": "Purity",
+  "cards": [
+    {
+      "name": "Pureweaver",
+      "quantity": 22
+    },
+    {
+      "name": "Ardis",
+      "quantity": 4
+    },
+    {
+      "name": "Tonn",
+      "quantity": 4
+    },
+    {
+      "name": "Chran",
+      "quantity": 4
+    },
+    {
+      "name": "Isolindor",
+      "quantity": 4
+    },
+    {
+      "name": "Aricelle",
+      "quantity": 2
+    },
+    {
+      "name": "Ravith",
+      "quantity": 1
+    },
+    {
+      "name": "Fellhen",
+      "quantity": 2
+    },
+    {
+      "name": "Pykias",
+      "quantity": 2
+    },
+    {
+      "name": "Stotrirk",
+      "quantity": 2
+    },
+    {
+      "name": "Corrosive Splash",
+      "quantity": 1
+    },
+    {
+      "name": "Guardian's Resolve",
+      "quantity": 1
+    },
+    {
+      "name": "Sword of Flames",
+      "quantity": 1
+    },
+    {
+      "name": "Stalwart Defense",
+      "quantity": 1
+    },
+    {
+      "name": "Potion of Precision",
+      "quantity": 1
+    },
+    {
+      "name": "Deadly Vial",
+      "quantity": 1
+    },
+    {
+      "name": "Elixir of Vitality",
+      "quantity": 1
+    },
+    {
+      "name": "Ice Lance",
+      "quantity": 1
+    },
+    {
+      "name": "Arcane Shield",
+      "quantity": 1
+    },
+    {
+      "name": "Tornado Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Earth Shield",
+      "quantity": 1
+    },
+    {
+      "name": "Shroud of Darkness",
+      "quantity": 1
+    },
+    {
+      "name": "Volcanic Eruption",
+      "quantity": 1
+    }
+  ]
+}

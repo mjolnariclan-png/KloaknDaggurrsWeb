@@ -1,0 +1,71 @@
+{
+  "deck_name": "The Wretched Bloom",
+  "set": "Crimson Oath",
+  "vigor": "Chaos",
+  "cards": [
+    {
+      "name": "Frenzyspirit",
+      "quantity": 22
+    },
+    {
+      "name": "Carirol",
+      "quantity": 6
+    },
+    {
+      "name": "Darielle",
+      "quantity": 6
+    },
+    {
+      "name": "Tonic of Ferocity",
+      "quantity": 1
+    },
+    {
+      "name": "Reflective Brew",
+      "quantity": 1
+    },
+    {
+      "name": "Guardian's Resolve",
+      "quantity": 6
+    },
+    {
+      "name": "Divine Justice",
+      "quantity": 1
+    },
+    {
+      "name": "Strength Elixir",
+      "quantity": 1
+    },
+    {
+      "name": "Acrobatic Flourish",
+      "quantity": 2
+    },
+    {
+      "name": "Bulwark Defense",
+      "quantity": 2
+    },
+    {
+      "name": "Counterattack",
+      "quantity": 2
+    },
+    {
+      "name": "Arcane Shield",
+      "quantity": 2
+    },
+    {
+      "name": "Sunfire Burst",
+      "quantity": 2
+    },
+    {
+      "name": "Lunar Blessing",
+      "quantity": 2
+    },
+    {
+      "name": "Protective Ward",
+      "quantity": 2
+    },
+    {
+      "name": "Sneak Strike",
+      "quantity": 2
+    }
+  ]
+}

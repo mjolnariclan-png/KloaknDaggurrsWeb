@@ -1,0 +1,83 @@
+{
+  "deck_name": "Infernal Cataclysm",
+  "set": "Golden Flow",
+  "vigor": "Sun",
+  "cards": [
+    {
+      "name": "Radiantholder",
+      "quantity": 22
+    },
+    {
+      "name": "Thadiror",
+      "quantity": 2
+    },
+    {
+      "name": "Varmot",
+      "quantity": 4
+    },
+    {
+      "name": "Alarionna",
+      "quantity": 3
+    },
+    {
+      "name": "Zhiddalk",
+      "quantity": 5
+    },
+    {
+      "name": "Nigrock",
+      "quantity": 3
+    },
+    {
+      "name": "Shava",
+      "quantity": 6
+    },
+    {
+      "name": "Evander",
+      "quantity": 2
+    },
+    {
+      "name": "Elixir of Resilience",
+      "quantity": 2
+    },
+    {
+      "name": "Sentinel's Vigilance",
+      "quantity": 2
+    },
+    {
+      "name": "Cleave",
+      "quantity": 1
+    },
+    {
+      "name": "Berserker Brew",
+      "quantity": 1
+    },
+    {
+      "name": "Superior Healing Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Doom Bolt",
+      "quantity": 1
+    },
+    {
+      "name": "Sunfire Burst",
+      "quantity": 1
+    },
+    {
+      "name": "Entangling Roots",
+      "quantity": 1
+    },
+    {
+      "name": "Shadow Cloak",
+      "quantity": 1
+    },
+    {
+      "name": "Spectral Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Mend Wounds",
+      "quantity": 1
+    }
+  ]
+}

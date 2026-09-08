@@ -1,0 +1,87 @@
+{
+  "deck_name": "Cosmic Derangement",
+  "set": "Etched Power",
+  "vigor": "Lava",
+  "cards": [
+    {
+      "name": "Magmahowler",
+      "quantity": 22
+    },
+    {
+      "name": "Brukarr",
+      "quantity": 4
+    },
+    {
+      "name": "Ardis",
+      "quantity": 3
+    },
+    {
+      "name": "Getras",
+      "quantity": 5
+    },
+    {
+      "name": "Seraphina",
+      "quantity": 5
+    },
+    {
+      "name": "Faelorius",
+      "quantity": 5
+    },
+    {
+      "name": "Givrark",
+      "quantity": 3
+    },
+    {
+      "name": "Minor Healing Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Shadow Strike",
+      "quantity": 1
+    },
+    {
+      "name": "Shielding Potion",
+      "quantity": 1
+    },
+    {
+      "name": "Blade Storm",
+      "quantity": 1
+    },
+    {
+      "name": "Last Stand",
+      "quantity": 1
+    },
+    {
+      "name": "Powerful Swing",
+      "quantity": 1
+    },
+    {
+      "name": "Stalwart Defense",
+      "quantity": 1
+    },
+    {
+      "name": "Soulfire",
+      "quantity": 1
+    },
+    {
+      "name": "Shadowmeld",
+      "quantity": 1
+    },
+    {
+      "name": "Counterattack",
+      "quantity": 1
+    },
+    {
+      "name": "Blackout",
+      "quantity": 1
+    },
+    {
+      "name": "Shadow Veil",
+      "quantity": 1
+    },
+    {
+      "name": "Ground Tremor",
+      "quantity": 1
+    }
+  ]
+}
