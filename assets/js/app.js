@@ -683,7 +683,8 @@
   }
 
   function gamePage(){
-    return `<section class="page-hero"><p class="eyebrow">BATTLE ARENA</p><h1>KLOAK & DAGGURRS</h1><p>Enter the battlefield and test your strategic prowess.</p><div class="hero-actions"><a class="btn primary" href="#/game-entry">Enter Game</a></div></section>`;
+    window.location.href = 'game/index.html';
+    return '';
   }
 
   function gameBattlefieldPage(){
@@ -702,7 +703,8 @@
   }
 
   function gameEntryPage(){
-    return `<section class="page-hero"><p class="eyebrow">BATTLE ARENA</p><h1>MAIN MENU</h1><p>Choose your path.</p><div class="hero-actions"><a class="btn primary" href="game/deck-selection.html?mode=ai">Single Player (vs AI)</a><a class="btn ghost" href="game/deck-selection.html?mode=multiplayer">Multiplayer</a><a class="btn ghost" href="game/deck-builder.html">Test Deck</a><a class="btn ghost" href="game/options.html">Options</a><a class="btn ghost" href="game/credits.html">Credits</a><a class="btn ghost" href="https://www.kloakndaggurrs.com">Return to Website</a></div></section>`;
+    window.location.href = 'game/index.html';
+    return '';
   }
 
   function gameBoardPage(){
@@ -773,7 +775,6 @@
     else if(p==="contact")app.innerHTML=contactPage();
     else if(p==="admin")app.innerHTML=await adminPage();
     else if(p==="game")app.innerHTML=gamePage();
-    else if(p==="game-entry")app.innerHTML=gameEntryPage();
     else if(p==="game-battlefield")app.innerHTML=gameBattlefieldPage();
     else if(p==="game-deck-selection")app.innerHTML=gameDeckSelectionPage();
     else if(p==="game-deck-builder")app.innerHTML=gameDeckBuilderPage();

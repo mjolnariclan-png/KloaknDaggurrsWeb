@@ -594,6 +594,17 @@ select {
 .page-hero.compact {
   min-height: 45vh;
 }
+.game-hero {
+  min-height: 58vh;
+  padding: 180px 24px 85px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url('../img/kdbg.png') center/cover no-repeat, linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  background-blend-mode: overlay;
+}
 .page-hero h1 {
   font-size: clamp(3.2rem, 9vw, 7rem);
 }

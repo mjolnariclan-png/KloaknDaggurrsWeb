@@ -1,7 +1,7 @@
 // Load available decks from API
 async function loadDecks() {
     try {
-        const response = await fetch('http://localhost:3005/api/decks');
+        const response = await fetch('/api/decks');
         const data = await response.json();
         if (data.success) {
             const deckSelect = document.getElementById('deck');
@@ -43,7 +43,7 @@ document.getElementById("deck-selection-form").addEventListener("submit", async 
 
     try {
         // Load the full deck data from API
-        const response = await fetch(`http://localhost:3005/api/decks/${encodeURIComponent(deckName)}`);
+        const response = await fetch(`/api/decks/${encodeURIComponent(deckName)}`);
         const data = await response.json();
         
         if (data.success) {

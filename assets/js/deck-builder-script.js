@@ -3,7 +3,7 @@ async function loadPlayerDecks() {
     try {
         if (!sessionStorage.getItem('selectedDeck')) {
             // Load decks from server API
-            const response = await fetch('http://localhost:3005/api/decks');
+            const response = await fetch('/api/decks');
             const data = await response.json();
             
             if (!data.success) {
