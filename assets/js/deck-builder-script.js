@@ -37,8 +37,8 @@ async function loadPlayerDecks() {
             const unlockedFactions = await loadUnlockedFactions();
             console.log('Unlocked factions:', unlockedFactions);
             
-            // Load decks from server API
-            const response = await window.GameAuth.authenticatedFetch('/api/decks');
+            // Use regular fetch for decks (no auth required to view decks)
+            const response = await fetch('/api/decks');
             const data = await response.json();
             
             if (!data.success) {
