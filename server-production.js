@@ -156,43 +156,8 @@ app.use((req,res,next)=>{
 });
 app.use(express.json({limit:'1mb'}));
 app.get('/health',(req,res)=>res.json({ok:true,service:'kloakndaggurrs',database:!!db,uptime:Math.round(process.uptime())}));
-app.use('/assets', express.static(path.join(ROOT,'assets'), {maxAge:'1h'}));
-app.use('/game', express.static(GAME_DIR, {index:'index.html',maxAge:'15m'}));
-app.get('/',(req,res)=>res.sendFile(path.join(ROOT,'index.html')));
-app.get('/index.html',(req,res)=>res.sendFile(path.join(ROOT,'index.html')));
 
-async function requireGameAuth(req,res,next){
-  try{
-    if(!supabase) return res.status(503).json({success:false,error:'Authentication backend not configured'});
-    const h=req.headers.authorization||'';
-    const token=h.startsWith('Bearer ')?h.slice(7):'';
-    if(!token) return res.status(401).json({success:false,error:'Sign in required'});
-    const {data:{user},error}=await supabase.auth.getUser(token);
-    if(error||!user) return res.status(401).json({success:false,error:'Invalid or expired session'});
-    req.authUser=user;
-    if(req.body && Object.prototype.hasOwnProperty.call(req.body,'playerId')) req.body.playerId=user.id;
-    if(req.query && Object.prototype.hasOwnProperty.call(req.query,'playerId')) req.query.playerId=user.id;
-    next();
-  }catch(e){ return res.status(401).json({success:false,error:'Authentication failed'}); }
-}
-app.use('/api', requireGameAuth);
-
-function gameView(game,userId){
-  if(!game) return game;
-  const view=JSON.parse(JSON.stringify(game));
-  const mine=view.players.findIndex(p=>p.id===userId);
-  if(mine>=0){
-    const opp=1-mine;
-    if(view.players[opp]){
-      view.players[opp].hand=(view.players[opp].hand||[]).map(()=>({type:'hidden',name:'Hidden Card'}));
-      view.players[opp].deck=(view.players[opp].deck||[]).map(()=>({type:'hidden'}));
-    }
-    if(view.players[mine]) view.players[mine].deck=(view.players[mine].deck||[]).map(()=>({type:'hidden'}));
-  }
-  return view;
-}
-
-// Get available card sets
+// PUBLIC API ENDPOINTS (no auth required)
 app.get('/api/sets', (req, res) => {
     res.json({
         success: true,
@@ -207,7 +172,7 @@ app.get('/api/sets', (req, res) => {
     });
 });
 
-// Get available decks (from MongoDB prebuilt_decks)
+// Get available decks (from MongoDB prebuilt_decks) - PUBLIC ENDPOINT
 app.get('/api/decks', async (req, res) => {
     try {
         if (!db) {
@@ -254,7 +219,7 @@ app.get('/api/decks', async (req, res) => {
     }
 });
 
-// Get specific deck with full card data from MongoDB
+// Get specific deck with full card data from MongoDB - PUBLIC ENDPOINT
 app.get('/api/decks/:deckName', async (req, res) => {
     try {
         const { deckName } = req.params;
@@ -348,7 +313,7 @@ app.get('/api/decks/:deckName', async (req, res) => {
     }
 });
 
-// Get cards from a specific set
+// Get cards from a specific set - PUBLIC ENDPOINT
 app.get('/api/cards/:setName', (req, res) => {
     const { setName } = req.params;
     const { type, vigorType } = req.query;
@@ -359,12 +324,10 @@ app.get('/api/cards/:setName', (req, res) => {
 
     let cards = cardManifests[setName].cards;
 
-    // Filter by type if specified
     if (type) {
         cards = cards.filter(card => card.type.toLowerCase() === type.toLowerCase());
     }
 
-    // Filter by vigor type if specified
     if (vigorType) {
         cards = cards.filter(card => {
             const cardVigor = card.vigor || card.vigor_type;
@@ -379,34 +342,7 @@ app.get('/api/cards/:setName', (req, res) => {
     });
 });
 
-// Join lobby endpoint
-app.post('/api/join-lobby', (req, res) => {
-    const { playerId, playerName } = req.body;
-    
-    console.log(`Player ${playerName} (${playerId}) joining lobby`);
-    
-    // Check if player is already in lobby
-    const existingPlayer = lobbyPlayers.find(p => p.id === playerId);
-    if (existingPlayer) {
-        existingPlayer.name = playerName || existingPlayer.name;
-        existingPlayer.lastSeen = Date.now();
-    } else {
-        lobbyPlayers.push({
-            id: playerId,
-            name: playerName || 'Waiting Player',
-            lastSeen: Date.now()
-        });
-    }
-    
-    res.json({
-        success: true,
-        message: 'Joined lobby successfully'
-    });
-    
-    console.log(`Lobby players: ${lobbyPlayers.length}`);
-});
-
-// Proxy endpoint for Supabase to query MongoDB cards
+// Proxy endpoint for Supabase to query MongoDB cards - PUBLIC ENDPOINT
 app.get('/api/cards-public', async (req, res) => {
     try {
         const { set, type, vigorType } = req.query;
@@ -452,7 +388,52 @@ app.get('/api/cards-public', async (req, res) => {
     }
 });
 
-// Get lobby players endpoint
+app.use('/assets', express.static(path.join(ROOT,'assets'), {maxAge:'1h'}));
+app.use('/game', express.static(GAME_DIR, {index:'index.html',maxAge:'15m'}));
+app.get('/',(req,res)=>res.sendFile(path.join(ROOT,'index.html')));
+app.get('/index.html',(req,res)=>res.sendFile(path.join(ROOT,'index.html')));
+
+async function requireGameAuth(req,res,next){
+  try{
+    if(!supabase) return res.status(503).json({success:false,error:'Authentication backend not configured'});
+    const h=req.headers.authorization||'';
+    const token=h.startsWith('Bearer ')?h.slice(7):'';
+    if(!token) return res.status(401).json({success:false,error:'Sign in required'});
+    const {data:{user},error}=await supabase.auth.getUser(token);
+    if(error||!user) return res.status(401).json({success:false,error:'Invalid or expired session'});
+    req.authUser=user;
+    if(req.body && Object.prototype.hasOwnProperty.call(req.body,'playerId')) req.body.playerId=user.id;
+    if(req.query && Object.prototype.hasOwnProperty.call(req.query,'playerId')) req.query.playerId=user.id;
+    next();
+  }catch(e){ return res.status(401).json({success:false,error:'Authentication failed'}); }
+}
+
+// Auth middleware for protected game API endpoints
+app.use('/api/player', requireGameAuth);
+app.use('/api/matchmaking', requireGameAuth);
+app.use('/api/match', requireGameAuth);
+app.use('/api/decks/custom', requireGameAuth);
+
+function gameView(game,userId){
+  if(!game) return game;
+  const view=JSON.parse(JSON.stringify(game));
+  const mine=view.players.findIndex(p=>p.id===userId);
+  if(mine>=0){
+    const opp=1-mine;
+    if(view.players[opp]){
+      view.players[opp].hand=(view.players[opp].hand||[]).map(()=>({type:'hidden',name:'Hidden Card'}));
+      view.players[opp].deck=(view.players[opp].deck||[]).map(()=>({type:'hidden'}));
+    }
+    if(view.players[mine]) view.players[mine].deck=(view.players[mine].deck||[]).map(()=>({type:'hidden'}));
+  }
+  return view;
+}
+
+
+
+
+
+// Join lobby endpoint
 app.get('/api/lobby-players', (req, res) => {
     // Remove players who haven't been seen in 30 seconds
     const now = Date.now();

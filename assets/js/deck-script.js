@@ -8,9 +8,10 @@ async function loadUnlockedFactions() {
             return ['First Light', 'Ash Cycle']; // Default fallback for unauthenticated users
         }
         
+        // Try to load from vault_unlocks table
         const { data, error } = await window.GameAuth.supabase
             .from('vault_unlocks')
-            .select('faction')
+            .select('*')
             .eq('user_id', user.id);
         
         if (error) {
@@ -23,7 +24,8 @@ async function loadUnlockedFactions() {
             return ['First Light', 'Ash Cycle']; // Default fallback
         }
         
-        return data.map(u => u.faction);
+        // Extract faction from whatever column exists
+        return data.map(u => u.faction || u.unlock_id || u.name || 'Unknown');
     } catch (error) {
         console.error('Error loading unlocked factions:', error);
         return ['First Light', 'Ash Cycle']; // Default fallback
