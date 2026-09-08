@@ -40,19 +40,23 @@
                 </div>
             </div>
 
-            <!-- Player Zones -->
+            <!-- Player Battlefield -->
             <div class="player-zones">
                 <div class="zone player-battlefield-zone" id="player-battlefield-zone">
                     <div class="zone-label">Your Battlefield</div>
                     <div class="zone-content" id="player-battlefield"></div>
                 </div>
-                <div class="zone player-hand-zone" id="player-hand-zone">
-                    <button class="hand-toggle" id="hand-toggle">+</button>
-                    <div class="zone-label">Your Hand</div>
-                    <div class="zone-content" id="player-hand"></div>
-                </div>
             </div>
         </div>
+
+        <!-- Player Hand Overlay (hidden by default) -->
+        <div class="zone player-hand-zone" id="player-hand-zone">
+            <div class="zone-label">Your Hand</div>
+            <div class="zone-content" id="player-hand"></div>
+        </div>
+
+        <!-- Hand Toggle Button -->
+        <button class="hand-toggle" id="hand-toggle">Hand</button>
 
         <!-- Game Controls -->
         <div class="game-controls">
@@ -79,9 +83,6 @@
             ⚠️ Cross-bracket match detected
         </div>
     </div>
-
-    <!-- Click outside detector for hand expansion -->
-    <div class="click-outside-detector" id="click-outside-detector"></div>
 
     <script type="module" src="../assets/js/battlefield.js"></script>
 </body>

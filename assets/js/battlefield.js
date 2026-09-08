@@ -654,7 +654,6 @@ class BattlefieldUI {
             opponentBattlefield: document.getElementById('opponent-battlefield'),
             playerHandZone: document.getElementById('player-hand-zone'),
             handToggle: document.getElementById('hand-toggle'),
-            clickOutsideDetector: document.getElementById('click-outside-detector'),
             playerScallous: document.querySelector('.scallous-count'),
             playerVigor: document.querySelector('.vigor-count'),
             opponentScallous: document.querySelector('.opponent-scallous'),
@@ -674,8 +673,6 @@ class BattlefieldUI {
             timerCountdown: document.getElementById('timer-countdown'),
             crossBracketNotification: document.getElementById('cross-bracket-notification')
         };
-        
-        this.isHandExpanded = false;
     }
     
     setupEventListeners() {
@@ -691,11 +688,8 @@ class BattlefieldUI {
         this.elements.aiModeBtn.addEventListener('click', () => this.setGameMode('ai'));
         this.elements.twoPlayerModeBtn.addEventListener('click', () => this.setGameMode('twoplayer'));
         
-        // Hand expansion toggle
-        this.elements.handToggle.addEventListener('click', () => this.toggleHandExpansion());
-        
-        // Click outside detector
-        this.elements.clickOutsideDetector.addEventListener('click', () => this.toggleHandExpansion());
+        // Hand toggle
+        this.elements.handToggle.addEventListener('click', () => this.toggleHandVisibility());
         
         // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
@@ -705,8 +699,8 @@ class BattlefieldUI {
                 e.preventDefault();
                 this.handleEndTurn();
             } else if (e.key === 'Escape') {
-                if (this.isHandExpanded) {
-                    this.toggleHandExpansion();
+                if (this.elements.playerHandZone.classList.contains('visible')) {
+                    this.toggleHandVisibility();
                 } else {
                     window.location.href = 'index.html';
                 }
@@ -914,17 +908,16 @@ class BattlefieldUI {
         console.log('Window resized');
     }
     
-    toggleHandExpansion() {
-        this.isHandExpanded = !this.isHandExpanded;
+    toggleHandVisibility() {
+        const handZone = this.elements.playerHandZone;
+        const handToggle = this.elements.handToggle;
         
-        if (this.isHandExpanded) {
-            this.elements.playerHandZone.classList.add('expanded');
-            this.elements.handToggle.textContent = '−';
-            this.elements.clickOutsideDetector.classList.add('active');
+        if (handZone.classList.contains('visible')) {
+            handZone.classList.remove('visible');
+            handToggle.textContent = 'Hand';
         } else {
-            this.elements.playerHandZone.classList.remove('expanded');
-            this.elements.handToggle.textContent = '+';
-            this.elements.clickOutsideDetector.classList.remove('active');
+            handZone.classList.add('visible');
+            handToggle.textContent = 'Close';
         }
     }
     

@@ -173,23 +173,14 @@ body {
     justify-content: center;
 }
 
-/* Portrait Layout (default) */
+/* Horizontal Layout */
 .opponent-zones, .player-zones {
     flex: 1;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
     overflow: hidden;
     padding: 10px;
-}
-
-.opponent-hand-zone, .player-hand-zone {
-    flex: 0 0 auto;
-    min-height: 60px;
-    max-height: 120px;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
 }
 
 .opponent-battlefield-zone, .player-battlefield-zone {
@@ -198,7 +189,9 @@ body {
     overflow: hidden;
 }
 
-.player-hand-zone.expanded {
+/* Player Hand Zone - Hidden by default, shown with button */
+.player-hand-zone {
+    display: none;
     position: fixed;
     bottom: 0;
     left: 50%;
@@ -211,83 +204,51 @@ body {
     background: rgba(0, 0, 0, 0.95);
     border: 3px solid #ffd700;
     box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+    flex-direction: column;
 }
 
-.player-hand-zone.expanded .zone-content {
+.player-hand-zone.visible {
+    display: flex;
+}
+
+.player-hand-zone .zone-content {
     overflow-y: auto;
     justify-content: flex-start;
     padding: 20px;
 }
 
-.player-hand-zone.expanded .zone-label {
+.player-hand-zone .zone-label {
     font-size: 1.2em;
     padding: 12px;
 }
 
+/* Hand Toggle Button in bottom right */
 .hand-toggle {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background: rgba(255, 215, 0, 0.8);
-    color: #1a1a2e;
-    border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(145deg, #4a4a6a, #3a3a5a);
+    color: #ffd700;
+    border: 2px solid #ffd700;
+    border-radius: 8px;
+    padding: 12px 24px;
     cursor: pointer;
     font-weight: bold;
-    font-size: 1.2em;
-    z-index: 10;
+    font-size: 1em;
+    z-index: 100;
     transition: all 0.2s ease;
 }
 
 .hand-toggle:hover {
-    background: #ffd700;
-    transform: scale(1.1);
-}
-
-.click-outside-detector {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    display: none;
-}
-
-.click-outside-detector.active {
-    display: block;
+    background: linear-gradient(145deg, #5a5a7a, #4a4a6a);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
 }
 
 .opponent-battlefield-zone, .player-battlefield-zone {
     flex: 1;
     min-height: 200px;
 }
-
-/* Landscape Layout */
-@media (orientation: landscape) {
-    .battlefield-container {
-        flex-direction: row;
-    }
-    
-    .opponent-zones, .player-zones {
-        flex: 1;
-        flex-direction: row;
-    }
-    
-    .opponent-hand-zone, .player-hand-zone {
-        flex: 0 0 auto;
-        min-width: 150px;
-        max-width: 200px;
-        min-height: auto;
-        max-height: none;
-    }
-    
-    .opponent-battlefield-zone, .player-battlefield-zone {
-        flex: 1;
-        min-width: 200px;
         min-height: auto;
     }
     
