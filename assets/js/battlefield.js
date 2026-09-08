@@ -667,15 +667,15 @@ class BattlefieldUI {
             turnPhase: document.querySelector('.turn-phase'),
             drawCardBtn: document.getElementById('draw-card-btn'),
             autoPlayVigorBtn: document.getElementById('auto-play-vigor-btn'),
-            endTurnBtn = document.getElementById('end-turn-btn'),
+            endTurnBtn: document.getElementById('end-turn-btn'),
             quitBtn: document.getElementById('quit-btn'),
-            menuBtn = document.getElementById('menu-btn'),
+            menuBtn: document.getElementById('menu-btn'),
             modeSelection: document.getElementById('mode-selection'),
-            aiModeBtn = document.getElementById('ai-mode-btn'),
-            twoPlayerModeBtn = document.getElementById('twoplayer-mode-btn'),
+            aiModeBtn: document.getElementById('ai-mode-btn'),
+            twoPlayerModeBtn: document.getElementById('twoplayer-mode-btn'),
             timerDisplay: document.getElementById('timer-display'),
-            timerCountdown = document.getElementById('timer-countdown'),
-            crossBracketNotification = document.getElementById('cross-bracket-notification')
+            timerCountdown: document.getElementById('timer-countdown'),
+            crossBracketNotification: document.getElementById('cross-bracket-notification')
         };
         
         this.isHandExpanded = false;
@@ -890,19 +890,20 @@ class BattlefieldUI {
     }
     
     setGameMode(mode) {
-        this.gameState.isTwoPlayer = (mode === 'twoplayer');
+        // Multiplayer goes to the online lobby to find other players
+        if (mode === 'twoplayer') {
+            window.location.href = 'multiplayer.html';
+            return;
+        }
+        
+        this.gameState.isTwoPlayer = false;
         
         // Update button states
         this.elements.aiModeBtn.classList.remove('active');
         this.elements.twoPlayerModeBtn.classList.remove('active');
+        this.elements.aiModeBtn.classList.add('active');
         
-        if (mode === 'ai') {
-            this.elements.aiModeBtn.classList.add('active');
-        } else {
-            this.elements.twoPlayerModeBtn.classList.add('active');
-        }
-        
-        console.log(`Game mode set to: ${mode}`);
+        console.log('Game mode set to: ai');
         this.render();
     }
     
