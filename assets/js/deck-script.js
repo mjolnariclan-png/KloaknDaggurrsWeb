@@ -1,4 +1,4 @@
-// Load available decks from API
+// Load available decks from API (MongoDB)
 async function loadDecks() {
     try {
         const response = await fetch('/api/decks');
@@ -42,7 +42,7 @@ document.getElementById("deck-selection-form").addEventListener("submit", async 
     }
 
     try {
-        // Load the full deck data from API
+        // Load the full deck data from API (MongoDB + Cloudinary)
         const response = await fetch(`/api/decks/${encodeURIComponent(deckName)}`);
         const data = await response.json();
         
@@ -56,6 +56,13 @@ document.getElementById("deck-selection-form").addEventListener("submit", async 
             const url = `loading.html?mode=${mode}&deck=${encodeURIComponent(deckName)}&deck-size=${deckSize}`;
             window.location.href = url;
         } else {
+            alert("Error loading deck: " + data.error);
+        }
+    } catch (error) {
+        console.error('Error loading deck:', error);
+        alert("Error loading deck. Please try again.");
+    }
+});
             alert("Error loading deck: " + data.error);
         }
     } catch (error) {

@@ -1,4 +1,4 @@
-// Load player's decks from server
+// Load player's decks from API (MongoDB)
 async function loadPlayerDecks() {
     try {
         if (!sessionStorage.getItem('selectedDeck')) {
@@ -89,9 +89,9 @@ document.addEventListener('click', async function(e) {
     if (e.target.classList.contains('select-deck-btn')) {
         const deckName = e.target.dataset.deck;
         
-        // Load full deck data
+        // Load full deck data from API (MongoDB + Cloudinary)
         try {
-            const response = await fetch(`http://localhost:3005/api/decks/${encodeURIComponent(deckName)}`);
+            const response = await fetch(`/api/decks/${encodeURIComponent(deckName)}`);
             const data = await response.json();
             
             if (data.success) {
