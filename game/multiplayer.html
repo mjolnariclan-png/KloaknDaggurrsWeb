@@ -828,17 +828,22 @@
     <div class="game-container" id="game-container" style="display: none;">
         <!-- Game Header -->
         <div class="game-header">
-            <div class="opponent-info" id="opponent-info-header">
-                <span class="opponent-name" id="opponent-name">Opponent</span>
-                <span class="opponent-scallous" id="opponent-scallous">Scallous: 30</span>
-                <span class="opponent-vigor" id="opponent-vigor">Vigor: 0</span>
+            <div class="player-info" id="player-info-header">
+                <span class="player-name" id="my-name">Player</span>
+                <span class="scallous-count" id="my-scallous">Scallous: 30</span>
+                <span class="vigor-count" id="my-vigor">Vigor: 0</span>
             </div>
             <div class="turn-info">
                 <span class="turn-indicator" id="turn-indicator">Waiting...</span>
                 <span class="turn-number" id="turn-number">Turn: 1</span>
             </div>
-            <div class="leave-game-btn">
-                <button id="leave-game-x">✕</button>
+            <div class="opponent-info" id="opponent-info-header">
+                <span class="opponent-name" id="opponent-name">Opponent</span>
+                <span class="opponent-scallous" id="opponent-scallous">Scallous: 30</span>
+                <span class="opponent-vigor" id="opponent-vigor">Vigor: 0</span>
+            </div>
+            <div class="menu-toggle">
+                <button id="menu-toggle-btn">✕</button>
             </div>
         </div>
 
@@ -866,7 +871,16 @@
         </div>
 
         <!-- Hand Toggle Button -->
-        <div class="hand-toggle-btn" id="hand-toggle-btn">+</div>
+        <button class="hand-toggle" id="hand-toggle-btn">Hand</button>
+
+        <!-- Side Menu -->
+        <div class="side-menu" id="side-menu">
+            <div class="side-menu-content">
+                <h3>Menu</h3>
+                <button id="quit-btn-side" class="side-menu-btn">Quit to Website</button>
+                <button id="menu-btn-side" class="side-menu-btn">Return to Main Menu</button>
+            </div>
+        </div>
 
         <!-- Phase Timer -->
         <div class="phase-timer" id="phase-timer" style="display: none;">
@@ -944,7 +958,10 @@
         const drawCardBtnSide = document.getElementById('draw-card-btn-side');
         const autoPlayVigorBtnSide = document.getElementById('auto-play-vigor-btn-side');
         const endPhaseBtnSide = document.getElementById('end-phase-btn-side');
-        const leaveGameX = document.getElementById('leave-game-x');
+        const menuToggleBtn = document.getElementById('menu-toggle-btn');
+        const sideMenu = document.getElementById('side-menu');
+        const quitBtnSide = document.getElementById('quit-btn-side');
+        const menuBtnSide = document.getElementById('menu-btn-side');
         const leftButtons = document.getElementById('left-buttons');
         const rightButtons = document.getElementById('right-buttons');
 
@@ -1753,14 +1770,24 @@
             }
         });
 
-        // Leave game
-        leaveGameX.addEventListener('click', () => {
+        // Menu toggle
+        menuToggleBtn.addEventListener('click', () => {
+            sideMenu.classList.toggle('open');
+        });
+
+        // Side menu buttons
+        quitBtnSide.addEventListener('click', () => {
+            window.location.href = 'https://www.kloakndaggurrs.com';
+        });
+
+        menuBtnSide.addEventListener('click', () => {
             if (pollInterval) clearInterval(pollInterval);
             gameId = null;
             gameState = null;
             gameContainer.style.display = 'none';
             lobby.style.display = 'flex';
             lobbyStatus.textContent = '';
+            sideMenu.classList.remove('open');
         });
 
         // Hand expansion

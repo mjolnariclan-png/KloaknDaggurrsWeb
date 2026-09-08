@@ -39,6 +39,30 @@ body {
     border-bottom: 2px solid #4a4a6a;
     min-height: 60px;
     flex-shrink: 0;
+    position: relative;
+}
+
+.menu-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#menu-toggle-btn {
+    background: rgba(74, 74, 106, 0.8);
+    color: #ffd700;
+    border: 2px solid #ffd700;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#menu-toggle-btn:hover {
+    background: rgba(255, 215, 0, 0.2);
+    transform: scale(1.1);
 }
 
 .player-info, .opponent-info {
@@ -501,23 +525,23 @@ body {
 .game-controls {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    padding: 15px;
+    gap: 10px;
+    padding: 10px;
     background: rgba(0, 0, 0, 0.7);
     border-top: 2px solid #4a4a6a;
 }
 
 .control-btn {
-    padding: 12px 24px;
-    font-size: 1em;
+    padding: 8px 16px;
+    font-size: 0.9em;
     font-weight: bold;
     background: linear-gradient(145deg, #4a4a6a, #3a3a5a);
     color: #fff;
     border: 2px solid #6a6a8a;
-    border-radius: 8px;
+    border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s ease;
-    min-width: 150px;
+    min-width: 100px;
 }
 
 .control-btn:hover {
@@ -536,9 +560,71 @@ body {
     border-color: #6ee7de;
 }
 
+#auto-play-vigor-btn {
+    background: linear-gradient(145deg, #9b59b6, #8e44ad);
+    border-color: #bb8fce;
+}
+
 #end-turn-btn {
     background: linear-gradient(145deg, #ff6b6b, #ff5252);
     border-color: #ff8a8a;
+}
+
+/* Side Menu */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background: rgba(26, 26, 46, 0.98);
+    border-left: 2px solid #4a4a6a;
+    z-index: 2000;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.side-menu.open {
+    right: 0;
+}
+
+.side-menu-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 60px;
+}
+
+.side-menu-content h3 {
+    color: #ffd700;
+    font-size: 1.5em;
+    border-bottom: 2px solid #4a4a6a;
+    padding-bottom: 10px;
+}
+
+.side-menu-btn {
+    padding: 15px 20px;
+    font-size: 1em;
+    background: linear-gradient(145deg, #4a4a6a, #3a3a5a);
+    color: #fff;
+    border: 2px solid #6a6a8a;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.side-menu-btn:hover {
+    background: linear-gradient(145deg, #5a5a7a, #4a4a6a);
+    border-color: #ffd700;
+    transform: translateX(-5px);
+}
+
+#quit-btn {
+    background: linear-gradient(145deg, #e74c3c, #c0392b);
+    border-color: #f1948a;
 }
 
 #menu-btn {

@@ -654,6 +654,8 @@ class BattlefieldUI {
             opponentBattlefield: document.getElementById('opponent-battlefield'),
             playerHandZone: document.getElementById('player-hand-zone'),
             handToggle: document.getElementById('hand-toggle'),
+            menuToggleBtn: document.getElementById('menu-toggle-btn'),
+            sideMenu: document.getElementById('side-menu'),
             playerScallous: document.querySelector('.scallous-count'),
             playerVigor: document.querySelector('.vigor-count'),
             opponentScallous: document.querySelector('.opponent-scallous'),
@@ -679,6 +681,11 @@ class BattlefieldUI {
         this.elements.drawCardBtn.addEventListener('click', () => this.handleDrawCard());
         this.elements.autoPlayVigorBtn.addEventListener('click', () => this.handleAutoPlayVigor());
         this.elements.endTurnBtn.addEventListener('click', () => this.handleEndTurn());
+        
+        // Menu toggle
+        this.elements.menuToggleBtn.addEventListener('click', () => this.toggleSideMenu());
+        
+        // Side menu buttons
         this.elements.quitBtn.addEventListener('click', () => this.handleQuit());
         this.elements.menuBtn.addEventListener('click', () => {
             window.location.href = 'index.html';
@@ -835,18 +842,8 @@ class BattlefieldUI {
     }
     
     handleQuit() {
-        const mode = this.gameState.isTwoPlayer ? 'multiplayer' : 'ai';
-        
-        if (mode === 'multiplayer') {
-            // Show quit menu for multiplayer
-            const choice = confirm('Quit Match (return to menu) or Cancel');
-            if (choice) {
-                window.location.href = 'index.html';
-            }
-        } else {
-            // Start 5-minute timer for AI
-            this.startQuitTimer();
-        }
+        this.gameState.gameOver = true;
+        window.location.href = 'https://www.kloakndaggurrs.com';
     }
     
     startQuitTimer() {
@@ -919,6 +916,10 @@ class BattlefieldUI {
             handZone.classList.add('visible');
             handToggle.textContent = 'Close';
         }
+    }
+    
+    toggleSideMenu() {
+        this.elements.sideMenu.classList.toggle('open');
     }
     
     showGameOver() {
