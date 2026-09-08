@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Responsive Battlefield</title>
-    <link rel="stylesheet" href="battlefield-styles.css">
+    <link rel="stylesheet" href="../assets/css/battlefield-styles.css">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="/assets/js/config.js"></script>
 <script src="/game/game-auth.js"></script>
@@ -71,13 +71,24 @@
             <button id="draw-card-btn" class="control-btn">Draw Card (D)</button>
             <button id="auto-play-vigor-btn" class="control-btn">Auto-Play Vigor</button>
             <button id="end-turn-btn" class="control-btn">End Turn (Space)</button>
+            <button id="quit-btn" class="control-btn">Quit</button>
             <button id="menu-btn" class="control-btn">Return to Menu</button>
+        </div>
+        
+        <!-- Timer Display -->
+        <div id="timer-display" class="timer-display" style="display: none;">
+            <span id="timer-countdown">60</span>s
+        </div>
+        
+        <!-- Cross-Bracket Notification -->
+        <div id="cross-bracket-notification" class="cross-bracket-notification" style="display: none;">
+            ⚠️ Cross-bracket match detected
         </div>
     </div>
 
     <!-- Click outside detector for hand expansion -->
     <div class="click-outside-detector" id="click-outside-detector"></div>
 
-    <script type="module" src="battlefield.js"></script>
+    <script type="module" src="../assets/js/battlefield.js"></script>
 </body>
 </html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deck Builder</title>
+    <link rel="stylesheet" href="../assets/css/deck-styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/assets/js/config.js"></script>
+    <script src="/game/game-auth.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Deck Builder</h1>
+        
+        <div class="test-mode-toggle">
+            <label class="toggle-switch">
+                <input type="checkbox" id="test-mode-toggle">
+                <span class="slider"></span>
+            </label>
+            <span>Test Mode</span>
+        </div>
+        
+        <div id="test-mode-controls" class="test-controls" style="display: none;">
+            <h3>Test Mode Settings</h3>
+            <label for="ai-difficulty">AI Difficulty:</label>
+            <select id="ai-difficulty">
+                <option value="easy">Easy</option>
+                <option value="normal" selected>Normal</option>
+                <option value="hard">Hard</option>
+                <option value="expert">Expert</option>
+            </select>
+            <button id="test-deck-btn" class="btn primary">Test This Deck</button>
+        </div>
+        
+        <div class="deck-list" id="deck-list">
+            <h2>Your Decks</h2>
+            <div id="decks-container">Loading decks...</div>
+        </div>
+        
+        <button id="back-to-menu-btn" class="btn ghost">Back to Menu</button>
+    </div>
+    
+    <script src="../assets/js/deck-builder-script.js"></script>
+</body>
+</html>

@@ -666,12 +666,16 @@ class BattlefieldUI {
             turnNumber: document.querySelector('.turn-number'),
             turnPhase: document.querySelector('.turn-phase'),
             drawCardBtn: document.getElementById('draw-card-btn'),
-            autoPlayVigorBtn: document.getElementById('auto-play-vigor-btn'),
-            endTurnBtn: document.getElementById('end-turn-btn'),
-            menuBtn: document.getElementById('menu-btn'),
+            autoPlayVigorBtn = document.getElementById('auto-play-vigor-btn'),
+            endTurnBtn = document.getElementById('end-turn-btn'),
+            quitBtn: document.getElementById('quit-btn'),
+            menuBtn = document.getElementById('menu-btn'),
             modeSelection: document.getElementById('mode-selection'),
-            aiModeBtn: document.getElementById('ai-mode-btn'),
-            twoPlayerModeBtn: document.getElementById('twoplayer-mode-btn')
+            aiModeBtn = document.getElementById('ai-mode-btn'),
+            twoPlayerModeBtn = document.getElementById('twoplayer-mode-btn'),
+            timerDisplay: document.getElementById('timer-display'),
+            timerCountdown = document.getElementById('timer-countdown'),
+            crossBracketNotification = document.getElementById('cross-bracket-notification')
         };
         
         this.isHandExpanded = false;
@@ -681,6 +685,7 @@ class BattlefieldUI {
         this.elements.drawCardBtn.addEventListener('click', () => this.handleDrawCard());
         this.elements.autoPlayVigorBtn.addEventListener('click', () => this.handleAutoPlayVigor());
         this.elements.endTurnBtn.addEventListener('click', () => this.handleEndTurn());
+        this.elements.quitBtn.addEventListener('click', () => this.handleQuit());
         this.elements.menuBtn.addEventListener('click', () => {
             window.location.href = 'index.html';
         });
@@ -835,6 +840,52 @@ class BattlefieldUI {
         if (this.gameState.isPlayerTurn) {
             this.gameState.autoPlayVigor(this.gameState.player);
             this.render();
+        }
+    }
+    
+    handleQuit() {
+        const mode = this.gameState.isTwoPlayer ? 'multiplayer' : 'ai';
+        
+        if (mode === 'multiplayer') {
+            // Show quit menu for multiplayer
+            const choice = confirm('Quit Match (return to menu) or Cancel');
+            if (choice) {
+                window.location.href = 'index.html';
+            }
+        } else {
+            // Start 5-minute timer for AI
+            this.startQuitTimer();
+        }
+    }
+    
+    startQuitTimer() {
+        // Start 5-minute timer for AI quit
+        this.elements.timerDisplay.style.display = 'block';
+        this.elements.timerCountdown.textContent = '300';
+        
+        let remaining = 300;
+        this.quitTimerInterval = setInterval(() => {
+            remaining--;
+            this.elements.timerCountdown.textContent = remaining;
+            
+            if (remaining <= 0) {
+                clearInterval(this.quitTimerInterval);
+                this.handleQuitTimeout();
+            }
+        }, 1000);
+    }
+    
+    handleQuitTimeout() {
+        // Player auto-loses when timer expires
+        this.gameState.winner = 'opponent';
+        this.gameState.status = 'completed';
+        this.showGameOver();
+    }
+    
+    stopQuitTimer() {
+        if (this.quitTimerInterval) {
+            clearInterval(this.quitTimerInterval);
+            this.elements.timerDisplay.style.display = 'none';
         }
     }
     

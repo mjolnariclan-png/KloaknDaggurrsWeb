@@ -28,6 +28,68 @@ let lobbyPlayers = [];
 let cardManifests = {};
 let availableSets = [];
 
+// XP Table (XP needed to go from level to next level)
+const XP_TABLE = {
+    prestige0: {
+        1: 100, 2: 105, 3: 110, 4: 116, 5: 122, 6: 128, 7: 134, 8: 141, 9: 148, 10: 155,
+        11: 163, 12: 171, 13: 179, 14: 188, 15: 197, 16: 207, 17: 217, 18: 228, 19: 239, 20: 251,
+        21: 263, 22: 276, 23: 290, 24: 305, 25: 320, 26: 336, 27: 353, 28: 371, 29: 390, 30: 410,
+        31: 431, 32: 452, 33: 475, 34: 499, 35: 524, 36: 550, 37: 578, 38: 607, 39: 637, 40: 669,
+        41: 702, 42: 737, 43: 774, 44: 813, 45: 853, 46: 896, 47: 941, 48: 988, 49: 1037, 50: 0
+    },
+    prestige1: {
+        1: 110, 2: 116, 3: 121, 4: 128, 5: 134, 6: 141, 7: 147, 8: 155, 9: 163, 10: 171,
+        11: 179, 12: 188, 13: 197, 14: 207, 15: 217, 16: 228, 17: 239, 18: 251, 19: 263, 20: 276,
+        21: 290, 22: 305, 23: 320, 24: 336, 25: 353, 26: 371, 27: 390, 28: 410, 29: 431, 30: 452,
+        31: 475, 32: 499, 33: 524, 34: 550, 35: 578, 36: 607, 37: 637, 38: 669, 39: 702, 40: 737,
+        41: 774, 42: 813, 43: 853, 44: 896, 45: 941, 46: 988, 47: 1037, 48: 1089, 49: 1141, 50: 0
+    },
+    prestige2: {
+        1: 120, 2: 126, 3: 132, 4: 139, 5: 146, 6: 154, 7: 161, 8: 169, 9: 178, 10: 186,
+        11: 196, 12: 205, 13: 215, 14: 226, 15: 236, 16: 248, 17: 260, 18: 274, 19: 287, 20: 301,
+        21: 316, 22: 331, 23: 348, 24: 366, 25: 384, 26: 403, 27: 424, 28: 445, 29: 468, 30: 492,
+        31: 517, 32: 542, 33: 570, 34: 599, 35: 629, 36: 660, 37: 694, 38: 728, 39: 764, 40: 803,
+        41: 842, 42: 884, 43: 929, 44: 976, 45: 1024, 46: 1075, 47: 1129, 48: 1186, 49: 1244, 50: 0
+    },
+    prestige3: {
+        1: 135, 2: 142, 3: 149, 4: 157, 5: 165, 6: 173, 7: 181, 8: 190, 9: 200, 10: 209,
+        11: 220, 12: 231, 13: 242, 14: 254, 15: 266, 16: 280, 17: 293, 18: 308, 19: 323, 20: 339,
+        21: 355, 22: 373, 23: 392, 24: 412, 25: 432, 26: 454, 27: 477, 28: 501, 29: 527, 30: 554,
+        31: 582, 32: 610, 33: 641, 34: 674, 35: 707, 36: 743, 37: 780, 38: 819, 39: 860, 40: 903,
+        41: 948, 42: 995, 43: 1045, 44: 1098, 45: 1152, 46: 1210, 47: 1270, 48: 1333, 49: 1400, 50: 0
+    },
+    prestige4: {
+        1: 150, 2: 158, 3: 165, 4: 174, 5: 183, 6: 192, 7: 201, 8: 212, 9: 222, 10: 233,
+        11: 245, 12: 257, 13: 269, 14: 282, 15: 296, 16: 311, 17: 326, 18: 342, 19: 359, 20: 377,
+        21: 395, 22: 414, 23: 435, 24: 458, 25: 480, 26: 504, 27: 530, 28: 557, 29: 585, 30: 615,
+        31: 647, 32: 678, 33: 713, 34: 749, 35: 786, 36: 825, 37: 867, 38: 911, 39: 956, 40: 1004,
+        41: 1053, 42: 1106, 43: 1161, 44: 1220, 45: 1280, 46: 1344, 47: 1412, 48: 1482, 49: 1556, 50: 0
+    }
+};
+
+// Get bracket for a given level and prestige
+function getBracket(level, prestige) {
+    if (prestige === 0) {
+        // Prestige 0: 5-level brackets
+        return Math.ceil(level / 5);
+    } else {
+        // Prestige 1-4: 10-level brackets
+        return Math.ceil(level / 10);
+    }
+}
+
+// Check if two levels are in the same bracket
+function isSameBracket(level1, level2, prestige) {
+    return getBracket(level1, prestige) === getBracket(level2, prestige);
+}
+
+// Check if two levels are in adjacent brackets (1-level difference)
+function isAdjacentBracket(level1, level2, prestige) {
+    const bracket1 = getBracket(level1, prestige);
+    const bracket2 = getBracket(level2, prestige);
+    return Math.abs(bracket1 - bracket2) === 1;
+}
+
 // Connect to MongoDB
 async function connectToMongoDB() {
     try {
@@ -38,10 +100,37 @@ async function connectToMongoDB() {
 
         // Load card sets from database
         await loadCardSetsFromDB();
+        
+        // Create indexes for progression collections
+        await createProgressionIndexes();
     } catch (error) {
         console.error('Error connecting to MongoDB:', error);
         console.log('Falling back to local file system');
         loadCardManifests(); // Fallback to local files
+    }
+}
+
+// Create indexes for progression collections
+async function createProgressionIndexes() {
+    try {
+        // Player progression collection
+        const players = db.collection('players');
+        await players.createIndex({ user_id: 1 }, { unique: true });
+        await players.createIndex({ level: 1, prestige: 1 });
+        
+        // Queue penalties collection
+        const penalties = db.collection('queue_penalties');
+        await penalties.createIndex({ user_id: 1, date: 1 });
+        
+        // Game matches collection
+        const matches = db.collection('game_matches');
+        await matches.createIndex({ player1_id: 1 });
+        await matches.createIndex({ player2_id: 1 });
+        await matches.createIndex({ status: 1, created_at: 1 });
+        
+        console.log('Progression indexes created successfully');
+    } catch (error) {
+        console.error('Error creating indexes:', error);
     }
 }
 
@@ -1188,6 +1277,565 @@ function generateFallbackDeck(player) {
     player.totalVigor = 0;
     player.mana = 0;
 }
+
+// ==================== PROGRESSION SYSTEM ====================
+
+// Get or create player progression
+app.get('/api/player/:userId', async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const players = db.collection('players');
+        
+        let player = await players.findOne({ user_id: userId });
+        
+        if (!player) {
+            // Create new player progression
+            player = {
+                user_id: userId,
+                level: 1,
+                prestige: 0,
+                xp: 0,
+                xp_to_next: XP_TABLE.prestige0[1],
+                total_xp: 0,
+                matches_played: 0,
+                matches_won: 0,
+                created_at: new Date(),
+                last_played: new Date()
+            };
+            await players.insertOne(player);
+        }
+        
+        res.json({ success: true, player });
+    } catch (error) {
+        console.error('Error getting player progression:', error);
+        res.json({ success: false, error: error.message });
+    }
+});
+
+// Add XP to player
+app.post('/api/player/:userId/xp', async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const { xp, mode } = req.body; // mode: 'ai' (50%), 'multiplayer' (100%)
+        
+        const players = db.collection('players');
+        const player = await players.findOne({ user_id: userId });
+        
+        if (!player) {
+            return res.json({ success: false, error: 'Player not found' });
+        }
+        
+        // Calculate XP based on mode
+        let xpGained = xp;
+        if (mode === 'ai') {
+            xpGained = Math.floor(xp * 0.5); // 50% for AI
+        }
+        
+        player.xp += xpGained;
+        player.total_xp += xpGained;
+        player.last_played = new Date();
+        
+        // Check for level up
+        const xpTable = XP_TABLE[`prestige${player.prestige}`];
+        while (player.xp >= xpTable[player.level] && player.level < 50) {
+            player.xp -= xpTable[player.level];
+            player.level += 1;
+            player.xp_to_next = xpTable[player.level] || 0;
+        }
+        
+        await players.updateOne(
+            { user_id: userId },
+            { $set: { 
+                xp: player.xp,
+                total_xp: player.total_xp,
+                level: player.level,
+                xp_to_next: player.xp_to_next,
+                last_played: player.last_played
+            }}
+        );
+        
+        res.json({ success: true, player, xpGained });
+    } catch (error) {
+        console.error('Error adding XP:', error);
+        res.json({ success: false, error: error.message });
+    }
+});
+
+// Prestige (reset to level 1, increase prestige tier)
+app.post('/api/player/:userId/prestige', async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const players = db.collection('players');
+        const player = await players.findOne({ user_id: userId });
+        
+        if (!player) {
+            return res.json({ success: false, error: 'Player not found' });
+        }
+        
+        if (player.level < 50) {
+            return res.json({ success: false, error: 'Must be level 50 to prestige' });
+        }
+        
+        if (player.prestige >= 4) {
+            return res.json({ success: false, error: 'Already at maximum prestige' });
+        }
+        
+        // Reset level, increase prestige
+        player.prestige += 1;
+        player.level = 1;
+        player.xp = 0;
+        player.xp_to_next = XP_TABLE[`prestige${player.prestige}`][1];
+        
+        await players.updateOne(
+            { user_id: userId },
+            { $set: { 
+                prestige: player.prestige,
+                level: player.level,
+                xp: player.xp,
+                xp_to_next: player.xp_to_next
+            }}
+        );
+        
+        res.json({ success: true, player });
+    } catch (error) {
+        console.error('Error prestiging:', error);
+        res.json({ success: false, error: error.message });
+    }
+});
+
+// ==================== MATCHMAKING SYSTEM ====================
+
+// Join matchmaking queue
+app.post('/api/matchmaking/join', async (req, res) => {
+    try {
+        const { userId, playerName, deck } = req.body;
+        
+        // Get player progression
+        const players = db.collection('players');
+        const player = await players.findOne({ user_id: userId });
+        
+        if (!player) {
+            return res.json({ success: false, error: 'Player not found' });
+        }
+        
+        // Check queue penalty
+        const penalty = await getQueuePenalty(userId);
+        if (penalty.penaltyMinutes > 0) {
+            return res.json({ 
+                success: false, 
+                error: `Queue penalty active: ${penalty.penaltyMinutes} minute(s)`,
+                penalty: penalty.penaltyMinutes
+            });
+        }
+        
+        // Add to matchmaking queue
+        const matchmakingQueue = db.collection('matchmaking_queue');
+        await matchmakingQueue.deleteMany({ user_id: userId }); // Remove existing queue entry
+        
+        const queueEntry = {
+            user_id: userId,
+            name: playerName,
+            level: player.level,
+            prestige: player.prestige,
+            deck: deck,
+            bracket: getBracket(player.level, player.prestige),
+            queue_time: Date.now(),
+            status: 'searching'
+        };
+        
+        await matchmakingQueue.insertOne(queueEntry);
+        
+        res.json({ success: true, message: 'Joined matchmaking queue' });
+    } catch (error) {
+        console.error('Error joining matchmaking:', error);
+        res.json({ success: false, error: error.message });
+    }
+});
+
+// Check for match
+app.get('/api/matchmaking/check/:userId', async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const matchmakingQueue = db.collection('matchmaking_queue');
+        
+        // Get current player's queue entry
+        const currentPlayer = await matchmakingQueue.findOne({ user_id: userId });
+        
+        if (!currentPlayer) {
+            return res.json({ success: false, error: 'Not in queue' });
+        }
+        
+        const queueTime = currentPlayer.queue_time;
+        const elapsed = Date.now() - queue_time;
+        
+        // Phase 1: Same bracket (0-30 seconds)
+        if (elapsed < 30000) {
+            const match = await findMatch(currentPlayer, 'same_bracket');
+            if (match) {
+                return res.json({ success: true, match, crossBracket: false });
+            }
+            return res.json({ success: false, phase: 'same_bracket', elapsed });
+        }
+        
+        // Phase 2: Adjacent bracket (30-60 seconds)
+        if (elapsed < 60000) {
+            const match = await findMatch(currentPlayer, 'adjacent_bracket');
+            if (match) {
+                return res.json({ success: true, match, crossBracket: false });
+            }
+            return res.json({ success: false, phase: 'adjacent_bracket', elapsed });
+        }
+        
+        // Phase 3: Any match (60+ seconds)
+        const match = await findMatch(currentPlayer, 'any');
+        if (match) {
+            return res.json({ success: true, match, crossBracket: true });
+        }
+        
+        return res.json({ success: false, phase: 'any', elapsed });
+    } catch (error) {
+        console.error('Error checking matchmaking:', error);
+        res.json({ success: false, error: error.message });
+    }
+});
+
+// Find match based on phase
+async function findMatch(player, phase) {
+    const matchmakingQueue = db.collection('matchmaking_queue');
+    
+    let query = {
+        user_id: { $ne: player.user_id },
+        status: 'searching'
+    };
+    
+    if (phase === 'same_bracket') {
+        query.prestige = player.prestige;
+        query.bracket = player.bracket;
+    } else if (phase === 'adjacent_bracket') {
+        query.prestige = player.prestige;
+        // Find players in adjacent brackets
+        const adjacentBrackets = [player.bracket - 1, player.bracket + 1];
+        query.bracket = { $in: adjacentBrackets };
+    }
+    // 'any' phase has no restrictions
+    
+    const match = await matchmakingQueue.findOne(query);
+    
+    if (match) {
+        // Remove both from queue
+        await matchmakingQueue.deleteMany({ 
+            $or: [
+                { user_id: player.user_id },
+                { user_id: match.user_id }
+            ]
+        });
+        
+        // Create game
+        const gameId = `game_${Date.now()}`;
+        const game = {
+            id: gameId,
+            players: [
+                { id: player.user_id, name: player.name, deck: player.deck, level: player.level, prestige: player.prestige },
+                { id: match.user_id, name: match.name, deck: match.deck, level: match.level, prestige: match.prestige }
+            ],
+            status: 'ready_check',
+            created_at: new Date(),
+            phase: 'ready_check'
+        };
+        
+        const matches = db.collection('game_matches');
+        await matches.insertOne(game);
+        games[gameId] = game;
+        
+        return game;
+    }
+    
+    return null;
+}
+
+// Leave matchmaking queue
+app.post('/api/matchmaking/leave', async (req, res) => {
+    try {
+        const { userId } = req.body;
+        const matchmakingQueue = db.collection('matchmaking_queue');
+        
+        await matchmakingQueue.deleteMany({ user_id: userId });
+        
+        res.json({ success: true, message: 'Left matchmaking queue' });
+    } catch (error) {
+        console.error('Error leaving matchmaking:', error);
+        res.json({ success: false, error: error.message });
+    }
+});
+
+// Accept ready check
+app.post('/api/match/:gameId/ready', async (req, res) => {
+    try {
+        const { gameId } = req.params;
+        const { userId } = req.body;
+        
+        const matches = db.collection('game_matches');
+        const game = await matches.findOne({ id: gameId });
+        
+        if (!game) {
+            return res.json({ success: false, error: 'Game not found' });
+        }
+        
+        // Mark player as ready
+        if (!game.ready_players) {
+            game.ready_players = [];
+        }
+        
+        if (!game.ready_players.includes(userId)) {
+            game.ready_players.push(userId);
+        }
+        
+        // Check if both players are ready
+        if (game.ready_players.length === 2) {
+            game.status = 'active';
+            game.phase = 'turn_order';
+            game.turn_order_rolled = false;
+        }
+        
+        await matches.updateOne(
+            { id: gameId },
+            { $set: { ready_players: game.ready_players, status: game.status, phase: game.phase } }
+        );
+        
+        // Update in-memory game
+        games[gameId] = game;
+        
+        res.json({ success: true, game });
+    } catch (error) {
+        console.error('Error accepting ready check:', error);
+        res.json({ success: false, error: error.message });
+    }
+});
+
+// Decline ready check
+app.post('/api/match/:gameId/decline', async (req, res) => {
+    try {
+        const { gameId } = req.params;
+        const { userId } = req.body;
+        
+        // Add queue penalty
+        await addQueuePenalty(userId);
+        
+        // Delete the game
+        const matches = db.collection('game_matches');
+        await matches.deleteOne({ id: gameId });
+        delete games[gameId];
+        
+        res.json({ success: true, message: 'Ready check declined, queue penalty applied' });
+    } catch (error) {
+        console.error('Error declining ready check:', error);
+        res.json({ success: false, error: error.message });
+    }
+});
+
+// ==================== QUEUE PENALTY SYSTEM ====================
+
+// Get current queue penalty for a user
+async function getQueuePenalty(userId) {
+    const penalties = db.collection('queue_penalties');
+    const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+    
+    const penalty = await penalties.findOne({ user_id: userId, date: today });
+    
+    if (!penalty) {
+        return { penaltyMinutes: 0, declines: 0 };
+    }
+    
+    return { penaltyMinutes: penalty.penalty_minutes, declines: penalty.declines };
+}
+
+// Add queue penalty
+async function addQueuePenalty(userId) {
+    const penalties = db.collection('queue_penalties');
+    const today = new Date().toISOString().split('T')[0];
+    
+    const existing = await penalties.findOne({ user_id: userId, date: today });
+    
+    if (existing) {
+        // Increment penalty
+        await penalties.updateOne(
+            { user_id: userId, date: today },
+            { 
+                $inc: { 
+                    declines: 1,
+                    penalty_minutes: 1
+                }
+            }
+        );
+    } else {
+        // Create new penalty record
+        await penalties.insertOne({
+            user_id: userId,
+            date: today,
+            declines: 1,
+            penalty_minutes: 1
+        });
+    }
+    
+    // Clean up penalties older than 7 days
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+    await penalties.deleteMany({ date: { $lt: sevenDaysAgo.toISOString().split('T')[0] } });
+}
+
+// ==================== GAME STATE ENDPOINTS ====================
+
+// Get game state
+app.get('/api/game/:gameId', (req, res) => {
+    const { gameId } = req.params;
+    const game = games[gameId];
+    
+    if (!game) {
+        return res.json({ success: false, error: 'Game not found' });
+    }
+    
+    res.json({ success: true, gameState: game });
+});
+
+// ==================== TIMER SYSTEM ====================
+
+// Start quit timer (AI mode)
+app.post('/api/game/:gameId/quit-timer', (req, res) => {
+    const { gameId } = req.params;
+    const { userId, mode } = req.body; // mode: 'ai' or 'multiplayer'
+    
+    const game = games[gameId];
+    if (!game) {
+        return res.json({ success: false, error: 'Game not found' });
+    }
+    
+    // Set timer based on mode
+    if (mode === 'ai') {
+        game.quit_timer = 300; // 5 minutes in seconds
+        game.quit_timer_start = Date.now();
+    } else if (mode === 'multiplayer') {
+        game.quit_timer = 60; // 1 minute in seconds
+        game.quit_timer_start = Date.now();
+    }
+    
+    game.quit_timer_user = userId;
+    
+    res.json({ success: true, gameState: game });
+});
+
+// Cancel quit timer (player returned)
+app.post('/api/game/:gameId/cancel-timer', (req, res) => {
+    const { gameId } = req.params;
+    
+    const game = games[gameId];
+    if (!game) {
+        return res.json({ success: false, error: 'Game not found' });
+    }
+    
+    game.quit_timer = null;
+    game.quit_timer_start = null;
+    game.quit_timer_user = null;
+    
+    res.json({ success: true, gameState: game });
+});
+
+// Check timer status
+app.get('/api/game/:gameId/timer', (req, res) => {
+    const { gameId } = req.params;
+    
+    const game = games[gameId];
+    if (!game) {
+        return res.json({ success: false, error: 'Game not found' });
+    }
+    
+    if (!game.quit_timer) {
+        return res.json({ success: true, active: false });
+    }
+    
+    const elapsed = Math.floor((Date.now() - game.quit_timer_start) / 1000);
+    const remaining = game.quit_timer - elapsed;
+    
+    if (remaining <= 0) {
+        // Timer expired - player loses
+        game.quit_timer_expired = true;
+        game.winner = game.players.find(p => p.id !== game.quit_timer_user).id;
+        game.status = 'completed';
+        
+        return res.json({ success: true, active: false, expired: true, winner: game.winner });
+    }
+    
+    res.json({ success: true, active: true, remaining });
+});
+
+// ==================== RECONNECTION SYSTEM ====================
+
+// Player disconnected
+app.post('/api/game/:gameId/disconnect', (req, res) => {
+    const { gameId } = req.params;
+    const { userId } = req.body;
+    
+    const game = games[gameId];
+    if (!game) {
+        return res.json({ success: false, error: 'Game not found' });
+    }
+    
+    if (!game.disconnections) {
+        game.disconnections = {};
+    }
+    
+    game.disconnections[userId] = {
+        disconnect_time: Date.now(),
+        reconnect_deadline: Date.now() + 60000 // 1 minute to reconnect
+    };
+    
+    res.json({ success: true, reconnectDeadline: game.disconnections[userId].reconnect_deadline });
+});
+
+// Player reconnected
+app.post('/api/game/:gameId/reconnect', (req, res) => {
+    const { gameId } = req.params;
+    const { userId } = req.body;
+    
+    const game = games[gameId];
+    if (!game) {
+        return res.json({ success: false, error: 'Game not found' });
+    }
+    
+    if (game.disconnections && game.disconnections[userId]) {
+        delete game.disconnections[userId];
+        res.json({ success: true, message: 'Reconnected successfully' });
+    } else {
+        res.json({ success: false, error: 'No disconnect record found' });
+    }
+});
+
+// Check disconnection status
+app.get('/api/game/:gameId/disconnect-status/:userId', (req, res) => {
+    const { gameId, userId } = req.params;
+    
+    const game = games[gameId];
+    if (!game) {
+        return res.json({ success: false, error: 'Game not found' });
+    }
+    
+    if (game.disconnections && game.disconnections[userId]) {
+        const deadline = game.disconnections[userId].reconnect_deadline;
+        const remaining = Math.max(0, deadline - Date.now());
+        
+        if (remaining === 0) {
+            // Reconnect window expired - player loses
+            game.disconnection_forfeit = userId;
+            game.winner = game.players.find(p => p.id !== userId).id;
+            game.status = 'completed';
+            
+            return res.json({ success: true, expired: true, winner: game.winner });
+        }
+        
+        return res.json({ success: true, disconnected: true, remaining });
+    }
+    
+    res.json({ success: true, disconnected: false });
+});
 
 // Start server
 app.listen(PORT, '0.0.0.0', async () => {

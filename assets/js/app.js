@@ -683,7 +683,7 @@
   }
 
   function gamePage(){
-    return `<section class="page-hero"><p class="eyebrow">BATTLE ARENA</p><h1>KLOAK & DAGGURRS</h1><p>Enter the battlefield and test your strategic prowess.</p><div class="hero-actions"><a class="btn primary" href="#/game-battlefield">Enter Battlefield</a><a class="btn ghost" href="#/game-deck-selection">Select Deck</a><a class="btn ghost" href="#/game-board">Game Board</a><a class="btn ghost" href="#/game-generating-deck">Generate Deck</a><a class="btn ghost" href="#/game-multiplayer">Multiplayer</a></div></section>`;
+    return `<section class="page-hero"><p class="eyebrow">BATTLE ARENA</p><h1>KLOAK & DAGGURRS</h1><p>Enter the battlefield and test your strategic prowess.</p><div class="hero-actions"><a class="btn primary" href="#/game-entry">Enter Game</a></div></section>`;
   }
 
   function gameBattlefieldPage(){
@@ -692,6 +692,10 @@
 
   function gameDeckSelectionPage(){
     return `<section class="game-section"><iframe src="game/deck-selection.html" style="width:100%;height:600px;border:none;"></iframe></section>`;
+  }
+
+  function gameDeckBuilderPage(){
+    return `<section class="game-section"><iframe src="game/deck-builder.html" style="width:100%;height:600px;border:none;"></iframe></section>`;
   }
 
   function gameBoardPage(){
@@ -761,6 +765,7 @@
     else if(p==="game")app.innerHTML=gamePage();
     else if(p==="game-battlefield")app.innerHTML=gameBattlefieldPage();
     else if(p==="game-deck-selection")app.innerHTML=gameDeckSelectionPage();
+    else if(p==="game-deck-builder")app.innerHTML=gameDeckBuilderPage();
     else if(p==="game-board")app.innerHTML=gameBoardPage();
     else if(p==="game-generating-deck")app.innerHTML=gameGeneratingDeckPage();
     else if(p==="game-multiplayer")app.innerHTML=gameMultiplayerPage();
