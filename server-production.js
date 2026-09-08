@@ -342,6 +342,54 @@ app.get('/api/cards/:setName', (req, res) => {
     });
 });
 
+// Join lobby endpoint - PUBLIC ENDPOINT
+app.post('/api/join-lobby', (req, res) => {
+    const { playerId, playerName } = req.body;
+    
+    console.log(`Player ${playerName} (${playerId}) joining lobby`);
+    
+    // Check if player is already in lobby
+    const existingPlayer = lobbyPlayers.find(p => p.id === playerId);
+    if (existingPlayer) {
+        existingPlayer.name = playerName || existingPlayer.name;
+        existingPlayer.lastSeen = Date.now();
+    } else {
+        lobbyPlayers.push({
+            id: playerId,
+            name: playerName || 'Waiting Player',
+            lastSeen: Date.now()
+        });
+    }
+    
+    res.json({
+        success: true,
+        message: 'Joined lobby successfully'
+    });
+    
+    console.log(`Lobby players: ${lobbyPlayers.length}`);
+});
+
+// Get lobby players endpoint - PUBLIC ENDPOINT
+app.get('/api/lobby-players', (req, res) => {
+    // Remove players who haven't been seen in 30 seconds
+    const now = Date.now();
+    lobbyPlayers = lobbyPlayers.filter(p => now - p.lastSeen < 30000);
+    
+    // Update last seen for requesting player
+    const { playerId } = req.query;
+    if (playerId) {
+        const player = lobbyPlayers.find(p => p.id === playerId);
+        if (player) {
+            player.lastSeen = Date.now();
+        }
+    }
+    
+    res.json({
+        success: true,
+        players: lobbyPlayers
+    });
+});
+
 // Proxy endpoint for Supabase to query MongoDB cards - PUBLIC ENDPOINT
 app.get('/api/cards-public', async (req, res) => {
     try {
