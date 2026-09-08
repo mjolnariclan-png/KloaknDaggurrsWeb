@@ -1,23 +1,20 @@
 {
-  "name": "kloakndaggurrs-tools",
-  "private": true,
+  "name": "kloakndaggurrs-unified",
   "version": "1.0.0",
-  "description": "Local admin tooling for the Kloak & Daggurrs site (card sync scripts, etc).",
+  "private": true,
+  "main": "server-production.js",
   "scripts": {
-    "sync-cards": "node supabase/sync-cards.js",
-    "start-game": "node server-multiplayer.js",
-    "update-cards": "node upload-manifests.js && node upload-images.js",
-    "update-manifests": "node upload-manifests.js",
-    "update-images": "node upload-images.js",
-    "update-urls": "node update-mongodb-urls.js",
-    "check-data": "node check-mongodb-data.js"
+    "start": "node server-production.js",
+    "check": "node --check server-production.js"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.45.0",
+    "@supabase/supabase-js": "^2.57.4",
     "cloudinary": "^2.11.0",
-    "express": "^4.19.2",
-    "mongodb": "^7.6.0",
-    "mysql": "^2.18.1"
+    "express": "^4.21.2",
+    "helmet": "^8.1.0",
+    "mongodb": "^7.0.0"
   }
-}
 }

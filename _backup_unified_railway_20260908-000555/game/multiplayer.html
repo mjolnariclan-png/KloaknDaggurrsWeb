@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TCG Multiplayer</title>
+    <link rel="stylesheet" href="battlefield-styles.css">
+    <style>
+        /* Force landscape orientation */
+        @media screen and (orientation: portrait) {
+            #game-container {
+                transform: rotate(90deg);
+                transform-origin: left top;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100vh;
+                height: 100vw;
+            }
+        }
+        
+        /* Multiplayer-specific styles */
+        .multiplayer-lobby {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url('dbbg.png') center/cover no-repeat, linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+        
+        .lobby-container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 15px;
+            border: 2px solid #ffd700;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+        
+        .lobby-container h1 {
+            color: #ffd700;
+            margin-bottom: 30px;
+        }
+        
+        .lobby-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .lobby-form input {
+            padding: 12px;
+            font-size: 1em;
+            border: 2px solid #4a4a6a;
+            border-radius: 5px;
+            background: #1a1a2e;
+            color: #fff;
+        }
+        
+        .lobby-form button {
+            padding: 12px;
+            font-size: 1em;
+            background: linear-gradient(145deg, #4ecdc4, #3db8b0);
+            color: #1a1a2e;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .lobby-form button:hover {
+            background: linear-gradient(145deg, #6ee7de, #4ecdc4);
+        }
+        
+        .lobby-status {
+            margin-top: 20px;
+            color: #4ecdc4;
+            font-size: 1.1em;
+        }
+        
+        /* Lobby Players List */
+        .lobby-players {
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #4a4a6a;
+            border-radius: 10px;
+            padding: 15px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .lobby-players h3 {
+            color: #ffd700;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .lobby-player-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 10px;
+            background: rgba(74, 74, 106, 0.3);
+            border: 1px solid #4a4a6a;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .lobby-player-item:hover {
+            background: rgba(74, 74, 106, 0.5);
+            border-color: #ffd700;
+        }
+        
+        .lobby-player-name {
+            color: #fff;
+            font-weight: bold;
+        }
+        
+        .lobby-player-challenge {
+            padding: 8px 16px;
+            background: linear-gradient(145deg, #ff6b6b, #ff5252);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .lobby-player-challenge:hover {
+            background: linear-gradient(145deg, #ff8b8b, #ff6b6b);
+            transform: scale(1.05);
+        }
+        
+        .lobby-player-challenge:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .no-players {
+            text-align: center;
+            color: #aaa;
+            padding: 20px;
+        }
+        
+        /* Ensure game container fills screen */
+        #game-container {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            background: url('dbbg.png') center/cover no-repeat, linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+        
+        /* Game Header */
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: transparent;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 50;
+        }
+        
+        .opponent-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            background: transparent;
+        }
+        
+        .opponent-info .opponent-name {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #ff6b6b;
+        }
+        
+        .opponent-scallous {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+        
+        .opponent-vigor {
+            color: #ffd700;
+            font-weight: bold;
+        }
+        
+        .turn-info {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .turn-indicator {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #ffd700;
+        }
+        
+        .turn-number {
+            font-size: 0.9em;
+            color: #aaa;
+        }
+        
+        .leave-game-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+        
+        #leave-game-x {
+            width: 40px;
+            height: 40px;
+            font-size: 1.5em;
+            background: rgba(255, 107, 107, 0.3);
+            color: #ff6b6b;
+            border: 2px solid #ff6b6b;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        #leave-game-x:hover {
+            background: rgba(255, 107, 107, 0.5);
+            transform: scale(1.1);
+        }
+        
+        /* Battlefield Zones - Full Width */
+        .opponent-battlefield-zone, .player-battlefield-zone {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            border: 2px solid #4a4a6a;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            min-height: 0;
+            margin: 10px 20px;
+        }
+        
+        .zone-label {
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #ffd700;
+            font-weight: bold;
+            text-align: center;
+            font-size: 0.9em;
+            flex-shrink: 0;
+        }
+        
+        .zone-content {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 20px;
+            overflow-x: auto;
+            overflow-y: auto;
+            align-items: center;
+            justify-content: center;
+            min-height: 0;
+        }
+        
+        /* Hand Overlay */
+        .hand-overlay {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 1200px;
+            height: 70vh;
+            background: rgba(0, 0, 0, 0.95);
+            border: 3px solid #ffd700;
+            border-radius: 15px;
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+        }
+        
+        .hand-overlay.active {
+            display: flex;
+        }
+        
+        .hand-overlay-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .hand-overlay-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border-bottom: 2px solid #ffd700;
+        }
+        
+        .hand-overlay-header span {
+            color: #ffd700;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .hand-toggle-overlay {
+            background: rgba(255, 215, 0, 0.3);
+            color: #ffd700;
+            border: 2px solid #ffd700;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        
+        .hand-overlay-cards {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 20px;
+            overflow-y: auto;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Hand Toggle Button */
+        .hand-toggle-btn {
+            position: fixed;
+            bottom: 120px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(145deg, #4ecdc4, #3db8b0);
+            color: #1a1a2e;
+            border: 3px solid #6ee7de;
+            border-radius: 50%;
+            font-size: 2em;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        
+        .hand-toggle-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(78, 205, 196, 0.5);
+        }
+        
+        /* Phase Timer (hidden but logic still runs) */
+        .phase-timer {
+            display: none !important;
+        }
+        
+        /* Side Buttons */
+        .side-buttons {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 50;
+        }
+        
+        .left-buttons {
+            left: 10px;
+        }
+        
+        .right-buttons {
+            right: 10px;
+        }
+        
+        .side-btn {
+            padding: 12px 20px;
+            font-size: 0.9em;
+            background: linear-gradient(145deg, #4a4a6a, #3a3a5a);
+            color: #fff;
+            border: 2px solid #6a6a8a;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .side-btn:hover {
+            background: linear-gradient(145deg, #5a5a7a, #4a4a6a);
+            border-color: #ffd700;
+        }
+        
+        .side-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        /* Phase indicator */
+        .phase-indicator {
+            position: fixed;
+            bottom: 150px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #ffd700;
+            border-radius: 8px;
+            padding: 10px 20px;
+            z-index: 100;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .phase-indicator:hover {
+            background: rgba(0, 0, 0, 0.9);
+            border-color: #ffea00;
+            transform: scale(1.05);
+        }
+        
+        #current-phase {
+            color: #ffd700;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        /* Player info bottom right */
+        .player-info-bottom {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 100;
+        }
+        
+        .player-info-bottom .player-name {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #4ecdc4;
+        }
+        
+        .my-scallous {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+        
+        .my-vigor {
+            color: #ffd700;
+            font-weight: bold;
+        }
+        
+        /* Vigor Selection Modal */
+        .vigor-selection-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+        
+        .vigor-selection-modal .modal-content {
+            background: linear-gradient(145deg, #2a2a4a, #1a1a2e);
+            border: 2px solid #ffd700;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+        }
+        
+        .vigor-selection-modal h3 {
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+        
+        .vigor-selection-modal .vigor-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+            min-height: 200px;
+        }
+        
+        .card.selected {
+            border-color: #4ecdc4;
+            box-shadow: 0 0 15px rgba(78, 205, 196, 0.7);
+        }
+        
+        .card.dragging {
+            opacity: 0.5;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+        
+        .card.selectable {
+            border-color: #ffd700;
+            cursor: pointer;
+            animation: pulse 1s infinite;
+        }
+        
+        .card.attackable {
+            border-color: #ff6b6b;
+            cursor: pointer;
+        }
+        
+        .card.attackable:hover {
+            border-color: #ff4444;
+            box-shadow: 0 0 15px rgba(255, 68, 68, 0.7);
+        }
+        
+        .card.cannot-attack {
+            opacity: 0.5;
+            filter: grayscale(100%);
+            cursor: not-allowed;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .attack-player-btn {
+            margin: 10px;
+            padding: 10px 20px;
+            background: linear-gradient(145deg, #ff6b6b, #ff5252);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .attack-player-btn:hover {
+            background: linear-gradient(145deg, #ff8b8b, #ff6b6b);
+        }
+        
+        .equipment-indicator {
+            font-size: 0.7em;
+            color: #4ecdc4;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        
+        .creature-select-btn {
+            margin: 5px;
+            padding: 10px 15px;
+            background: linear-gradient(145deg, #4a4a6a, #3a3a5a);
+            color: #fff;
+            border: 2px solid #6a6a8a;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+        
+        .creature-select-btn:hover {
+            background: linear-gradient(145deg, #5a5a7a, #4a4a6a);
+            border-color: #ffd700;
+        }
+        
+        .creature-selection {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .vigor-selection-modal button {
+            margin: 5px;
+            padding: 10px 20px;
+            background: linear-gradient(145deg, #4ecdc4, #3db8b0);
+            color: #1a1a2e;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .vigor-selection-modal button:hover {
+            background: linear-gradient(145deg, #6ee7de, #4ecdc4);
+        }
+        
+        /* Play Options Modal */
+        .play-options-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+        
+        .play-options-modal .modal-content {
+            background: linear-gradient(145deg, #2a2a4a, #1a1a2e);
+            border: 2px solid #ffd700;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .play-options-modal h3 {
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+        
+        .play-options-modal p {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        
+        .play-options-modal button {
+            margin: 5px;
+            padding: 10px 20px;
+            background: linear-gradient(145deg, #4ecdc4, #3db8b0);
+            color: #1a1a2e;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .play-options-modal button:hover {
+            background: linear-gradient(145deg, #6ee7de, #4ecdc4);
+        }
+
+        /* Draw Notification */
+        .draw-notification {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2500;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -40%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+
+        .draw-notification .notification-content {
+            background: linear-gradient(145deg, #2a2a4a, #1a1a2e);
+            border: 2px solid #4ecdc4;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            min-width: 200px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .draw-notification h3 {
+            color: #4ecdc4;
+            margin-bottom: 15px;
+        }
+
+        .drawn-card-preview {
+            background: linear-gradient(145deg, #1a1a2e, #0a0a1e);
+            border: 1px solid #4a4a6a;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .drawn-card-preview .card-cost {
+            background: #4ecdc4;
+            color: #1a1a2e;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .drawn-card-preview .card-name {
+            color: #fff;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        .drawn-card-preview .card-type {
+            color: #aaa;
+            font-size: 0.8em;
+            margin-bottom: 5px;
+        }
+
+        .drawn-card-preview .card-stats-preview {
+            color: #fff;
+            font-size: 0.9em;
+        }
+
+        .draw-notification button {
+            margin-top: 10px;
+            padding: 8px 20px;
+            background: linear-gradient(145deg, #4ecdc4, #3db8b0);
+            color: #1a1a2e;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .draw-notification button:hover {
+            background: linear-gradient(145deg, #6ee7de, #4ecdc4);
+        }
+
+        .creature-select-btn {
+            margin: 5px;
+            padding: 10px 15px;
+            background: linear-gradient(145deg, #4a4a6a, #3a3a5a);
+            color: #fff;
+            border: 2px solid #6a6a8a;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+        
+        .creature-select-btn:hover {
+            background: linear-gradient(145deg, #5a5a7a, #4a4a6a);
+            border-color: #ffd700;
+        }
+        
+        /* Click outside detector */
+        .click-outside-detector {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+        
+        .click-outside-detector.active {
+            display: block;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .side-btn {
+                padding: 8px 12px;
+                font-size: 0.7em;
+            }
+            
+            .phase-indicator {
+                bottom: 120px;
+                left: 10px;
+                padding: 8px 15px;
+            }
+            
+            #current-phase {
+                font-size: 1em;
+            }
+            
+            .player-info-bottom {
+                bottom: 10px;
+                right: 10px;
+            }
+            
+            .player-info-bottom .player-name {
+                font-size: 1em;
+            }
+            
+            .hand-toggle-btn {
+                bottom: 60px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.5em;
+            }
+        }
+        
+        /* Card dragging state */
+        .card.dragging {
+            opacity: 0.5;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="multiplayer-lobby" id="lobby">
+        <div class="lobby-container">
+            <h1>TCG Multiplayer Lobby</h1>
+            <div class="lobby-form">
+                <input type="text" id="player-name" placeholder="Enter your name" value="Player">
+                <button id="join-lobby-btn">Join Lobby</button>
+            </div>
+            <div id="lobby-players" class="lobby-players" style="display: none;">
+                <h3>Available Players</h3>
+                <div id="players-list"></div>
+            </div>
+            <div id="lobby-status" class="lobby-status"></div>
+        </div>
+    </div>
+
+    <div class="game-container" id="game-container" style="display: none;">
+        <!-- Game Header -->
+        <div class="game-header">
+            <div class="opponent-info" id="opponent-info-header">
+                <span class="opponent-name" id="opponent-name">Opponent</span>
+                <span class="opponent-scallous" id="opponent-scallous">Scallous: 30</span>
+                <span class="opponent-vigor" id="opponent-vigor">Vigor: 0</span>
+            </div>
+            <div class="turn-info">
+                <span class="turn-indicator" id="turn-indicator">Waiting...</span>
+                <span class="turn-number" id="turn-number">Turn: 1</span>
+            </div>
+            <div class="leave-game-btn">
+                <button id="leave-game-x">✕</button>
+            </div>
+        </div>
+
+        <!-- Opponent's Battlefield -->
+        <div class="opponent-battlefield-zone" id="opponent-battlefield-zone">
+            <div class="zone-label">Opponent's Battlefield</div>
+            <div class="zone-content" id="opponent-battlefield"></div>
+        </div>
+
+        <!-- Player's Battlefield -->
+        <div class="player-battlefield-zone" id="player-battlefield-zone">
+            <div class="zone-label">Your Battlefield</div>
+            <div class="zone-content" id="player-battlefield"></div>
+        </div>
+
+        <!-- Hand Overlay -->
+        <div class="hand-overlay" id="hand-overlay">
+            <div class="hand-overlay-content">
+                <div class="hand-overlay-header">
+                    <span>Your Hand</span>
+                    <button class="hand-toggle-overlay" id="hand-toggle-overlay">−</button>
+                </div>
+                <div class="hand-overlay-cards" id="hand-overlay-cards"></div>
+            </div>
+        </div>
+
+        <!-- Hand Toggle Button -->
+        <div class="hand-toggle-btn" id="hand-toggle-btn">+</div>
+
+        <!-- Phase Timer -->
+        <div class="phase-timer" id="phase-timer" style="display: none;">
+            <span id="timer-display">60</span>s
+        </div>
+
+        <!-- Side Buttons -->
+        <div class="side-buttons left-buttons" id="left-buttons">
+            <button id="draw-card-btn-side" class="side-btn">Draw Card (D)</button>
+            <button id="auto-play-vigor-btn-side" class="side-btn">Auto-Play Vigor</button>
+        </div>
+        <div class="side-buttons right-buttons" id="right-buttons">
+            <button id="end-phase-btn-side" class="side-btn">End Phase (Space)</button>
+        </div>
+
+        <!-- Phase Indicator -->
+        <div class="phase-indicator" id="phase-indicator">
+            <span id="current-phase">Vigor Phase</span>
+        </div>
+
+        <!-- Player Info Bottom Right -->
+        <div class="player-info-bottom" id="player-info-bottom">
+            <span class="player-name" id="my-name">Player</span>
+            <span class="my-scallous" id="my-scallous">Scallous: 30</span>
+            <span class="my-vigor" id="my-vigor">Vigor: 0</span>
+        </div>
+    </div>
+
+    <!-- Click outside detector for hand expansion -->
+    <div class="click-outside-detector" id="click-outside-detector"></div>
+
+    <script>
+        // Use current server for API calls
+        const API_BASE = `${window.location.protocol}//${window.location.hostname}${window.location.port ? ':' + window.location.port : ''}/api`;
+        let playerId = `player_${Date.now()}`;
+        let gameId = null;
+        let playerIndex = 0;
+        let gameState = null;
+        let isHandExpanded = false;
+        let selectedCreature = null;
+        let pollInterval = null;
+        let lobbyPollInterval = null;
+        let isInLobby = false;
+        let phaseTimerInterval = null;
+        let phaseTimeRemaining = 60;
+
+        // DOM Elements
+        const lobby = document.getElementById('lobby');
+        const gameContainer = document.getElementById('game-container');
+        const playerNameInput = document.getElementById('player-name');
+        const joinLobbyBtn = document.getElementById('join-lobby-btn');
+        const lobbyStatus = document.getElementById('lobby-status');
+        const lobbyPlayers = document.getElementById('lobby-players');
+        const playersList = document.getElementById('players-list');
+
+        const myName = document.getElementById('my-name');
+        const opponentName = document.getElementById('opponent-name');
+        const myScallous = document.getElementById('my-scallous');
+        const myVigor = document.getElementById('my-vigor');
+        const opponentScallous = document.getElementById('opponent-scallous');
+        const opponentVigor = document.getElementById('opponent-vigor');
+        const turnIndicator = document.getElementById('turn-indicator');
+        const turnNumber = document.getElementById('turn-number');
+        const currentPhase = document.getElementById('current-phase');
+        const phaseIndicator = document.getElementById('phase-indicator');
+
+        const playerBattlefield = document.getElementById('player-battlefield');
+        const opponentBattlefield = document.getElementById('opponent-battlefield');
+        const handOverlay = document.getElementById('hand-overlay');
+        const handOverlayCards = document.getElementById('hand-overlay-cards');
+        const handToggleBtn = document.getElementById('hand-toggle-btn');
+        const handToggleOverlay = document.getElementById('hand-toggle-overlay');
+        const clickOutsideDetector = document.getElementById('click-outside-detector');
+
+        const drawCardBtnSide = document.getElementById('draw-card-btn-side');
+        const autoPlayVigorBtnSide = document.getElementById('auto-play-vigor-btn-side');
+        const endPhaseBtnSide = document.getElementById('end-phase-btn-side');
+        const leaveGameX = document.getElementById('leave-game-x');
+        const leftButtons = document.getElementById('left-buttons');
+        const rightButtons = document.getElementById('right-buttons');
+
+        // Join lobby
+        joinLobbyBtn.addEventListener('click', async () => {
+            const playerName = playerNameInput.value || 'Player';
+            lobbyStatus.textContent = 'Joining lobby...';
+            
+            try {
+                const response = await fetch(`${API_BASE}/join-lobby`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ playerId, playerName })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    isInLobby = true;
+                    joinLobbyBtn.style.display = 'none';
+                    playerNameInput.disabled = true;
+                    lobbyPlayers.style.display = 'block';
+                    lobbyStatus.textContent = 'Waiting in lobby...';
+                    startLobbyPolling();
+                }
+            } catch (error) {
+                console.error('Error joining lobby:', error);
+                lobbyStatus.textContent = 'Error connecting to server';
+            }
+        });
+        
+        // Start lobby polling to see available players
+        function startLobbyPolling() {
+            lobbyPollInterval = setInterval(async () => {
+                try {
+                    const response = await fetch(`${API_BASE}/lobby-players?playerId=${playerId}`);
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        updateLobbyPlayers(data.players);
+                        checkForGameInvitation(data);
+                    }
+                } catch (error) {
+                    console.error('Error polling lobby:', error);
+                }
+            }, 2000);
+        }
+        
+        // Update lobby players list
+        function updateLobbyPlayers(players) {
+            playersList.innerHTML = '';
+            
+            const otherPlayers = players.filter(p => p.id !== playerId);
+            
+            if (otherPlayers.length === 0) {
+                playersList.innerHTML = '<div class="no-players">No other players in lobby</div>';
+                return;
+            }
+            
+            otherPlayers.forEach(player => {
+                const playerItem = document.createElement('div');
+                playerItem.className = 'lobby-player-item';
+                playerItem.innerHTML = `
+                    <span class="lobby-player-name">${player.name}</span>
+                    <button class="lobby-player-challenge" data-player-id="${player.id}">Challenge</button>
+                `;
+                
+                playerItem.querySelector('.lobby-player-challenge').addEventListener('click', () => {
+                    challengePlayer(player.id);
+                });
+                
+                playersList.appendChild(playerItem);
+            });
+        }
+        
+        // Check for game invitation in lobby polling response
+        function checkForGameInvitation(data) {
+            if (data.gameInvitation && data.gameInvitation.gameId) {
+                // Player has been invited to a game
+                const invitation = data.gameInvitation;
+                
+                // Stop lobby polling
+                if (lobbyPollInterval) clearInterval(lobbyPollInterval);
+                
+                // Show acceptance dialog
+                const accept = confirm(`${invitation.opponentName} has challenged you to a battle!\n\nDo you accept?`);
+                
+                if (accept) {
+                    gameId = invitation.gameId;
+                    playerIndex = invitation.playerIndex;
+                    gameState = invitation.gameState;
+                    isInLobby = false;
+                    startGame();
+                } else {
+                    // Decline - remove from game and rejoin lobby
+                    fetch(`${API_BASE}/decline-game`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ gameId, playerId })
+                    });
+                    startLobbyPolling();
+                }
+            }
+        }
+        
+        // Challenge a player
+        async function challengePlayer(opponentId) {
+            try {
+                const cardSet = sessionStorage.getItem('cardSet') || 'Ash Cycle';
+                const vigorType = sessionStorage.getItem('vigorType') || null;
+
+                const response = await fetch(`${API_BASE}/challenge-player`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ playerId, opponentId, cardSet, vigorType })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    gameId = data.gameId;
+                    playerIndex = data.playerIndex;
+                    gameState = data.gameState;
+                    isInLobby = false;
+                    if (lobbyPollInterval) clearInterval(lobbyPollInterval);
+                    startGame();
+                } else {
+                    alert(data.error || 'Could not challenge player');
+                }
+            } catch (error) {
+                console.error('Error challenging player:', error);
+                alert('Error challenging player');
+            }
+        }
+
+        // Start game
+        function startGame() {
+            lobby.style.display = 'none';
+            gameContainer.style.display = 'flex';
+            
+            console.log('Starting game with player index:', playerIndex);
+            console.log('Game state:', gameState);
+            
+            if (gameState && gameState.players) {
+                myName.textContent = gameState.players[playerIndex].name || 'Player';
+                opponentName.textContent = gameState.players[1 - playerIndex].name || 'Opponent';
+                console.log('My name:', myName.textContent);
+                console.log('Opponent name:', opponentName.textContent);
+                
+                // Show coin flip result
+                if (gameState.coinFlipResult !== undefined) {
+                    const coinResult = gameState.coinFlipResult ? 'Heads' : 'Tails';
+                    const goesFirst = gameState.currentTurn === playerIndex;
+                    console.log(`Coin flip: ${coinResult}, ${goesFirst ? 'You go first!' : 'Opponent goes first!'}`);
+                    
+                    // Show coin flip message
+                    setTimeout(() => {
+                        alert(`Coin flip: ${coinResult}!\n${goesFirst ? 'You go first!' : 'Opponent goes first!'}`);
+                    }, 500);
+                }
+            }
+            
+            render();
+            startPolling();
+        }
+
+        // Start polling for game state updates
+        function startPolling() {
+            pollInterval = setInterval(async () => {
+                if (gameId) {
+                    try {
+                        const response = await fetch(`${API_BASE}/game-state/${gameId}`);
+                        const data = await response.json();
+                        
+                        if (data.success && data.gameState) {
+                            gameState = data.gameState;
+                            render();
+                        }
+                    } catch (error) {
+                        console.error('Error polling game state:', error);
+                    }
+                }
+            }, 1000);
+        }
+
+        // Render game state
+        function render() {
+            if (!gameState) return;
+            
+            const myPlayer = gameState.players[playerIndex];
+            const opponentPlayer = gameState.players[1 - playerIndex];
+            
+            console.log('Rendering for player index:', playerIndex);
+            console.log('My player:', myPlayer);
+            console.log('Opponent player:', opponentPlayer);
+            
+            // Update info
+            myName.textContent = myPlayer.name || 'Player';
+            myScallous.textContent = `Scallous: ${myPlayer.life}`;
+            const totalVigor = myPlayer.battlefield.filter(c => c.type === 'vigor').length;
+            const usedVigor = myPlayer.vigorUsedThisTurn || 0;
+            const availableVigor = totalVigor - usedVigor;
+            myVigor.textContent = `Vigor: ${availableVigor}/${totalVigor}`;
+
+            opponentName.textContent = opponentPlayer.name || 'Opponent';
+            opponentScallous.textContent = `Scallous: ${opponentPlayer.life}`;
+            const opponentTotalVigor = opponentPlayer.battlefield.filter(c => c.type === 'vigor').length;
+            const opponentUsedVigor = opponentPlayer.vigorUsedThisTurn || 0;
+            const opponentAvailableVigor = opponentTotalVigor - opponentUsedVigor;
+            opponentVigor.textContent = `Vigor: ${opponentAvailableVigor}/${opponentTotalVigor}`;
+
+            turnIndicator.textContent = gameState.currentTurn === playerIndex ? 'Your Turn' : "Opponent's Turn";
+            turnNumber.textContent = `Turn: ${Math.floor(gameState.currentTurn / 2) + 1}`;
+            
+            // Update button states (only show on player's turn)
+            const isMyTurn = gameState.currentTurn === playerIndex;
+            drawCardBtnSide.disabled = !isMyTurn || gameState.phase !== 'draw';
+            autoPlayVigorBtnSide.disabled = !isMyTurn || gameState.phase !== 'vigor';
+            endPhaseBtnSide.disabled = !isMyTurn;
+            
+            leftButtons.style.display = isMyTurn ? 'flex' : 'none';
+            rightButtons.style.display = isMyTurn ? 'flex' : 'none';
+            
+            // Update phase indicator
+            if (gameState.phase) {
+                currentPhase.textContent = gameState.phase.charAt(0).toUpperCase() + gameState.phase.slice(1) + ' Phase';
+            }
+            
+            // Start/stop phase timer (timer runs but is hidden)
+            if (isMyTurn) {
+                startPhaseTimer();
+            } else {
+                stopPhaseTimer();
+            }
+            
+            // Render cards (hide vigor on battlefield, only show in info)
+            renderCards(myPlayer.hand, handOverlayCards, true, false);
+            renderCards(myPlayer.battlefield.filter(c => c.type !== 'vigor'), playerBattlefield, false, false);
+            // Opponent cards on battlefield are face-up (NOT face-down)
+            renderCards(opponentPlayer.battlefield.filter(c => c.type !== 'vigor'), opponentBattlefield, false, false);
+            
+            // Make opponent cards clickable during attack phase
+            if (gameState.currentTurn === playerIndex && gameState.phase === 'attack') {
+                opponentBattlefield.querySelectorAll('.card').forEach((card, index) => {
+                    card.classList.add('attackable');
+                    card.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const opponent = gameState.players[1 - playerIndex];
+                        const opponentBattlefield = opponent.battlefield.filter(c => c.type !== 'vigor');
+                        const cardData = opponentBattlefield[index];
+                        const fullTargetIndex = opponent.battlefield.indexOf(cardData);
+                        handleAttackTarget(fullTargetIndex, false);
+                    });
+                });
+            }
+            
+            // Add attack player button if no primordial and no creatures
+            const opponentPrimordial = opponentPlayer.battlefield.find(c => c.type === 'primordial');
+            const opponentCreatures = opponentPlayer.battlefield.filter(c => c.type === 'creature');
+            
+            // Remove existing button
+            const existingBtn = document.getElementById('attack-player-btn');
+            if (existingBtn) existingBtn.remove();
+            
+            if (!opponentPrimordial && opponentCreatures.length === 0 && gameState.currentTurn === playerIndex && gameState.phase === 'attack') {
+                addAttackPlayerButton();
+            }
+        }
+        
+        function addAttackPlayerButton() {
+            const btn = document.createElement('button');
+            btn.id = 'attack-player-btn';
+            btn.className = 'attack-player-btn';
+            btn.textContent = 'Attack Player';
+            btn.addEventListener('click', () => {
+                selectAttackerForPlayerAttack();
+            });
+            
+            opponentBattlefield.appendChild(btn);
+        }
+        
+        function addAttackPlayerButton() {
+            // Remove existing button
+            const existingBtn = document.getElementById('attack-player-btn');
+            if (existingBtn) existingBtn.remove();
+            
+            const btn = document.createElement('button');
+            btn.id = 'attack-player-btn';
+            btn.className = 'attack-player-btn';
+            btn.textContent = 'Attack Player';
+            btn.addEventListener('click', () => {
+                selectAttackerForPlayerAttack();
+            });
+            
+            opponentBattlefield.appendChild(btn);
+        }
+        
+        let selectedAttacker = null;
+        
+        function selectAttackerForPlayerAttack() {
+            // Clear previous selections
+            selectedAttacker = null;
+            document.querySelectorAll('.card').forEach(c => {
+                c.classList.remove('selected');
+                c.classList.remove('selectable');
+            });
+            
+            // Check if player has attackable creatures
+            const myBattlefield = gameState.players[playerIndex].battlefield.filter(c => c.type !== 'vigor');
+            const myCreatures = myBattlefield.filter(c => 
+                (c.type === 'creature' || c.type === 'primordial') && 
+                (c.canAttack || c.hasHaste)
+            );
+            
+            if (myCreatures.length === 0) {
+                alert('No creatures available to attack');
+                return;
+            }
+            
+            // Mark player's attackable creatures as selectable
+            document.querySelectorAll('#player-battlefield .card').forEach((card, index) => {
+                const cardData = myBattlefield[index];
+                if (cardData && (cardData.type === 'creature' || cardData.type === 'primordial') && (cardData.canAttack || cardData.hasHaste)) {
+                    card.classList.add('selectable');
+                    card.addEventListener('click', () => {
+                        selectedAttacker = index;
+                        document.querySelectorAll('.card').forEach(c => {
+                            c.classList.remove('selected');
+                            c.classList.remove('selectable');
+                        });
+                        card.classList.add('selected');
+                        // Get the actual index in the full battlefield array
+                        const fullIndex = gameState.players[playerIndex].battlefield.indexOf(cardData);
+                        attackTarget(fullIndex, null, true);
+                    });
+                }
+            });
+        }
+        
+        function handleAttackTarget(fullTargetIndex, isPlayer = false) {
+            // Clear previous selections
+            selectedAttacker = null;
+            document.querySelectorAll('.card').forEach(c => {
+                c.classList.remove('selected');
+                c.classList.remove('selectable');
+            });
+            
+            // Check if player has attackable creatures
+            const myBattlefield = gameState.players[playerIndex].battlefield.filter(c => c.type !== 'vigor');
+            const myCreatures = myBattlefield.filter(c => 
+                (c.type === 'creature' || c.type === 'primordial') && 
+                (c.canAttack || c.hasHaste)
+            );
+            
+            if (myCreatures.length === 0) {
+                alert('No creatures available to attack');
+                return;
+            }
+            
+            // Mark player's attackable creatures as selectable
+            document.querySelectorAll('#player-battlefield .card').forEach((card, index) => {
+                const cardData = myBattlefield[index];
+                if (cardData && (cardData.type === 'creature' || cardData.type === 'primordial') && (cardData.canAttack || cardData.hasHaste)) {
+                    card.classList.add('selectable');
+                    card.addEventListener('click', () => {
+                        selectedAttacker = index;
+                        document.querySelectorAll('.card').forEach(c => {
+                            c.classList.remove('selected');
+                            c.classList.remove('selectable');
+                        });
+                        card.classList.add('selected');
+                        // Get the actual index in the full battlefield array
+                        const fullIndex = gameState.players[playerIndex].battlefield.indexOf(cardData);
+                        attackTarget(fullIndex, fullTargetIndex, isPlayer);
+                    });
+                }
+            });
+        }
+        
+        async function attackTarget(attackerIndex, targetIndex, targetPlayer) {
+            console.log('Attack attempt:', { attackerIndex, targetIndex, targetPlayer });
+            try {
+                const response = await fetch(`${API_BASE}/attack`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ gameId, playerId, attackerIndex, targetIndex, targetPlayer })
+                });
+                
+                const data = await response.json();
+                console.log('Attack response:', data);
+                if (data.success) {
+                    gameState = data.gameState;
+                    render();
+                } else {
+                    alert(data.error || 'Could not attack');
+                }
+            } catch (error) {
+                console.error('Error attacking:', error);
+                alert('Error attacking');
+            }
+        }
+
+        function startPhaseTimer() {
+            stopPhaseTimer();
+            phaseTimeRemaining = 60;
+            // Timer runs but is hidden (no DOM updates)
+            
+            phaseTimerInterval = setInterval(() => {
+                phaseTimeRemaining--;
+                
+                if (phaseTimeRemaining <= 0) {
+                    stopPhaseTimer();
+                    // Auto-advance phase when timer runs out
+                    endPhaseBtnSide.click();
+                }
+            }, 1000);
+        }
+        
+        function stopPhaseTimer() {
+            if (phaseTimerInterval) {
+                clearInterval(phaseTimerInterval);
+                phaseTimerInterval = null;
+            }
+        }
+
+        function renderCards(cards, container, isDraggable = false, isFaceDown = false, isOpponent = false) {
+            container.innerHTML = '';
+            cards.forEach((card, index) => {
+                // Opponent battlefield cards are face-up, opponent hand cards are face-down
+                // We only render battlefield here, so always face-up
+                const showFaceDown = false;
+                const cardEl = createCardElement(card, showFaceDown, isDraggable, index, isOpponent);
+                container.appendChild(cardEl);
+            });
+        }
+
+        function createCardElement(card, isFaceDown, isDraggable, index, isOpponent = false) {
+            const cardEl = document.createElement('div');
+            cardEl.className = 'card';
+            cardEl.dataset.index = index;
+            
+            if (card.type) {
+                cardEl.classList.add(`card-${card.type}`);
+            }
+            
+            // Check if creature/primordial can attack
+            if ((card.type === 'creature' || card.type === 'primordial') && !isOpponent) {
+                if (!card.canAttack && !card.hasHaste) {
+                    cardEl.classList.add('cannot-attack');
+                }
+            }
+            
+            if (isFaceDown) {
+                cardEl.classList.add('face-down');
+            } else {
+                if (isDraggable) {
+                    cardEl.addEventListener('click', () => handleCardClick(index));
+                }
+                
+                // If opponent card and in attack phase, make it attackable
+                if (isOpponent && gameState && gameState.phase === 'attack' && gameState.currentTurn === playerIndex) {
+                    cardEl.classList.add('attackable');
+                    cardEl.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        // Get the actual index in the full battlefield array
+                        const opponent = gameState.players[1 - playerIndex];
+                        const opponentBattlefield = opponent.battlefield.filter(c => c.type !== 'vigor');
+                        const cardData = opponentBattlefield[index];
+                        const fullTargetIndex = opponent.battlefield.indexOf(cardData);
+                        handleAttackTarget(fullTargetIndex, false);
+                    });
+                }
+                
+                let cardContent = '';
+
+                if (card.type === 'vigor') {
+                    cardContent = `
+                        <div class="card-cost">0</div>
+                        <div class="card-name">${card.name}</div>
+                        <div class="card-image vigor-icon">
+                            <span style="font-size: 3em;">💎</span>
+                        </div>
+                        <div class="card-description">+1 Vigor per round</div>
+                    `;
+                } else if (card.type === 'primordial') {
+                    cardContent = `
+                        <div class="card-cost">${card.cost}</div>
+                        <div class="card-name primordial-name">${card.name}</div>
+                        <div class="card-image">
+                            <span style="font-size: 3em;">👑</span>
+                        </div>
+                        <div class="card-stats">
+                            <span class="card-attack">⚔${card.attack}${card.equipment ? `+${card.equipment.attack}` : ''}</span>
+                            <span class="card-defense">🛡${card.defense}${card.equipment ? `+${card.equipment.defense}` : ''}</span>
+                        </div>
+                        <div class="card-primordial-indicator">👑 KING</div>
+                        ${card.equipment ? `<div class="equipment-indicator">⚔️ ${card.equipment.name}</div>` : ''}
+                    `;
+                } else if (card.type === 'rune') {
+                    cardContent = `
+                        <div class="card-cost">${card.cost}</div>
+                        <div class="card-name">${card.name}</div>
+                        <div class="card-image rune-icon">
+                            <span style="font-size: 3em;">✨</span>
+                        </div>
+                        <div class="card-description">One-time use</div>
+                    `;
+                } else if (card.type === 'equipment') {
+                    cardContent = `
+                        <div class="card-cost">${card.cost}</div>
+                        <div class="card-name">${card.name}</div>
+                        <div class="card-image equipment-icon">
+                            <span style="font-size: 3em;">⚔️</span>
+                        </div>
+                        <div class="card-stats">
+                            <span class="card-attack">+${card.attack}</span>
+                            <span class="card-defense">+${card.defense}</span>
+                        </div>
+                        <div class="card-description">Attach to creature</div>
+                    `;
+                } else {
+                    cardContent = `
+                        <div class="card-cost">${card.cost}</div>
+                        <div class="card-name">${card.name}</div>
+                        <div class="card-image">
+                            <span style="font-size: 3em;">⚔️</span>
+                        </div>
+                        <div class="card-stats">
+                            <span class="card-attack">⚔${card.attack}${card.equipment ? `+${card.equipment.attack}` : ''}</span>
+                            <span class="card-defense">🛡${card.defense}${card.equipment ? `+${card.equipment.defense}` : ''}</span>
+                        </div>
+                        ${card.equipment ? `<div class="equipment-indicator">⚔️ ${card.equipment.name}</div>` : ''}
+                    `;
+                }
+                
+                cardEl.innerHTML = cardContent;
+            }
+            
+            return cardEl;
+        }
+
+        // Handle card click - show play options
+        async function handleCardClick(index) {
+            if (gameState.currentTurn !== playerIndex) return;
+            
+            const card = gameState.players[playerIndex].hand[index];
+            
+            if (card.type === 'rune') {
+                // Runes don't need placement - play immediately
+                await playCard(index);
+            } else if (card.type === 'vigor') {
+                // Vigor cards are auto-played
+                await playCard(index);
+            } else if (card.type === 'equipment') {
+                // Equipment needs to be attached to a creature
+                showEquipmentAttachmentOptions(index, card);
+            } else {
+                // Creature or primordial - ask where to play
+                showPlayOptions(index, card);
+            }
+        }
+        
+        function showEquipmentAttachmentOptions(equipmentIndex, equipment) {
+            const myBattlefield = gameState.players[playerIndex].battlefield.filter(c => c.type !== 'vigor');
+            const creatures = myBattlefield.filter(c => c.type === 'creature' || c.type === 'primordial');
+            
+            if (creatures.length === 0) {
+                alert('No creatures to attach equipment to');
+                return;
+            }
+            
+            const modal = document.createElement('div');
+            modal.className = 'play-options-modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <h3>Attach ${equipment.name}</h3>
+                    <p>Select a creature to attach this equipment to:</p>
+                    <div class="creature-selection"></div>
+                    <button id="cancel-attach">Cancel</button>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            const container = modal.querySelector('.creature-selection');
+            creatures.forEach((creature, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'creature-select-btn';
+                btn.textContent = `${creature.name} (⚔${creature.attack} 🛡${creature.defense})`;
+                btn.addEventListener('click', async () => {
+                    // Get the actual index in the full battlefield array at the time of click
+                    const currentBattlefield = gameState.players[playerIndex].battlefield;
+                    const fullCreatureIndex = currentBattlefield.findIndex(c => 
+                        c.name === creature.name && 
+                        c.attack === creature.attack && 
+                        c.defense === creature.defense &&
+                        c.type === creature.type
+                    );
+                    
+                    if (fullCreatureIndex === -1) {
+                        alert('Creature not found on battlefield');
+                        modal.remove();
+                        return;
+                    }
+                    
+                    await attachEquipment(equipmentIndex, fullCreatureIndex);
+                    modal.remove();
+                });
+                container.appendChild(btn);
+            });
+            
+            modal.querySelector('#cancel-attach').addEventListener('click', () => {
+                modal.remove();
+            });
+        }
+        
+        async function attachEquipment(equipmentIndex, targetCreatureIndex) {
+            try {
+                const response = await fetch(`${API_BASE}/attach-equipment`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ gameId, playerId, equipmentIndex, targetCreatureIndex })
+                });
+                
+                const data = await response.json();
+                if (data.success) {
+                    gameState = data.gameState;
+                    render();
+                } else {
+                    alert(data.error || 'Could not attach equipment');
+                }
+            } catch (error) {
+                console.error('Error attaching equipment:', error);
+                alert('Error attaching equipment');
+            }
+        }
+        
+        function showDrawNotification(card) {
+            if (!card) return;
+            
+            const notification = document.createElement('div');
+            notification.className = 'draw-notification';
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <h3>Drew a card!</h3>
+                    <div class="drawn-card-preview">
+                        <div class="card-cost">${card.cost}</div>
+                        <div class="card-name">${card.name}</div>
+                        <div class="card-type">${card.type.toUpperCase()}</div>
+                        ${card.attack !== undefined ? `<div class="card-stats-preview">⚔${card.attack} 🛡${card.defense}</div>` : ''}
+                    </div>
+                    <button id="close-notification">Close</button>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.querySelector('#close-notification').addEventListener('click', () => {
+                    notification.remove();
+                });
+            }, 100);
+            
+            // Auto-close after 3 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 3000);
+        }
+        
+        function showPlayOptions(cardIndex, card) {
+            const modal = document.createElement('div');
+            modal.className = 'play-options-modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <h3>Play ${card.name}</h3>
+                    <p>Where do you want to play this card?</p>
+                    <button id="play-to-battlefield">Play to Battlefield</button>
+                    <button id="cancel-play">Cancel</button>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            modal.querySelector('#play-to-battlefield').addEventListener('click', async () => {
+                modal.remove();
+                await playCard(cardIndex);
+            });
+            
+            modal.querySelector('#cancel-play').addEventListener('click', () => {
+                modal.remove();
+            });
+        }
+
+        // Play card
+        async function playCard(cardIndex) {
+            try {
+                const response = await fetch(`${API_BASE}/play-card`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ gameId, playerId, cardIndex })
+                });
+                
+                const data = await response.json();
+                if (data.success) {
+                    gameState = data.gameState;
+                    render();
+                } else {
+                    alert(data.error || 'Could not play card');
+                }
+            } catch (error) {
+                console.error('Error playing card:', error);
+                alert('Error playing card');
+            }
+        }
+
+        // Phase indicator click to advance phase
+        phaseIndicator.addEventListener('click', async () => {
+            if (gameState.currentTurn === playerIndex) {
+                try {
+                    const response = await fetch(`${API_BASE}/advance-phase`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ gameId, playerId })
+                    });
+                    
+                    const data = await response.json();
+                    if (data.success) {
+                        gameState = data.gameState;
+                        render();
+                    }
+                } catch (error) {
+                    console.error('Error advancing phase:', error);
+                }
+            }
+        });
+
+        // Auto-play vigor
+        autoPlayVigorBtnSide.addEventListener('click', async () => {
+            try {
+                const response = await fetch(`${API_BASE}/auto-play-vigor`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ gameId, playerId })
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    gameState = data.gameState;
+                    render();
+                }
+            } catch (error) {
+                console.error('Error auto-playing vigor:', error);
+            }
+        });
+
+        // End phase
+        endPhaseBtnSide.addEventListener('click', async () => {
+            try {
+                const response = await fetch(`${API_BASE}/advance-phase`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ gameId, playerId })
+                });
+                
+                const data = await response.json();
+                if (data.success) {
+                    gameState = data.gameState;
+                    render();
+                }
+            } catch (error) {
+                console.error('Error advancing phase:', error);
+            }
+        });
+
+        // Draw card
+        drawCardBtnSide.addEventListener('click', async () => {
+            try {
+                const response = await fetch(`${API_BASE}/draw-card`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ gameId, playerId })
+                });
+                
+                const data = await response.json();
+                if (data.success) {
+                    // Show notification of drawn card
+                    if (data.drawnCard) {
+                        showDrawNotification(data.drawnCard);
+                    }
+                    gameState = data.gameState;
+                    render();
+                }
+            } catch (error) {
+                console.error('Error drawing card:', error);
+            }
+        });
+
+        // Leave game
+        leaveGameX.addEventListener('click', () => {
+            if (pollInterval) clearInterval(pollInterval);
+            gameId = null;
+            gameState = null;
+            gameContainer.style.display = 'none';
+            lobby.style.display = 'flex';
+            lobbyStatus.textContent = '';
+        });
+
+        // Hand expansion
+        handToggleBtn.addEventListener('click', toggleHandExpansion);
+        handToggleOverlay.addEventListener('click', toggleHandExpansion);
+        clickOutsideDetector.addEventListener('click', toggleHandExpansion);
+
+        function toggleHandExpansion() {
+            isHandExpanded = !isHandExpanded;
+            
+            if (isHandExpanded) {
+                handOverlay.classList.add('active');
+                handToggleBtn.textContent = '−';
+                clickOutsideDetector.classList.add('active');
+            } else {
+                handOverlay.classList.remove('active');
+                handToggleBtn.textContent = '+';
+                clickOutsideDetector.classList.remove('active');
+            }
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'd' || e.key === 'D') {
+                drawCardBtnSide.click();
+            } else if (e.key === ' ') {
+                e.preventDefault();
+                endPhaseBtnSide.click();
+            } else if (e.key === 'Escape') {
+                if (isHandExpanded) {
+                    toggleHandExpansion();
+                } else {
+                    leaveGameX.click();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

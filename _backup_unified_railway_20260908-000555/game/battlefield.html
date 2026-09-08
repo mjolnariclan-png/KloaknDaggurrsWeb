@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Responsive Battlefield</title>
+    <link rel="stylesheet" href="../assets/css/battlefield-styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Game Header -->
+        <div class="game-header">
+            <div class="player-info">
+                <span class="player-name">Player</span>
+                <span class="life-count">Life: 30</span>
+                <span class="mana-count">Mana: 0</span>
+                <span class="vigor-count">Vigor: 0</span>
+            </div>
+            <div class="turn-info">
+                <span class="turn-indicator">Your Turn</span>
+                <span class="turn-number">Turn: 1</span>
+                <span class="turn-phase">Vigor Reset</span>
+            </div>
+            <div class="opponent-info">
+                <span class="opponent-name">Opponent</span>
+                <span class="opponent-life">Life: 30</span>
+                <span class="opponent-mana">Mana: 0</span>
+                <span class="opponent-vigor">Vigor: 0</span>
+            </div>
+        </div>
+        
+        <!-- Mode Selection -->
+        <div class="mode-selection" id="mode-selection">
+            <button id="ai-mode-btn" class="mode-btn">Play vs AI</button>
+            <button id="twoplayer-mode-btn" class="mode-btn">2 Player Mode</button>
+        </div>
+
+        <!-- Main Battlefield Area -->
+        <div class="battlefield-container" id="battlefield-container">
+            <!-- Opponent Zones -->
+            <div class="opponent-zones">
+                <div class="zone opponent-hand-zone" id="opponent-hand-zone">
+                    <div class="zone-label">Opponent Hand</div>
+                    <div class="zone-content" id="opponent-hand"></div>
+                </div>
+                <div class="zone opponent-battlefield-zone" id="opponent-battlefield-zone">
+                    <div class="zone-label">Opponent Battlefield</div>
+                    <div class="zone-content" id="opponent-battlefield"></div>
+                </div>
+            </div>
+
+            <!-- Player Zones -->
+            <div class="player-zones">
+                <div class="zone player-battlefield-zone" id="player-battlefield-zone">
+                    <div class="zone-label">Your Battlefield</div>
+                    <div class="zone-content" id="player-battlefield"></div>
+                </div>
+                <div class="zone player-hand-zone" id="player-hand-zone">
+                    <button class="hand-toggle" id="hand-toggle">+</button>
+                    <div class="zone-label">Your Hand</div>
+                    <div class="zone-content" id="player-hand"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Controls -->
+        <div class="game-controls">
+            <button id="draw-card-btn" class="control-btn">Draw Card (D)</button>
+            <button id="auto-play-vigor-btn" class="control-btn">Auto-Play Vigor</button>
+            <button id="end-turn-btn" class="control-btn">End Turn (Space)</button>
+            <button id="menu-btn" class="control-btn">Return to Menu</button>
+        </div>
+    </div>
+
+    <!-- Click outside detector for hand expansion -->
+    <div class="click-outside-detector" id="click-outside-detector"></div>
+
+    <script type="module" src="../assets/js/battlefield.js"></script>
+</body>
+</html>

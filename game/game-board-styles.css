@@ -1,0 +1,87 @@
+/* Reset default margin and padding */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set background and font styles for the whole page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Light gray background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+}
+
+/* Container for the game board */
+.game-board {
+    display: flex;
+    justify-content: space-around;
+    width: 80%; /* Adjust as per your design */
+    max-width: 1200px; /* Limit width for larger screens */
+    background-color: #fff; /* White background */
+    border: 2px solid #ccc; /* Light gray border */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+}
+
+/* Styles for player and opponent areas */
+.player-area, .opponent-area {
+    flex: 1; /* Equal width for player and opponent areas */
+    margin: 0 10px; /* Spacing between player and opponent areas */
+}
+
+.player-area h2, .opponent-area h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Button styles */
+button {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-size: 16px;
+    background-color: #4CAF50; /* Green */
+    color: #fff; /* White text */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Styles for cards */
+.card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card .details {
+    padding: 10px;
+}
+
+.card h2 {
+    margin-top: 0;
+    font-size: 18px;
+}
+
+.card p {
+    margin: 5px 0;
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 5px;
+}

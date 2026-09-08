@@ -1,0 +1,60 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-image: url('kdbg.png');
+    background-repeat: no-repeat; /* Ensure background doesn't repeat */
+    background-size: cover; /* Cover the entire background without distortion */
+    background-position: center; /* Center the background image */
+}
+
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 100px auto;
+    text-align: center;
+    background-image: url('msbg.png'); /* Background image */
+    background-repeat: no-repeat; /* Ensure background doesn't repeat */
+    background-size: contain; /* Cover the entire background without distortion */
+    background-position: center; /* Center the background image */
+    padding: 20px;
+    border-radius: 15px;
+}
+
+h1 {
+    color: #333;
+}
+
+.menu-options {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    padding: 15px 30px;
+    margin: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: background-image 0.3s ease;
+}
+
+button:hover {
+    background-color: #0059ff;
+}

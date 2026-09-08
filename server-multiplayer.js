@@ -78,18 +78,9 @@ function loadCardManifests() {
     const setsPath = 'B:\\Sets';
     if (!fs.existsSync(setsPath)) {
         console.log('Sets directory not found at B:\\Sets');
-        // Try alternative path
-        const altPath = path.join(__dirname, 'Sets');
-        if (fs.existsSync(altPath)) {
-            console.log(`Using alternative Sets directory: ${altPath}`);
-            loadFromPath(altPath);
-        }
         return;
     }
-    loadFromPath(setsPath);
-}
 
-function loadFromPath(setsPath) {
     const sets = fs.readdirSync(setsPath).filter(dir => {
         const dirPath = path.join(setsPath, dir);
         return fs.statSync(dirPath).isDirectory();
@@ -128,7 +119,6 @@ app.use(express.json());
 
 // Serve static files from test game directory
 app.use(express.static(__dirname));
-app.use('/game', express.static(path.join(__dirname, 'game')));
 
 // Serve card images from B:\Sets location
 app.use('/cards', express.static('B:\\Sets'));
@@ -158,7 +148,7 @@ app.get('/api/decks', (req, res) => {
     try {
         const fs = require('fs');
         const path = require('path');
-        const decksDir = path.join(__dirname, 'assets', 'data', 'decks');
+        const decksDir = path.join(__dirname, 'decks');
         
         if (!fs.existsSync(decksDir)) {
             return res.json({ success: true, decks: [] });

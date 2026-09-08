@@ -24,7 +24,7 @@ body {
     max-width: 600px;
     margin: 100px auto;
     text-align: center;
-    background-image: url('../img/msbg.png'); /* Background image */
+    background-image: url('/assets/img/msbg.png'); /* Background image */
     background-repeat: no-repeat; /* Ensure background doesn't repeat */
     background-size: contain; /* Cover the entire background without distortion */
     background-position: center; /* Center the background image */

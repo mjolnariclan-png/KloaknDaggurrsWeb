@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>TCG Multiplayer</title>
-    <link rel="stylesheet" href="../assets/css/battlefield-styles.css">
+    <link rel="stylesheet" href="battlefield-styles.css">
     <style>
         /* Force landscape orientation */
         @media screen and (orientation: portrait) {
@@ -26,7 +26,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: url('../assets/img/dbbg.png') center/cover no-repeat, linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background: url('dbbg.png') center/cover no-repeat, linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
         }
         
         .lobby-container {
@@ -153,7 +153,7 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            background: url('../assets/img/dbbg.png') center/cover no-repeat, linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background: url('dbbg.png') center/cover no-repeat, linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
         }
         
         /* Game Header */
@@ -805,6 +805,9 @@
             box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
         }
     </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/assets/js/config.js"></script>
+<script src="/game/game-auth.js"></script>
 </head>
 <body>
     <div class="multiplayer-lobby" id="lobby">
@@ -898,7 +901,7 @@
     <script>
         // Use current server for API calls
         const API_BASE = `${window.location.protocol}//${window.location.hostname}${window.location.port ? ':' + window.location.port : ''}/api`;
-        let playerId = `player_${Date.now()}`;
+        let playerId = null;
         let gameId = null;
         let playerIndex = 0;
         let gameState = null;
@@ -947,7 +950,10 @@
 
         // Join lobby
         joinLobbyBtn.addEventListener('click', async () => {
-            const playerName = playerNameInput.value || 'Player';
+            const authSession = await window.KD_GAME_AUTH_READY;
+            playerId = authSession.user.id;
+            const defaultName = authSession.user.user_metadata?.display_name || authSession.user.email?.split('@')[0] || 'Player';
+            const playerName = playerNameInput.value || defaultName;
             lobbyStatus.textContent = 'Joining lobby...';
             
             try {

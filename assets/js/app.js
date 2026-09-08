@@ -1,4 +1,4 @@
-const KD = (() => {
+﻿const KD = (() => {
   const app = document.querySelector("#app");
   const $=(s,p=document)=>p.querySelector(s), $$=(s,p=document)=>[...p.querySelectorAll(s)];
   const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
@@ -30,7 +30,7 @@ const KD = (() => {
   const live=item=>item?.is_live ?? (!!item?.revealed || item?.status==="open" || !!(item?.reveal_at&&new Date(item.reveal_at).getTime()<=Date.now()));
   const faction=slug=>data?.factions.find(f=>f.slug===slug);
   const countdown=item=>item?.reveal_at&&!live(item)?`<div class="countdown" data-countdown="${esc(item.reveal_at)}">SIGNAL PENDING</div>`:"";
-  const fmtDate=v=>v?new Date(v).toLocaleString():"—";
+  const fmtDate=v=>v?new Date(v).toLocaleString():"â€”";
 
   async function loadFallback(){
     if(fallback) return fallback;
@@ -207,16 +207,16 @@ const KD = (() => {
   }
 
   function backendBadge(){
-    return `<div class="backend-badge ${backendOnline?"online":"offline"}">${backendOnline?"● LIVE DATABASE":"● STATIC FALLBACK"}</div>`;
+    return `<div class="backend-badge ${backendOnline?"online":"offline"}">${backendOnline?"â— LIVE DATABASE":"â— STATIC FALLBACK"}</div>`;
   }
 
   function home(){
     return `
     ${data.site.intro&&!localStorage.getItem("kd-intro-v4")?`<div id="intro" class="intro-sequence"><img src="assets/img/brand-mark.png" alt=""><p>SIGNAL ACQUIRED</p><h2>KLOAK &amp; DAGGURRS</h2><span>CLICK / TAP TO ENTER</span></div>`:""}
-    <section class="hero"><div class="hero-grid"></div><div class="hero-sigil"><img src="assets/img/brand-mark.png" alt=""></div><div class="hero-copy reveal"><p class="eyebrow">${esc(data.site.eyebrow)}</p><h1>${esc(data.site.title)}</h1><p class="hero-line">${esc(data.site.line1)}<br><strong>${esc(data.site.line2)}</strong></p><div class="hero-actions"><a class="btn primary" href="#world">Enter the Shadows</a><a class="btn ghost" href="#/learn">Learn Klandestine</a></div></div><div class="scroll-cue">DESCEND ↓</div></section>
-    <section class="section" id="world"><div class="section-heading"><p class="eyebrow">THE GAME BENEATH THE GAME</p><h2>Trust is a weapon.</h2><p>Klandestine is a social strategy card game of hidden allegiance, calculated deception, and eight factions fighting beneath the Veil.</p></div><div class="stat-grid"><article class="stat-card"><b>3–6</b><span>Players</span></article><article class="stat-card"><b>8</b><span>Factions</span></article><article class="stat-card"><b>∞</b><span>Lies Available</span></article><article class="stat-card"><b>1</b><span>Winning Allegiance</span></article></div></section>
-    <section class="section"><div class="section-heading split-heading"><div><p class="eyebrow">CHOOSE YOUR ALLEGIANCE</p><h2>Eight factions.<br>Four wars.</h2></div><a class="text-link" href="#/factions">Open faction archive →</a></div><div class="home-factions">${data.factions.slice(0,8).map(factionCard).join("")}</div></section>
-    <section class="section"><div class="section-heading split-heading"><div><p class="eyebrow">THE HOARD</p><h2>Every card leaves evidence.</h2></div><a class="text-link" href="#/cards">Enter Card Archive →</a></div><div class="card-grid">${data.cards.slice(0,6).map(gameCard).join("")}</div></section>
+    <section class="hero"><div class="hero-grid"></div><div class="hero-sigil"><img src="assets/img/brand-mark.png" alt=""></div><div class="hero-copy reveal"><p class="eyebrow">${esc(data.site.eyebrow)}</p><h1>${esc(data.site.title)}</h1><p class="hero-line">${esc(data.site.line1)}<br><strong>${esc(data.site.line2)}</strong></p><div class="hero-actions"><a class="btn primary" href="#world">Enter the Shadows</a><a class="btn ghost" href="#/learn">Learn Klandestine</a></div></div><div class="scroll-cue">DESCEND â†“</div></section>
+    <section class="section" id="world"><div class="section-heading"><p class="eyebrow">THE GAME BENEATH THE GAME</p><h2>Trust is a weapon.</h2><p>Klandestine is a social strategy card game of hidden allegiance, calculated deception, and eight factions fighting beneath the Veil.</p></div><div class="stat-grid"><article class="stat-card"><b>3â€“6</b><span>Players</span></article><article class="stat-card"><b>8</b><span>Factions</span></article><article class="stat-card"><b>âˆž</b><span>Lies Available</span></article><article class="stat-card"><b>1</b><span>Winning Allegiance</span></article></div></section>
+    <section class="section"><div class="section-heading split-heading"><div><p class="eyebrow">CHOOSE YOUR ALLEGIANCE</p><h2>Eight factions.<br>Four wars.</h2></div><a class="text-link" href="#/factions">Open faction archive â†’</a></div><div class="home-factions">${data.factions.slice(0,8).map(factionCard).join("")}</div></section>
+    <section class="section"><div class="section-heading split-heading"><div><p class="eyebrow">THE HOARD</p><h2>Every card leaves evidence.</h2></div><a class="text-link" href="#/cards">Enter Card Archive â†’</a></div><div class="card-grid">${data.cards.slice(0,6).map(gameCard).join("")}</div></section>
     <section class="section vault-tease"><div class="vault-door"><div class="vault-core"><span>K&amp;D ARCHIVE</span><strong>THE VAULT</strong><small>ACCESS VARIES</small></div></div><div class="vault-copy"><p class="eyebrow">FORBIDDEN KNOWLEDGE</p><h2>Some files should stay closed.</h2><p>Vault codes are now checked by the database instead of being exposed in site-data.json.</p><a class="btn primary" href="#/vault">Request Vault Access</a></div></section>
     <section class="section"><div class="section-heading"><p class="eyebrow">INTERCEPTED TRANSMISSIONS</p><h2>Whispers beyond the Veil.</h2></div><div class="timeline">${data.whispers.slice(0,3).map(whisper).join("")}</div></section>`;
   }
@@ -242,7 +242,7 @@ const KD = (() => {
       let warContent;
       if (w) {
         if (bothRevealed) {
-          warContent = `<h3>${esc(f1.name)} vs. ${esc(f2.name)} — ${esc(w.title)}</h3><p>${esc(w.description)}</p>`;
+          warContent = `<h3>${esc(f1.name)} vs. ${esc(f2.name)} â€” ${esc(w.title)}</h3><p>${esc(w.description)}</p>`;
         } else {
           warContent = `<h3>${esc(w.short_name||w.title)}</h3>`;
         }
@@ -410,11 +410,11 @@ const KD = (() => {
       `;
     }
     
-    return `<section class="card-dossier"><div><div class="game-card giant rarity-${esc((c.rarity||"Common").toLowerCase())} ${open?"":"classified-card"}"><div class="foil"></div><div class="card-art"><img src="${esc(cardImage)}" alt="${esc(c.name)}"></div><div class="card-caption"><span class="cap-number">${esc(c.card_number||c.number||"000")}</span><span class="cap-name">${esc(open?c.name:"CLASSIFIED")}</span><span class="cap-faction">${esc(f?.name||"UNKNOWN")}</span></div></div></div><div class="card-record"><p class="eyebrow">CARD DOSSIER</p><h1>${esc(open?c.name:"██████████")}</h1>${open?`<div class="record-grid"><span>Faction</span><b>${esc(f?.name||"Unknown")}</b><span>Set</span><b>${esc(c.set_name||"Unknown")}</b><span>Rarity</span><b>${esc(c.rarity||"Unknown")}</b><span>Type</span><b>${esc(c.type||"Unknown")}</b></div>${statsHtml}${session?.user&&c.id?`<form id="collection-form" data-card-id="${c.id}" class="collection-form"><label>Copies in My Archive <input id="collection-qty" type="number" min="0" max="99" value="${qty}"></label><button class="btn primary">Update Collection</button></form>`:`<a class="btn ghost" href="#/login">Sign in to track this card</a>`}`:countdown(c)}</div></section>`;
+    return `<section class="card-dossier"><div><div class="game-card giant rarity-${esc((c.rarity||"Common").toLowerCase())} ${open?"":"classified-card"}"><div class="foil"></div><div class="card-art"><img src="${esc(cardImage)}" alt="${esc(c.name)}"></div><div class="card-caption"><span class="cap-number">${esc(c.card_number||c.number||"000")}</span><span class="cap-name">${esc(open?c.name:"CLASSIFIED")}</span><span class="cap-faction">${esc(f?.name||"UNKNOWN")}</span></div></div></div><div class="card-record"><p class="eyebrow">CARD DOSSIER</p><h1>${esc(open?c.name:"â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ")}</h1>${open?`<div class="record-grid"><span>Faction</span><b>${esc(f?.name||"Unknown")}</b><span>Set</span><b>${esc(c.set_name||"Unknown")}</b><span>Rarity</span><b>${esc(c.rarity||"Unknown")}</b><span>Type</span><b>${esc(c.type||"Unknown")}</b></div>${statsHtml}${session?.user&&c.id?`<form id="collection-form" data-card-id="${c.id}" class="collection-form"><label>Copies in My Archive <input id="collection-qty" type="number" min="0" max="99" value="${qty}"></label><button class="btn primary">Update Collection</button></form>`:`<a class="btn ghost" href="#/login">Sign in to track this card</a>`}`:countdown(c)}</div></section>`;
   }
 
   function vaultPage(){
-    const files=data.vault.map(v=>{const open=v.unlocked||live(v);return `<article class="vault-file ${open?"":"locked"}"><div class="file-top"><span>${esc(v.code)}</span><b>${open?"ACCESS GRANTED":"🔒 CLASSIFIED"}</b></div><h2>${esc(open?v.title:"████████████")}</h2><p>${esc(v.teaser)}</p>${open?`<div class="file-body">${esc(v.body||"")}</div>`:`<div class="redactions"><i></i><i></i><i></i></div>${countdown(v)}`}</article>`}).join("");
+    const files=data.vault.map(v=>{const open=v.unlocked||live(v);return `<article class="vault-file ${open?"":"locked"}"><div class="file-top"><span>${esc(v.code)}</span><b>${open?"ACCESS GRANTED":"ðŸ”’ CLASSIFIED"}</b></div><h2>${esc(open?v.title:"â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ")}</h2><p>${esc(v.teaser)}</p>${open?`<div class="file-body">${esc(v.body||"")}</div>`:`<div class="redactions"><i></i><i></i><i></i></div>${countdown(v)}`}</article>`}).join("");
     
     return `<section class="page-hero"><p class="eyebrow">AUTHORIZED EYES ONLY</p><h1>THE VAULT</h1><p>Codes are validated securely by Supabase and are no longer shipped in the public website source.</p></section><section class="section terminal-wrap"><div class="terminal"><div class="terminal-bar">K&amp;D ARCHIVE NETWORK // DATABASE NODE</div><pre>&gt; SIGNAL: ${backendOnline?"STABLE":"FALLBACK"}
 &gt; IDENTITY: ${session?.user?esc(session.user.email):"ANONYMOUS"}
@@ -433,7 +433,7 @@ const KD = (() => {
       </div>
     `:`<a class="btn primary" href="#/login">Sign In to Enter Codes</a>`}<p id="vault-message"></p></div></section>
     <section class="section"><div class="vault-grid">${files}</div></section>
-    ${session?.user?`<section class="section"><div class="section-heading"><p class="eyebrow">YOUR REDEEMED DECKS</p><h2>Collection</h2></div><div id="user-decks" class="deck-grid"><div class="loading-panel">Loading your decks…</div></div></section>`:""}`;
+    ${session?.user?`<section class="section"><div class="section-heading"><p class="eyebrow">YOUR REDEEMED DECKS</p><h2>Collection</h2></div><div id="user-decks" class="deck-grid"><div class="loading-panel">Loading your decksâ€¦</div></div></section>`:""}`;
   }
 
   function whispersPage(){
@@ -509,11 +509,11 @@ const KD = (() => {
     }
     
     if(section.content.strengthChart) {
-      content += `<div class="rule-block"><h3>Strength Chart</h3><p>Each Vigor type is strong against:</p>${Object.entries(section.content.strengthChart).map(([type,strongAgainst])=>`<div class="vigor-matchup"><strong>${esc(type)}</strong> → ${strongAgainst.map(s=>`<span class="vigor-tag">${esc(s)}</span>`).join(" ")}</div>`).join("")}</div>`;
+      content += `<div class="rule-block"><h3>Strength Chart</h3><p>Each Vigor type is strong against:</p>${Object.entries(section.content.strengthChart).map(([type,strongAgainst])=>`<div class="vigor-matchup"><strong>${esc(type)}</strong> â†’ ${strongAgainst.map(s=>`<span class="vigor-tag">${esc(s)}</span>`).join(" ")}</div>`).join("")}</div>`;
     }
     
     if(section.content.weaknessChart) {
-      content += `<div class="rule-block"><h3>Weakness Chart</h3><p>Each Vigor type is weak against:</p>${Object.entries(section.content.weaknessChart).map(([type,weakAgainst])=>`<div class="vigor-matchup"><strong>${esc(type)}</strong> → ${weakAgainst.map(w=>`<span class="vigor-tag weak">${esc(w)}</span>`).join(" ")}</div>`).join("")}</div>`;
+      content += `<div class="rule-block"><h3>Weakness Chart</h3><p>Each Vigor type is weak against:</p>${Object.entries(section.content.weaknessChart).map(([type,weakAgainst])=>`<div class="vigor-matchup"><strong>${esc(type)}</strong> â†’ ${weakAgainst.map(w=>`<span class="vigor-tag weak">${esc(w)}</span>`).join(" ")}</div>`).join("")}</div>`;
     }
     
     if(section.content.cardTypes) {
@@ -569,8 +569,8 @@ const KD = (() => {
     ]);
     const cmap=new Map(data.cards.map(c=>[c.id,c]));
     const collection=(co.data||[]).map(x=>({...x,card:cmap.get(x.card_id)})).filter(x=>x.card);
-    return `<section class="page-hero compact"><p class="eyebrow">CLOUD PLAYER ARCHIVE</p><h1>MY ARCHIVE</h1><p>${esc(session.user.email)} · synchronized through Supabase</p><div class="hero-actions"><button id="logout-button" class="btn ghost">Sign Out</button>${isAdmin()?`<a class="btn primary" href="#/admin">Command Center</a>`:""}</div></section>
-    <section class="section"><div class="section-heading"><p class="eyebrow">MY COLLECTION</p><h2>${collection.length} unique cards logged.</h2></div><div class="collection-grid">${collection.length?collection.map(x=>`<a class="collection-item" href="#/card/${encodeURIComponent(x.card.slug)}"><span>#${String(x.card.card_number).padStart(3,"0")}</span><h3>${esc(x.card.name)}</h3><p>${esc(x.card.rarity)}</p><b>×${x.quantity}</b></a>`).join(""):`<div class="empty-panel"><h2>Your archive is empty.</h2><a class="btn primary" href="#/cards">Enter The Hoard</a></div>`}</div></section>
+    return `<section class="page-hero compact"><p class="eyebrow">CLOUD PLAYER ARCHIVE</p><h1>MY ARCHIVE</h1><p>${esc(session.user.email)} Â· synchronized through Supabase</p><div class="hero-actions"><button id="logout-button" class="btn ghost">Sign Out</button>${isAdmin()?`<a class="btn primary" href="#/admin">Command Center</a>`:""}</div></section>
+    <section class="section"><div class="section-heading"><p class="eyebrow">MY COLLECTION</p><h2>${collection.length} unique cards logged.</h2></div><div class="collection-grid">${collection.length?collection.map(x=>`<a class="collection-item" href="#/card/${encodeURIComponent(x.card.slug)}"><span>#${String(x.card.card_number).padStart(3,"0")}</span><h3>${esc(x.card.name)}</h3><p>${esc(x.card.rarity)}</p><b>Ã—${x.quantity}</b></a>`).join(""):`<div class="empty-panel"><h2>Your archive is empty.</h2><a class="btn primary" href="#/cards">Enter The Hoard</a></div>`}</div></section>
     <section class="section"><div class="section-heading"><p class="eyebrow">THE FORGE</p><h2>My Orders</h2></div><div class="order-list">${(orders.data||[]).length?(orders.data||[]).map(o=>`<article class="admin-card"><span class="micro">${esc(o.order_code)}</span><h3>${esc(o.print_type||"Forge Order")}</h3><p><b>Status:</b> ${esc(o.status.replaceAll("_"," "))}</p><p>${esc(o.customer_update||"No owner update yet.")}</p><small>${fmtDate(o.created_at)}</small></article>`).join(""):`<div class="empty-panel">No Forge orders yet.</div>`}</div></section>`;
   }
 
@@ -581,7 +581,7 @@ const KD = (() => {
   }
 
   function reviewsPage(){
-    return `<section class="page-hero compact"><p class="eyebrow">FIELD REPORTS</p><h1>REVIEWS</h1></section><section class="section two-col"><div id="reviews-list"><div class="loading-panel">Loading approved reports…</div></div><form id="review-form" class="kd-form"><h2>Leave a field report</h2><label>Name<input id="rv-name" value="${esc(profile?.display_name||"")}" required></label><label>Rating<select id="rv-rating"><option value="5">★★★★★</option><option value="4">★★★★</option><option value="3">★★★</option><option value="2">★★</option><option value="1">★</option></select></label><label>Review<textarea id="rv-body" rows="7" required></textarea></label><button class="btn primary">Submit for Approval</button><p id="review-message"></p></form></section>`;
+    return `<section class="page-hero compact"><p class="eyebrow">FIELD REPORTS</p><h1>REVIEWS</h1></section><section class="section two-col"><div id="reviews-list"><div class="loading-panel">Loading approved reportsâ€¦</div></div><form id="review-form" class="kd-form"><h2>Leave a field report</h2><label>Name<input id="rv-name" value="${esc(profile?.display_name||"")}" required></label><label>Rating<select id="rv-rating"><option value="5">â˜…â˜…â˜…â˜…â˜…</option><option value="4">â˜…â˜…â˜…â˜…</option><option value="3">â˜…â˜…â˜…</option><option value="2">â˜…â˜…</option><option value="1">â˜…</option></select></label><label>Review<textarea id="rv-body" rows="7" required></textarea></label><button class="btn primary">Submit for Approval</button><p id="review-message"></p></form></section>`;
   }
 
   function contactPage(){
@@ -648,12 +648,12 @@ const KD = (() => {
     return adminCache;
   }
 
-  // Cards pane only renders the selected faction's forms — with 1600+ cards,
+  // Cards pane only renders the selected faction's forms â€” with 1600+ cards,
   // building every form at once made Command Center painfully slow.
   function renderCardsList(cards,cardColumns,factionSlug){
     const rows=cards.filter(c=>c.faction_slug===factionSlug);
     if(!rows.length) return `<div class="empty-panel">No cards for this faction.</div>`;
-    return rows.map(c=>`<form class="admin-card admin-card-form" data-id="${c.id}"><span class="micro">#${esc(c.card_number)} · ${esc(c.name)}</span>${cardColumns.map(col=>adminFieldHtml(col,c)).join("")}<button class="btn primary">Save Card</button></form>`).join("");
+    return rows.map(c=>`<form class="admin-card admin-card-form" data-id="${c.id}"><span class="micro">#${esc(c.card_number)} Â· ${esc(c.name)}</span>${cardColumns.map(col=>adminFieldHtml(col,c)).join("")}<button class="btn primary">Save Card</button></form>`).join("");
   }
 
   async function adminPage(){
@@ -666,14 +666,14 @@ const KD = (() => {
     <section class="section admin-dashboard">
       ${schemaWarning}
       <div class="admin-tabs"><button data-admin-tab="orders">Forge Orders (${orders.length})</button><button data-admin-tab="cards">Cards (${cards.length})</button><button data-admin-tab="factions">Factions (${factions.length})</button><button data-admin-tab="reviews">Reviews</button><button data-admin-tab="contacts">Inbox</button><button data-admin-tab="users">Users</button></div>
-      <div class="admin-pane" data-pane="orders">${orders.map(o=>`<form class="admin-card admin-order-form" data-id="${o.id}"><span class="micro">${esc(o.order_code)}</span><h3>${esc(o.customer_name)}</h3><p>${esc(o.email)} · ${esc(o.print_type||"")}</p><label>Status<select name="status">${["new","quoted","approved","printing","quality_check","ready","completed","cancelled"].map(s=>`<option value="${s}" ${o.status===s?"selected":""}>${s.replaceAll("_"," ")}</option>`).join("")}</select></label><label>Customer Update<input name="customer_update" value="${esc(o.customer_update||"")}"></label><button class="btn primary">Save Order</button></form>`).join("")||`<div class="empty-panel">No Forge orders.</div>`}</div>
+      <div class="admin-pane" data-pane="orders">${orders.map(o=>`<form class="admin-card admin-order-form" data-id="${o.id}"><span class="micro">${esc(o.order_code)}</span><h3>${esc(o.customer_name)}</h3><p>${esc(o.email)} Â· ${esc(o.print_type||"")}</p><label>Status<select name="status">${["new","quoted","approved","printing","quality_check","ready","completed","cancelled"].map(s=>`<option value="${s}" ${o.status===s?"selected":""}>${s.replaceAll("_"," ")}</option>`).join("")}</select></label><label>Customer Update<input name="customer_update" value="${esc(o.customer_update||"")}"></label><button class="btn primary">Save Order</button></form>`).join("")||`<div class="empty-panel">No Forge orders.</div>`}</div>
       <div class="admin-pane" data-pane="cards" hidden>
         <div class="admin-subtabs">${factionOptions.map(f=>`<button data-card-faction="${esc(f.slug)}" class="${f.slug===adminCardFaction?"active":""}">${esc(f.name)} (${cards.filter(c=>c.faction_slug===f.slug).length})</button>`).join("")}</div>
         <div id="admin-cards-list">${renderCardsList(cards,cardColumns,adminCardFaction)}</div>
       </div>
       <div class="admin-pane" data-pane="factions" hidden>${factions.map(f=>`<form class="admin-card admin-faction-form" data-id="${f.id}"><span class="micro">${esc(f.slug)}</span>${factionColumns.map(col=>adminFieldHtml(col,f)).join("")}<button class="btn primary">Save Faction</button></form>`).join("")}</div>
-      <div class="admin-pane" data-pane="reviews" hidden>${reviews.map(r=>`<article class="admin-card"><div class="stars">${"★".repeat(r.rating)}</div><h3>${esc(r.name)}</h3><p>${esc(r.body)}</p><p>${r.approved?"APPROVED":"WAITING"}</p>${!r.approved?`<button class="btn primary approve-review" data-id="${r.id}">Approve</button>`:""}</article>`).join("")}</div>
-      <div class="admin-pane" data-pane="contacts" hidden>${contacts.map(c=>`<article class="admin-card"><span class="micro">${esc(c.status)} · ${fmtDate(c.created_at)}</span><h3>${esc(c.subject)}</h3><p><b>${esc(c.name)}</b> · ${esc(c.email)}</p><p>${esc(c.message)}</p>${c.status==="new"?`<button class="btn ghost mark-contact-read" data-id="${c.id}">Mark Read</button>`:""}</article>`).join("")}</div>
+      <div class="admin-pane" data-pane="reviews" hidden>${reviews.map(r=>`<article class="admin-card"><div class="stars">${"â˜…".repeat(r.rating)}</div><h3>${esc(r.name)}</h3><p>${esc(r.body)}</p><p>${r.approved?"APPROVED":"WAITING"}</p>${!r.approved?`<button class="btn primary approve-review" data-id="${r.id}">Approve</button>`:""}</article>`).join("")}</div>
+      <div class="admin-pane" data-pane="contacts" hidden>${contacts.map(c=>`<article class="admin-card"><span class="micro">${esc(c.status)} Â· ${fmtDate(c.created_at)}</span><h3>${esc(c.subject)}</h3><p><b>${esc(c.name)}</b> Â· ${esc(c.email)}</p><p>${esc(c.message)}</p>${c.status==="new"?`<button class="btn ghost mark-contact-read" data-id="${c.id}">Mark Read</button>`:""}</article>`).join("")}</div>
       <div class="admin-pane" data-pane="users" hidden>${profiles.map(u=>`<form class="admin-card admin-user-form" data-id="${u.id}"><h3>${esc(u.display_name||u.email||"User")}</h3><p>${esc(u.email||"")}</p><label>Role<select name="role">${["player","admin","owner"].map(r=>`<option ${u.role===r?"selected":""}>${r}</option>`).join("")}</select></label><label class="check"><input type="checkbox" name="active" ${u.active?"checked":""}> Active</label><button class="btn ghost">Save User</button></form>`).join("")}</div>
     </section>`;
   }
@@ -683,7 +683,7 @@ const KD = (() => {
   }
 
   function gamePage(){
-    return `<section class="page-hero"><p class="eyebrow">BATTLE ARENA</p><h1>KLOAK & DAGGURRS</h1><p>Enter the battlefield and test your strategic prowess.</p><div class="hero-actions"><a class="btn primary" href="http://localhost:3005" target="_blank">Enter Game</a></div></section>`;
+    return `<section class="page-hero"><p class="eyebrow">BATTLE ARENA</p><h1>KLOAK & DAGGURRS</h1><p>Enter the battlefield and test your strategic prowess.</p><div class="hero-actions"><a class="btn primary" href="#/game-battlefield">Enter Battlefield</a><a class="btn ghost" href="#/game-deck-selection">Select Deck</a><a class="btn ghost" href="#/game-board">Game Board</a><a class="btn ghost" href="#/game-generating-deck">Generate Deck</a><a class="btn ghost" href="#/game-multiplayer">Multiplayer</a></div></section>`;
   }
 
   function gameBattlefieldPage(){
@@ -716,7 +716,7 @@ const KD = (() => {
     const deckGrid=$("#user-decks");
     if(!deckGrid)return;
     
-    deckGrid.innerHTML='<div class="loading-panel">Loading your decks…</div>';
+    deckGrid.innerHTML='<div class="loading-panel">Loading your decksâ€¦</div>';
     
     const {data:decks,error}=await sb.rpc("get_user_decks");
     if(error){
@@ -777,7 +777,7 @@ const KD = (() => {
   async function loadReviews(){
     const box=$("#reviews-list"); if(!box)return;
     const {data:r,error}=await sb.from("reviews").select("*").eq("approved",true).order("created_at",{ascending:false});
-    box.innerHTML=error?`<div class="empty-panel">${esc(error.message)}</div>`:(r||[]).map(x=>`<article class="admin-card"><div class="stars">${"★".repeat(x.rating)}</div><p>“${esc(x.body)}”</p><strong>— ${esc(x.name)}</strong></article>`).join("")||`<div class="empty-panel">No approved reviews yet.</div>`;
+    box.innerHTML=error?`<div class="empty-panel">${esc(error.message)}</div>`:(r||[]).map(x=>`<article class="admin-card"><div class="stars">${"â˜…".repeat(x.rating)}</div><p>â€œ${esc(x.body)}â€</p><strong>â€” ${esc(x.name)}</strong></article>`).join("")||`<div class="empty-panel">No approved reviews yet.</div>`;
   }
 
   function bind(){
@@ -796,12 +796,12 @@ const KD = (() => {
 
     $("#auth-form")?.addEventListener("submit",async e=>{
       e.preventDefault(); const mode=e.currentTarget.dataset.mode,email=$("#auth-email").value.trim(),password=$("#auth-password").value,msg=$("#auth-message");
-      msg.textContent="Working…";
+      msg.textContent="Workingâ€¦";
       if(mode==="signup"){
         const display_name=$("#auth-name").value.trim();
         const {data:r,error}=await sb.auth.signUp({email,password,options:{data:{display_name},emailRedirectTo:KD_CONFIG.customDomain+"/#/account"}});
         if(error){msg.textContent=error.message;return}
-        msg.textContent=r.session?"Identity created. Opening archive…":"Identity created. Check your email for confirmation.";
+        msg.textContent=r.session?"Identity created. Opening archiveâ€¦":"Identity created. Check your email for confirmation.";
         if(r.session){session=r.session;await loadProfile();location.hash="#/account"}
       }else{
         const {data:r,error}=await sb.auth.signInWithPassword({email,password});
@@ -825,7 +825,7 @@ const KD = (() => {
     });
 
     $("#vault-code-form")?.addEventListener("submit",async e=>{
-      e.preventDefault();const msg=$("#vault-message");msg.textContent="VERIFYING…";
+      e.preventDefault();const msg=$("#vault-message");msg.textContent="VERIFYINGâ€¦";
       const {error}=await sb.rpc("unlock_vault_code",{input_code:$("#vault-code").value.trim()});
       if(error){msg.textContent=error.message;return}
       msg.textContent="ACCESS GRANTED";data=null;await loadContent(true);render();
@@ -844,12 +844,12 @@ const KD = (() => {
 
     // Deck code redemption
     $("#deck-code-form")?.addEventListener("submit",async e=>{
-      e.preventDefault();const msg=$("#vault-message");msg.textContent="REDEEMING…";
+      e.preventDefault();const msg=$("#vault-message");msg.textContent="REDEEMINGâ€¦";
       const code=$("#deck-code").value.trim();
       const {data:result,error}=await sb.rpc("redeem_deck_code",{p_code:code});
       if(error){msg.textContent=error.message;return}
       if(result.success){
-        msg.innerHTML=`<span style="color:#67e8b1">DECK REDEEMED: ${esc(result.deck_name)} · ${result.cards_added} cards added to collection</span>`;
+        msg.innerHTML=`<span style="color:#67e8b1">DECK REDEEMED: ${esc(result.deck_name)} Â· ${result.cards_added} cards added to collection</span>`;
         e.currentTarget.reset();
         // Refresh the deck list
         loadUserDecks();
@@ -863,12 +863,12 @@ const KD = (() => {
 
 
     $("#forge-form")?.addEventListener("submit",async e=>{
-      e.preventDefault();const msg=$("#forge-message");msg.textContent="TRANSMITTING…";
+      e.preventDefault();const msg=$("#forge-message");msg.textContent="TRANSMITTINGâ€¦";
       const d=new Date(),code=`KD-${String(d.getFullYear()).slice(2)}${String(d.getMonth()+1).padStart(2,"0")}-${Math.floor(1000+Math.random()*9000)}`;
       const payload={order_code:code,user_id:session.user.id,customer_name:$("#fo-name").value.trim(),email:$("#fo-email").value.trim(),phone:$("#fo-phone").value.trim(),print_type:$("#fo-type").value,quantity:Number($("#fo-qty").value)||1,deadline:$("#fo-deadline").value||null,source_link:$("#fo-link").value.trim(),colors:$("#fo-colors").value.trim(),notes:$("#fo-notes").value.trim()};
       const {data:r,error}=await sb.from("forge_orders").insert(payload).select().single();
       if(error){msg.textContent=error.message;return}
-      msg.innerHTML=`ORDER RECEIVED: <strong>${esc(r.order_code)}</strong> · <a href="#/account">Track in My Archive</a>`;
+      msg.innerHTML=`ORDER RECEIVED: <strong>${esc(r.order_code)}</strong> Â· <a href="#/account">Track in My Archive</a>`;
       e.currentTarget.reset();
     });
 
@@ -972,3 +972,4 @@ const KD = (() => {
     await render();
   })().catch(e=>{console.error(e);app.innerHTML=`<div class="fatal">K&D initialization failed: ${esc(e.message)}</div>`});
 })();
+
