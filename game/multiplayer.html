@@ -259,6 +259,41 @@
             flex-shrink: 0;
         }
         
+        /* In-Game Notification */
+        .game-notification {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #ffd700;
+            border-radius: 10px;
+            padding: 15px 25px;
+            color: #ffd700;
+            font-weight: bold;
+            font-size: 1.1em;
+            z-index: 3000;
+            display: none;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            animation: slideDown 0.3s ease;
+        }
+        
+        .game-notification.show {
+            display: block;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+        
         .zone-content {
             flex: 1;
             display: flex;
@@ -890,6 +925,9 @@
             </div>
         </div>
 
+        <!-- In-Game Notification -->
+        <div class="game-notification" id="game-notification"></div>
+
         <!-- Phase Timer -->
         <div class="phase-timer" id="phase-timer" style="display: none;">
             <span id="timer-display">60</span>s
@@ -1064,24 +1102,50 @@
                 if (lobbyPollInterval) clearInterval(lobbyPollInterval);
                 
                 // Show acceptance dialog
-                const accept = confirm(`${invitation.opponentName} has challenged you to a battle!\n\nDo you accept?`);
+                showNotification(`${invitation.opponentName} has challenged you!`, true);
                 
-                if (accept) {
+                // Create accept/decline buttons
+                const notificationEl = document.getElementById('game-notification');
+                notificationEl.innerHTML = `
+                    <div>${invitation.opponentName} has challenged you!</div>
+                    <div style="margin-top: 10px; display: flex; gap: 10px; justify-content: center;">
+                        <button id="accept-challenge" style="padding: 8px 16px; background: #4ecdc4; border: none; border-radius: 5px; cursor: pointer;">Accept</button>
+                        <button id="decline-challenge" style="padding: 8px 16px; background: #e74c3c; border: none; border-radius: 5px; cursor: pointer;">Decline</button>
+                    </div>
+                `;
+                notificationEl.classList.add('show');
+                
+                // Add event listeners
+                document.getElementById('accept-challenge').addEventListener('click', () => {
                     gameId = invitation.gameId;
                     playerIndex = invitation.playerIndex;
                     gameState = invitation.gameState;
                     isInLobby = false;
+                    notificationEl.classList.remove('show');
                     startGame();
-                } else {
-                    // Decline - remove from game and rejoin lobby
+                });
+                
+                document.getElementById('decline-challenge').addEventListener('click', () => {
                     fetch(`${API_BASE}/decline-game`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ gameId, playerId })
                     });
+                    notificationEl.classList.remove('show');
                     startLobbyPolling();
-                }
+                });
             }
+        }
+        
+        // Show in-game notification
+        function showNotification(message, withButtons = false) {
+            const notificationEl = document.getElementById('game-notification');
+            notificationEl.textContent = message;
+            notificationEl.classList.add('show');
+            
+            setTimeout(() => {
+                notificationEl.classList.remove('show');
+            }, 3000);
         }
         
         // Challenge a player
@@ -1128,15 +1192,16 @@
                 console.log('My name:', myName.textContent);
                 console.log('Opponent name:', opponentName.textContent);
                 
-                // Show coin flip result
-                if (gameState.coinFlipResult !== undefined) {
-                    const coinResult = gameState.coinFlipResult ? 'Heads' : 'Tails';
+                // Show D20 roll result
+                if (gameState.d20Roll !== undefined) {
+                    const challengerRoll = gameState.d20Roll.challenger;
+                    const opponentRoll = gameState.d20Roll.opponent;
                     const goesFirst = gameState.currentTurn === playerIndex;
-                    console.log(`Coin flip: ${coinResult}, ${goesFirst ? 'You go first!' : 'Opponent goes first!'}`);
+                    console.log(`D20 Roll: You ${challengerRoll}, Opponent ${opponentRoll}, ${goesFirst ? 'You go first!' : 'Opponent goes first!'}`);
                     
-                    // Show coin flip message
+                    // Show in-game notification
                     setTimeout(() => {
-                        alert(`Coin flip: ${coinResult}!\n${goesFirst ? 'You go first!' : 'Opponent goes first!'}`);
+                        showNotification(`D20 Roll: You ${challengerRoll}, Opponent ${opponentRoll} - ${goesFirst ? 'You go first!' : 'Opponent goes first!'}`);
                     }, 500);
                 }
             }

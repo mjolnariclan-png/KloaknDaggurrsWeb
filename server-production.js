@@ -381,13 +381,142 @@ app.get('/api/lobby-players', (req, res) => {
         const player = lobbyPlayers.find(p => p.id === playerId);
         if (player) {
             player.lastSeen = Date.now();
+            
+            // Check if this player has been invited to a game
+            if (player.gameId) {
+                const game = games[player.gameId];
+                if (game) {
+                    // Find which player index this is
+                    const playerIndex = game.players.findIndex(p => p.id === playerId);
+                    res.json({
+                        success: true,
+                        players: lobbyPlayers,
+                        gameInvitation: {
+                            gameId: game.id,
+                            opponentName: game.players[1 - playerIndex].name,
+                            playerIndex: playerIndex,
+                            goesFirst: playerIndex === game.currentTurn,
+                            d20Roll: game.d20Roll,
+                            gameState: game
+                        }
+                    });
+                    return;
+                }
+            }
         }
     }
     
     res.json({
         success: true,
-        players: lobbyPlayers
+        players: lobbyPlayers,
+        gameInvitation: null
     });
+});
+
+// Challenge player endpoint - PUBLIC ENDPOINT
+app.post('/api/challenge-player', (req, res) => {
+    const { playerId, opponentId } = req.body;
+
+    console.log(`Player ${playerId} challenging ${opponentId}`);
+
+    const challenger = lobbyPlayers.find(p => p.id === playerId);
+    const opponent = lobbyPlayers.find(p => p.id === opponentId);
+
+    if (!challenger || !opponent) {
+        return res.json({ success: false, error: 'Player not found in lobby' });
+    }
+
+    // Create game
+    const gameId = `game_${Date.now()}`;
+
+    // D20 roll to determine who goes first (higher number wins)
+    const challengerRoll = Math.floor(Math.random() * 20) + 1;
+    const opponentRoll = Math.floor(Math.random() * 20) + 1;
+    const firstPlayerIndex = challengerRoll >= opponentRoll ? 0 : 1;
+
+    // Determine which player is which index
+    const challengerIndex = challenger.id === playerId ? 0 : 1;
+    const opponentIndex = 1 - challengerIndex;
+
+    games[gameId] = {
+        id: gameId,
+        players: [
+            { id: challenger.id, name: challenger.name, life: 30, mana: 0, hand: [], battlefield: [], deck: [], isReady: false, vigorUsedThisTurn: 0 },
+            { id: opponent.id, name: opponent.name, life: 30, mana: 0, hand: [], battlefield: [], deck: [], isReady: false, vigorUsedThisTurn: 0 }
+        ],
+        currentTurn: firstPlayerIndex,
+        phase: 'vigor',
+        lastUpdate: Date.now(),
+        d20Roll: { challenger: challengerRoll, opponent: opponentRoll },
+        challengerId: playerId,
+        opponentId: opponentId
+    };
+
+    // Mark players as being in this game
+    challenger.gameId = gameId;
+    opponent.gameId = gameId;
+    
+    // Respond to challenger
+    res.json({
+        success: true,
+        gameId: gameId,
+        opponentName: games[gameId].players[opponentIndex].name,
+        playerIndex: challengerIndex,
+        goesFirst: challengerIndex === firstPlayerIndex,
+        d20Roll: { challenger: challengerRoll, opponent: opponentRoll },
+        gameState: games[gameId]
+    });
+    
+    console.log(`Game created: ${gameId} between ${challenger.name} and ${opponent.name}`);
+    console.log(`D20 Roll: Challenger ${challengerRoll}, Opponent ${opponentRoll}, ${games[gameId].players[firstPlayerIndex].name} goes first`);
+});
+
+// Accept game endpoint - PUBLIC ENDPOINT
+app.post('/api/accept-game', (req, res) => {
+    const { gameId, playerId } = req.body;
+    
+    console.log(`Player ${playerId} accepting game ${gameId}`);
+    
+    const game = games[gameId];
+    if (!game) {
+        return res.json({ success: false, error: 'Game not found' });
+    }
+    
+    const player = game.players.find(p => p.id === playerId);
+    if (!player) {
+        return res.json({ success: false, error: 'Player not in game' });
+    }
+    
+    player.isReady = true;
+    
+    // Check if both players are ready
+    if (game.players.every(p => p.isReady)) {
+        game.status = 'playing';
+    }
+    
+    res.json({ success: true, game: game });
+});
+
+// Decline game endpoint - PUBLIC ENDPOINT
+app.post('/api/decline-game', (req, res) => {
+    const { gameId, playerId } = req.body;
+    
+    console.log(`Player ${playerId} declining game ${gameId}`);
+    
+    const game = games[gameId];
+    if (game) {
+        // Remove gameId from both players
+        lobbyPlayers.forEach(p => {
+            if (p.gameId === gameId) {
+                p.gameId = null;
+            }
+        });
+        
+        // Delete game
+        delete games[gameId];
+    }
+    
+    res.json({ success: true, message: 'Game declined' });
 });
 
 // Proxy endpoint for Supabase to query MongoDB cards - PUBLIC ENDPOINT
