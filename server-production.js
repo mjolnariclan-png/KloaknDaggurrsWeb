@@ -1405,6 +1405,31 @@ function generateDeck(player, setName = 'Ash Cycle', vigorType = null) {
     deck.sort(() => Math.random() - 0.5);
 
     console.log(`Generated deck for ${setName} with ${vigorType || 'mixed'} vigor: ${deck.length} cards`);
+    
+    // Assign deck to player
+    player.deck = deck;
+    
+    // Draw initial hand (7 cards)
+    for (let i = 0; i < 7; i++) {
+        if (player.deck.length > 0) {
+            const card = player.deck.pop();
+            if (card.type === 'primordial') {
+                // Primordials start with canAttack = false (summoning sickness)
+                card.canAttack = false;
+                player.battlefield.push(card);
+            } else if (card.type === 'vigor') {
+                // Vigor cards go directly to battlefield
+                player.battlefield.push(card);
+            } else {
+                player.hand.push(card);
+            }
+        }
+    }
+
+    // Initial vigor setup (start with 0 vigor)
+    player.mana = 0;
+    player.vigorUsedThisTurn = 0;
+    
     return deck;
 }
 
@@ -1444,27 +1469,32 @@ function generateFallbackDeck(player) {
     }
 
     deck.sort(() => Math.random() - 0.5);
-    return deck;
     
-    // Shuffle deck
-    deck.sort(() => Math.random() - 0.5);
+    // Assign deck to player
     player.deck = deck;
     
     // Draw initial hand (7 cards)
     for (let i = 0; i < 7; i++) {
-        const card = player.deck.pop();
-        if (card.type === 'primordial') {
-            // Primordials start with canAttack = false (summoning sickness)
-            card.canAttack = false;
-            player.battlefield.push(card);
-        } else {
-            player.hand.push(card);
+        if (player.deck.length > 0) {
+            const card = player.deck.pop();
+            if (card.type === 'primordial') {
+                // Primordials start with canAttack = false (summoning sickness)
+                card.canAttack = false;
+                player.battlefield.push(card);
+            } else if (card.type === 'vigor') {
+                // Vigor cards go directly to battlefield
+                player.battlefield.push(card);
+            } else {
+                player.hand.push(card);
+            }
         }
     }
 
-    // Initial vigor reset (start with 0 vigor)
-    player.totalVigor = 0;
+    // Initial vigor setup (start with 0 vigor)
     player.mana = 0;
+    player.vigorUsedThisTurn = 0;
+    
+    return deck;
 }
 
 // Start server
