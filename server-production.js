@@ -390,6 +390,7 @@ app.get('/api/lobby-players', (req, res) => {
                     const playerIndex = game.players.findIndex(p => p.id === playerId);
                     res.json({
                         success: true,
+                        status: 'game_ready',
                         players: lobbyPlayers,
                         gameInvitation: {
                             gameId: game.id,
@@ -406,11 +407,22 @@ app.get('/api/lobby-players', (req, res) => {
         }
     }
     
-    res.json({
-        success: true,
-        players: lobbyPlayers,
-        gameInvitation: null
-    });
+    // Check if there are enough players for matchmaking
+    if (lobbyPlayers.length < 2) {
+        res.json({
+            success: true,
+            status: 'waiting_for_players',
+            players: lobbyPlayers,
+            gameInvitation: null
+        });
+    } else {
+        res.json({
+            success: true,
+            status: 'matchmaking_ready',
+            players: lobbyPlayers,
+            gameInvitation: null
+        });
+    }
 });
 
 // Challenge player endpoint - PUBLIC ENDPOINT
@@ -609,50 +621,6 @@ function gameView(game,userId){
 
 
 
-
-// Join lobby endpoint
-app.get('/api/lobby-players', (req, res) => {
-    // Remove players who haven't been seen in 30 seconds
-    const now = Date.now();
-    lobbyPlayers = lobbyPlayers.filter(p => now - p.lastSeen < 30000);
-    
-    // Update last seen for requesting player
-    const playerId = req.query.playerId;
-    if (playerId) {
-        const player = lobbyPlayers.find(p => p.id === playerId);
-        if (player) {
-            player.lastSeen = now;
-            
-            // Check if this player has been invited to a game
-            if (player.gameId) {
-                const game = games[player.gameId];
-                if (game) {
-                    // Find which player index this is
-                    const playerIndex = game.players.findIndex(p => p.id === playerId);
-                    res.json({
-                        success: true,
-                        players: lobbyPlayers,
-                        gameInvitation: {
-                            gameId: game.id,
-                            opponentName: game.players[1 - playerIndex].name,
-                            playerIndex: playerIndex,
-                            goesFirst: playerIndex === game.currentTurn,
-                            coinFlipResult: game.coinFlipResult,
-                            gameState: gameView(game, req.authUser && req.authUser.id)
-                        }
-                    });
-                    return;
-                }
-            }
-        }
-    }
-    
-    res.json({
-        success: true,
-        players: lobbyPlayers,
-        gameInvitation: null
-    });
-});
 
 // Challenge player endpoint
 app.post('/api/challenge-player', (req, res) => {

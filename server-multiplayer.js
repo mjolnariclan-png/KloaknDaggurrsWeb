@@ -534,6 +534,7 @@ app.get('/api/lobby-players', (req, res) => {
                     const playerIndex = game.players.findIndex(p => p.id === playerId);
                     res.json({
                         success: true,
+                        status: 'game_ready',
                         players: lobbyPlayers,
                         gameInvitation: {
                             gameId: game.id,
@@ -550,11 +551,22 @@ app.get('/api/lobby-players', (req, res) => {
         }
     }
     
-    res.json({
-        success: true,
-        players: lobbyPlayers,
-        gameInvitation: null
-    });
+    // Check if there are enough players for matchmaking
+    if (lobbyPlayers.length < 2) {
+        res.json({
+            success: true,
+            status: 'waiting_for_players',
+            players: lobbyPlayers,
+            gameInvitation: null
+        });
+    } else {
+        res.json({
+            success: true,
+            status: 'matchmaking_ready',
+            players: lobbyPlayers,
+            gameInvitation: null
+        });
+    }
 });
 
 // Challenge player endpoint
