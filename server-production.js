@@ -425,64 +425,6 @@ app.get('/api/lobby-players', (req, res) => {
     }
 });
 
-// Challenge player endpoint - PUBLIC ENDPOINT
-app.post('/api/challenge-player', (req, res) => {
-    const { playerId, opponentId } = req.body;
-
-    console.log(`Player ${playerId} challenging ${opponentId}`);
-
-    const challenger = lobbyPlayers.find(p => p.id === playerId);
-    const opponent = lobbyPlayers.find(p => p.id === opponentId);
-
-    if (!challenger || !opponent) {
-        return res.json({ success: false, error: 'Player not found in lobby' });
-    }
-
-    // Create game
-    const gameId = `game_${Date.now()}`;
-
-    // D20 roll to determine who goes first (higher number wins)
-    const challengerRoll = Math.floor(Math.random() * 20) + 1;
-    const opponentRoll = Math.floor(Math.random() * 20) + 1;
-    const firstPlayerIndex = challengerRoll >= opponentRoll ? 0 : 1;
-
-    // Determine which player is which index
-    const challengerIndex = challenger.id === playerId ? 0 : 1;
-    const opponentIndex = 1 - challengerIndex;
-
-    games[gameId] = {
-        id: gameId,
-        players: [
-            { id: challenger.id, name: challenger.name, life: 30, mana: 0, hand: [], battlefield: [], deck: [], isReady: false, vigorUsedThisTurn: 0 },
-            { id: opponent.id, name: opponent.name, life: 30, mana: 0, hand: [], battlefield: [], deck: [], isReady: false, vigorUsedThisTurn: 0 }
-        ],
-        currentTurn: firstPlayerIndex,
-        phase: 'vigor',
-        lastUpdate: Date.now(),
-        d20Roll: { challenger: challengerRoll, opponent: opponentRoll },
-        challengerId: playerId,
-        opponentId: opponentId
-    };
-
-    // Mark players as being in this game
-    challenger.gameId = gameId;
-    opponent.gameId = gameId;
-    
-    // Respond to challenger
-    res.json({
-        success: true,
-        gameId: gameId,
-        opponentName: games[gameId].players[opponentIndex].name,
-        playerIndex: challengerIndex,
-        goesFirst: challengerIndex === firstPlayerIndex,
-        d20Roll: { challenger: challengerRoll, opponent: opponentRoll },
-        gameState: games[gameId]
-    });
-    
-    console.log(`Game created: ${gameId} between ${challenger.name} and ${opponent.name}`);
-    console.log(`D20 Roll: Challenger ${challengerRoll}, Opponent ${opponentRoll}, ${games[gameId].players[firstPlayerIndex].name} goes first`);
-});
-
 // Accept game endpoint - PUBLIC ENDPOINT
 app.post('/api/accept-game', (req, res) => {
     const { gameId, playerId } = req.body;
@@ -685,43 +627,6 @@ app.post('/api/challenge-player', (req, res) => {
     console.log(`Game created: ${gameId} between ${challenger.name} and ${opponent.name}`);
     console.log(`Coin flip: ${coinFlip ? 'Heads' : 'Tails'}, ${games[gameId].players[firstPlayerIndex].name} goes first`);
     console.log(`Challenger (${challenger.name}) sent to game. Opponent (${opponent.name}) needs to poll for game.`);
-});
-
-// Decline game endpoint
-app.post('/api/decline-game', (req, res) => {
-    const { gameId, playerId } = req.body;
-    
-    console.log(`Player ${playerId} declining game ${gameId}`);
-    
-    const game = games[gameId];
-    if (game) {
-        // Remove the game
-        delete games[gameId];
-        
-        // Return players to lobby
-        const player1 = game.players[0];
-        const player2 = game.players[1];
-        
-        if (player1.id !== playerId) {
-            // The challenger is still waiting, return them to lobby
-            lobbyPlayers.push({
-                id: player1.id,
-                name: player1.name,
-                lastSeen: Date.now()
-            });
-        }
-        
-        if (player2.id !== playerId) {
-            // The other player is still waiting, return them to lobby
-            lobbyPlayers.push({
-                id: player2.id,
-                name: player2.name,
-                lastSeen: Date.now()
-            });
-        }
-    }
-    
-    res.json({ success: true });
 });
 
 // Regular HTTP routes
