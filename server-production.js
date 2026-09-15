@@ -114,9 +114,12 @@ async function loadCardSetsFromDB() {
 
 // Fallback: Load card manifests from local files
 function loadCardManifests() {
-    const setsPath = 'B:\\Sets';
+    // Local Linux fallback:
+    // Card sets are stored inside the repository under assets/img/cards.
+    const setsPath = path.join(ROOT, 'assets', 'img', 'cards');
+
     if (!fs.existsSync(setsPath)) {
-        console.log('Sets directory not found at B:\\Sets');
+        console.log(`Sets directory not found at ${setsPath}`);
         return;
     }
 
@@ -129,14 +132,28 @@ function loadCardManifests() {
     console.log(`Found ${sets.length} card sets: ${sets.join(', ')}`);
 
     sets.forEach(setName => {
-        const manifestPath = path.join(setsPath, setName, `${setName}_manifest.json`);
+        const manifestPath = path.join(
+            setsPath,
+            setName,
+            `${setName}_manifest.json`
+        );
+
         if (fs.existsSync(manifestPath)) {
             try {
-                const manifestData = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+                const manifestData = JSON.parse(
+                    fs.readFileSync(manifestPath, 'utf8')
+                );
+
                 cardManifests[setName] = manifestData;
-                console.log(`Loaded manifest for ${setName}: ${manifestData.cards.length} cards`);
+
+                console.log(
+                    `Loaded manifest for ${setName}: ${manifestData.cards.length} cards`
+                );
             } catch (error) {
-                console.error(`Error loading manifest for ${setName}:`, error.message);
+                console.error(
+                    `Error loading manifest for ${setName}:`,
+                    error.message
+                );
             }
         }
     });

@@ -181,7 +181,7 @@ async function loadCardSetsFromDB() {
 
 // Fallback: Load card manifests from local files
 function loadCardManifests() {
-    const setsPath = 'B:\\Sets';
+    const setsPath = path.join(__dirname, 'assets', 'img', 'cards');
     if (!fs.existsSync(setsPath)) {
         console.log('Sets directory not found at B:\\Sets');
         return;
@@ -252,7 +252,7 @@ async function validateSupabaseToken(req, res, next) {
 app.use(express.static(__dirname));
 
 // Serve card images from B:\Sets location
-app.use('/cards', express.static('B:\\Sets'));
+app.use('/cards', express.static(path.join(__dirname, 'assets', 'img', 'cards')));
 
 // Route for main page
 app.get('/', (req, res) => {
