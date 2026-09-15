@@ -3,97 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Responsive Battlefield</title>
-    <link rel="stylesheet" href="../assets/css/battlefield-styles.css">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="/assets/js/config.js"></script>
-<script src="/game/game-auth.js"></script>
+    <title>Kloak & Daggurrs — Battlefield</title>
+    <link rel="stylesheet" href="battlefield.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/assets/js/config.js"></script>
+    <script src="/game/game-auth.js"></script>
 </head>
 <body>
-    <div class="game-container">
-        <!-- Game Header -->
-        <div class="game-header">
-            <div class="player-info">
-                <span class="player-name">Player</span>
-                <span class="scallous-count">Scallous: 30</span>
-                <span class="vigor-count">Vigor: 0</span>
+    <div class="multiplayer-lobby" id="lobby" style="display: none;">
+        <div class="lobby-container">
+            <h1>Multiplayer Lobby</h1>
+            <div class="lobby-form">
+                <input type="text" id="player-name" placeholder="Enter your name" value="Player">
+                <button id="join-lobby-btn">Join Lobby</button>
             </div>
-            <div class="turn-info">
-                <span class="turn-indicator">Your Turn</span>
-                <span class="turn-number">Turn: 1</span>
-                <span class="turn-phase">Vigor Reset</span>
+            <div id="lobby-players" class="lobby-players" style="display: none;">
+                <h3>Available Players</h3>
+                <div id="players-list"></div>
             </div>
-            <div class="opponent-info">
-                <span class="opponent-name">Opponent</span>
-                <span class="opponent-scallous">Scallous: 30</span>
-                <span class="opponent-vigor">Vigor: 0</span>
-            </div>
-            <div class="menu-toggle">
-                <button id="menu-toggle-btn">✕</button>
-            </div>
-        </div>
-        
-        <!-- Main Battlefield Area -->
-        <div class="battlefield-container" id="battlefield-container">
-            <!-- Opponent Battlefield -->
-            <div class="opponent-zones">
-                <div class="zone opponent-battlefield-zone" id="opponent-battlefield-zone">
-                    <div class="zone-label">Opponent Battlefield</div>
-                    <div class="zone-content" id="opponent-battlefield"></div>
-                </div>
-            </div>
-
-            <!-- Player Battlefield -->
-            <div class="player-zones">
-                <div class="zone player-battlefield-zone" id="player-battlefield-zone">
-                    <div class="zone-label">Your Battlefield</div>
-                    <div class="zone-content" id="player-battlefield"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Player Hand Overlay (hidden by default) -->
-        <div class="zone player-hand-zone" id="player-hand-zone">
-            <div class="zone-label">Your Hand</div>
-            <div class="zone-content" id="player-hand"></div>
-        </div>
-
-        <!-- Hand Toggle Button -->
-        <button class="hand-toggle" id="hand-toggle">Hand</button>
-
-        <!-- Game Controls -->
-        <div class="game-controls">
-            <button id="draw-card-btn" class="control-btn">Draw Card (D)</button>
-            <button id="auto-play-vigor-btn" class="control-btn">Auto-Play Vigor</button>
-            <button id="end-turn-btn" class="control-btn">End Turn (Space)</button>
-        </div>
-
-        <!-- Side Menu -->
-        <div class="side-menu" id="side-menu">
-            <div class="side-menu-content">
-                <h3>Menu</h3>
-                <button id="quit-btn" class="side-menu-btn">Quit to Website</button>
-                <button id="menu-btn" class="side-menu-btn">Return to Main Menu</button>
-            </div>
-        </div>
-        
-        <!-- Mode Selection -->
-        <div class="mode-selection" id="mode-selection" style="display: none;">
-            <button id="ai-mode-btn" class="mode-btn">Play vs AI</button>
-            <button id="twoplayer-mode-btn" class="mode-btn">2 Player Mode</button>
-        </div>
-        
-        <!-- Timer Display -->
-        <div id="timer-display" class="timer-display" style="display: none;">
-            <span id="timer-countdown">60</span>s
-        </div>
-        
-        <!-- Cross-Bracket Notification -->
-        <div id="cross-bracket-notification" class="cross-bracket-notification" style="display: none;">
-            ⚠️ Cross-bracket match detected
+            <div id="lobby-status" class="lobby-status"></div>
         </div>
     </div>
 
-    <script type="module" src="../assets/js/battlefield.js"></script>
+    <div class="game-container" id="game-container" style="display: none;">
+        <div class="game-header">
+            <div class="player-info" id="player-info-header">
+                <span class="player-name" id="my-name">Player</span>
+                <span class="scallous-count" id="my-scallous">Scallous: 30</span>
+                <span class="vigor-count" id="my-vigor">Vigor: 0</span>
+            </div>
+            <div class="turn-info">
+                <span class="turn-indicator" id="turn-indicator">Waiting...</span>
+                <span class="turn-number" id="turn-number">Turn: 1</span>
+            </div>
+            <div class="opponent-info" id="opponent-info-header">
+                <span class="opponent-name" id="opponent-name">Opponent</span>
+                <span class="opponent-scallous" id="opponent-scallous">Scallous: 30</span>
+                <span class="opponent-vigor" id="opponent-vigor">Vigor: 0</span>
+            </div>
+            <div class="menu-toggle">
+                <button type="button" id="menu-toggle-btn" aria-label="Open menu">☰</button>
+            </div>
+            <div class="leave-game-btn">
+                <button type="button" id="leave-game-x" aria-label="Leave game">✕</button>
+            </div>
+        </div>
+
+        <div class="opponent-battlefield-zone" id="opponent-battlefield-zone">
+            <div class="zone-label">Opponent's Battlefield</div>
+            <div class="zone-content" id="opponent-battlefield"></div>
+        </div>
+
+        <div class="player-battlefield-zone" id="player-battlefield-zone">
+            <div class="zone-label">Your Battlefield</div>
+            <div class="zone-content" id="player-battlefield"></div>
+        </div>
+
+        <div class="hand-overlay" id="hand-overlay">
+            <div class="hand-overlay-content">
+                <div class="hand-overlay-header">
+                    <span>Your Hand</span>
+                    <button type="button" class="hand-toggle-overlay" id="hand-toggle-overlay">−</button>
+                </div>
+                <div class="hand-overlay-cards" id="hand-overlay-cards"></div>
+            </div>
+        </div>
+
+        <button type="button" class="hand-toggle" id="hand-toggle-btn">Hand</button>
+
+        <div class="side-menu" id="side-menu">
+            <div class="side-menu-content">
+                <h3>Menu</h3>
+                <button type="button" id="quit-btn-side" class="side-menu-btn">Quit to Website</button>
+                <button type="button" id="menu-btn-side" class="side-menu-btn">Return to Main Menu</button>
+            </div>
+        </div>
+
+        <div class="game-notification" id="game-notification"></div>
+
+        <div class="phase-timer" id="phase-timer" style="display: none;">
+            <span id="timer-display">60</span>s
+        </div>
+
+        <div class="side-buttons left-buttons" id="left-buttons">
+            <button type="button" id="draw-card-btn-side" class="side-btn">Draw Card (D)</button>
+            <button type="button" id="auto-play-vigor-btn-side" class="side-btn">Auto-Play Vigor</button>
+        </div>
+        <div class="side-buttons right-buttons" id="right-buttons">
+            <button type="button" id="end-phase-btn-side" class="side-btn">End Phase (Space)</button>
+        </div>
+
+        <div class="phase-indicator" id="phase-indicator">
+            <span id="current-phase">Vigor Phase</span>
+        </div>
+
+        <div class="player-info-bottom" id="player-info-bottom">
+            <span class="player-name" id="my-name-bottom">Player</span>
+            <span class="my-scallous" id="my-scallous-bottom">Scallous: 30</span>
+            <span class="my-vigor" id="my-vigor-bottom">Vigor: 0</span>
+        </div>
+    </div>
+
+    <div class="click-outside-detector" id="click-outside-detector"></div>
+
+    <script src="battlefield.js"></script>
 </body>
 </html>
