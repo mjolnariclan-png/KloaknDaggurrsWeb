@@ -19,14 +19,64 @@ let isInLobby = false;
 let phaseTimerInterval = null;
 let phaseTimeRemaining = 60;
 
-// DOM Elements
-const lobby = document.getElementById('lobby');
-const gameContainer = document.getElementById('game-container');
-const playerNameInput = document.getElementById('player-name');
-const joinLobbyBtn = document.getElementById('join-lobby-btn');
-const lobbyStatus = document.getElementById('lobby-status');
-const lobbyPlayers = document.getElementById('lobby-players');
-const playersList = document.getElementById('players-list');
+// DOM Elements - will be initialized on DOM ready
+let lobby = null;
+let gameContainer = null;
+let playerNameInput = null;
+let joinLobbyBtn = null;
+let lobbyStatus = null;
+let lobbyPlayers = null;
+let playersList = null;
+
+document.addEventListener('DOMContentLoaded', () => {
+    // DOM Elements - initialized after DOM is ready
+    lobby = document.getElementById('lobby');
+    gameContainer = document.getElementById('game-container');
+    playerNameInput = document.getElementById('player-name');
+    joinLobbyBtn = document.getElementById('join-lobby-btn');
+    lobbyStatus = document.getElementById('lobby-status');
+    lobbyPlayers = document.getElementById('lobby-players');
+    playersList = document.getElementById('players-list');
+    
+    // Initialize after elements are confirmed to exist
+    if (joinLobbyBtn) {
+        joinLobbyBtn.addEventListener('click', async () => {
+            try {
+                const authSession = await window.GameAuth.getSession();
+                if (!authSession || !authSession.user) {
+                    lobbyStatus.textContent = 'Please log in first';
+                    lobbyStatus.style.color = 'red';
+                    return;
+                }
+                
+                playerId = authSession.user.id;
+                const defaultName = authSession.user.user_metadata?.display_name || authSession.user.email?.split('@')[0] || 'Player';
+                const playerName = playerNameInput.value || defaultName;
+                lobbyStatus.textContent = 'Joining lobby...';
+                
+                const response = await fetch(`${API_BASE}/join-lobby`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ playerId, playerName })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    isInLobby = true;
+                    joinLobbyBtn.style.display = 'none';
+                    playerNameInput.disabled = true;
+                    lobbyPlayers.style.display = 'block';
+                    lobbyStatus.textContent = 'Waiting in lobby...';
+                    startLobbyPolling();
+                }
+            } catch (error) {
+                console.error('Error joining lobby:', error);
+                lobbyStatus.textContent = 'Error connecting to server';
+            }
+        });
+    }
+});
 
 const myName = document.getElementById('my-name');
 const opponentName = document.getElementById('opponent-name');
@@ -57,43 +107,6 @@ const menuBtnSide = document.getElementById('menu-btn-side');
 const leftButtons = document.getElementById('left-buttons');
 const rightButtons = document.getElementById('right-buttons');
 const leaveGameX = document.getElementById('leave-game-x');
-
-// Join lobby
-joinLobbyBtn.addEventListener('click', async () => {
-    try {
-        const authSession = await window.GameAuth.getSession();
-        if (!authSession || !authSession.user) {
-            lobbyStatus.textContent = 'Please log in first';
-            lobbyStatus.style.color = 'red';
-            return;
-        }
-        
-        playerId = authSession.user.id;
-        const defaultName = authSession.user.user_metadata?.display_name || authSession.user.email?.split('@')[0] || 'Player';
-        const playerName = playerNameInput.value || defaultName;
-        lobbyStatus.textContent = 'Joining lobby...';
-        
-        const response = await fetch(`${API_BASE}/join-lobby`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ playerId, playerName })
-        });
-        
-        const data = await response.json();
-        
-        if (data.success) {
-            isInLobby = true;
-            joinLobbyBtn.style.display = 'none';
-            playerNameInput.disabled = true;
-            lobbyPlayers.style.display = 'block';
-            lobbyStatus.textContent = 'Waiting in lobby...';
-            startLobbyPolling();
-        }
-    } catch (error) {
-        console.error('Error joining lobby:', error);
-        lobbyStatus.textContent = 'Error connecting to server';
-    }
-});
 
 // Start lobby polling to see available players
 function startLobbyPolling() {
