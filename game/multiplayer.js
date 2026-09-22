@@ -1,9 +1,21 @@
-// Initialize Supabase immediately
-window.supabase = window.supabase.createClient(
-    window.KD_CONFIG.supabaseUrl,
-    window.KD_CONFIG.supabasePublishableKey,
-    { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } }
-);
+// Wait for Supabase and GameAuth to be available
+function waitForDependencies() {
+    return new Promise((resolve) => {
+        const checkInterval = setInterval(() => {
+            if (window.supabase && window.GameAuth) {
+                clearInterval(checkInterval);
+                resolve();
+            }
+        }, 100);
+        
+        // Timeout after 5 seconds
+        setTimeout(() => {
+            clearInterval(checkInterval);
+            console.error('Timeout waiting for Supabase or GameAuth');
+            resolve();
+        }, 5000);
+    });
+}
 
 // Use current server for API calls
 const API_BASE = `${window.location.protocol}//${window.location.hostname}${window.location.port ? ':' + window.location.port : ''}/api`;
@@ -96,6 +108,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (joinLobbyBtn) {
         joinLobbyBtn.addEventListener('click', async () => {
             try {
+                // Wait for dependencies to be available
+                await waitForDependencies();
+                
                 const authSession = await window.GameAuth.getSession();
                 if (!authSession || !authSession.user) {
                     lobbyStatus.textContent = 'Please log in first';

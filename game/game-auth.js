@@ -2,11 +2,30 @@
 // Uses the same Supabase auth as the main website
 
 (function() {
+    // Wait for Supabase to be available and initialize it if needed
+    function initSupabaseClient() {
+        if (window.supabase) {
+            return window.supabase;
+        }
+        
+        // Initialize Supabase if not already done
+        if (window.KD_CONFIG && window.KD_CONFIG.supabaseUrl && window.KD_CONFIG.supabasePublishableKey) {
+            window.supabase = window.supabase.createClient(
+                window.KD_CONFIG.supabaseUrl,
+                window.KD_CONFIG.supabasePublishableKey,
+                { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } }
+            );
+            return window.supabase;
+        }
+        
+        return null;
+    }
+
     // Use the Supabase client initialized in the HTML
-    const supabaseClient = window.supabase;
+    const supabaseClient = initSupabaseClient();
 
     if (!supabaseClient) {
-        console.error('Supabase client not found. Make sure it is initialized before loading this script.');
+        console.error('Supabase client not found. Make sure config.js is loaded before this script.');
         return;
     }
 
