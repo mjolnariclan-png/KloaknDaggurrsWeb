@@ -27,6 +27,33 @@ let joinLobbyBtn = null;
 let lobbyStatus = null;
 let lobbyPlayers = null;
 let playersList = null;
+let myName = null;
+let opponentName = null;
+let myScallous = null;
+let myVigor = null;
+let opponentScallous = null;
+let opponentVigor = null;
+let turnIndicator = null;
+let turnNumber = null;
+let currentPhase = null;
+let phaseIndicator = null;
+let playerBattlefield = null;
+let opponentBattlefield = null;
+let handOverlay = null;
+let handOverlayCards = null;
+let handToggleBtn = null;
+let handToggleOverlay = null;
+let clickOutsideDetector = null;
+let drawCardBtnSide = null;
+let autoPlayVigorBtnSide = null;
+let endPhaseBtnSide = null;
+let menuToggleBtn = null;
+let sideMenu = null;
+let quitBtnSide = null;
+let menuBtnSide = null;
+let leftButtons = null;
+let rightButtons = null;
+let leaveGameX = null;
 
 document.addEventListener('DOMContentLoaded', () => {
     // DOM Elements - initialized after DOM is ready
@@ -37,6 +64,33 @@ document.addEventListener('DOMContentLoaded', () => {
     lobbyStatus = document.getElementById('lobby-status');
     lobbyPlayers = document.getElementById('lobby-players');
     playersList = document.getElementById('players-list');
+    myName = document.getElementById('my-name');
+    opponentName = document.getElementById('opponent-name');
+    myScallous = document.getElementById('my-scallous');
+    myVigor = document.getElementById('my-vigor');
+    opponentScallous = document.getElementById('opponent-scallous');
+    opponentVigor = document.getElementById('opponent-vigor');
+    turnIndicator = document.getElementById('turn-indicator');
+    turnNumber = document.getElementById('turn-number');
+    currentPhase = document.getElementById('current-phase');
+    phaseIndicator = document.getElementById('phase-indicator');
+    playerBattlefield = document.getElementById('player-battlefield');
+    opponentBattlefield = document.getElementById('opponent-battlefield');
+    handOverlay = document.getElementById('hand-overlay');
+    handOverlayCards = document.getElementById('hand-overlay-cards');
+    handToggleBtn = document.getElementById('hand-toggle-btn');
+    handToggleOverlay = document.getElementById('hand-toggle-overlay');
+    clickOutsideDetector = document.getElementById('click-outside-detector');
+    drawCardBtnSide = document.getElementById('draw-card-btn-side');
+    autoPlayVigorBtnSide = document.getElementById('auto-play-vigor-btn-side');
+    endPhaseBtnSide = document.getElementById('end-phase-btn-side');
+    menuToggleBtn = document.getElementById('menu-toggle-btn');
+    sideMenu = document.getElementById('side-menu');
+    quitBtnSide = document.getElementById('quit-btn-side');
+    menuBtnSide = document.getElementById('menu-btn-side');
+    leftButtons = document.getElementById('left-buttons');
+    rightButtons = document.getElementById('right-buttons');
+    leaveGameX = document.getElementById('leave-game-x');
     
     // Initialize after elements are confirmed to exist
     if (joinLobbyBtn) {
@@ -76,37 +130,146 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    
+    // Phase indicator click to advance phase
+    if (phaseIndicator) {
+        phaseIndicator.addEventListener('click', async () => {
+            if (gameState.currentTurn === playerIndex) {
+                try {
+                    const response = await fetch(`${API_BASE}/advance-phase`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ gameId, playerId })
+                    });
+                    
+                    const data = await response.json();
+                    if (data.success) {
+                        gameState = data.gameState;
+                        render();
+                    }
+                } catch (error) {
+                    console.error('Error advancing phase:', error);
+                }
+            }
+        });
+    }
+    
+    // Auto-play vigor
+    if (autoPlayVigorBtnSide) {
+        autoPlayVigorBtnSide.addEventListener('click', async () => {
+            try {
+                const response = await fetch(`${API_BASE}/auto-play-vigor`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ gameId, playerId })
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    gameState = data.gameState;
+                    render();
+                }
+            } catch (error) {
+                console.error('Error auto-playing vigor:', error);
+            }
+        });
+    }
+    
+    // End phase
+    if (endPhaseBtnSide) {
+        endPhaseBtnSide.addEventListener('click', async () => {
+            try {
+                const response = await fetch(`${API_BASE}/advance-phase`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ gameId, playerId })
+                });
+                
+                const data = await response.json();
+                if (data.success) {
+                    gameState = data.gameState;
+                    render();
+                }
+            } catch (error) {
+                console.error('Error advancing phase:', error);
+            }
+        });
+    }
+    
+    // Draw card
+    if (drawCardBtnSide) {
+        drawCardBtnSide.addEventListener('click', async () => {
+            try {
+                const response = await fetch(`${API_BASE}/draw-card`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ gameId, playerId })
+                });
+                
+                const data = await response.json();
+                if (data.success) {
+                    // Show notification of drawn card
+                    if (data.drawnCard) {
+                        showDrawNotification(data.drawnCard);
+                    }
+                    gameState = data.gameState;
+                    render();
+                }
+            } catch (error) {
+                console.error('Error drawing card:', error);
+            }
+        });
+    }
+    
+    // Menu toggle
+    if (menuToggleBtn && sideMenu) {
+        menuToggleBtn.addEventListener('click', () => {
+            sideMenu.classList.toggle('open');
+        });
+    }
+    
+    // Side menu buttons
+    if (quitBtnSide) {
+        quitBtnSide.addEventListener('click', () => {
+            window.location.href = 'https://www.kloakndaggurrs.com';
+        });
+    }
+    
+    if (menuBtnSide) {
+        menuBtnSide.addEventListener('click', () => {
+            if (pollInterval) clearInterval(pollInterval);
+            gameId = null;
+            gameState = null;
+            gameContainer.style.display = 'none';
+            lobby.style.display = 'flex';
+            lobbyStatus.textContent = '';
+            sideMenu.classList.remove('open');
+        });
+    }
+    
+    // Hand expansion
+    if (handToggleBtn) {
+        handToggleBtn.addEventListener('click', toggleHandExpansion);
+    }
+    if (handToggleOverlay) {
+        handToggleOverlay.addEventListener('click', toggleHandExpansion);
+    }
+    if (clickOutsideDetector) {
+        clickOutsideDetector.addEventListener('click', toggleHandExpansion);
+    }
+    
+    // Leave game X button
+    if (leaveGameX) {
+        leaveGameX.addEventListener('click', () => {
+            if (pollInterval) clearInterval(pollInterval);
+            gameId = null;
+            gameState = null;
+            gameContainer.style.display = 'none';
+            lobby.style.display = 'flex';
+            lobbyStatus.textContent = '';
+        });
+    }
 });
-
-const myName = document.getElementById('my-name');
-const opponentName = document.getElementById('opponent-name');
-const myScallous = document.getElementById('my-scallous');
-const myVigor = document.getElementById('my-vigor');
-const opponentScallous = document.getElementById('opponent-scallous');
-const opponentVigor = document.getElementById('opponent-vigor');
-const turnIndicator = document.getElementById('turn-indicator');
-const turnNumber = document.getElementById('turn-number');
-const currentPhase = document.getElementById('current-phase');
-const phaseIndicator = document.getElementById('phase-indicator');
-
-const playerBattlefield = document.getElementById('player-battlefield');
-const opponentBattlefield = document.getElementById('opponent-battlefield');
-const handOverlay = document.getElementById('hand-overlay');
-const handOverlayCards = document.getElementById('hand-overlay-cards');
-const handToggleBtn = document.getElementById('hand-toggle-btn');
-const handToggleOverlay = document.getElementById('hand-toggle-overlay');
-const clickOutsideDetector = document.getElementById('click-outside-detector');
-
-const drawCardBtnSide = document.getElementById('draw-card-btn-side');
-const autoPlayVigorBtnSide = document.getElementById('auto-play-vigor-btn-side');
-const endPhaseBtnSide = document.getElementById('end-phase-btn-side');
-const menuToggleBtn = document.getElementById('menu-toggle-btn');
-const sideMenu = document.getElementById('side-menu');
-const quitBtnSide = document.getElementById('quit-btn-side');
-const menuBtnSide = document.getElementById('menu-btn-side');
-const leftButtons = document.getElementById('left-buttons');
-const rightButtons = document.getElementById('right-buttons');
-const leaveGameX = document.getElementById('leave-game-x');
 
 // Start lobby polling to see available players
 function startLobbyPolling() {
@@ -805,113 +968,6 @@ async function playCard(cardIndex) {
     }
 }
 
-// Phase indicator click to advance phase
-phaseIndicator.addEventListener('click', async () => {
-    if (gameState.currentTurn === playerIndex) {
-        try {
-            const response = await fetch(`${API_BASE}/advance-phase`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ gameId, playerId })
-            });
-            
-            const data = await response.json();
-            if (data.success) {
-                gameState = data.gameState;
-                render();
-            }
-        } catch (error) {
-            console.error('Error advancing phase:', error);
-        }
-    }
-});
-
-// Auto-play vigor
-autoPlayVigorBtnSide.addEventListener('click', async () => {
-    try {
-        const response = await fetch(`${API_BASE}/auto-play-vigor`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ gameId, playerId })
-        });
-
-        const data = await response.json();
-        if (data.success) {
-            gameState = data.gameState;
-            render();
-        }
-    } catch (error) {
-        console.error('Error auto-playing vigor:', error);
-    }
-});
-
-// End phase
-endPhaseBtnSide.addEventListener('click', async () => {
-    try {
-        const response = await fetch(`${API_BASE}/advance-phase`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ gameId, playerId })
-        });
-        
-        const data = await response.json();
-        if (data.success) {
-            gameState = data.gameState;
-            render();
-        }
-    } catch (error) {
-        console.error('Error advancing phase:', error);
-    }
-});
-
-// Draw card
-drawCardBtnSide.addEventListener('click', async () => {
-    try {
-        const response = await fetch(`${API_BASE}/draw-card`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ gameId, playerId })
-        });
-        
-        const data = await response.json();
-        if (data.success) {
-            // Show notification of drawn card
-            if (data.drawnCard) {
-                showDrawNotification(data.drawnCard);
-            }
-            gameState = data.gameState;
-            render();
-        }
-    } catch (error) {
-        console.error('Error drawing card:', error);
-    }
-});
-
-// Menu toggle
-menuToggleBtn.addEventListener('click', () => {
-    sideMenu.classList.toggle('open');
-});
-
-// Side menu buttons
-quitBtnSide.addEventListener('click', () => {
-    window.location.href = 'https://www.kloakndaggurrs.com';
-});
-
-menuBtnSide.addEventListener('click', () => {
-    if (pollInterval) clearInterval(pollInterval);
-    gameId = null;
-    gameState = null;
-    gameContainer.style.display = 'none';
-    lobby.style.display = 'flex';
-    lobbyStatus.textContent = '';
-    sideMenu.classList.remove('open');
-});
-
-// Hand expansion
-handToggleBtn.addEventListener('click', toggleHandExpansion);
-handToggleOverlay.addEventListener('click', toggleHandExpansion);
-clickOutsideDetector.addEventListener('click', toggleHandExpansion);
-
 function toggleHandExpansion() {
     isHandExpanded = !isHandExpanded;
     
@@ -929,15 +985,15 @@ function toggleHandExpansion() {
 // Keyboard shortcuts
 document.addEventListener('keydown', (e) => {
     if (e.key === 'd' || e.key === 'D') {
-        drawCardBtnSide.click();
+        if (drawCardBtnSide) drawCardBtnSide.click();
     } else if (e.key === ' ') {
         e.preventDefault();
-        endPhaseBtnSide.click();
+        if (endPhaseBtnSide) endPhaseBtnSide.click();
     } else if (e.key === 'Escape') {
         if (isHandExpanded) {
             toggleHandExpansion();
         } else {
-            leaveGameX.click();
+            if (leaveGameX) leaveGameX.click();
         }
     }
 });
