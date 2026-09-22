@@ -122,15 +122,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Wait for dependencies to be available
                 await waitForDependencies();
                 
-                const authSession = await window.GameAuth.getSession();
-                if (!authSession || !authSession.user) {
-                    lobbyStatus.textContent = 'Please log in first';
-                    lobbyStatus.style.color = 'red';
-                    return;
+                // For testing: use a generated player ID if not authenticated
+                let authSession = null;
+                try {
+                    authSession = await window.GameAuth.getSession();
+                } catch (e) {
+                    console.log('Auth session check failed, using test mode');
                 }
                 
-                playerId = authSession.user.id;
-                const defaultName = authSession.user.user_metadata?.display_name || authSession.user.email?.split('@')[0] || 'Player';
+                if (!authSession || !authSession.user) {
+                    // Test mode: generate a random player ID
+                    playerId = 'test-player-' + Math.random().toString(36).substr(2, 9);
+                    console.log('Using test mode with player ID:', playerId);
+                } else {
+                    playerId = authSession.user.id;
+                }
+                
+                const defaultName = authSession?.user?.user_metadata?.display_name || authSession?.user?.email?.split('@')[0] || 'Player';
                 const playerName = playerNameInput.value || defaultName;
                 lobbyStatus.textContent = 'Joining lobby...';
                 
@@ -149,10 +157,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     lobbyPlayers.style.display = 'block';
                     lobbyStatus.textContent = 'Waiting in lobby...';
                     startLobbyPolling();
+                } else {
+                    lobbyStatus.textContent = data.error || 'Failed to join lobby';
+                    lobbyStatus.style.color = 'red';
                 }
             } catch (error) {
                 console.error('Error joining lobby:', error);
                 lobbyStatus.textContent = 'Error connecting to server';
+                lobbyStatus.style.color = 'red';
             }
         });
     }
