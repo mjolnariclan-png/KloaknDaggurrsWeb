@@ -15,9 +15,13 @@
         window.KD_CONFIG.supabasePublishableKey,
         { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } }
     );
+    console.log('Supabase initialized:', window.supabase);
 </script>
 <script src="/game/game-auth.js"></script>
-<script src="multiplayer.js" defer></script>
+<script>
+    console.log('GameAuth loaded:', window.GameAuth);
+</script>
+<script src="multiplayer.js"></script>
 </head>
 <body>
     <div class="multiplayer-lobby" id="lobby">

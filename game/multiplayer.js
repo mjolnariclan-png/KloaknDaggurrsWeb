@@ -1,19 +1,30 @@
 // Wait for Supabase and GameAuth to be available
 function waitForDependencies() {
     return new Promise((resolve) => {
+        console.log('Waiting for dependencies. Supabase:', !!window.supabase, 'GameAuth:', !!window.GameAuth);
+        
+        // Check immediately in case they're already loaded
+        if (window.supabase && window.GameAuth) {
+            console.log('Dependencies already available');
+            resolve();
+            return;
+        }
+        
         const checkInterval = setInterval(() => {
+            console.log('Checking dependencies. Supabase:', !!window.supabase, 'GameAuth:', !!window.GameAuth);
             if (window.supabase && window.GameAuth) {
                 clearInterval(checkInterval);
+                console.log('Dependencies now available');
                 resolve();
             }
         }, 100);
         
-        // Timeout after 5 seconds
+        // Timeout after 10 seconds
         setTimeout(() => {
             clearInterval(checkInterval);
-            console.error('Timeout waiting for Supabase or GameAuth');
+            console.error('Timeout waiting for Supabase or GameAuth. Supabase:', !!window.supabase, 'GameAuth:', !!window.GameAuth);
             resolve();
-        }, 5000);
+        }, 10000);
     });
 }
 
