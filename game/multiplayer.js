@@ -28,8 +28,13 @@ function waitForDependencies() {
     });
 }
 
-// Use current server for API calls
-const API_BASE = `${window.location.protocol}//${window.location.hostname}${window.location.port ? ':' + window.location.port : ''}/api`;
+// Use game server URL from config if available, otherwise use same origin
+let API_BASE;
+if (window.KD_CONFIG?.gameServerUrl) {
+    API_BASE = window.KD_CONFIG.gameServerUrl + '/api';
+} else {
+    API_BASE = `${window.location.protocol}//${window.location.hostname}${window.location.port ? ':' + window.location.port : ''}/api`;
+}
 let playerId = null;
 let gameId = null;
 let playerIndex = 0;

@@ -613,7 +613,6 @@ app.post('/api/challenge-player', (req, res) => {
     // Generate decks for both players using the selected card set and vigor type
     generateDeck(games[gameId].players[0], cardSet || 'Ash Cycle', vigorType || null);
     generateDeck(games[gameId].players[1], cardSet || 'Ash Cycle', vigorType || null);
-    generateDeck(games[gameId].players[1]);
     
     // Mark players as being in this game (so they can be found later)
     challenger.gameId = gameId;
@@ -855,35 +854,31 @@ app.post('/api/attack', (req, res) => {
     }
     
     // Execute attack
-    if (targetPlayer) {
-        // Attack player directly
-        opponent.life -= attacker.attack;
-        console.log(`Attacked player directly for ${attacker.attack} damage`);
-    } else {
-        // Attack creature/primordial
-        const target = opponent.battlefield[targetIndex];
-        if (target) {
-            target.defense -= attacker.attack;
-            console.log(`Attacked ${target.name} for ${attacker.attack} damage`);
-            
-            if (target.defense <= 0) {
-                opponent.battlefield.splice(targetIndex, 1);
-                console.log(`${target.name} destroyed`);
+        if (targetPlayer) {
+            // Attack player directly
+            opponent.life -= attacker.attack;
+            console.log(`Attacked player directly for ${attacker.attack} damage`);
+        } else {
+            // Attack creature/primordial
+            const target = opponent.battlefield[targetIndex];
+            if (target) {
+                const targetAttack = target.attack; // Save for combat damage
+                target.defense -= attacker.attack;
+                console.log(`Attacked ${target.name} for ${attacker.attack} damage`);
+
+                if (target.defense <= 0) {
+                    opponent.battlefield.splice(targetIndex, 1);
+                    console.log(`${target.name} destroyed`);
+                }
+
+                // Deal combat damage back (simultaneous combat)
+                attacker.defense -= targetAttack;
+                if (attacker.defense <= 0) {
+                    player.battlefield.splice(attackerIndex, 1);
+                    console.log(`${attacker.name} destroyed in combat`);
+                }
             }
         }
-    }
-    
-    // Attacker takes damage back (combat damage)
-    if (!targetPlayer) {
-        const target = opponent.battlefield[targetIndex];
-        if (target && target.attack) {
-            attacker.defense -= target.attack;
-            if (attacker.defense <= 0) {
-                player.battlefield.splice(attackerIndex, 1);
-                console.log(`${attacker.name} destroyed in combat`);
-            }
-        }
-    }
     
     game.lastUpdate = Date.now();
     res.json({ success: true, gameState: game });
