@@ -442,12 +442,26 @@
 
     // ---- actions ----------------------------------------------------------
 
+    function newActionId() {
+      if (window.crypto && typeof window.crypto.randomUUID === 'function') return window.crypto.randomUUID();
+      return `act-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    }
+
     async function doAction(path, body, { silent } = {}) {
       if (!gameId || gameOverHandled) return;
+      // Optimistic concurrency: act on the version we are looking at. The
+      // server rejects stale/duplicate requests and returns the authoritative
+      // state, which we adopt immediately.
+      const payload = {
+        gameId,
+        expectedVersion: gameState ? gameState.version : undefined,
+        actionId: newActionId(),
+        ...body,
+      };
       try {
         const data = await apiFetch(path, {
           method: 'POST',
-          body: JSON.stringify({ gameId, ...body }),
+          body: JSON.stringify(payload),
         });
         if (data.success) {
           gameState = data.gameState;
@@ -457,6 +471,19 @@
             return;
           }
           forceRender();
+        } else if (data.stale || data.duplicate || data.invalidRequest) {
+          // The authoritative state moved (opponent action, our own double
+          // click, a network retry, or a phase timeout). Adopt it silently.
+          if (data.gameState) {
+            gameState = data.gameState;
+            if (gameState.status === 'completed') {
+              handleGameOver(data);
+              return;
+            }
+            forceRender();
+          } else {
+            await refreshAuthoritativeState();
+          }
         } else if (!silent) {
           showGameNotification(data.error || 'Action failed');
         }
@@ -464,6 +491,19 @@
         console.error(`${path} failed:`, error);
         showGameNotification(error.auth ? error.message : 'Connection error');
       }
+    }
+
+    /** Re-fetch the authoritative game state (used after stale rejections). */
+    async function refreshAuthoritativeState() {
+      if (!gameId || gameOverHandled) return;
+      try {
+        const data = await apiFetch(`/game-state/${gameId}`);
+        if (data.success) {
+          gameState = data.gameState;
+          if (gameState.status === 'completed') { handleGameOver(data); return; }
+          forceRender();
+        }
+      } catch (e) { /* polling will retry */ }
     }
 
     function showGameNotification(message) {
