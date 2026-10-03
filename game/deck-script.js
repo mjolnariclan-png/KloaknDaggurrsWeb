@@ -45,6 +45,9 @@ document.getElementById("deck-selection-form").addEventListener("submit", async 
             // Store deck data in sessionStorage for the battlefield
             sessionStorage.setItem('selectedDeck', JSON.stringify(data.deck));
             sessionStorage.setItem('gameMode', mode);
+            // Remember the deck's set/vigor so multiplayer challenges use them.
+            if (data.deck && data.deck.set) sessionStorage.setItem('cardSet', data.deck.set);
+            if (data.deck && data.deck.vigor) sessionStorage.setItem('vigorType', data.deck.vigor);
             
             // Go directly to battlefield
             const url = `battlefield.html?mode=${mode}`;

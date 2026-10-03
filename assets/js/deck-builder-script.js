@@ -75,16 +75,6 @@ async function loadPlayerDecks() {
         console.error('Error in loadPlayerDecks:', error);
     }
 }
-                    <p>${deck.total_cards} cards</p>
-                    <p>Vigor: ${deck.vigor || 'Unknown'}</p>
-                    <button class="btn primary select-deck-btn" data-deck="${deck.deck_name}">Select Deck</button>
-                </div>
-            `).join('');
-        }
-    } catch (error) {
-        console.error('Error in loadPlayerDecks:', error);
-    }
-}
 
 // Test mode toggle
 document.getElementById('test-mode-toggle').addEventListener('change', function() {

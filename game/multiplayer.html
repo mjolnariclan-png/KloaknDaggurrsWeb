@@ -2,134 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TCG Multiplayer</title>
-    <link rel="stylesheet" href="battlefield-styles.css">
-    <link rel="stylesheet" href="multiplayer.css">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="/assets/js/config.js"></script>
-<script>
-    // Initialize Supabase immediately after config loads
-    window.supabase = window.supabase.createClient(
-        window.KD_CONFIG.supabaseUrl,
-        window.KD_CONFIG.supabasePublishableKey,
-        { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } }
-    );
-    console.log('Supabase initialized:', window.supabase);
-</script>
-<script src="/game/game-auth.js"></script>
-<script>
-    console.log('GameAuth loaded:', window.GameAuth);
-</script>
-<script src="multiplayer.js"></script>
+    <title>Redirecting to Battleground…</title>
+    <script>
+        // The legacy multiplayer client has been retired.
+        // All multiplayer matches run through the unified battlefield client.
+        window.location.replace('battlefield.html?mode=multiplayer');
+    </script>
 </head>
 <body>
-    <div class="multiplayer-lobby" id="lobby">
-        <div class="lobby-container">
-            <h1>TCG Multiplayer Lobby</h1>
-            <div class="lobby-form">
-                <input type="text" id="player-name" placeholder="Enter your name" value="Player">
-                <button id="join-lobby-btn">Join Lobby</button>
-            </div>
-            <div id="lobby-players" class="lobby-players" style="display: none;">
-                <h3>Available Players</h3>
-                <div id="players-list"></div>
-            </div>
-            <div id="lobby-status" class="lobby-status"></div>
-        </div>
-    </div>
-
-    <div class="game-container" id="game-container" style="display: none;">
-        <!-- Game Header -->
-        <div class="game-header">
-            <div class="player-info" id="player-info-header">
-                <span class="player-name" id="my-name">Player</span>
-                <span class="scallous-count" id="my-scallous">Scallous: 30</span>
-                <span class="vigor-count" id="my-vigor">Vigor: 0</span>
-            </div>
-            <div class="turn-info">
-                <span class="turn-indicator" id="turn-indicator">Waiting...</span>
-                <span class="turn-number" id="turn-number">Turn: 1</span>
-            </div>
-            <div class="opponent-info" id="opponent-info-header">
-                <span class="opponent-name" id="opponent-name">Opponent</span>
-                <span class="opponent-scallous" id="opponent-scallous">Scallous: 30</span>
-                <span class="opponent-vigor" id="opponent-vigor">Vigor: 0</span>
-            </div>
-            <div class="menu-toggle">
-                <button id="menu-toggle-btn">✕</button>
-            </div>
-            <div class="leave-game-btn">
-                <button id="leave-game-x">✕</button>
-            </div>
-        </div>
-
-        <!-- Opponent's Battlefield -->
-        <div class="opponent-battlefield-zone" id="opponent-battlefield-zone">
-            <div class="zone-label">Opponent's Battlefield</div>
-            <div class="zone-content" id="opponent-battlefield"></div>
-        </div>
-
-        <!-- Player's Battlefield -->
-        <div class="player-battlefield-zone" id="player-battlefield-zone">
-            <div class="zone-label">Your Battlefield</div>
-            <div class="zone-content" id="player-battlefield"></div>
-        </div>
-
-        <!-- Hand Overlay -->
-        <div class="hand-overlay" id="hand-overlay">
-            <div class="hand-overlay-content">
-                <div class="hand-overlay-header">
-                    <span>Your Hand</span>
-                    <button class="hand-toggle-overlay" id="hand-toggle-overlay">−</button>
-                </div>
-                <div class="hand-overlay-cards" id="hand-overlay-cards"></div>
-            </div>
-        </div>
-
-        <!-- Hand Toggle Button -->
-        <button class="hand-toggle" id="hand-toggle-btn">Hand</button>
-
-        <!-- Side Menu -->
-        <div class="side-menu" id="side-menu">
-            <div class="side-menu-content">
-                <h3>Menu</h3>
-                <button id="quit-btn-side" class="side-menu-btn">Quit to Website</button>
-                <button id="menu-btn-side" class="side-menu-btn">Return to Main Menu</button>
-            </div>
-        </div>
-
-        <!-- In-Game Notification -->
-        <div class="game-notification" id="game-notification"></div>
-
-        <!-- Phase Timer -->
-        <div class="phase-timer" id="phase-timer" style="display: none;">
-            <span id="timer-display">60</span>s
-        </div>
-
-        <!-- Side Buttons -->
-        <div class="side-buttons left-buttons" id="left-buttons">
-            <button id="draw-card-btn-side" class="side-btn">Draw Card (D)</button>
-            <button id="auto-play-vigor-btn-side" class="side-btn">Auto-Play Vigor</button>
-        </div>
-        <div class="side-buttons right-buttons" id="right-buttons">
-            <button id="end-phase-btn-side" class="side-btn">End Phase (Space)</button>
-        </div>
-
-        <!-- Phase Indicator -->
-        <div class="phase-indicator" id="phase-indicator">
-            <span id="current-phase">Vigor Phase</span>
-        </div>
-
-        <!-- Player Info Bottom Right -->
-        <div class="player-info-bottom" id="player-info-bottom">
-            <span class="player-name" id="my-name">Player</span>
-            <span class="my-scallous" id="my-scallous">Scallous: 30</span>
-            <span class="my-vigor" id="my-vigor">Vigor: 0</span>
-        </div>
-    </div>
-
-    <!-- Click outside detector for hand expansion -->
-    <div class="click-outside-detector" id="click-outside-detector"></div>
+    <p>Redirecting to the Battleground… <a href="battlefield.html?mode=multiplayer">continue</a></p>
 </body>
 </html>
