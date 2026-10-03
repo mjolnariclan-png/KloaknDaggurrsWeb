@@ -9,8 +9,8 @@
     "migrate-mongodb": "node migrate-mongodb.js",
     "migrate-decks": "node migrate-decks.js",
     "check": "node --check server-production.js && node --check lib/game-engine.js && node --check lib/progression.js",
-    "test": "node --test test/unit/game-engine.test.js test/unit/progression.test.js test/integration/api.test.js",
-    "test:unit": "node --test test/unit/game-engine.test.js test/unit/progression.test.js",
+    "test": "node --test test/unit/game-engine.test.js test/unit/progression.test.js test/unit/ai-local.test.js test/integration/api.test.js",
+    "test:unit": "node --test test/unit/game-engine.test.js test/unit/progression.test.js test/unit/ai-local.test.js",
     "test:mp": "node --test test/integration/api.test.js",
     "stress": "node test/stress/load.js"
   },
