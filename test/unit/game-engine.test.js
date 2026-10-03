@@ -342,3 +342,95 @@ test('claimForfeit requires the opponent to actually be gone', () => {
   assert.equal(game.winner, U.A);
   assert.equal(game.result, 'forfeit');
 });
+
+test('drawCard is rejected outside the Draw Phase (API/UI cannot bypass)', () => {
+  for (const phase of ['vigor', 'play', 'attack']) {
+    const game = makeGame({ phase });
+    game.players[0].deck.push(creature('Topdeck', 1, 1));
+    game.players[0].hand = [];
+    const r = engine.drawCard(game, U.A);
+    assert.ok(!r.ok, `drawCard must be rejected during the ${phase} phase`);
+    assert.match(r.error, /Draw Phase/);
+    assert.equal(game.players[0].hand.length, 0, 'no card may enter the hand');
+  }
+});
+
+test('drawCard works during the Draw Phase', () => {
+  const game = makeGame({ phase: 'draw' });
+  game.players[0].hand = [];
+  game.players[0].deck.push(creature('Topdeck', 1, 1));
+  const r = engine.drawCard(game, U.A);
+  assert.ok(r.ok, r.error);
+  assert.equal(game.players[0].hand.length, 1);
+});
+
+test('autoPlayVigor is rejected outside the Vigor Phase (API/UI cannot bypass)', () => {
+  for (const phase of ['draw', 'play', 'attack']) {
+    const game = makeGame({ phase });
+    game.players[0].hand = [vigor(), vigor()];
+    const vigorBefore = game.players[0].battlefield.filter((c) => c.type === 'vigor').length;
+    const r = engine.autoPlayVigor(game, U.A);
+    assert.ok(!r.ok, `autoPlayVigor must be rejected during the ${phase} phase`);
+    assert.match(r.error, /Vigor Phase/);
+    assert.equal(game.players[0].battlefield.filter((c) => c.type === 'vigor').length, vigorBefore,
+      'no vigor may be deployed outside the Vigor Phase');
+    assert.equal(game.players[0].hand.length, 2, 'the vigor cards stay in hand');
+  }
+});
+
+test('autoPlayVigor works during the Vigor Phase', () => {
+  const game = makeGame({ phase: 'vigor' });
+  game.players[0].hand = [vigor(), vigor()];
+  const vigorBefore = game.players[0].battlefield.filter((c) => c.type === 'vigor').length;
+  const r = engine.autoPlayVigor(game, U.A);
+  assert.ok(r.ok, r.error);
+  assert.equal(game.players[0].battlefield.filter((c) => c.type === 'vigor').length, vigorBefore + 2);
+  assert.equal(game.players[0].hand.length, 0);
+});
+
+test('applyPhaseTimeouts: expired phase advances exactly one phase, fresh clock does nothing', () => {
+  const game = makeGame({ phase: 'vigor' });
+  // Make the next draw a creature so it visibly enters the hand.
+  game.players[0].deck.push(creature('Topdeck', 1, 1));
+  const handBefore = game.players[0].hand.length;
+  // Fresh clock: no enforcement.
+  assert.equal(engine.applyPhaseTimeouts(game, 60_000), 0);
+  assert.equal(game.phase, 'vigor');
+  // Expired clock: vigor -> draw (mandatory draw happens), clock resets.
+  game.phaseStartedAt = Date.now() - 61_000;
+  const advanced = engine.applyPhaseTimeouts(game, 60_000);
+  assert.equal(advanced, 1);
+  assert.equal(game.phase, 'draw');
+  assert.equal(game.players[0].hand.length, handBefore + 1);
+  // Clock was reset by the advance: a second immediate call is a no-op.
+  assert.equal(engine.applyPhaseTimeouts(game, 60_000), 0);
+});
+
+test('applyPhaseTimeouts: attack-phase expiry ends the turn; stalled player accrues no-play turns', () => {
+  const game = makeGame({ phase: 'attack' });
+  game.currentTurn = 0;
+  game.phaseStartedAt = Date.now() - 120_000;
+  const advanced = engine.applyPhaseTimeouts(game, 60_000);
+  assert.equal(advanced, 1);
+  assert.equal(game.phase, 'vigor');
+  assert.equal(game.currentTurn, 1, 'turn passes to the other player');
+  assert.equal(game.players[0].noPlayTurns, 1, 'stalled player accrues a no-play turn');
+  // Repeated timeouts on a fully stalled player eventually end via no-play loss.
+  let guard = 0;
+  while (game.status === 'active' && guard < 100) {
+    game.phaseStartedAt = Date.now() - 120_000;
+    engine.applyPhaseTimeouts(game, 60_000);
+    guard++;
+  }
+  assert.equal(game.status, 'completed');
+  assert.equal(game.result, 'noplay');
+});
+
+test('applyPhaseTimeouts ignores completed games and invalid timeouts', () => {
+  const game = makeGame({});
+  engine.surrender(game, U.A);
+  assert.equal(engine.applyPhaseTimeouts(game, 60_000), 0);
+  const game2 = makeGame({});
+  assert.equal(engine.applyPhaseTimeouts(game2, 0), 0);
+  assert.equal(engine.applyPhaseTimeouts(null, 60_000), 0);
+});
