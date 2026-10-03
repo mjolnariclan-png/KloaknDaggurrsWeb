@@ -22,6 +22,17 @@ after(async () => {
   await new Promise((resolve) => S.serverModule.server.close(resolve));
 });
 
+/** Mutating game action helper: reads the authoritative version, then posts. */
+async function act(user, path, body) {
+  const st = await S.get(user, `/api/game-state/${body.gameId}`);
+  if (!st.data.success) return st;
+  return S.post(user, path, { ...body, expectedVersion: st.data.gameState.version });
+}
+
+async function surrender(user, gameId) {
+  return act(user, '/api/surrender', { gameId });
+}
+
 test('health endpoint reports ok', async () => {
   const res = await fetch(`${S.BASE}/health`);
   assert.equal(res.status, 200);
@@ -100,7 +111,6 @@ test('full two-player match: create, sync both directions, fight, rewards exactl
 
   const idxA = match.playerIndex;
   const idxB = 1 - idxA;
-  const who = (state, i) => state.data.gameState.players[i];
 
   // Whose turn is it? Determine from state.
   let current = stateA.data.gameState.currentTurn;
@@ -111,8 +121,11 @@ test('full two-player match: create, sync both directions, fight, rewards exactl
   const outsiderView = await S.get(U.outsider, `/api/game-state/${gameId}`);
   assert.equal(outsiderView.status, 403);
 
-  // Out-of-turn player cannot act.
-  const notMyTurn = await S.post(oppUserId, '/api/advance-phase', { gameId });
+  // Out-of-turn player cannot act (must send the CURRENT version so the
+  // rejection comes from the turn check, not the version check).
+  const notMyTurn = await S.post(oppUserId, '/api/advance-phase', {
+    gameId, expectedVersion: stateA.data.gameState.version,
+  });
   assert.ok(!notMyTurn.data.success);
   assert.match(notMyTurn.data.error, /Not your turn/);
 
@@ -121,7 +134,7 @@ test('full two-player match: create, sync both directions, fight, rewards exactl
     for (let i = 0; i < 4; i++) {
       const st = await S.get(userId, `/api/game-state/${gameId}`);
       if (st.data.gameState.phase === phase) return st.data.gameState;
-      const r = await S.post(userId, '/api/advance-phase', { gameId });
+      const r = await S.post(userId, '/api/advance-phase', { gameId, expectedVersion: st.data.gameState.version });
       assert.ok(r.data.success, r.data.error);
       if (r.data.gameState.status === 'completed') return r.data.gameState;
     }
@@ -146,12 +159,13 @@ test('full two-player match: create, sync both directions, fight, rewards exactl
       let target = oppB.findIndex((t) => t.type === 'primordial');
       if (target === -1) target = oppB.findIndex((t) => t.type === 'creature');
       const r = target !== -1
-        ? await S.post(currentUserId, '/api/attack', { gameId, attackerIndex: attackerEntry.i, targetIndex: target, targetPlayer: false })
-        : await S.post(currentUserId, '/api/attack', { gameId, attackerIndex: attackerEntry.i, targetIndex: null, targetPlayer: true });
+        ? await S.post(currentUserId, '/api/attack', { gameId, attackerIndex: attackerEntry.i, targetIndex: target, targetPlayer: false, expectedVersion: state.version })
+        : await S.post(currentUserId, '/api/attack', { gameId, attackerIndex: attackerEntry.i, targetIndex: null, targetPlayer: true, expectedVersion: state.version });
       assert.ok(r.data.success, r.data.error);
     }
     // end the turn
-    const end = await S.post(currentUserId, '/api/advance-phase', { gameId });
+    const st = await S.get(currentUserId, `/api/game-state/${gameId}`);
+    const end = await S.post(currentUserId, '/api/advance-phase', { gameId, expectedVersion: st.data.gameState.version });
     assert.ok(end.data.success, end.data.error);
     return end.data.gameState;
   };
@@ -200,7 +214,8 @@ test('full two-player match: create, sync both directions, fight, rewards exactl
 
   // Currency transaction ledger has exactly one reward row per player for this match.
   const tx = await S.fakeDb.collection('currency_transactions')
-    .find({ match_id: gameId }).toArray();  assert.equal(tx.length, 2, 'exactly one transaction per player per match');
+    .find({ match_id: gameId }).toArray();
+  assert.equal(tx.length, 2, 'exactly one transaction per player per match');
 
   // Match history persisted.
   const history = await S.fakeDb.collection('game_matches').findOne({ game_id: gameId });
@@ -208,8 +223,10 @@ test('full two-player match: create, sync both directions, fight, rewards exactl
   assert.equal(history.status, 'completed');
   assert.equal(history.winner_id, winner);
 
-  // No further actions are accepted on a completed match.
-  const zombie = await S.post(winner, '/api/play-card', { gameId, cardIndex: 0 });
+  // No further actions are accepted on a completed match (zombie with a valid
+  // version still hits the engine's "already finished" guard).
+  const zState = await S.get(winner, `/api/game-state/${gameId}`);
+  const zombie = await S.post(winner, '/api/play-card', { gameId, cardIndex: 0, expectedVersion: zState.data.gameState.version });
   assert.ok(!zombie.data.success);
 });
 
@@ -217,38 +234,34 @@ test('duplicate attack request (double-click) does not deal double damage', asyn
   const match = await S.createMatch(U.A, U.B);
   const gameId = match.gameId;
   try {
-    const st = await S.get(U.A, `/api/game-state/${gameId}`);
-    const userId = st.data.gameState.currentTurn === match.playerIndex ? U.A : U.B;
-
-    // Move to attack phase.
-    let g = st.data.gameState;
-    for (let i = 0; i < 3 && g.phase !== 'attack'; i++) {
-      const r = await S.post(userId, '/api/advance-phase', { gameId });
-      g = r.data.gameState;
-    }
-    assert.equal(g.phase, 'attack');
-
     // Deterministic setup: inject a ready attacker directly (white-box) so the
     // duplicate-prevention logic is tested regardless of the random draw.
     const live = S.serverModule.games.get(gameId);
-    const meIdx = live.players.findIndex((p) => p.id === userId);
+    const meIdx = live.currentTurn;
     const oppIdx = 1 - meIdx;
+    const userId = live.players[meIdx].id; // whoever's turn it is
     const attacker = { type: 'creature', name: 'TestKnight', cost: 1, attack: 3, defense: 5, canAttack: true, hasHaste: false };
     live.players[meIdx].battlefield.push(attacker);
     const attackerIndex = live.players[meIdx].battlefield.indexOf(attacker);
 
-    // If the opponent happens to have deployed their Primordial, attacks must
-    // target it (priority rules); otherwise go face.
+    // Move to attack phase through the API (with fresh versions).
+    let g = (await S.get(userId, `/api/game-state/${gameId}`)).data.gameState;
+    for (let i = 0; i < 3 && g.phase !== 'attack'; i++) {
+      const r = await S.post(userId, '/api/advance-phase', { gameId, expectedVersion: g.version });
+      assert.ok(r.data.success, r.data.error);
+      g = r.data.gameState;
+    }
+    assert.equal(g.phase, 'attack');
+
     const kingIdx = live.players[oppIdx].battlefield.findIndex((c) => c.type === 'primordial');
     const hasBlocker = live.players[oppIdx].battlefield.some((c) => c.type === 'primordial' || c.type === 'creature');
     const kingDefenseBefore = kingIdx !== -1 ? live.players[oppIdx].battlefield[kingIdx].defense : null;
     const lifeBefore = live.players[oppIdx].life;
+    const version = g.version;
 
     const r1 = await S.post(userId, '/api/attack', {
-      gameId,
-      attackerIndex,
-      targetIndex: hasBlocker ? kingIdx : null,
-      targetPlayer: !hasBlocker,
+      gameId, attackerIndex, targetIndex: hasBlocker ? kingIdx : null, targetPlayer: !hasBlocker,
+      expectedVersion: version,
     });
     assert.ok(r1.data.success, r1.data.error);
     if (hasBlocker) {
@@ -256,17 +269,188 @@ test('duplicate attack request (double-click) does not deal double damage', asyn
     } else {
       assert.equal(r1.data.gameState.players[oppIdx].life, lifeBefore - 3, 'exactly one instance of damage');
     }
-    // Immediate duplicate (double-click / replay): same attacker, same target.
+    // Immediate duplicate (double-click / replay): same request, same version.
     const r2 = await S.post(userId, '/api/attack', {
-      gameId,
-      attackerIndex,
-      targetIndex: hasBlocker ? kingIdx : null,
-      targetPlayer: !hasBlocker,
+      gameId, attackerIndex, targetIndex: hasBlocker ? kingIdx : null, targetPlayer: !hasBlocker,
+      expectedVersion: version,
     });
     assert.ok(!r2.data.success, 'duplicate attack must be rejected');
+    // ...and even with a re-read (fresh) version, the attacker is spent.
+    const fresh = (await S.get(userId, `/api/game-state/${gameId}`)).data.gameState;
+    const r3 = await S.post(userId, '/api/attack', {
+      gameId, attackerIndex, targetIndex: hasBlocker ? kingIdx : null, targetPlayer: !hasBlocker,
+      expectedVersion: fresh.version,
+    });
+    assert.ok(!r3.data.success, 'a unit attacks at most once per phase');
   } finally {
-    await S.post(U.A, '/api/surrender', { gameId });
+    await surrender(U.A, gameId);
   }
+});
+
+test('stale client: acting on an old version is rejected, resync restores play', async () => {
+  const match = await S.createMatch(U.A, U.B);
+  const gameId = match.gameId;
+
+  // Both players hold the same snapshot (version v).
+  const sa = await S.get(U.A, `/api/game-state/${gameId}`);
+  const sb = await S.get(U.B, `/api/game-state/${gameId}`);
+  const v = sa.data.gameState.version;
+  assert.equal(v, sb.data.gameState.version);
+
+  const current = sa.data.gameState.currentTurn === match.playerIndex ? U.A : U.B;
+  const next = current === U.A ? U.B : U.A;
+
+  // Current acts: v -> v+1.
+  const r1 = await S.post(current, '/api/advance-phase', { gameId, expectedVersion: v });
+  assert.ok(r1.data.success, r1.data.error);
+
+  // The stale client (next) tries to act with the old version: REJECTED,
+  // with the authoritative state attached for a one-round-trip resync.
+  const r2 = await S.post(next, '/api/advance-phase', { gameId, expectedVersion: v });
+  assert.ok(!r2.data.success);
+  assert.equal(r2.data.stale, true);
+  assert.ok(r2.data.gameState, 'rejection must carry authoritative state');
+  assert.ok(r2.data.gameState.version > v);
+
+  // Finish the current player's turn using fresh versions.
+  let st = r1.data.gameState;
+  for (let i = 0; i < 3 && st.status !== 'completed'; i++) {
+    const r = await S.post(current, '/api/advance-phase', { gameId, expectedVersion: st.version });
+    assert.ok(r.data.success, r.data.error);
+    st = r.data.gameState;
+  }
+  assert.notEqual(st.currentTurn, sa.data.gameState.currentTurn, 'turn must have passed');
+
+  // The previously-stale client refreshes and can continue playing.
+  const fresh = await S.get(next, `/api/game-state/${gameId}`);
+  const r3 = await S.post(next, '/api/advance-phase', { gameId, expectedVersion: fresh.data.gameState.version });
+  assert.ok(r3.data.success, 'refreshed client must be able to continue');
+
+  await surrender(U.A, gameId);
+});
+
+test('mutating action without expectedVersion is rejected', async () => {
+  const match = await S.createMatch(U.A, U.B);
+  const gameId = match.gameId;
+  const r = await S.post(U.A, '/api/advance-phase', { gameId });
+  assert.ok(!r.data.success);
+  assert.match(r.data.error, /Missing expected game version/);
+  assert.ok(r.data.gameState, 'rejection must carry authoritative state');
+  await surrender(U.A, gameId);
+});
+
+test('duplicate action: same actionId executes exactly once even with a fresh version', async () => {
+  const match = await S.createMatch(U.A, U.B);
+  const gameId = match.gameId;
+  const live = S.serverModule.games.get(gameId);
+  const current = live.players[live.currentTurn].id;
+
+  // Advance the current player to the play phase with fresh versions.
+  let st = (await S.get(current, `/api/game-state/${gameId}`)).data.gameState;
+  while (st.phase !== 'play' && st.status === 'active') {
+    const r = await S.post(current, '/api/advance-phase', { gameId, expectedVersion: st.version });
+    assert.ok(r.data.success, r.data.error);
+    st = r.data.gameState;
+  }
+  assert.equal(st.phase, 'play');
+
+  // [WB] Deterministic hand: two affordable creatures + two deployed Vigor,
+  // so the duplicate cannot be blocked by mana or index availability.
+  const meIdx = live.players.findIndex((p) => p.id === current);
+  live.players[meIdx].battlefield.push(
+    { type: 'vigor', name: 'V', cost: 0, attack: 0, defense: 0 },
+    { type: 'vigor', name: 'V', cost: 0, attack: 0, defense: 0 }
+  );
+  live.players[meIdx].hand = [
+    { type: 'creature', name: 'Cheap1', cost: 1, attack: 1, defense: 1 },
+    { type: 'creature', name: 'Cheap2', cost: 1, attack: 1, defense: 1 },
+  ];
+  live.players[meIdx].vigorUsedThisTurn = 0;
+
+  const fresh = (await S.get(current, `/api/game-state/${gameId}`)).data.gameState;
+  const handBefore = fresh.players[meIdx].hand.length;
+  const actionId = 'dup-test-action-0001';
+
+  const r1 = await S.post(current, '/api/play-card', { gameId, cardIndex: 0, expectedVersion: fresh.version, actionId });
+  assert.ok(r1.data.success, r1.data.error);
+
+  // The STRONGEST form of a duplicate: the client re-read the (post-action)
+  // authoritative version, so the version check alone would pass. The
+  // actionId must stop it.
+  const r2 = await S.post(current, '/api/play-card', { gameId, cardIndex: 0, expectedVersion: r1.data.gameState.version, actionId });
+  assert.ok(!r2.data.success, 'duplicate actionId must be rejected');
+  assert.equal(r2.data.duplicate, true);
+
+  const stEnd = (await S.get(current, `/api/game-state/${gameId}`)).data.gameState;
+  assert.equal(stEnd.players[meIdx].hand.length, handBefore - 1, 'state changed exactly once');
+  await surrender(U.A, gameId);
+});
+
+test('API-level phase enforcement: draw-card and auto-play-vigor rejected outside their phases', async () => {
+  const match = await S.createMatch(U.A, U.B);
+  const gameId = match.gameId;
+  const live = S.serverModule.games.get(gameId);
+  const current = live.players[live.currentTurn].id;
+
+  let st = (await S.get(current, `/api/game-state/${gameId}`)).data.gameState;
+  while (st.phase !== 'attack' && st.status === 'active') {
+    const r = await S.post(current, '/api/advance-phase', { gameId, expectedVersion: st.version });
+    assert.ok(r.data.success, r.data.error);
+    st = r.data.gameState;
+  }
+  assert.equal(st.phase, 'attack');
+
+  const draw = await S.post(current, '/api/draw-card', { gameId, expectedVersion: st.version });
+  assert.ok(!draw.data.success, 'drawing during the ATTACK phase must be rejected server-side');
+  assert.match(draw.data.error, /Draw Phase/);
+
+  const vig = await S.post(current, '/api/auto-play-vigor', { gameId, expectedVersion: st.version });
+  assert.ok(!vig.data.success, 'deploying vigor during the ATTACK phase must be rejected server-side');
+  assert.match(vig.data.error, /Vigor Phase/);
+
+  await surrender(U.A, gameId);
+});
+
+test('server-side phase timeout advances a stalled phase (authoritative clock)', async () => {
+  const match = await S.createMatch(U.A, U.B);
+  const gameId = match.gameId;
+  const live = S.serverModule.games.get(gameId);
+  const current = live.players[live.currentTurn].id;
+
+  const before = await S.get(current, `/api/game-state/${gameId}`);
+  assert.equal(before.data.gameState.phase, 'vigor');
+
+  // [WB] Simulate 61 seconds of stalling; the player stays connected.
+  live.phaseStartedAt = Date.now() - 61_000;
+  const after = await S.get(current, `/api/game-state/${gameId}`);
+  assert.equal(after.data.gameState.phase, 'draw', 'expired phase must auto-advance');
+  assert.ok(after.data.gameState.version > before.data.gameState.version);
+
+  // A client still holding the pre-timeout version is now stale.
+  const stale = await S.post(current, '/api/advance-phase', { gameId, expectedVersion: before.data.gameState.version });
+  assert.ok(!stale.data.success);
+  assert.equal(stale.data.stale, true);
+
+  await surrender(U.A, gameId);
+});
+
+test('phase timeout does NOT fire for an absent player (forfeit rules own that case)', async () => {
+  const match = await S.createMatch(U.A, U.B);
+  const gameId = match.gameId;
+  const live = S.serverModule.games.get(gameId);
+  const curIdx = live.currentTurn;
+  const current = live.players[curIdx].id;
+  const other = live.players[1 - curIdx].id;
+
+  await S.get(current, `/api/game-state/${gameId}`); // fresh lastSeen
+  // [WB] the current player has been GONE for 5 minutes (no polls)
+  live.players[curIdx].lastSeen = Date.now() - 300_000;
+  live.phaseStartedAt = Date.now() - 61_000;
+
+  const st = await S.get(other, `/api/game-state/${gameId}`);
+  assert.equal(st.data.gameState.phase, 'vigor', 'absent player phases are not auto-played');
+  assert.equal(st.data.gameState.version, 1, 'state must not move');
+  await surrender(other, gameId);
 });
 
 test('refresh/rejoin: a player who reloads rejoins the same match with identical state', async () => {
@@ -280,19 +464,19 @@ test('refresh/rejoin: a player who reloads rejoins the same match with identical
   assert.equal(after.data.gameState.turnNumber, before.data.gameState.turnNumber);
   assert.deepEqual(after.data.gameState.players[0].hand.length, before.data.gameState.players[0].hand.length);
   // Cleanup: decline/cancel the match so it doesn't interfere with other tests.
-  await S.post(U.A, '/api/surrender', { gameId });
+  await surrender(U.A, gameId);
 });
 
 test('surrender completes the match, grants rewards once, opponent sees it', async () => {
   const match = await S.createMatch(U.A, U.B);
   const gameId = match.gameId;
-  const r = await S.post(U.A, '/api/surrender', { gameId });
+  const r = await act(U.A, '/api/surrender', { gameId });
   assert.ok(r.data.success);
   assert.equal(r.data.gameState.status, 'completed');
   assert.equal(r.data.gameState.winner, U.B);
 
   // Duplicate surrender is a no-op.
-  const r2 = await S.post(U.A, '/api/surrender', { gameId });
+  const r2 = await surrender(U.A, gameId);
   assert.ok(!r2.data.success);
 
   // B observes the result via polling.
@@ -339,24 +523,132 @@ test('a player already in a match cannot be challenged again', async () => {
   const r = await S.post(U.C, '/api/challenge-player', { opponentId: U.A });
   assert.ok(!r.data.success);
   assert.match(r.data.error, /already in a match/);
-  await S.post(U.A, '/api/surrender', { gameId });
+  await surrender(U.A, gameId);
 });
 
 test('claim-forfeit requires opponent absence and then ends the match', async () => {
   const match = await S.createMatch(U.A, U.B);
   const gameId = match.gameId;
-  // Both players just polled -> forfeit unavailable.
-  const tooSoon = await S.post(U.A, `/api/match/${gameId}/claim-forfeit`, {});
+  // Both players just polled -> forfeit unavailable (and must carry a version).
+  const tooSoonState = await S.get(U.A, `/api/game-state/${gameId}`);
+  const tooSoon = await S.post(U.A, `/api/match/${gameId}/claim-forfeit`, {
+    expectedVersion: tooSoonState.data.gameState.version,
+  });
   assert.ok(!tooSoon.data.success);
+
+  // Forfeit without a version is rejected too.
+  const noVersion = await S.post(U.A, `/api/match/${gameId}/claim-forfeit`, {});
+  assert.ok(!noVersion.data.success);
+  assert.match(noVersion.data.error, /expected game version/);
 
   // Simulate B disappearing (backdate lastSeen via engine).
   const g = S.serverModule.games.get(gameId);
   const idxB = g.players.findIndex((p) => p.id === U.B);
   g.players[idxB].lastSeen = Date.now() - 200000;
 
-  const r = await S.post(U.A, `/api/match/${gameId}/claim-forfeit`, {});
+  const fresh = await S.get(U.A, `/api/game-state/${gameId}`);
+  const r = await S.post(U.A, `/api/match/${gameId}/claim-forfeit`, {
+    expectedVersion: fresh.data.gameState.version,
+  });
   assert.ok(r.data.success, r.data.error);
   assert.equal(r.data.gameState.status, 'completed');
   assert.equal(r.data.gameState.winner, U.A);
   assert.equal(r.data.gameState.result, 'forfeit');
+});
+
+/* =========================================================================
+ * AI battles — result validation ordering + exactly-once
+ * ========================================================================= */
+
+/** [WB] Level a fresh user to 3 (Easy AI gate) directly in the fake DB. */
+async function makeLevel3(userId) {
+  await S.get(userId, `/api/player/${userId}`); // creates the progression record
+  const store = S.fakeDb.__collections.get('player_progression').store;
+  for (const doc of store.values()) {
+    if (doc.user_id === userId) {
+      doc.level = 3; doc.total_xp = 215; doc.xp = 0; doc.xp_to_next = 116;
+    }
+  }
+}
+
+/** [WB] Backdate an AI match's started_at so the 45s duration guard passes. */
+function backdateAiMatch(aiMatchId, ms = 60_000) {
+  const store = S.fakeDb.__collections.get('ai_matches').store;
+  for (const doc of store.values()) {
+    if (doc.ai_match_id === aiMatchId) doc.started_at = new Date(Date.now() - ms);
+  }
+}
+
+test('AI gates: level 1 cannot start any AI; level 3 unlocks easy only', async () => {
+  const user = 'user-ai-gate-01';
+  await S.get(user, `/api/player/${user}`);
+  const fresh = await S.post(user, '/api/ai/start', { difficulty: 'easy' });
+  const med = await S.post(user, '/api/ai/start', { difficulty: 'medium' });
+  const hard = await S.post(user, '/api/ai/start', { difficulty: 'hard' });
+  assert.ok(!fresh.data.success && /level 3/.test(fresh.data.error));
+  assert.ok(!med.data.success && /level 5/.test(med.data.error));
+  assert.ok(!hard.data.success && /level 8/.test(hard.data.error));
+
+  await makeLevel3(user);
+  const easy = await S.post(user, '/api/ai/start', { difficulty: 'easy' });
+  const med2 = await S.post(user, '/api/ai/start', { difficulty: 'medium' });
+  assert.ok(easy.data.success, easy.data.error);
+  assert.ok(!med2.data.success);
+});
+
+test('AI result: a too-short result is rejected but does NOT burn the match', async () => {
+  const user = 'user-ai-order-1';
+  await makeLevel3(user);
+  const start = await S.post(user, '/api/ai/start', { difficulty: 'easy' });
+  assert.ok(start.data.success, start.data.error);
+  const mid = start.data.aiMatchId;
+
+  // Reported instantly: rejected by the duration guard...
+  const instant = await S.post(user, '/api/ai/result', { aiMatchId: mid, won: true });
+  assert.ok(!instant.data.success);
+  assert.match(instant.data.error, /too short/);
+
+  // ...but the match must STILL be reportable once enough time has passed
+  // (this is the regression for the claim-before-validate ordering bug).
+  backdateAiMatch(mid);
+  const valid = await S.post(user, '/api/ai/result', { aiMatchId: mid, won: true });
+  assert.ok(valid.data.success, valid.data.error);
+  assert.ok(valid.data.rewards, 'valid AI win must be rewarded');
+});
+
+test('AI result: repeated result, wrong owner, and unknown match are rejected', async () => {
+  const user = 'user-ai-order-2';
+  const other = 'user-ai-order-3';
+  await makeLevel3(user);
+  const start = await S.post(user, '/api/ai/start', { difficulty: 'easy' });
+  const mid = start.data.aiMatchId;
+  backdateAiMatch(mid);
+
+  // Someone else cannot report (or even see) this match.
+  const thief = await S.post(other, '/api/ai/result', { aiMatchId: mid, won: true });
+  assert.ok(!thief.data.success);
+
+  const win1 = await S.post(user, '/api/ai/result', { aiMatchId: mid, won: true });
+  assert.ok(win1.data.success, win1.data.error);
+  const before = (await S.get(user, `/api/player/${user}`)).data.player;
+
+  // Repeated result: no double reward.
+  const win2 = await S.post(user, '/api/ai/result', { aiMatchId: mid, won: true });
+  assert.ok(!win2.data.success);
+  assert.match(win2.data.error, /already submitted/);
+
+  // Unknown match id.
+  const ghost = await S.post(user, '/api/ai/result', { aiMatchId: 'ai_ghost', won: true });
+  assert.ok(!ghost.data.success);
+
+  const after = (await S.get(user, `/api/player/${user}`)).data.player;
+  assert.equal(after.coins, before.coins, 'no double AI reward');
+  assert.equal(after.total_xp, before.total_xp, 'no double AI XP');
+
+  // A loss reports stats only.
+  const start2 = await S.post(user, '/api/ai/start', { difficulty: 'easy' });
+  backdateAiMatch(start2.data.aiMatchId);
+  const loss = await S.post(user, '/api/ai/result', { aiMatchId: start2.data.aiMatchId, won: false });
+  assert.ok(loss.data.success, loss.data.error);
+  assert.equal(loss.data.rewards, null, 'AI loss grants nothing');
 });

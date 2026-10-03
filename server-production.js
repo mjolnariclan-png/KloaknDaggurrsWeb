@@ -68,6 +68,15 @@ const FORFEIT_THRESHOLD_MS = 180_000; // opponent gone 3min -> forfeit claimable
 const GAME_ABANDON_MS = 10 * 60_000; // both gone 10min -> abandoned, no rewards
 const COMPLETED_GAME_MEMORY_MS = 60 * 60_000; // keep completed games in memory 1h
 const MAX_COMPLETED_VIEW_MS = 60 * 60_000;
+// Server-authoritative phase clock — same 60s per-phase rule the client shows.
+// Overridable for tests via KD_PHASE_TIMEOUT_MS.
+const PHASE_TIMEOUT_MS = Number(process.env.KD_PHASE_TIMEOUT_MS) > 0
+  ? Number(process.env.KD_PHASE_TIMEOUT_MS) : 60_000;
+// A phase only times out while its player is actively connected (polling);
+// absent players are handled by the forfeit/abandon rules instead.
+const PRESENCE_WINDOW_MS = 90_000;
+// Bounded history of processed action IDs per game (duplicate suppression).
+const MAX_PROCESSED_ACTIONS = 256;
 
 let cardManifests = {};
 let availableSets = [];
@@ -855,6 +864,7 @@ app.get('/api/game-state/:gameId', async (req, res) => {
   const idx = engine.playerIndex(game, userId);
   if (idx === -1) return res.status(403).json({ success: false, error: 'You are not a player in this match' });
   engine.touch(game, userId);
+  enforcePhaseTimeout(game);
   if (game.status === 'completed') await finalizeMatch(game);
   res.json({
     success: true,
@@ -866,17 +876,76 @@ app.get('/api/game-state/:gameId', async (req, res) => {
   });
 });
 
+/**
+ * Server-authoritative phase timeout: if the current player's phase clock has
+ * expired (they are connected but not acting), advance their phase — the same
+ * thing their browser's 60s timer would do. Absent players are excluded so the
+ * forfeit/abandon rules (which require 3min/10min of absence) stay in charge.
+ */
+function enforcePhaseTimeout(game) {
+  if (!game || game.status !== 'active') return;
+  const current = game.players[game.currentTurn];
+  if (Date.now() - (current.lastSeen || 0) > PRESENCE_WINDOW_MS) return;
+  if (engine.applyPhaseTimeouts(game, PHASE_TIMEOUT_MS) > 0 && game.status === 'completed') {
+    finalizeMatch(game); // fire-and-forget: guarded exactly-once by game.finalized
+  }
+}
+
+/**
+ * Wrap a mutating game action with server-side validation:
+ *  1. phase timeout enforcement (authoritative clock),
+ *  2. optimistic concurrency — the client must state which game version it
+ *     acted on; a stale version means the state moved (opponent action, our
+ *     own double-click, a network retry, or a phase timeout) and the action
+ *     is REJECTED instead of applied,
+ *  3. duplicate suppression by actionId (double-click / network retry of the
+ *     exact same logical request).
+ * Every rejection carries the authoritative state so the client can resync
+ * without a second round trip.
+ */
 function gameAction(handler) {
   return async (req, res) => {
     const userId = req.authUser.id;
-    const { gameId } = req.body || {};
+    const { gameId, expectedVersion, actionId } = req.body || {};
     const game = games.get(gameId);
     if (!game) return res.json({ success: false, error: 'Game not found' });
     const idx = engine.playerIndex(game, userId);
     if (idx === -1) return res.status(403).json({ success: false, error: 'You are not a player in this match' });
     engine.touch(game, userId);
+    enforcePhaseTimeout(game);
+
+    if (!Number.isInteger(expectedVersion)) {
+      return res.json({
+        success: false, error: 'Missing expected game version', invalidRequest: true,
+        gameState: engine.sanitize(game, userId),
+      });
+    }
+    if (expectedVersion !== game.version) {
+      return res.json({
+        success: false, error: 'Stale game state — your view is out of date', stale: true,
+        gameState: engine.sanitize(game, userId),
+      });
+    }
+    if (typeof actionId === 'string' && actionId &&
+        (game.processedActions || []).includes(actionId)) {
+      return res.json({
+        success: false, error: 'Duplicate action ignored', duplicate: true,
+        gameState: engine.sanitize(game, userId),
+      });
+    }
+
     const result = handler(game, userId, req.body || {});
     if (!result.ok) return res.json({ success: false, error: result.error });
+
+    // Record the actionId only on success: a rejected action did not mutate
+    // state, so an identical retry remains safe to evaluate on its merits.
+    if (typeof actionId === 'string' && actionId) {
+      game.processedActions = game.processedActions || [];
+      game.processedActions.push(actionId);
+      if (game.processedActions.length > MAX_PROCESSED_ACTIONS) {
+        game.processedActions.splice(0, game.processedActions.length - MAX_PROCESSED_ACTIONS);
+      }
+    }
     if (game.status === 'completed') await finalizeMatch(game);
     respondWithGame(res, game, userId, result.extra || {});
   };
@@ -927,6 +996,16 @@ app.post('/api/match/:gameId/claim-forfeit', async (req, res) => {
   if (!game) return res.json({ success: false, error: 'Game not found' });
   const idx = engine.playerIndex(game, userId);
   if (idx === -1) return res.status(403).json({ success: false, error: 'You are not a player in this match' });
+  engine.touch(game, userId);
+
+  const { expectedVersion } = req.body || {};
+  if (!Number.isInteger(expectedVersion)) {
+    return res.json({ success: false, error: 'Missing expected game version', invalidRequest: true, gameState: engine.sanitize(game, userId) });
+  }
+  if (expectedVersion !== game.version) {
+    return res.json({ success: false, error: 'Stale game state — your view is out of date', stale: true, gameState: engine.sanitize(game, userId) });
+  }
+
   const r = engine.claimForfeit(game, userId, FORFEIT_THRESHOLD_MS);
   if (!r.ok) return res.json({ success: false, error: r.error });
   await finalizeMatch(game);
@@ -1090,18 +1169,27 @@ app.post('/api/ai/result', async (req, res) => {
     if (!db) return res.status(503).json({ success: false, error: 'Database unavailable' });
     if (typeof aiMatchId !== 'string' || !aiMatchId) return res.json({ success: false, error: 'Missing match id' });
 
-    // Exactly-once: the update only matches an unfinished match owned by the caller.
-    const claimed = await db.collection('ai_matches').updateOne(
-      { ai_match_id: aiMatchId, user_id: userId, finished_at: null },
-      { $set: { finished_at: new Date(), won: won === true } }
-    );
-    if (claimed.modifiedCount === 0) return res.json({ success: false, error: 'Match not found or already reported' });
-
+    // Validation order matters: a REJECTED result must never burn the match.
+    // 1) ownership + existence (read-only),
+    // 2) duration (read-only — a too-short match stays reportable later),
+    // 3) atomic exactly-once claim,
+    // 4) rewards.
     const match = await db.collection('ai_matches').findOne({ ai_match_id: aiMatchId, user_id: userId });
+    if (!match) return res.json({ success: false, error: 'Match not found' });
+    if (match.finished_at) return res.json({ success: false, error: 'Match result already submitted' });
+
     const elapsed = Date.now() - new Date(match.started_at).getTime();
     if (elapsed < AI_MIN_DURATION_MS) {
       return res.json({ success: false, error: 'Match too short to count' });
     }
+
+    // Atomic claim: only one report per match can ever pass this line.
+    const claimed = await db.collection('ai_matches').updateOne(
+      { ai_match_id: aiMatchId, user_id: userId, finished_at: null },
+      { $set: { finished_at: new Date(), won: won === true } }
+    );
+    if (claimed.modifiedCount === 0) return res.json({ success: false, error: 'Match result already submitted' });
+
     if (won !== true) {
       // A loss records stats but grants nothing — still counts as a played match.
       await db.collection('player_progression').updateOne(
@@ -1157,6 +1245,8 @@ setInterval(() => {
   const now = Date.now();
   for (const [id, g] of games) {
     if (g.status !== 'active') continue;
+    // Authoritative phase clock: advance expired phases of connected players.
+    enforcePhaseTimeout(g);
     const p0 = g.players[0].lastSeen || 0;
     const p1 = g.players[1].lastSeen || 0;
     const gone0 = now - p0 > GAME_ABANDON_MS;
