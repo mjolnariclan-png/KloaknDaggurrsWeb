@@ -320,11 +320,29 @@
 
       acceptBtn.addEventListener('click', async () => {
         notificationEl.classList.remove('show');
-        await apiFetch('/accept-game', {
-          method: 'POST',
-          body: JSON.stringify({ gameId: invitation.gameId }),
-        }).catch(() => {});
-        enterGame({ gameId: invitation.gameId, playerIndex: invitation.playerIndex, gameState: invitation.gameState });
+        let accepted;
+        try {
+          accepted = await apiFetch('/accept-game', {
+            method: 'POST',
+            body: JSON.stringify({ gameId: invitation.gameId }),
+          });
+        } catch (error) {
+          lobbyStatus.textContent = error.message || 'Could not accept the match. Please try again.';
+          lobbyStatus.style.color = 'red';
+          startLobbyPolling();
+          return;
+        }
+        if (!accepted?.success || !accepted.gameState) {
+          lobbyStatus.textContent = accepted?.error || 'The match could not be accepted. Please try again.';
+          lobbyStatus.style.color = 'red';
+          startLobbyPolling();
+          return;
+        }
+        enterGame({
+          gameId: invitation.gameId,
+          playerIndex: invitation.playerIndex,
+          gameState: accepted.gameState,
+        });
       });
 
       declineBtn.addEventListener('click', async () => {
@@ -379,6 +397,19 @@
       startPolling();
     }
 
+    function returnToLobby(message) {
+      stopAllPolling();
+      clearGameRef();
+      gameId = null;
+      gameState = null;
+      gameOverHandled = false;
+      showLobby();
+      joinLobbyBtn.style.display = '';
+      playerNameInput.disabled = false;
+      lobbyStatus.textContent = message;
+      lobbyStatus.style.color = 'red';
+    }
+
     /** Rejoin a saved match after refresh/reconnect. */
     async function rejoinGame() {
       let data;
@@ -391,15 +422,12 @@
         return;
       }
       if (!data.success) {
-        clearGameRef();
-        gameId = null;
-        lobbyStatus.textContent = 'That match is no longer available.';
+        returnToLobby('That match is no longer available. Join the lobby to start another match.');
         return;
       }
       const idx = data.gameState.players.findIndex((p) => p.id === playerId);
       if (idx === -1) {
-        clearGameRef();
-        gameId = null;
+        returnToLobby('You are no longer part of that match. Join the lobby to start another match.');
         return;
       }
       if (data.gameState.status === 'completed') {
@@ -416,7 +444,10 @@
         if (selectionActive) return; // don't clobber an in-progress selection
         try {
           const data = await apiFetch(`/game-state/${gameId}`);
-          if (!data.success) return;
+          if (!data.success) {
+            returnToLobby(data.error || 'The match is no longer available. Join the lobby to start another match.');
+            return;
+          }
           if (data.gameState.status === 'completed') {
             gameState = data.gameState;
             handleGameOver(data);
