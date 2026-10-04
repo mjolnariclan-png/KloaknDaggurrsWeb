@@ -4,12 +4,14 @@
 (function() {
     // Wait for Supabase to be available and initialize it if needed
     function initSupabaseClient() {
-        if (window.supabase) {
+        if (window.supabase?.auth?.getSession) {
             return window.supabase;
         }
         
-        // Initialize Supabase if not already done
-        if (window.KD_CONFIG && window.KD_CONFIG.supabaseUrl && window.KD_CONFIG.supabasePublishableKey) {
+        // The CDN exposes a library with createClient, not an authenticated client.
+        if (typeof window.supabase?.createClient === 'function' &&
+            window.KD_CONFIG?.supabaseUrl &&
+            window.KD_CONFIG?.supabasePublishableKey) {
             window.supabase = window.supabase.createClient(
                 window.KD_CONFIG.supabaseUrl,
                 window.KD_CONFIG.supabasePublishableKey,
