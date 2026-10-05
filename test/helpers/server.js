@@ -63,10 +63,19 @@ async function joinLobby(userId, name) {
   return post(userId, '/api/join-lobby', { playerName: name });
 }
 
-/** Create a match directly between two userIds (bypasses lobby polling). */
+/** Join both users and return their automatic match, or create it directly for API tests. */
 async function createMatch(userA, userB, opts = {}) {
-  await joinLobby(userA, opts.nameA || 'Alpha');
-  await joinLobby(userB, opts.nameB || 'Bravo');
+  const first = await joinLobby(userA, opts.nameA || 'Alpha');
+  if (first.data.gameState?.players.some((player) => player.id === userB)) return first.data;
+  const second = await joinLobby(userB, opts.nameB || 'Bravo');
+  if (second.data.gameState?.players.some((player) => player.id === userA)) {
+    const stateForA = await get(userA, `/api/game-state/${second.data.gameId}`);
+    return {
+      ...second.data,
+      playerIndex: stateForA.data.gameState.players.findIndex((player) => player.id === userA),
+      gameState: stateForA.data.gameState,
+    };
+  }
   const r = await post(userA, '/api/challenge-player', {
     opponentId: userB,
     cardSet: opts.cardSet || 'Ash Cycle',

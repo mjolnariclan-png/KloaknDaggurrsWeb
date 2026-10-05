@@ -33,6 +33,20 @@ async function surrender(user, gameId) {
   return act(user, '/api/surrender', { gameId });
 }
 
+async function setPlayerLevel(userId, level) {
+  await S.fakeDb.collection('player_progression').insertOne({
+    user_id: userId,
+    level,
+    prestige: 0,
+    xp: 0,
+    xp_to_next: 100,
+    total_xp: 0,
+    coins: 0,
+    matches_played: 0,
+    matches_won: 0,
+  });
+}
+
 test('health endpoint reports ok', async () => {
   const res = await fetch(`${S.BASE}/health`);
   assert.equal(res.status, 200);
@@ -65,13 +79,67 @@ test('unauthenticated requests to game endpoints are rejected (401)', async () =
 });
 
 test('client-supplied playerId is ignored — identity comes from the token', async () => {
-  // A tries to impersonate B by sending B's id in the body.
-  const r = await S.post(U.A, '/api/join-lobby', { playerId: U.B, playerName: 'Imposter' });
+  const user = 'user-spoof-test';
+  const r = await S.post(user, '/api/join-lobby', { playerId: U.B, playerName: 'Imposter' });
   assert.ok(r.data.success);
-  const lobby = await S.get(U.A, '/api/lobby-players');
+  assert.equal(r.data.name, `Profile ${user}`);
+  const lobby = await S.get(user, '/api/lobby-players');
   const present = lobby.data.players.map((p) => p.id);
-  assert.ok(present.includes(U.A), 'token user should be in lobby');
+  assert.ok(present.includes(user), 'token user should be in lobby');
   assert.ok(!present.includes(U.B), 'spoofed id must be ignored');
+  S.serverModule.lobbyPlayers.delete(user);
+});
+
+test('joining matchmaking automatically pairs players whose levels differ by at most five', async () => {
+  const a = 'match-level-10-a';
+  const b = 'match-level-15-b';
+  await setPlayerLevel(a, 10);
+  await setPlayerLevel(b, 15);
+
+  const waiting = await S.joinLobby(a, 'Name from request is ignored');
+  assert.equal(waiting.data.status, 'searching');
+  assert.equal(waiting.data.level, 10);
+
+  const matched = await S.joinLobby(b, 'Also ignored');
+  assert.equal(matched.data.success, true);
+  assert.ok(matched.data.gameId);
+  assert.deepEqual(
+    matched.data.gameState.players.map((player) => player.name).sort(),
+    [`Profile ${a}`, `Profile ${b}`].sort()
+  );
+
+  const waitingPlayer = await S.get(a, '/api/lobby-players');
+  assert.equal(waitingPlayer.data.gameInvitation.gameId, matched.data.gameId);
+});
+
+test('matchmaking skips opponents outside five levels and picks the closest eligible player', async () => {
+  const level10 = 'match-range-level-10';
+  const level16 = 'match-range-level-16';
+  const level15a = 'match-range-level-15-a';
+  const level15b = 'match-range-level-15-b';
+  await Promise.all([
+    setPlayerLevel(level10, 10),
+    setPlayerLevel(level16, 16),
+    setPlayerLevel(level15a, 15),
+    setPlayerLevel(level15b, 15),
+  ]);
+
+  await S.joinLobby(level10);
+  await S.joinLobby(level16);
+  assert.equal((await S.get(level10, '/api/lobby-players')).data.gameInvitation, null);
+  assert.equal((await S.get(level16, '/api/lobby-players')).data.gameInvitation, null);
+
+  const firstMatch = await S.joinLobby(level15a);
+  assert.ok(firstMatch.data.gameId);
+  assert.ok(firstMatch.data.gameState.players.some((player) => player.id === level16));
+  assert.ok(!firstMatch.data.gameState.players.some((player) => player.id === level10));
+
+  const matchForLevel10 = await S.joinLobby(level15b);
+  assert.ok(matchForLevel10.data.gameId);
+  assert.ok(matchForLevel10.data.gameState.players.some((player) => player.id === level10));
+
+  await S.post(level16, '/api/decline-game', { gameId: firstMatch.data.gameId });
+  await S.post(level10, '/api/decline-game', { gameId: matchForLevel10.data.gameId });
 });
 
 test('cannot view another player\'s progression', async () => {
@@ -89,6 +157,7 @@ test('cannot challenge yourself', async () => {
   await S.joinLobby(U.C, 'Charlie');
   const r = await S.post(U.C, '/api/challenge-player', { opponentId: U.C });
   assert.ok(!r.data.success);
+  S.serverModule.lobbyPlayers.delete(U.C);
 });
 
 test('full two-player match: create, sync both directions, fight, rewards exactly once', async () => {
@@ -491,11 +560,8 @@ test('surrender completes the match, grants rewards once, opponent sees it', asy
 });
 
 test('declining a challenge cancels it for both players', async () => {
-  await S.joinLobby(U.A, 'Alpha');
-  await S.joinLobby(U.B, 'Bravo');
-  const ch = await S.post(U.A, '/api/challenge-player', { opponentId: U.B });
-  assert.ok(ch.data.success);
-  const gameId = ch.data.gameId;
+  const match = await S.createMatch(U.A, U.B);
+  const gameId = match.gameId;
 
   const dec = await S.post(U.B, '/api/decline-game', { gameId });
   assert.ok(dec.data.success);
@@ -505,15 +571,12 @@ test('declining a challenge cancels it for both players', async () => {
 });
 
 test('lobby invitation flow: challenged player sees the game invitation', async () => {
-  await S.joinLobby(U.A, 'Alpha');
-  await S.joinLobby(U.B, 'Bravo');
-  const ch = await S.post(U.A, '/api/challenge-player', { opponentId: U.B });
-  assert.ok(ch.data.success);
+  const match = await S.createMatch(U.A, U.B);
   const lobbyB = await S.get(U.B, '/api/lobby-players');
   assert.equal(lobbyB.data.status, 'game_ready');
-  assert.equal(lobbyB.data.gameInvitation.gameId, ch.data.gameId);
-  assert.equal(lobbyB.data.gameInvitation.opponentName, 'Alpha');
-  await S.post(U.B, '/api/decline-game', { gameId: ch.data.gameId });
+  assert.equal(lobbyB.data.gameInvitation.gameId, match.gameId);
+  assert.equal(lobbyB.data.gameInvitation.opponentName, `Profile ${U.A}`);
+  await S.post(U.B, '/api/decline-game', { gameId: match.gameId });
 });
 
 test('a player already in a match cannot be challenged again', async () => {
@@ -523,6 +586,8 @@ test('a player already in a match cannot be challenged again', async () => {
   const r = await S.post(U.C, '/api/challenge-player', { opponentId: U.A });
   assert.ok(!r.data.success);
   assert.match(r.data.error, /already in a match/);
+  S.serverModule.lobbyPlayers.delete(U.C);
+  await surrender(U.A, gameId);
   await surrender(U.A, gameId);
 });
 

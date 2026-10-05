@@ -14,14 +14,7 @@
     <div class="multiplayer-lobby" id="lobby" style="display: none;">
         <div class="lobby-container">
             <h1>Multiplayer Lobby</h1>
-            <div class="lobby-form">
-                <input type="text" id="player-name" placeholder="Enter your name" value="Player">
-                <button id="join-lobby-btn">Join Lobby</button>
-            </div>
-            <div id="lobby-players" class="lobby-players" style="display: none;">
-                <h3>Available Players</h3>
-                <div id="players-list"></div>
-            </div>
+            <p class="lobby-account">Playing as <strong id="player-name">Player</strong></p>
             <div id="lobby-status" class="lobby-status"></div>
         </div>
     </div>
@@ -108,6 +101,6 @@
 
     <div class="click-outside-detector" id="click-outside-detector"></div>
 
-    <script src="battlefield.js"></script>
+    <script src="battlefield.js?v=level-matchmaking-1"></script>
 </body>
 </html>

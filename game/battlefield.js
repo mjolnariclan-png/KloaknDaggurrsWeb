@@ -160,11 +160,8 @@
 
     const lobby = $('lobby');
     const gameContainer = $('game-container');
-    const playerNameInput = $('player-name');
-    const joinLobbyBtn = $('join-lobby-btn');
+    const playerNameLabel = $('player-name');
     const lobbyStatus = $('lobby-status');
-    const lobbyPlayers = $('lobby-players');
-    const playersList = $('players-list');
 
     const opponentName = $('opponent-name');
     const opponentScallous = $('opponent-scallous');
@@ -224,29 +221,43 @@
         return;
       }
       playerId = session.user.id;
-      const defaultName = session.user.user_metadata?.display_name || session.user.email?.split('@')[0] || 'Player';
-      const playerName = playerNameInput.value || defaultName;
-      lobbyStatus.textContent = 'Joining lobby...';
+      const defaultName = session.user.user_metadata?.display_name ||
+        session.user.user_metadata?.full_name ||
+        session.user.email?.split('@')[0] ||
+        'Player';
+      playerNameLabel.textContent = defaultName;
+      lobbyStatus.textContent = 'Joining matchmaking...';
       lobbyStatus.style.color = '';
-      const data = await apiFetch('/join-lobby', {
-        method: 'POST',
-        body: JSON.stringify({ playerName }),
-      }).catch((err) => ({ success: false, error: err.message }));
-      if (data && data.success && data.activeGameId) {
-        // Live match found (e.g. after a refresh) â€” rejoin it.
-        gameId = data.activeGameId;
-        return rejoinGame();
-      }
-      if (!data || !data.success) {
-        lobbyStatus.textContent = (data && data.error) || 'Failed to join lobby';
+      try {
+        const data = await apiFetch('/join-lobby', {
+          method: 'POST',
+          body: JSON.stringify({
+            cardSet: sessionStorage.getItem('cardSet') || 'Ash Cycle',
+            vigorType: sessionStorage.getItem('vigorType') || null,
+          }),
+        });
+        if (!data?.success) {
+          throw new Error(data?.error || 'Could not join matchmaking.');
+        }
+        if (data.gameId && data.gameState) {
+          enterGame({ gameId: data.gameId, playerIndex: data.playerIndex, gameState: data.gameState });
+          return;
+        }
+        lobbyStatus.textContent = `Searching for a player within 5 levels of level ${data.level || 1}...`;
+        lobbyStatus.style.color = '';
+        startLobbyPolling();
+      } catch (error) {
+        if (error.auth) {
+          lobbyStatus.textContent = 'Please log in on the main website first, then return.';
+          lobbyStatus.style.color = 'red';
+          return;
+        }
+        lobbyStatus.textContent = `${error.message || 'Could not join matchmaking.'} Retrying...`;
         lobbyStatus.style.color = 'red';
-        return;
+        window.setTimeout(() => joinLobby().catch((retryError) => {
+          lobbyStatus.textContent = retryError.message || 'Could not join matchmaking.';
+        }), 5000);
       }
-      joinLobbyBtn.style.display = 'none';
-      playerNameInput.disabled = true;
-      lobbyPlayers.style.display = 'block';
-      lobbyStatus.textContent = 'Waiting in lobby...';
-      startLobbyPolling();
     }
 
     function startLobbyPolling() {
@@ -255,8 +266,16 @@
         try {
           const data = await apiFetch('/lobby-players');
           if (data.success) {
-            updateLobbyPlayers(data.players);
-            checkForGameInvitation(data);
+            if (data.gameInvitation?.gameId) {
+              const invitation = data.gameInvitation;
+              enterGame({
+                gameId: invitation.gameId,
+                playerIndex: invitation.playerIndex,
+                gameState: invitation.gameState,
+              });
+              return;
+            }
+            lobbyStatus.textContent = `Searching for a player within 5 levels of level ${data.level || 1}...`;
           }
         } catch (error) {
           if (error.auth) {
@@ -266,113 +285,6 @@
           }
         }
       }, 2000);
-    }
-
-    function updateLobbyPlayers(players) {
-      playersList.innerHTML = '';
-      const otherPlayers = (players || []).filter((p) => p.id !== playerId);
-      if (otherPlayers.length === 0) {
-        const none = document.createElement('div');
-        none.className = 'no-players';
-        none.textContent = 'No other players in lobby';
-        playersList.appendChild(none);
-        return;
-      }
-      otherPlayers.forEach((player) => {
-        const item = document.createElement('div');
-        item.className = 'lobby-player-item';
-        const nameSpan = document.createElement('span');
-        nameSpan.className = 'lobby-player-name';
-        nameSpan.textContent = player.name; // textContent â€” never inject user HTML
-        const btn = document.createElement('button');
-        btn.className = 'lobby-player-challenge';
-        btn.textContent = 'Challenge';
-        btn.addEventListener('click', () => challengePlayer(player.id));
-        item.appendChild(nameSpan);
-        item.appendChild(btn);
-        playersList.appendChild(item);
-      });
-    }
-
-    function checkForGameInvitation(data) {
-      if (!(data.gameInvitation && data.gameInvitation.gameId)) return;
-      const invitation = data.gameInvitation;
-      if (gameOverHandled || gameId === invitation.gameId) return;
-      if (lobbyPollInterval) { clearInterval(lobbyPollInterval); lobbyPollInterval = null; }
-
-      const notificationEl = document.getElementById('game-notification');
-      notificationEl.innerHTML = '';
-      const text = document.createElement('div');
-      text.textContent = `${invitation.opponentName} has challenged you!`;
-      const btnRow = document.createElement('div');
-      btnRow.style.cssText = 'margin-top:10px;display:flex;gap:10px;justify-content:center';
-      const acceptBtn = document.createElement('button');
-      acceptBtn.textContent = 'Accept';
-      acceptBtn.style.cssText = 'padding:8px 16px;background:#4ecdc4;border:none;border-radius:5px;cursor:pointer';
-      const declineBtn = document.createElement('button');
-      declineBtn.textContent = 'Decline';
-      declineBtn.style.cssText = 'padding:8px 16px;background:#e74c3c;border:none;border-radius:5px;cursor:pointer';
-      btnRow.appendChild(acceptBtn);
-      btnRow.appendChild(declineBtn);
-      notificationEl.appendChild(text);
-      notificationEl.appendChild(btnRow);
-      notificationEl.classList.add('show');
-
-      acceptBtn.addEventListener('click', async () => {
-        notificationEl.classList.remove('show');
-        let accepted;
-        try {
-          accepted = await apiFetch('/accept-game', {
-            method: 'POST',
-            body: JSON.stringify({ gameId: invitation.gameId }),
-          });
-        } catch (error) {
-          lobbyStatus.textContent = error.message || 'Could not accept the match. Please try again.';
-          lobbyStatus.style.color = 'red';
-          startLobbyPolling();
-          return;
-        }
-        if (!accepted?.success || !accepted.gameState) {
-          lobbyStatus.textContent = accepted?.error || 'The match could not be accepted. Please try again.';
-          lobbyStatus.style.color = 'red';
-          startLobbyPolling();
-          return;
-        }
-        enterGame({
-          gameId: invitation.gameId,
-          playerIndex: invitation.playerIndex,
-          gameState: accepted.gameState,
-        });
-      });
-
-      declineBtn.addEventListener('click', async () => {
-        notificationEl.classList.remove('show');
-        await apiFetch('/decline-game', {
-          method: 'POST',
-          body: JSON.stringify({ gameId: invitation.gameId }),
-        }).catch(() => {});
-        startLobbyPolling();
-      });
-    }
-
-    async function challengePlayer(opponentId) {
-      const cardSet = sessionStorage.getItem('cardSet') || 'Ash Cycle';
-      const vigorType = sessionStorage.getItem('vigorType') || null;
-      let data;
-      try {
-        data = await apiFetch('/challenge-player', {
-          method: 'POST',
-          body: JSON.stringify({ opponentId, cardSet, vigorType }),
-        });
-      } catch (error) {
-        alert(error.auth ? error.message : 'Error challenging player');
-        return;
-      }
-      if (data.success) {
-        enterGame({ gameId: data.gameId, playerIndex: data.playerIndex, gameState: data.gameState });
-      } else {
-        alert(data.error || 'Could not challenge player');
-      }
     }
 
     // ---- game lifecycle --------------------------------------------------
@@ -404,8 +316,6 @@
       gameState = null;
       gameOverHandled = false;
       showLobby();
-      joinLobbyBtn.style.display = '';
-      playerNameInput.disabled = false;
       lobbyStatus.textContent = message;
       lobbyStatus.style.color = 'red';
     }
@@ -446,6 +356,7 @@
           const data = await apiFetch(`/game-state/${gameId}`);
           if (!data.success) {
             returnToLobby(data.error || 'The match is no longer available. Join the lobby to start another match.');
+            joinLobby();
             return;
           }
           if (data.gameState.status === 'completed') {
@@ -943,8 +854,6 @@
               gameOverHandled = false;
               showLobby();
               lobbyStatus.textContent = '';
-              joinLobbyBtn.style.display = '';
-              playerNameInput.disabled = false;
               joinLobby();
             },
           },
@@ -977,11 +886,6 @@
     }
 
     // ---- event wiring ---------------------------------------------------------
-
-    if (joinLobbyBtn) joinLobbyBtn.addEventListener('click', () => joinLobby().catch((e) => {
-      lobbyStatus.textContent = e.message || 'Error connecting to server';
-      lobbyStatus.style.color = 'red';
-    }));
 
     phaseIndicator.addEventListener('click', () => {
       if (gameState && gameState.currentTurn === playerIndex && !endPhaseBtnSide.disabled) {
@@ -1034,8 +938,7 @@
           gameOverHandled = false;
           showLobby();
           lobbyStatus.textContent = '';
-          joinLobbyBtn.style.display = '';
-          playerNameInput.disabled = false;
+          joinLobby();
         };
         if (gameId && !gameOverHandled) { surrender().then(go).catch(go); } else { go(); }
       }
@@ -1087,9 +990,13 @@
         await rejoinGame();
         if (gameId) return;
       }
-      // No match to rejoin â€” prefill the name and wait for the player.
-      const defaultName = session.user.user_metadata?.display_name || session.user.email?.split('@')[0] || 'Player';
-      if (playerNameInput && !playerNameInput.value) playerNameInput.value = defaultName;
+      // No active match: automatically enter level-based matchmaking.
+      const defaultName = session.user.user_metadata?.display_name ||
+        session.user.user_metadata?.full_name ||
+        session.user.email?.split('@')[0] ||
+        'Player';
+      playerNameLabel.textContent = defaultName;
+      await joinLobby();
     })();
   }
 

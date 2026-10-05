@@ -355,7 +355,11 @@ async function requireGameAuth(req, res, next) {
     if (TEST_AUTH && token.startsWith('test-')) {
       const uid = token.slice(5);
       if (!/^[a-zA-Z0-9-]{6,64}$/.test(uid)) return res.status(401).json({ success: false, error: 'Invalid or expired session' });
-      req.authUser = { id: uid, email: `${uid}@test.local` };
+      req.authUser = {
+        id: uid,
+        email: `${uid}@test.local`,
+        user_metadata: { display_name: `Profile ${uid}` },
+      };
     } else {
       if (!supabase) return res.status(503).json({ success: false, error: 'Authentication backend not configured' });
       const { data: { user }, error } = await supabase.auth.getUser(token);
@@ -679,22 +683,113 @@ function userActiveGame(userId) {
   return null;
 }
 
-app.post('/api/join-lobby', (req, res) => {
+function getAccountDisplayName(user) {
+  const metadata = user.user_metadata || {};
+  const name = [metadata.display_name, metadata.full_name, metadata.username, user.email?.split('@')[0]]
+    .find((value) => typeof value === 'string' && value.trim());
+  return (name || 'Player').trim().slice(0, 40);
+}
+
+function matchmakingInfo(game, userId) {
+  const playerIndex = engine.playerIndex(game, userId);
+  return {
+    success: true,
+    gameId: game.id,
+    activeGameId: game.id,
+    playerIndex,
+    gameState: engine.sanitize(game, userId),
+  };
+}
+
+async function createLobbyMatch(player, opponent, cardSet, vigorType) {
+  const setName = typeof cardSet === 'string' && availableSets.includes(cardSet)
+    ? cardSet : (availableSets[0] || 'Ash Cycle');
+  const vigor = typeof vigorType === 'string' && vigorType ? vigorType : null;
+  const gameId = `game_${Date.now()}_${crypto.randomBytes(4).toString('hex')}`;
+  const firstPlayerIndex = crypto.randomInt(2);
+  const game = engine.createGame({
+    id: gameId,
+    firstPlayerIndex,
+    players: [
+      { id: player.id, name: player.name, deck: buildDeck(setName, vigor) },
+      { id: opponent.id, name: opponent.name, deck: buildDeck(setName, vigor) },
+    ],
+  });
+  game.cardSet = setName;
+  game.vigorType = vigor;
+  games.set(gameId, game);
+  player.gameId = gameId;
+  opponent.gameId = gameId;
+
+  if (db) {
+    try {
+      await db.collection('game_matches').insertOne({
+        game_id: gameId,
+        player1_id: player.id,
+        player2_id: opponent.id,
+        player1_name: player.name,
+        player2_name: opponent.name,
+        status: 'active',
+        result: null,
+        winner_id: null,
+        created_at: new Date(),
+      });
+    } catch (e) {
+      console.error('Failed to record match:', e.message);
+    }
+  }
+
+  console.log(`Match created: ${gameId} — ${game.players[0].name} vs ${game.players[1].name}; first: ${game.players[firstPlayerIndex].name}`);
+  return game;
+}
+
+app.post('/api/join-lobby', async (req, res) => {
   const userId = req.authUser.id;
-  const name = (typeof req.body.playerName === 'string' ? req.body.playerName : '').trim().slice(0, 40);
   const active = userActiveGame(userId);
   if (active) {
-    // Rejoin path: tell the player they have a live match instead of parking them in the lobby.
-    return res.json({ success: true, activeGameId: active.id });
+    return res.json(matchmakingInfo(active, userId));
   }
-  const entry = lobbyPlayers.get(userId) || { id: userId };
-  entry.id = userId;
-  entry.name = name || entry.name || 'Player';
-  entry.lastSeen = Date.now();
-  entry.gameId = entry.gameId || null;
-  lobbyPlayers.set(userId, entry);
-  console.log(`Player ${entry.name} (${userId}) in lobby (${lobbyPlayers.size} players)`);
-  res.json({ success: true, message: 'Joined lobby successfully' });
+  cleanLobby();
+
+  try {
+    if (!db) {
+      return res.status(503).json({ success: false, error: 'Player level data is unavailable. Matchmaking requires a database connection.' });
+    }
+    const progressionRecord = await getOrCreateProgression(userId);
+    if (!Number.isInteger(progressionRecord?.level) || progressionRecord.level < 1) {
+      throw new Error(`Invalid progression level for player ${userId}`);
+    }
+    const level = progressionRecord.level;
+    const entry = lobbyPlayers.get(userId) || { id: userId, queuedAt: Date.now() };
+    entry.name = getAccountDisplayName(req.authUser);
+    entry.level = level;
+    entry.lastSeen = Date.now();
+    entry.gameId = null;
+    lobbyPlayers.set(userId, entry);
+
+    const cardSet = req.body?.cardSet;
+    const vigorType = req.body?.vigorType;
+    const opponent = [...lobbyPlayers.values()]
+      .filter((candidate) =>
+        candidate.id !== userId &&
+        !candidate.gameId &&
+        Date.now() - candidate.lastSeen <= LOBBY_TTL_MS &&
+        Math.abs(candidate.level - level) <= 5)
+      .sort((a, b) =>
+        Math.abs(a.level - level) - Math.abs(b.level - level) ||
+        a.queuedAt - b.queuedAt)[0];
+
+    if (opponent) {
+      const game = await createLobbyMatch(entry, opponent, cardSet, vigorType);
+      return res.json(matchmakingInfo(game, userId));
+    }
+
+    console.log(`Player ${entry.name} (${userId}, level ${level}) searching for a nearby-level opponent`);
+    return res.json({ success: true, status: 'searching', name: entry.name, level });
+  } catch (error) {
+    console.error(`Could not add player ${userId} to matchmaking:`, error.message);
+    return res.status(503).json({ success: false, error: 'Matchmaking is temporarily unavailable. Please try again.' });
+  }
 });
 
 app.get('/api/lobby-players', (req, res) => {
@@ -705,12 +800,13 @@ app.get('/api/lobby-players', (req, res) => {
     me.lastSeen = Date.now();
     if (me.gameId) {
       const game = games.get(me.gameId);
-      if (game) {
+      if (game?.status === 'active') {
         const idx = engine.playerIndex(game, userId);
         if (idx !== -1) {
           return res.json({
             success: true,
             status: 'game_ready',
+            level: me.level,
             players: [...lobbyPlayers.values()].map((p) => ({ id: p.id, name: p.name })),
             gameInvitation: {
               gameId: game.id,
@@ -727,8 +823,13 @@ app.get('/api/lobby-players', (req, res) => {
   }
 
   const players = [...lobbyPlayers.values()].map((p) => ({ id: p.id, name: p.name }));
-  const status = players.length >= 2 ? 'matchmaking_ready' : 'waiting_for_players';
-  res.json({ success: true, status, players, gameInvitation: null });
+  res.json({
+    success: true,
+    status: 'searching',
+    level: me?.level ?? null,
+    players,
+    gameInvitation: null,
+  });
 });
 
 // ---------------------------------------------------------------------------
@@ -751,62 +852,11 @@ app.post('/api/challenge-player', async (req, res) => {
     return res.json({ success: false, error: 'Player not found in lobby' });
   }
 
-  const setName = typeof cardSet === 'string' && availableSets.includes(cardSet) ? cardSet : (availableSets[0] || 'Ash Cycle');
-  const vigor = typeof vigorType === 'string' && vigorType ? vigorType : null;
-
-  const gameId = `game_${Date.now()}_${crypto.randomBytes(4).toString('hex')}`;
-  const firstPlayerIndex = crypto.randomInt(2);
-
-  const game = engine.createGame({
-    id: gameId,
-    firstPlayerIndex,
-    players: [
-      {
-        id: userId,
-        name: challengerLobby?.name || 'Player',
-        deck: buildDeck(setName, vigor),
-      },
-      {
-        id: opponentId,
-        name: opponentLobby.name || 'Player',
-        deck: buildDeck(setName, vigor),
-      },
-    ],
-  });
-  game.cardSet = setName;
-  game.vigorType = vigor;
-  games.set(gameId, game);
-
-  challengerLobby.gameId = gameId;
-  opponentLobby.gameId = gameId;
-
-  if (db) {
-    try {
-      await db.collection('game_matches').insertOne({
-        game_id: gameId,
-        player1_id: userId,
-        player2_id: opponentId,
-        player1_name: game.players[0].name,
-        player2_name: game.players[1].name,
-        status: 'active',
-        result: null,
-        winner_id: null,
-        created_at: new Date(),
-      });
-    } catch (e) {
-      console.error('Failed to record match:', e.message);
-    }
-  }
-
-  const challengerIdx = engine.playerIndex(game, userId);
-  console.log(`Match created: ${gameId} — ${game.players[0].name} vs ${game.players[1].name}; first: ${game.players[firstPlayerIndex].name}`);
+  const game = await createLobbyMatch(challengerLobby, opponentLobby, cardSet, vigorType);
   res.json({
-    success: true,
-    gameId,
-    opponentName: game.players[1 - challengerIdx].name,
-    playerIndex: challengerIdx,
-    goesFirst: challengerIdx === firstPlayerIndex,
-    gameState: engine.sanitize(game, userId),
+    ...matchmakingInfo(game, userId),
+    opponentName: game.players[1 - engine.playerIndex(game, userId)].name,
+    goesFirst: engine.playerIndex(game, userId) === game.currentTurn,
   });
 });
 
@@ -835,8 +885,7 @@ app.post('/api/decline-game', (req, res) => {
   game.winner = null;
   games.delete(gameId);
   for (const p of [userId, game.players[1 - idx].id]) {
-    const entry = lobbyPlayers.get(p);
-    if (entry) { entry.gameId = null; entry.lastSeen = Date.now(); }
+    lobbyPlayers.delete(p);
   }
   if (db) {
     db.collection('game_matches').updateOne(
