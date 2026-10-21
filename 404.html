@@ -1,1 +1,16 @@
-<!doctype html><meta charset="utf-8"><script>location.replace("./#/");</script><a href="./#/">Return to Kloak & Daggurrs</a>
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Page unavailable — Kloak &amp; Daggurrs</title>
+<script>
+  const path = location.pathname;
+  const gamePath = path.indexOf("/game/");
+  if (gamePath !== -1) {
+    const siteRoot = path.slice(0, gamePath + 1);
+    location.replace(`${siteRoot}game/offline.html`);
+  } else {
+    const siteRoot = path.replace(/[^/]*$/, "");
+    location.replace(`${siteRoot}#/`);
+  }
+</script>
+<p>This page is unavailable. <a href="./#/">Return to Kloak &amp; Daggurrs</a></p>

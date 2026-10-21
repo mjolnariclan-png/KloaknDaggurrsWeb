@@ -683,8 +683,7 @@ const KD = (() => {
   }
 
   function gamePage(){
-    window.location.href = 'game/index.html';
-    return '';
+    return `<section class="page-hero"><p class="eyebrow">BATTLE ARENA // TEMPORARILY OFFLINE</p><h1>THE ARENA IS QUIET.</h1><p>The game is paused while its server is offline. Your account and the rest of the site remain available.</p><a class="btn primary" href="#/">Return to the site</a></section>`;
   }
 
   function gameBattlefieldPage(){
@@ -774,13 +773,7 @@ const KD = (() => {
     else if(p==="reviews")app.innerHTML=reviewsPage();
     else if(p==="contact")app.innerHTML=contactPage();
     else if(p==="admin")app.innerHTML=await adminPage();
-    else if(p==="game")app.innerHTML=gamePage();
-    else if(p==="game-battlefield")app.innerHTML=gameBattlefieldPage();
-    else if(p==="game-deck-selection")app.innerHTML=gameDeckSelectionPage();
-    else if(p==="game-deck-builder")app.innerHTML=gameDeckBuilderPage();
-    else if(p==="game-board")app.innerHTML=gameBoardPage();
-    else if(p==="game-generating-deck")app.innerHTML=gameGeneratingDeckPage();
-    else if(p==="game-multiplayer")app.innerHTML=gameMultiplayerPage();
+    else if(p==="game"||p.startsWith("game-"))app.innerHTML=gamePage();
     else app.innerHTML=notFound();
 
     updateHeader();
@@ -989,4 +982,3 @@ const KD = (() => {
     await render();
   })().catch(e=>{console.error(e);app.innerHTML=`<div class="fatal">K&D initialization failed: ${esc(e.message)}</div>`});
 })();
-
