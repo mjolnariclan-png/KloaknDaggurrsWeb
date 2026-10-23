@@ -2,6 +2,7 @@ const KD = (() => {
   const app = document.querySelector("#app");
   const $=(s,p=document)=>p.querySelector(s), $$=(s,p=document)=>[...p.querySelectorAll(s)];
   const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+  const safeHttpUrl=value=>{try{const u=new URL(String(value??""));return ["http:","https:"].includes(u.protocol)?u.href:null}catch{return null}};
   const route=()=>location.hash.replace(/^#\/?/,"").split("/").filter(Boolean);
 
   const sb = window.supabase?.createClient(
@@ -558,7 +559,28 @@ const KD = (() => {
 
   function forgeOrderPage(){
     if(!session?.user)return requireLogin("Sign in before transmitting a Forge order.");
-    return `<section class="page-hero compact"><p class="eyebrow">FORGE REQUEST</p><h1>BUILD SOMETHING REAL.</h1><p>This request will be saved to your account.</p></section><section class="section form-section"><form id="forge-form" class="kd-form"><div class="form-grid"><label>Name<input id="fo-name" value="${esc(profile?.display_name||"")}" required></label><label>Email<input id="fo-email" type="email" value="${esc(session.user.email||"")}" required></label><label>Phone<input id="fo-phone"></label><label>Print Type<select id="fo-type"><option>FDM</option><option>Resin</option><option>Not sure</option></select></label><label>Quantity<input id="fo-qty" type="number" min="1" value="1"></label><label>Deadline<input id="fo-deadline" type="date"></label></div><label>Model / source link<input id="fo-link"></label><label>Colors<input id="fo-colors"></label><label>Build brief<textarea id="fo-notes" rows="7"></textarea></label><button class="btn primary">Submit Forge Order</button><p id="forge-message"></p></form></section>`;
+    const colors=["Red","Dark Red","Orange","Yellow","Dandilion Yellow","Lime Green","Forest Green","Neon Green","Cyan","Baby Blue","Blue","Deep Blue","Light Purple","Metallic Purple","Brown","Pink","Hot Pink","White","Grey","Dark Grey","Black"];
+    return `<section class="page-hero compact"><p class="eyebrow">FORGE REQUEST</p><h1>BUILD SOMETHING REAL.</h1><p>Send your FDM print request. Your order is saved to your account, and you’ll receive an email confirmation.</p></section><section class="section form-section"><form id="forge-form" class="kd-form">
+      <div class="form-grid">
+        <label>Name<input id="fo-name" autocomplete="name" value="${esc(profile?.display_name||"")}" required></label>
+        <label>Email<input id="fo-email" type="email" autocomplete="email" value="${esc(session.user.email||"")}" required></label>
+        <label>Phone <span>(optional)</span><input id="fo-phone" type="tel" autocomplete="tel"></label>
+        <label>Quantity<input id="fo-qty" type="number" min="1" max="100" step="1" value="1" required></label>
+      </div>
+      <fieldset class="forge-dimensions"><legend>Finished size (inches)</legend><p>Enter the approximate size you want. We’ll confirm the final details with you.</p><div class="form-grid">
+        <label>Height (in)<input id="fo-height" type="number" min="0.01" max="500" step="0.01" required></label>
+        <label>Width (in)<input id="fo-width" type="number" min="0.01" max="500" step="0.01" required></label>
+        <label>Length (in)<input id="fo-length" type="number" min="0.01" max="500" step="0.01" required></label>
+      </div></fieldset>
+      <div class="form-grid">
+        <label>Need it printed by <span>(requested print-completion deadline; pickup/mailing is separate)</span><input id="fo-printed-by" type="date"></label>
+        <label>Preferred pickup / mailing date <span>(optional; arranged separately)</span><input id="fo-delivery-date" type="date"></label>
+      </div>
+      <label>Model / source link <span>(optional)</span><input id="fo-link" type="url" placeholder="https://…"></label>
+      <label>Upload model files <span>(optional; OBJ, STL, or 3MF only; up to 25 MB each)</span><input id="fo-files" type="file" accept=".obj,.stl,.3mf,model/obj,model/stl,model/3mf,application/vnd.ms-package.3dmanufacturing-3dmodel+xml" multiple></label>
+      <fieldset class="forge-colors"><legend>Filament color(s)</legend><p>Choose one or more colors. More colors are being added.</p><div class="forge-color-options">${colors.map(color=>`<label><input type="checkbox" name="fo-colors" value="${esc(color)}"><span>${esc(color)}</span></label>`).join("")}</div></fieldset>
+      <label>Build brief <span>(describe what you’d like printed)</span><textarea id="fo-notes" rows="6" maxlength="3000" required></textarea></label>
+      <button class="btn primary" id="forge-submit">Submit Forge Order</button><p id="forge-message" role="status" aria-live="polite"></p></form></section>`;
   }
 
   async function accountPage(){
@@ -571,7 +593,7 @@ const KD = (() => {
     const collection=(co.data||[]).map(x=>({...x,card:cmap.get(x.card_id)})).filter(x=>x.card);
     return `<section class="page-hero compact"><p class="eyebrow">CLOUD PLAYER ARCHIVE</p><h1>MY ARCHIVE</h1><p>${esc(session.user.email)} Â· synchronized through Supabase</p><div class="hero-actions"><button id="logout-button" class="btn ghost">Sign Out</button>${isAdmin()?`<a class="btn primary" href="#/admin">Command Center</a>`:""}</div></section>
     <section class="section"><div class="section-heading"><p class="eyebrow">MY COLLECTION</p><h2>${collection.length} unique cards logged.</h2></div><div class="collection-grid">${collection.length?collection.map(x=>`<a class="collection-item" href="#/card/${encodeURIComponent(x.card.slug)}"><span>#${String(x.card.card_number).padStart(3,"0")}</span><h3>${esc(x.card.name)}</h3><p>${esc(x.card.rarity)}</p><b>Ã—${x.quantity}</b></a>`).join(""):`<div class="empty-panel"><h2>Your archive is empty.</h2><a class="btn primary" href="#/cards">Enter The Hoard</a></div>`}</div></section>
-    <section class="section"><div class="section-heading"><p class="eyebrow">THE FORGE</p><h2>My Orders</h2></div><div class="order-list">${(orders.data||[]).length?(orders.data||[]).map(o=>`<article class="admin-card"><span class="micro">${esc(o.order_code)}</span><h3>${esc(o.print_type||"Forge Order")}</h3><p><b>Status:</b> ${esc(o.status.replaceAll("_"," "))}</p><p>${esc(o.customer_update||"No owner update yet.")}</p><small>${fmtDate(o.created_at)}</small></article>`).join(""):`<div class="empty-panel">No Forge orders yet.</div>`}</div></section>`;
+    <section class="section"><div class="section-heading"><p class="eyebrow">THE FORGE</p><h2>My Orders</h2></div><div class="order-list">${(orders.data||[]).length?(orders.data||[]).map(o=>{const source=safeHttpUrl(o.source_link);return `<article class="admin-card"><span class="micro">${esc(o.order_code)}</span><h3>FDM print · ${Number(o.quantity)||1} ${Number(o.quantity)===1?"copy":"copies"}</h3><p><b>Status:</b> ${esc(o.status.replaceAll("_"," "))}</p><p><b>Size:</b> ${esc(o.height_inches||"—")} H × ${esc(o.width_inches||"—")} W × ${esc(o.length_inches||"—")} L in</p><p><b>Colors:</b> ${esc(o.colors||"Not specified")}</p>${o.printed_by?`<p><b>Requested printed by:</b> ${esc(o.printed_by)}</p>`:""}${o.delivery_date?`<p><b>Preferred pickup / mailing:</b> ${esc(o.delivery_date)}</p>`:""}${source?`<p><b>Model link:</b> <a href="${esc(source)}" target="_blank" rel="noopener noreferrer">Open link</a></p>`:""}${o.notes?`<p><b>Build brief:</b><br>${esc(o.notes)}</p>`:""}<p>${esc(o.customer_update||"No owner update yet.")}</p><small>${fmtDate(o.created_at)}</small></article>`}).join(""):`<div class="empty-panel">No Forge orders yet.</div>`}</div></section>`;
   }
 
   function loginPage(mode="login"){
@@ -662,11 +684,27 @@ const KD = (() => {
     const {orders,profiles,reviews,contacts,cards,factions,cardColumns,factionColumns,schemaWarning}=await loadAdminData();
     const factionOptions=[...new Map(factions.map(f=>[f.slug,f])).values()].sort((a,b)=>(a.sort_order||0)-(b.sort_order||0));
     if(!adminCardFaction||!factionOptions.some(f=>f.slug===adminCardFaction)) adminCardFaction=factionOptions[0]?.slug||null;
+    const modelPaths=[...new Set(orders.flatMap(o=>Array.isArray(o.model_files)?o.model_files:[]))];
+    const modelUrls=new Map();
+    if(modelPaths.length){
+      const {data:links,error}=await sb.storage.from("forge-models").createSignedUrls(modelPaths,3600);
+      if(error)console.error("Could not create Forge model download links:",error);
+      (links||[]).forEach(link=>{if(link.signedUrl)modelUrls.set(link.path,link.signedUrl)});
+    }
+    const orderCards=orders.map(o=>{
+      const paths=Array.isArray(o.model_files)?o.model_files:[];
+      const fileLinks=paths.map(path=>{
+        const url=modelUrls.get(path);
+        return url?`<li><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(path.split("/").pop())}</a></li>`:`<li>${esc(path.split("/").pop())} — download link unavailable</li>`;
+      });
+      const source=safeHttpUrl(o.source_link);
+      return `<form class="admin-card admin-order-form" data-id="${o.id}"><span class="micro">${esc(o.order_code)} · ${fmtDate(o.created_at)}</span><h3>${esc(o.customer_name)}</h3><p><a href="mailto:${esc(o.email)}">${esc(o.email)}</a>${o.phone?` · <a href="tel:${esc(o.phone)}">${esc(o.phone)}</a>`:""}</p><div class="forge-order-details"><p><b>FDM print</b> · ${Number(o.quantity)||1} ${Number(o.quantity)===1?"copy":"copies"}</p><p><b>Size:</b> ${esc(o.height_inches||"—")} H × ${esc(o.width_inches||"—")} W × ${esc(o.length_inches||"—")} L in</p><p><b>Colors:</b> ${esc(o.colors||"Not specified")}</p>${o.printed_by?`<p><b>Requested printed by:</b> ${esc(o.printed_by)}</p>`:""}${o.delivery_date?`<p><b>Preferred pickup / mailing:</b> ${esc(o.delivery_date)}</p>`:""}${source?`<p><b>Model link:</b> <a href="${esc(source)}" target="_blank" rel="noopener noreferrer">Open source link</a></p>`:""}${fileLinks.length?`<p><b>Uploaded models:</b></p><ul>${fileLinks.join("")}</ul>`:""}${o.notes?`<p><b>Build brief:</b></p><p class="forge-build-brief">${esc(o.notes)}</p>`:""}</div><label>Status<select name="status">${["new","quoted","approved","printing","quality_check","ready","completed","cancelled"].map(s=>`<option value="${s}" ${o.status===s?"selected":""}>${s.replaceAll("_"," ")}</option>`).join("")}</select></label><label>Customer Update<input name="customer_update" value="${esc(o.customer_update||"")}"></label><button class="btn primary">Save Order</button></form>`;
+    });
     return `<section class="page-hero compact"><p class="eyebrow">OWNER SYSTEM // SUPABASE LIVE</p><h1>COMMAND CENTER</h1><p>Database-backed control without moving the frontend off GitHub.</p><div class="hero-actions"><button id="logout-button" class="btn ghost">Sign Out</button><a class="btn ghost" href="#/">View Site</a></div></section>
     <section class="section admin-dashboard">
       ${schemaWarning}
       <div class="admin-tabs"><button data-admin-tab="orders">Forge Orders (${orders.length})</button><button data-admin-tab="cards">Cards (${cards.length})</button><button data-admin-tab="factions">Factions (${factions.length})</button><button data-admin-tab="reviews">Reviews</button><button data-admin-tab="contacts">Inbox</button><button data-admin-tab="users">Users</button></div>
-      <div class="admin-pane" data-pane="orders">${orders.map(o=>`<form class="admin-card admin-order-form" data-id="${o.id}"><span class="micro">${esc(o.order_code)}</span><h3>${esc(o.customer_name)}</h3><p>${esc(o.email)} Â· ${esc(o.print_type||"")}</p><label>Status<select name="status">${["new","quoted","approved","printing","quality_check","ready","completed","cancelled"].map(s=>`<option value="${s}" ${o.status===s?"selected":""}>${s.replaceAll("_"," ")}</option>`).join("")}</select></label><label>Customer Update<input name="customer_update" value="${esc(o.customer_update||"")}"></label><button class="btn primary">Save Order</button></form>`).join("")||`<div class="empty-panel">No Forge orders.</div>`}</div>
+      <div class="admin-pane" data-pane="orders">${orderCards.join("")||`<div class="empty-panel">No Forge orders.</div>`}</div>
       <div class="admin-pane" data-pane="cards" hidden>
         <div class="admin-subtabs">${factionOptions.map(f=>`<button data-card-faction="${esc(f.slug)}" class="${f.slug===adminCardFaction?"active":""}">${esc(f.name)} (${cards.filter(c=>c.faction_slug===f.slug).length})</button>`).join("")}</div>
         <div id="admin-cards-list">${renderCardsList(cards,cardColumns,adminCardFaction)}</div>
@@ -873,13 +911,61 @@ const KD = (() => {
 
 
     $("#forge-form")?.addEventListener("submit",async e=>{
-      e.preventDefault();const msg=$("#forge-message");msg.textContent="TRANSMITTINGâ€¦";
-      const d=new Date(),code=`KD-${String(d.getFullYear()).slice(2)}${String(d.getMonth()+1).padStart(2,"0")}-${Math.floor(1000+Math.random()*9000)}`;
-      const payload={order_code:code,user_id:session.user.id,customer_name:$("#fo-name").value.trim(),email:$("#fo-email").value.trim(),phone:$("#fo-phone").value.trim(),print_type:$("#fo-type").value,quantity:Number($("#fo-qty").value)||1,deadline:$("#fo-deadline").value||null,source_link:$("#fo-link").value.trim(),colors:$("#fo-colors").value.trim(),notes:$("#fo-notes").value.trim()};
-      const {data:r,error}=await sb.from("forge_orders").insert(payload).select().single();
-      if(error){msg.textContent=error.message;return}
-      msg.innerHTML=`ORDER RECEIVED: <strong>${esc(r.order_code)}</strong> Â· <a href="#/account">Track in My Archive</a>`;
-      e.currentTarget.reset();
+      e.preventDefault();
+      const form=e.currentTarget,msg=$("#forge-message"),submit=$("#forge-submit"),files=Array.from($("#fo-files").files||[]);
+      const allowedExtensions=new Set(["obj","stl","3mf"]);
+      if(files.some(file=>!allowedExtensions.has(file.name.split(".").pop().toLowerCase()))){msg.textContent="Only OBJ, STL, and 3MF model files are accepted.";return}
+      if(files.some(file=>file.size>25*1024*1024)){msg.textContent="Each model file must be 25 MB or smaller.";return}
+      if(files.length>5){msg.textContent="Please upload no more than 5 model files.";return}
+      const sourceLink=$("#fo-link").value.trim();
+      if(sourceLink){
+        try{
+          if(!["http:","https:"].includes(new URL(sourceLink).protocol))throw new Error();
+        }catch{
+          msg.textContent="Please provide a valid http:// or https:// model link.";
+          return;
+        }
+      }
+      const pickedColors=$$('input[name="fo-colors"]:checked',form).map(input=>input.value);
+      submit.disabled=true;msg.textContent="Uploading your request…";
+      const d=new Date(),code=`KD-${String(d.getFullYear()).slice(2)}${String(d.getMonth()+1).padStart(2,"0")}-${crypto.randomUUID().slice(0,8).toUpperCase()}`;
+      const uploadedPaths=[];
+      try{
+        for(const file of files){
+          const safeName=file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
+          const path=`${session.user.id}/${code}/${crypto.randomUUID()}-${safeName}`;
+          const {error}=await sb.storage.from("forge-models").upload(path,file,{cacheControl:"3600",upsert:false});
+          if(error)throw new Error(`Could not upload ${file.name}: ${error.message}`);
+          uploadedPaths.push(path);
+        }
+        const payload={
+          order_code:code,user_id:session.user.id,customer_name:$("#fo-name").value.trim(),email:$("#fo-email").value.trim(),
+          phone:$("#fo-phone").value.trim()||null,print_type:"FDM",quantity:Number($("#fo-qty").value),
+          deadline:$("#fo-printed-by").value||null,printed_by:$("#fo-printed-by").value||null,
+          delivery_date:$("#fo-delivery-date").value||null,source_link:sourceLink||null,
+          model_files:uploadedPaths,colors:pickedColors.join(", "),height_inches:Number($("#fo-height").value),
+          width_inches:Number($("#fo-width").value),length_inches:Number($("#fo-length").value),notes:$("#fo-notes").value.trim()
+        };
+        const {data:r,error}=await sb.from("forge_orders").insert(payload).select("id,order_code").single();
+        if(error)throw new Error(`Order could not be saved: ${error.message}`);
+        msg.textContent="Order saved. Sending email notification…";
+        const {error:mailError}=await sb.functions.invoke("forge-order-email",{body:{orderId:r.id}});
+        if(mailError){
+          console.error("Forge order saved, but email notification failed:",mailError);
+          msg.textContent=`Order ${r.order_code} was saved, but the email notification could not be sent. Please do not submit it again; contact us at mjolnariclan@gmail.com and include your order number.`;
+          return;
+        }
+        msg.innerHTML=`ORDER RECEIVED: <strong>${esc(r.order_code)}</strong> · The Forge owner has been notified by email. <a href="#/account">Track in My Archive</a>`;
+        form.reset();
+      }catch(error){
+        console.error("Forge order submission failed:",error);
+        msg.textContent=error.message||"Forge order submission failed. Please try again.";
+        await Promise.all(uploadedPaths.map(path=>sb.storage.from("forge-models").remove([path]).then(({error:removeError})=>{
+          if(removeError)console.error("Could not remove abandoned Forge upload:",removeError);
+        })));
+      }finally{
+        submit.disabled=false;
+      }
     });
 
     $("#review-form")?.addEventListener("submit",async e=>{

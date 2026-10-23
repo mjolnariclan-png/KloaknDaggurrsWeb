@@ -24,5 +24,8 @@
     "express": "^4.21.2",
     "helmet": "^8.1.0",
     "mongodb": "^7.0.0"
+  },
+  "devDependencies": {
+    "supabase": "^2.121.0"
   }
 }

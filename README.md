@@ -64,3 +64,46 @@ npm start
 
 The backend requires its server-side environment variables from `.env.example`.
 Do not commit a real `.env` file or share its values.
+
+## Forge orders and email
+
+The Forge order form stores orders in Supabase, uploads OBJ/STL/3MF files to
+a private Supabase Storage bucket (maximum 25 MB per file, up to five files
+per order), and sends email through a Supabase Edge Function. The Resend API
+key must only be configured as a Supabase function secret; never put it in
+`assets/js/config.js`, GitHub Pages, or a committed file.
+
+To enable the updated form:
+
+1. Run `supabase/forge_orders_upgrade.sql` in the Supabase SQL Editor. It adds
+   order detail columns and private-storage policies.
+2. Deploy `supabase/functions/forge-order-email` to the existing Supabase
+   project with the Supabase CLI:
+
+   ```sh
+   supabase functions deploy forge-order-email --project-ref egpujmjpmeuhiostfrnu
+   ```
+
+3. In the Supabase Dashboard, open **Edge Functions → Secrets** and add
+   `RESEND_API_KEY` using a newly rotated Resend key. Do not use a placeholder
+   key; it cannot send email.
+4. No custom sending domain is required for owner-only order alerts. The
+   function defaults to Resend's `onboarding@resend.dev` sender. Remove any
+   old `RESEND_FROM_EMAIL` secret if it points to an unverified domain. If your
+   Resend account requires a different sender, set the optional
+   `RESEND_FROM_EMAIL` function secret to a sender authorized for that account.
+5. Publish the site changes through the GitHub Pages workflow and test an
+   order. The function emails the owner at `mjolnariclan@gmail.com`; it does
+   not send a confirmation to the customer. Resend's test sender may restrict
+   recipients to your Resend account's verified email address. Replies to the
+   owner notification are addressed to the customer's order email. The owner
+   email includes private model download links that expire after seven days.
+   Local testing on Live Server is allowed from `http://127.0.0.1:5500` and
+   `http://localhost:5500`. If you set the optional `FORGE_ALLOWED_ORIGINS`
+   function secret, include the exact website and local origins there as a
+   comma-separated list.
+
+The printed-by date is a requested print-completion date, not a shipping or
+pickup promise. Pickup/mailing timing is a separate optional date. The
+Command Center includes order contact details, size, colors, dates, brief,
+source link, private model downloads, and status updates.
